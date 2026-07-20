@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عنوان الكورس التقني الاحترافي - اسم المنصة</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        darkBg: '#0f172a',    // Slate 900
+                        cardBg: '#1e293b',    // Slate 800
+                        accent: '#0d9488',    // Teal 600
+                        accentHover: '#0f766e',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- خط Cairo لتصميم عربي حديث -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body class="bg-darkBg text-slate-100 antialiased overflow-x-hidden">
+
+    <!-- 1. شريط التنقل العلوي (Navigation Bar) -->
+    <header class="sticky top-0 z-50 bg-[#0f172a]/80 backdrop-blur-md border-b border-slate-800">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2 space-x-reverse">
+                <!-- شعار افتراضي -->
+                <div class="w-8 h-8 rounded-lg bg-accent flex items-center justify-center font-bold text-white">C</div>
+                <span class="text-xl font-extrabold tracking-wide text-white">اسم <span class="text-accent">الكورس</span></span>
+            </div>
+            <a href="#order-form" class="bg-accent hover:bg-accentHover text-white px-5 py-2 rounded-lg text-sm font-bold transition-all transform hover:scale-105 duration-200 shadow-lg shadow-accent/25">
+                احصل على الكورس الآن
+            </a>
+        </div>
+    </header>
+
+    <!-- 2. قسم واجهة الصفحة الرئيسية (Hero Section) -->
+    <section class="relative py-16 lg:py-24 max-w-6xl mx-auto px-4">
+        <!-- عناصر جمالية في الخلفية -->
+        <div class="absolute top-10 left-10 w-72 h-72 bg-accent/10 rounded-full blur-3xl -z-10"></div>
+        <div class="absolute bottom-10 right-10 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl -z-10"></div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <!-- نصوص العرض والتحفيز -->
+            <div class="lg:col-span-7 space-y-6 text-center lg:text-right">
+                <span class="inline-flex items-center gap-1.5 py-1.5 px-3 rounded-full text-xs font-semibold bg-accent/10 text-accent border border-accent/20">
+                     موصى به لجميع المستويات 
+                </span>
+                <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black leading-tight text-white">
+                    احترف <span class="text-accent">تطوير الويب</span> وابدأ مشروعك أو وظيفتك البرمجية الأولى
+                </h1>
+                <p class="text-slate-400 text-base sm:text-lg max-w-xl mx-auto lg:mx-0">
+                    كورس عملي مكثف يأخذك خطوة بخطوة لبناء تطبيقات ومواقع حقيقية باستخدام أحدث التقنيات البرمجية المطلوبة في سوق العمل.
+                </p>
+                
+                <!-- نقاط قوة سريعة -->
+                <div class="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 text-sm text-slate-300">
+                    <div class="flex items-center gap-2 justify-center lg:justify-start">
+                        <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
+                        <span>تحديثات مجانية مدى الحياة</span>
+                    </div>
+                    <div class="flex items-center gap-2 justify-center lg:justify-start">
+                        <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
+                        <span>مشاريع عملية وحقيقية</span>
+                    </div>
+                </div>
+
+                <!-- أزرار الإجراء الرئيسي -->
+                <div class="pt-4 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+                    <a href="#order-form" class="w-full sm:w-auto bg-accent hover:bg-accentHover text-white px-8 py-4 rounded-xl text-lg font-bold transition-all text-center shadow-xl shadow-accent/30">
+                        سجل في الكورس اليوم
+                    </a>
+                    <a href="#curriculum" class="w-full sm:w-auto border border-slate-700 hover:border-slate-600 bg-slate-800/40 text-slate-300 px-8 py-4 rounded-xl text-lg font-semibold text-center transition-all">
+                        تصفح محتوى المنهج
+                    </a>
+                </div>
+            </div>
+
+            <!-- صورة أو فيديو تعريفي للكورس -->
+            <div class="lg:col-span-5">
+                <div class="relative rounded-2xl overflow-hidden border border-slate-800 bg-cardBg shadow-2xl group">
+                    <!-- نموذج غلاف افتراضي (يمكن تعويضه بفيديو أو صورة فعلية للكورس) -->
+                    <div class="aspect-video sm:aspect-square flex flex-col justify-center items-center p-8 bg-gradient-to-br from-cardBg to-slate-900 text-center">
+                        <div class="p-4 bg-accent/10 rounded-full text-accent mb-4">
+                            <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        </div>
+                        <span class="text-sm font-semibold text-slate-400">شاهد الفيديو التعريفي بالكورس</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. مؤقت تنازلي لخلق عنصر العجلة والإلحاح (Urgency) -->
+    <section class="bg-cardBg py-8 border-y border-slate-800">
+        <div class="max-w-4xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-right">
+            <div>
+                <h3 class="text-xl font-bold text-white">العرض الخاص ينتهي قريباً!</h3>
+                <p class="text-sm text-slate-400 mt-1">احصل على خصم بقيمة 50% فقط خلال الفترة المحدودة.</p>
+            </div>
+            <!-- المؤقت -->
+            <div class="flex gap-4 justify-center" id="countdown">
+                <div class="bg-darkBg px-4 py-2 rounded-xl border border-slate-700 min-w-[70px]">
+                    <span id="hours" class="text-2xl font-bold text-accent">00</span>
+                    <span class="block text-xs text-slate-400">ساعة</span>
+                </div>
+                <div class="bg-darkBg px-4 py-2 rounded-xl border border-slate-700 min-w-[70px]">
+                    <span id="minutes" class="text-2xl font-bold text-accent">00</span>
+                    <span class="block text-xs text-slate-400">دقيقة</span>
+                </div>
+                <div class="bg-darkBg px-4 py-2 rounded-xl border border-slate-700 min-w-[70px]">
+                    <span id="seconds" class="text-2xl font-bold text-accent">00</span>
+                    <span class="block text-xs text-slate-400">ثانية</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. لمن هذا الكورس؟ (Target Audience) -->
+    <section class="py-20 max-w-6xl mx-auto px-4">
+        <div class="text-center max-w-xl mx-auto mb-16">
+            <h2 class="text-3xl font-bold text-white">لمن تم تصميم هذا الكورس؟</h2>
+            <p class="text-slate-400 mt-2">إن كان ينطبق عليك أحد الأوصاف التالية، فهذا التدريب مناسب لك:</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- الفئة 1 -->
+            <div class="p-6 rounded-2xl bg-cardBg border border-slate-800 hover:border-accent/40 transition-all">
+                <div class="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center text-accent mb-4">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z"></path></svg>
+                </div>
+                <h3 class="text-lg font-bold text-white mb-2">المبتدئين كلياً</h3>
+                <p class="text-slate-400 text-sm leading-relaxed">الذين ليس لديهم أي خلفية سابقة في البرمجة ويريدون البدء من الصفر بطريقة صحيحة.</p>
+            </div>
+            <!-- الفئة 2 -->
+            <div class="p-6 rounded-2xl bg-cardBg border border-slate-800 hover:border-accent/40 transition-all">
+                <div class="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center text-accent mb-4">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                </div>
+                <h3 class="text-lg font-bold text-white mb-2">الباحثين عن عمل</h3>
+                <p class="text-slate-400 text-sm leading-relaxed">الراغبين في تعلم المهارات المطلوبة في الشركات التقنية وتجهيز بورتفوليو احترافي.</p>
+            </div>
+            <!-- الفئة 3 -->
+            <div class="p-6 rounded-2xl bg-cardBg border border-slate-800 hover:border-accent/40 transition-all">
+                <div class="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center text-accent mb-4">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                </div>
+                <h3 class="text-lg font-bold text-white mb-2">أصحاب المشاريع الناشئة</h3>
+                <p class="text-slate-400 text-sm leading-relaxed">الذين يرغبون في بناء نماذج أعمالهم الأولية وتطبيقاتهم بدون الاستعانة بشركات مكلفة.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. منهج الكورس ومحتوياته (Curriculum) -->
+    <section id="curriculum" class="py-20 bg-slate-900/50 border-t border-slate-800">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-white">ماذا ستتعلم في هذا الكورس؟</h2>
+                <p class="text-slate-400 mt-2">منهج دراسي متكامل تم تقسيمه وتسهيله ليغطي كل الأساسيات والأدوات الاحترافية.</p>
+            </div>
+
+            <!-- عناصر المنهج (Accordion Style) -->
+            <div class="space-y-4">
+                <!-- الوحدة 1 -->
+                <div class="bg-cardBg border border-slate-800 rounded-xl overflow-hidden">
+                    <button onclick="toggleAccordion('module1')" class="w-full flex justify-between items-center p-5 text-right font-bold text-white hover:bg-slate-800/50 transition-all">
+                        <span>الوحدة الأولى: أساسيات تطوير الويب ومفاهيم التصميم (HTML5 & CSS3)</span>
+                        <svg id="icon-module1" class="w-5 h-5 text-slate-400 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div id="module1" class="hidden p-5 border-t border-slate-800 text-slate-400 text-sm space-y-2 bg-slate-900/30">
+                        <p>• فهم كيفية عمل المتصفحات وبنية صفحات الويب.</p>
+                        <p>• بناء هيكل المواقع باستخدام HTML5 بشكل متوافق مع محركات البحث.</p>
+                        <p>• استخدام CSS3 لبناء تصاميم متجاوبة وتطوير الواجهات الجذابة.</p>
+                    </div>
+                </div>
+
+                <!-- الوحدة 2 -->
+                <div class="bg-cardBg border border-slate-800 rounded-xl overflow-hidden">
+                    <button onclick="toggleAccordion('module2')" class="w-full flex justify-between items-center p-5 text-right font-bold text-white hover:bg-slate-800/50 transition-all">
+                        <span>الوحدة الثانية: البرمجة التفاعلية وجعل الموقع حياً (JavaScript)</span>
+                        <svg id="icon-module2" class="w-5 h-5 text-slate-400 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div id="module2" class="hidden p-5 border-t border-slate-800 text-slate-400 text-sm space-y-2 bg-slate-900/30">
+                        <p>• تعلم أساسيات البرمجة من خلال لغة الجافا سكريبت.</p>
+                        <p>• التحكم بالعناصر البرمجية والـ DOM داخل الصفحة.</p>
+                        <p>• التعامل مع الأحداث (Events) وإضافة تأثيرات وتفاعلية للموقع.</p>
+                    </div>
+                </div>
+
+                <!-- الوحدة 3 -->
+                <div class="bg-cardBg border border-slate-800 rounded-xl overflow-hidden">
+                    <button onclick="toggleAccordion('module3')" class="w-full flex justify-between items-center p-5 text-right font-bold text-white hover:bg-slate-800/50 transition-all">
+                        <span>الوحدة الثالثة: بناء المشاريع الكاملة ورفعها أونلاين</span>
+                        <svg id="icon-module3" class="w-5 h-5 text-slate-400 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div id="module3" class="hidden p-5 border-t border-slate-800 text-slate-400 text-sm space-y-2 bg-slate-900/30">
+                        <p>• دمج التقنيات السابقة لإنشاء متجر الكتروني مصغر ومحفظة أعمال احترافية.</p>
+                        <p>• رفع موقعك على منصات الاستضافة المجانية ليعمل أونلاين.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. قسم نموذج الطلب النهائي - معدل تحويل مرتفع (Order Form) -->
+    <section id="order-form" class="py-20 max-w-4xl mx-auto px-4">
+        <div class="bg-cardBg border border-slate-800 rounded-2xl shadow-2xl p-8 relative overflow-hidden">
+            <div class="absolute -top-12 -left-12 w-24 h-24 bg-accent/20 rounded-full blur-2xl"></div>
+
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-extrabold text-white">سجل الآن وابدأ التعلم فوراً</h2>
+                <p class="text-slate-400 mt-2 text-sm sm:text-base">يرجى ملء النموذج أدناه وسيصلك بريد إلكتروني به تفاصيل الدخول إلى الكورس مباشرة.</p>
+            </div>
+
+            <!-- سعر العرض الترويجي والتخفيض -->
+            <div class="flex justify-center items-center gap-4 mb-8 bg-darkBg py-4 px-6 rounded-xl border border-slate-700/50 max-w-sm mx-auto">
+                <span class="text-slate-400 line-through text-lg">99$</span>
+                <span class="text-3xl font-extrabold text-accent">49$ فقط</span>
+                <span class="text-xs bg-red-500/10 text-red-400 px-2.5 py-1 rounded-full border border-red-500/20 font-bold">حسم 50%</span>
+            </div>
+
+            <!-- نموذج الطلب (مخصص للاندماج السهل مع EasyOrders أو نماذج الإدخال العادية) -->
+            <form class="space-y-6 max-w-md mx-auto">
+                <div>
+                    <label class="block text-slate-300 text-sm font-semibold mb-2" for="name">الاسم الكامل</label>
+                    <input class="w-full bg-darkBg border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-accent transition-all text-sm" type="text" id="name" placeholder="مثال: أحمد محمد" required>
+                </div>
+
+                <div>
+                    <label class="block text-slate-300 text-sm font-semibold mb-2" for="email">البريد الإلكتروني</label>
+                    <input class="w-full bg-darkBg border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-accent transition-all text-sm" type="email" id="email" placeholder="example@domain.com" required>
+                </div>
+
+                <div>
+                    <label class="block text-slate-300 text-sm font-semibold mb-2" for="phone">رقم الهاتف (الواتساب لتلقي الدعم)</label>
+                    <input class="w-full bg-darkBg border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-accent transition-all text-sm text-left" dir="ltr" type="tel" id="phone" placeholder="+966 50 000 0000" required>
+                </div>
+
+                <!-- زر الإرسال وتحويل العميل -->
+                <button type="submit" class="w-full bg-accent hover:bg-accentHover text-white py-4 rounded-xl text-lg font-bold transition-all shadow-lg shadow-accent/20 transform hover:translate-y-[-2px]">
+                    شراء وتفعيل الكورس الآن 🚀
+                </button>
+                
+                <p class="text-center text-xs text-slate-500">
+                     عملية دفع آمنة 100% وبدعم فني متكامل عبر واتساب
+                </p>
+            </form>
+        </div>
+    </section>
+
+    <!-- 7. الأسئلة الشائعة (FAQ) -->
+    <section class="py-16 bg-slate-900/30 border-t border-slate-800">
+        <div class="max-w-3xl mx-auto px-4">
+            <h2 class="text-2xl font-bold text-center text-white mb-10">الأسئلة الشائعة</h2>
+            <div class="space-y-6">
+                <div>
+                    <h4 class="text-lg font-bold text-white mb-1">هل الكورس مسجل أم مباشر؟</h4>
+                    <p class="text-slate-400 text-sm leading-relaxed">الكورس مسجل بالكامل بجودة عالية لتتمكن من مشاهدة الفيديوهات وتطبيق الدروس في الوقت والسرعة المناسبين لك مع ميزة الاحتفاظ بالوصول مدى الحياة.</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold text-white mb-1">كيف يمكنني الحصول على الدعم الفني إن واجهتني مشكلة؟</h4>
+                    <p class="text-slate-400 text-sm leading-relaxed">لدينا مجموعة مخصصة للمشتركين على تليجرام/واتساب يمكنك فيها طرح كافة الاستفسارات والحصول على المساعدة المباشرة لحل المشاكل البرمجية.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. تذييل الصفحة (Footer) -->
+    <footer class="border-t border-slate-800 py-8 bg-darkBg text-center text-slate-500 text-xs">
+        <div class="max-w-6xl mx-auto px-4 space-y-2">
+            <p>© 2026 جميع الحقوق محفوظة لـ اسم المنصة.</p>
+            <p class="hover:text-slate-400 transition-colors"><a href="#">شروط الاستخدام والخصوصية</a></p>
+        </div>
+    </footer>
+
+    <!-- أكواد Javascript للتفاعلية البسيطة والمؤقت التنازلي -->
+    <script>
+        // كود التحكم بقائمة الأكورديون (Accordion) في قسم المنهج
+        function toggleAccordion(id) {
+            const element = document.getElementById(id);
+            const icon = document.getElementById('icon-' + id);
+            
+            if (element.classList.contains('hidden')) {
+                element.classList.remove('hidden');
+                icon.classList.add('rotate-180');
+            } else {
+                element.classList.add('hidden');
+                icon.classList.remove('rotate-180');
+            }
+        }
+
+        // كود المؤقت التنازلي التفاعلي (لتشجيع الشراء السريع)
+        // المؤقت هنا يعاد ضبطه تلقائياً لـ 3 ساعات عند كل زيارة، لضمان استمرار الـ Scarcity
+        let duration = 3 * 60 * 60; // 3 ساعات بالثواني
+        const timerInterval = setInterval(function() {
+            let hours = Math.floor(duration / 3600);
+            let minutes = Math.floor((duration % 3600) / 60);
+            let seconds = duration % 60;
+
+            document.getElementById('hours').innerText = hours < 10 ? '0' + hours : hours;
+            document.getElementById('minutes').innerText = minutes < 10 ? '0' + minutes : minutes;
+            document.getElementById('seconds').innerText = seconds < 10 ? '0' + seconds : seconds;
+
+            if (duration <= 0) {
+                duration = 3 * 60 * 60; // يعيد تصفير نفسه لضمان استمرار مظهر العرض
+            } else {
+                duration--;
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
