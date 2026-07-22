@@ -28,10 +28,12 @@
   --shadow: 0 20px 50px -20px rgba(0, 0, 0, 0.6);
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
 }
 
 html {
@@ -57,7 +59,7 @@ body::before {
     radial-gradient(800px 600px at 90% 10%, rgba(255, 169, 77, 0.10), transparent 60%),
     radial-gradient(700px 500px at 50% 110%, rgba(255, 217, 61, 0.08), transparent 60%);
   pointer-events: none;
-  z-index: 0;
+  z-index: -1;
 }
 
 body::after {
@@ -69,7 +71,7 @@ body::after {
     linear-gradient(90deg, rgba(255, 255, 255, 0.018) 1px, transparent 1px);
   background-size: 60px 60px;
   pointer-events: none;
-  z-index: 0;
+  z-index: -1;
   mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
 }
 

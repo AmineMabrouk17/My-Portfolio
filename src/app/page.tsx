@@ -14,7 +14,7 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <main id="top" className="relative" style={{ zIndex: 1 }}>
+      <main id="top">
         <Hero />
         <About />
         <Skills />
