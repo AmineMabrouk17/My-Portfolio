@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "كورس احترافي - نمط تصميم عصري فاتح",
+  robots: { index: false, follow: false },
 };
 
 export default function LandingPage1() {
