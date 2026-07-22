@@ -200,7 +200,7 @@
   [dir="rtl"] .lang-switcher{margin-left:0;margin-right:8px}
   [dir="rtl"] .lang-switcher-menu{right:auto;left:0}
   [dir="rtl"] .lang-switcher-option{text-align:right}
-  [dir="rtl"] .hero-card-langs{direction:ltr}
+  [dir="rtl"] .hero-service-card{direction:ltr;text-align:left}
   [dir="rtl"] .contact-email{direction:ltr;unicode-bidi:embed}
 
   /* Hero */
@@ -302,71 +302,50 @@
   }
   .hero-socials a:hover{color:var(--accent);border-color:var(--accent);transform:translateY(-2px)}
 
-  /* Hero card */
-  .hero-card{
+  /* Hero services */
+  .hero-services{
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+  }
+  .hero-service-card{
     position:relative;
-    border-radius:24px;
-    background:linear-gradient(160deg, rgba(255,107,107,0.08), rgba(255,169,77,0.08));
+    border-radius:20px;
+    background:linear-gradient(160deg, rgba(255,107,107,0.06), rgba(255,169,77,0.06));
     border:1px solid var(--border-2);
-    padding:28px;
+    padding:22px 24px;
+    display:flex;
+    align-items:center;
+    gap:18px;
+    transition:all .3s ease;
     box-shadow:var(--shadow);
   }
-  .hero-card::before{
-    content:"";
-    position:absolute;
-    inset:-1px;
-    border-radius:24px;
-    padding:1px;
-    background:var(--grad);
-    -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);
-    -webkit-mask-composite:xor;
-    mask-composite:exclude;
-    opacity:0.4;
-    pointer-events:none;
+  .hero-service-card:hover{
+    border-color:var(--accent);
+    transform:translateX(6px);
+    box-shadow:0 16px 40px -16px rgba(255,107,107,0.2);
   }
-  .hero-card-avatar{
-    width:80px;height:80px;
-    border-radius:20px;
+  .hero-service-icon{
+    width:50px;height:50px;
+    min-width:50px;
+    border-radius:14px;
     background:var(--grad);
     display:grid;place-items:center;
-    font-family:'Inter',sans-serif;
-    font-weight:700;
-    font-size:32px;
+    font-size:20px;
     color:#0a0d14;
-    margin-bottom:24px;
   }
-  .hero-card-name{font-family:'Inter',sans-serif;font-size:22px;font-weight:600;letter-spacing:-0.02em}
-  .hero-card-loc{color:var(--muted);font-size:13px;margin-top:4px;display:flex;align-items:center;gap:6px}
-  .hero-card-stats{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:14px;
-    margin-top:28px;
+  .hero-service-card h3{
+    font-family:'Inter',sans-serif;
+    font-size:16px;
+    font-weight:600;
+    letter-spacing:-0.01em;
+    margin-bottom:2px;
   }
-  .stat{
-    background:rgba(255,255,255,0.03);
-    border:1px solid var(--border);
-    border-radius:14px;
-    padding:16px;
-  }
-  .stat-num{font-family:'Inter',sans-serif;font-size:26px;font-weight:700;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
-  .stat-lbl{font-size:12px;color:var(--muted);margin-top:4px}
-
-  .hero-card-langs{
-    margin-top:24px;
-    display:flex;
-    flex-wrap:wrap;
-    gap:8px;
-  }
-  .lang-pill{
-    padding:6px 12px;
-    border-radius:100px;
-    background:rgba(255,255,255,0.04);
-    border:1px solid var(--border);
-    font-size:12px;
+  .hero-service-card p{
     color:var(--muted);
+    font-size:13px;
+    line-height:1.4;
   }
-  .lang-pill strong{color:var(--text);font-weight:600}
 
   /* Sections */
   section{padding:90px 0;position:relative}
@@ -598,7 +577,7 @@
   /* Responsive */
   @media (max-width:880px){
     .hero-grid{grid-template-columns:1fr;gap:50px}
-    .hero-card{max-width:420px}
+    .hero-services{max-width:420px}
     .projects-grid,.edu-grid{grid-template-columns:1fr}
     .nav-links{display:none}
     .menu-toggle{display:block}
@@ -618,7 +597,7 @@
   }
   @media (max-width:520px){
     .container{padding:0 20px}
-    .hero-card-stats{grid-template-columns:1fr 1fr}
+    .hero-services{gap:12px}
   }
 </style>
 </head>
@@ -674,35 +653,21 @@
           </div>
         </div>
 
-        <div class="hero-card reveal visible">
-          <div class="hero-card-avatar">AM</div>
-          <div class="hero-card-name">Amine Mabrouk</div>
-          <div class="hero-card-loc"><i class="fa-solid fa-location-dot"></i> Tunis, Tunisia · +216 27 865 121</div>
-
-          <div class="hero-card-stats">
-            <div class="stat">
-              <div class="stat-num">1+</div>
-              <div class="stat-lbl" data-i18n="stat.years">Years experience</div>
-            </div>
-            <div class="stat">
-              <div class="stat-num">4</div>
-              <div class="stat-lbl" data-i18n="stat.infraway">Infraway roles</div>
-            </div>
-            <div class="stat">
-              <div class="stat-num">M.Eng</div>
-              <div class="stat-lbl" data-i18n="stat.diploma">Diploma level</div>
-            </div>
-            <div class="stat">
-              <div class="stat-num">4</div>
-              <div class="stat-lbl" data-i18n="stat.langs">Languages</div>
-            </div>
+        <div class="hero-services reveal visible">
+          <div class="hero-service-card">
+            <div class="hero-service-icon"><i class="fa-solid fa-code"></i></div>
+            <h3 data-i18n="hero.svc1.title">Web Applications</h3>
+            <p data-i18n="hero.svc1.desc">Full stack apps with Angular, Next.js & Laravel</p>
           </div>
-
-          <div class="hero-card-langs">
-            <span class="lang-pill"><strong>FR</strong> B2</span>
-            <span class="lang-pill"><strong>AR</strong> C2</span>
-            <span class="lang-pill"><strong>EN</strong> A2</span>
-            <span class="lang-pill"><strong>DE</strong> A2</span>
+          <div class="hero-service-card">
+            <div class="hero-service-icon"><i class="fa-solid fa-chart-line"></i></div>
+            <h3 data-i18n="hero.svc2.title">Dashboards & Admin</h3>
+            <p data-i18n="hero.svc2.desc">Internal tools and operational dashboards</p>
+          </div>
+          <div class="hero-service-card">
+            <div class="hero-service-icon"><i class="fa-solid fa-plug"></i></div>
+            <h3 data-i18n="hero.svc3.title">API Integration</h3>
+            <p data-i18n="hero.svc3.desc">REST APIs, real-time systems & automation</p>
           </div>
         </div>
       </div>
@@ -1157,10 +1122,12 @@
       "hero.summary": 'I build production-ready web platforms that businesses rely on daily. From telecom dashboards to real-time systems, I deliver clean, scalable solutions that solve real operational problems — not just write code.',
       "hero.cta1": "Let's work together",
       "hero.cta2": "View projects",
-      "stat.years": "Years experience",
-      "stat.infraway": "Infraway roles",
-      "stat.diploma": "Diploma level",
-      "stat.langs": "Languages",
+      "hero.svc1.title": "Web Applications",
+      "hero.svc1.desc": "Full stack apps with Angular, Next.js & Laravel",
+      "hero.svc2.title": "Dashboards & Admin",
+      "hero.svc2.desc": "Internal tools and operational dashboards",
+      "hero.svc3.title": "API Integration",
+      "hero.svc3.desc": "REST APIs, real-time systems & automation",
       "about.num": "01 / ABOUT",
       "about.h2": "Engineer who ships.",
       "about.sub": "Full Stack Developer with a National Engineering Diploma — fully recognized as equivalent to a Master's degree.",
@@ -1264,10 +1231,12 @@
       "hero.summary": 'Je construis des plateformes web prêtes pour la production dont les entreprises se servent quotidiennement. Des tableaux de bord télécom aux systèmes en temps réel, je livre des solutions propres et évolutives qui résolvent de vrais problèmes opérationnels.',
       "hero.cta1": "Travaillons ensemble",
       "hero.cta2": "Voir les projets",
-      "stat.years": "Années d'expérience",
-      "stat.infraway": "Rôles chez Infraway",
-      "stat.diploma": "Niveau de diplôme",
-      "stat.langs": "Langues",
+      "hero.svc1.title": "Applications Web",
+      "hero.svc1.desc": "Apps full stack avec Angular, Next.js & Laravel",
+      "hero.svc2.title": "Dashboards & Admin",
+      "hero.svc2.desc": "Outils internes et tableaux de bord opérationnels",
+      "hero.svc3.title": "Intégration API",
+      "hero.svc3.desc": "APIs REST, systèmes en temps réel & automatisation",
       "about.num": "01 / À PROPOS",
       "about.h2": "Ingénieur qui livre.",
       "about.sub": "Développeur Full Stack avec un Diplôme National d'Ingénieur — reconnu comme équivalent à un Master.",
@@ -1371,10 +1340,12 @@
       "hero.summary": 'أبني منصات ويب جاهزة للإنتاج يعتمد عليها يومياً أصحاب الأعمال. من لوحات تحكم الاتصالات إلى الأنظمة في الوقت الحقيقي، أقدم حلولاً نظيفة وقابلة للتوسع تحل مشاكل تشغيلية حقيقية.',
       "hero.cta1": "لنعمل معاً",
       "hero.cta2": "عرض المشاريع",
-      "stat.years": "سنوات الخبرة",
-      "stat.infraway": "أدوار في Infraway",
-      "stat.diploma": "مستوى الشهادة",
-      "stat.langs": "اللغات",
+      "hero.svc1.title": "تطبيقات الويب",
+      "hero.svc1.desc": "تطبيقات متكاملة بـ Angular و Next.js و Laravel",
+      "hero.svc2.title": "لوحات التحكم والإدارة",
+      "hero.svc2.desc": "أدوات داخلية ولوحات تشغيلية",
+      "hero.svc3.title": "تكامل الـ API",
+      "hero.svc3.desc": "واجهات برمجية وأنظمة في الوقت الحقيقي والأتمتة",
       "about.num": "01 / نبذة عني",
       "about.h2": "مهندس يُنجز.",
       "about.sub": "مطور Full Stack بشهادة مهندس وطنية — معترف بها كالماجستير.",
