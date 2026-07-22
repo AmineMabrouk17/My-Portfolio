@@ -3,22 +3,21 @@
 import { useState, useEffect } from "react";
 
 function Countdown() {
-  const [time, setTime] = useState({ hours: 0, minutes: 0, seconds: 0 });
+  const getRemainingTime = () => {
+    const now = new Date();
+    const end = new Date(now);
+    end.setHours(23, 59, 59, 999);
+    const diff = Math.max(0, Math.floor((end.getTime() - now.getTime()) / 1000));
+    return {
+      hours: Math.floor(diff / 3600),
+      minutes: Math.floor((diff % 3600) / 60),
+      seconds: diff % 60,
+    };
+  };
+
+  const [time, setTime] = useState(getRemainingTime);
 
   useEffect(() => {
-    const getRemainingTime = () => {
-      const now = new Date();
-      const end = new Date(now);
-      end.setHours(23, 59, 59, 999);
-      const diff = Math.max(0, Math.floor((end.getTime() - now.getTime()) / 1000));
-      return {
-        hours: Math.floor(diff / 3600),
-        minutes: Math.floor((diff % 3600) / 60),
-        seconds: diff % 60,
-      };
-    };
-
-    setTime(getRemainingTime());
     const interval = setInterval(() => setTime(getRemainingTime()), 1000);
     return () => clearInterval(interval);
   }, []);

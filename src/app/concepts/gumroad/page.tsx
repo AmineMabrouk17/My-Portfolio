@@ -122,7 +122,6 @@ export default function GumroadApp() {
   const [cartOpen, setCartOpen] = useState(false);
   const [modalProduct, setModalProduct] = useState<Product | null>(null);
   const [customPrice, setCustomPrice] = useState(0);
-  const [showAddModal, setShowAddModal] = useState(false);
   const t = i18n[lang];
 
   const filteredProducts = useMemo(() => {

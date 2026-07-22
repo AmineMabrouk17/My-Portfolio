@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useCallback, useMemo } from "react";
 
 // i18n translations
 const i18n = {
@@ -167,8 +167,8 @@ export default function RedeemlyApp() {
   ]);
   const [webhookUrl, setWebhookUrl] = useState("");
   const t = i18n[lang];
-
   const cur = currencyRates[currency];
+  const pingValue = useMemo(() => 165, []);
 
   const showToast = useCallback((msg: string, type: "success" | "error" = "success") => {
     setToast({ msg, type });
@@ -263,7 +263,7 @@ export default function RedeemlyApp() {
           <div className="flex items-center gap-4 text-xs font-semibold">
             <span className="flex items-center gap-1.5 text-emerald-400">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
-              {t.stat_2}: <span className="font-mono">{Math.floor(140 + Math.random() * 80)}ms</span>
+              {t.stat_2}: <span className="font-mono">{pingValue}ms</span>
             </span>
           </div>
         </div>

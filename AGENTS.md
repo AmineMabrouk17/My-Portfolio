@@ -37,6 +37,16 @@ chore: add AGENTS.md with commit convention
 docs: update README with setup instructions
 ```
 
+## Lint & Typecheck
+
+Run after every commit (or before pushing):
+
+```bash
+pnpm lint && pnpm tsc --noEmit
+```
+
+Fix all errors before committing. Warnings are acceptable but should be cleaned up over time.
+
 ## Package Manager
 
 Use **pnpm** for all package management commands:
