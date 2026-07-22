@@ -25,13 +25,14 @@ function getNestedValue(obj: Record<string, unknown>, path: string): string {
   }, obj) as string;
 }
 
+function getInitialLocale(): Locale {
+  if (typeof window === "undefined") return "en";
+  const saved = localStorage.getItem("preferred-lang") as Locale | null;
+  return saved && saved in locales ? saved : "en";
+}
+
 export function I18nProvider({ children }: { children: ReactNode }) {
-  const [locale, setLocaleState] = useState<Locale>(() => {
-    if (typeof window !== "undefined") {
-      return (localStorage.getItem("preferred-lang") as Locale) || "en";
-    }
-    return "en";
-  });
+  const [locale, setLocaleState] = useState<Locale>(getInitialLocale);
 
   const setLocale = useCallback((newLocale: Locale) => {
     setLocaleState(newLocale);
