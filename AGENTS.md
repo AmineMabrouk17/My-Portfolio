@@ -37,6 +37,14 @@ chore: add AGENTS.md with commit convention
 docs: update README with setup instructions
 ```
 
+### AI Agent Credit
+
+If an AI coding agent (Claude Code, etc.) authors or co-authors a commit, it must credit itself with a trailer, e.g.:
+
+```
+Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
+```
+
 ## Lint & Typecheck
 
 Run after every commit (or before pushing):
