@@ -1,0 +1,1722 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="pageTitle">ريديم لي | منصة شحن الألعاب والتطبيقات وتوصيل الـ API المباشر</title>
+    
+    <!-- Google Fonts: IBM Plex Sans Arabic & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#eef2ff',
+                            100: '#e0e7ff',
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                            700: '#4338ca',
+                            accent: '#00f0ff',
+                            purple: '#a855f7',
+                            pink: '#ec4899',
+                            gold: '#f59e0b',
+                            darkBg: '#080c14',
+                            cardBg: '#0f172a'
+                        }
+                    },
+                    fontFamily: {
+                        ibm: ['IBM Plex Sans Arabic', 'Inter', 'sans-serif']
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'glow': 'glow 2.5s ease-in-out infinite alternate',
+                        'float': 'float 4s ease-in-out infinite'
+                    },
+                    keyframes: {
+                        glow: {
+                            '0%': { boxShadow: '0 0 15px rgba(0, 240, 255, 0.3)' },
+                            '100%': { boxShadow: '0 0 30px rgba(168, 85, 247, 0.6)' }
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-8px)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom CSS Styles -->
+    <style>
+        body {
+            font-family: 'IBM Plex Sans Arabic', 'Inter', sans-serif;
+            background-color: #060911;
+            color: #f1f5f9;
+            overflow-x: hidden;
+        }
+
+        .glass-panel {
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .glass-card {
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.6) 0%, rgba(15, 23, 42, 0.9) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(0, 240, 255, 0.4);
+            box-shadow: 0 12px 25px -8px rgba(0, 240, 255, 0.25);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #00f0ff 0%, #a855f7 50%, #f59e0b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .api-badge {
+            background: linear-gradient(90deg, rgba(0,240,255,0.15) 0%, rgba(168,85,247,0.15) 100%);
+            border: 1px solid rgba(0, 240, 255, 0.3);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #080c14;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1e293b;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #4f46e5;
+        }
+
+        /* Active Navigation Tab */
+        .tab-btn.active {
+            background: linear-gradient(90deg, #4f46e5, #a855f7);
+            color: #ffffff;
+            box-shadow: 0 0 18px rgba(79, 70, 229, 0.45);
+        }
+
+        /* Smooth Tab Animations */
+        .tab-content {
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .tab-content-enter {
+            animation: tabFadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes tabFadeIn {
+            0% { opacity: 0; transform: translateY(12px) scale(0.99); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        /* Skeleton Loading Shimmer Effect */
+        .skeleton-box {
+            position: relative;
+            overflow: hidden;
+            background-color: rgba(30, 41, 59, 0.7);
+            border-radius: 0.75rem;
+        }
+
+        .skeleton-box::after {
+            position: absolute;
+            top: 0; right: 0; bottom: 0; left: 0;
+            transform: translateX(-100%);
+            background-image: linear-gradient(
+                90deg,
+                rgba(255, 255, 255, 0) 0,
+                rgba(255, 255, 255, 0.08) 20%,
+                rgba(255, 255, 255, 0.18) 60%,
+                rgba(255, 255, 255, 0)
+            );
+            animation: shimmer 1.8s infinite;
+            content: '';
+        }
+
+        @keyframes shimmer {
+            100% { transform: translateX(100%); }
+        }
+
+        /* Smooth Modal Transitions */
+        .modal-wrapper {
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .modal-panel {
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s ease;
+        }
+
+        .modal-wrapper.hidden-modal {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .modal-wrapper.hidden-modal .modal-panel {
+            transform: scale(0.92) translateY(15px);
+            opacity: 0;
+        }
+
+        .modal-wrapper.show-modal {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+        }
+
+        .modal-wrapper.show-modal .modal-panel {
+            transform: scale(1) translateY(0);
+            opacity: 1;
+        }
+
+        /* Code Block Scrollbar & Styling */
+        pre code {
+            font-family: 'Courier New', Courier, monospace;
+            direction: ltr;
+            text-align: left;
+            display: block;
+        }
+
+        /* RTL/LTR Dynamic Helpers */
+        [dir="ltr"] .icon-arrow {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between antialiased selection:bg-cyan-500 selection:text-black">
+
+    <!-- Initial Page Loader Screen -->
+    <div id="pagePreloader" class="fixed inset-0 z-[100] bg-slate-950 flex flex-col items-center justify-center transition-all duration-500">
+        <div class="relative flex flex-col items-center gap-6 text-center px-4">
+            <div class="relative w-20 h-20">
+                <div class="absolute inset-0 rounded-2xl bg-gradient-to-tr from-cyan-500 via-indigo-600 to-purple-600 animate-spin opacity-80 blur-sm"></div>
+                <div class="absolute inset-1 bg-slate-950 rounded-[14px] flex items-center justify-center">
+                    <i class="fa-solid fa-bolt-lightning text-3xl text-cyan-400 animate-pulse"></i>
+                </div>
+            </div>
+            <div class="space-y-1">
+                <h2 class="text-xl font-black text-white tracking-wide"><span data-i18n="loader_title">جاري تحميل منصة ريديم لي...</span></h2>
+                <p class="text-xs text-gray-400 font-mono" data-i18n="loader_sub">تجهيز بوابات الشحن وسيرفرات الـ API</p>
+            </div>
+            <div class="w-56 h-1.5 bg-slate-900 rounded-full overflow-hidden border border-gray-800">
+                <div id="preloaderBar" class="h-full bg-gradient-to-r from-cyan-400 via-indigo-500 to-purple-500 w-0 transition-all duration-300"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification Container -->
+    <div id="toastContainer" class="fixed top-5 start-5 z-50 flex flex-col gap-3 max-w-sm w-full pointer-events-none"></div>
+
+    <!-- Announcement Bar -->
+    <div class="bg-gradient-to-r from-slate-950 via-indigo-950 to-slate-950 border-b border-indigo-500/20 text-xs py-2 px-4 text-gray-300">
+        <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
+            <div class="flex items-center gap-3">
+                <span class="bg-gradient-to-r from-cyan-500 to-blue-600 text-slate-950 font-black px-2.5 py-0.5 rounded text-[10px] tracking-wide uppercase flex items-center gap-1">
+                    <i class="fa-solid fa-code-branch"></i> API v2.4 <span data-i18n="status_connected">متصل</span>
+                </span>
+                <p class="truncate text-gray-300 text-xs" data-i18n="banner_text">
+                    بوابة شحن الألعاب والتطبيقات للموزعين وأصحاب المتاجر | ربط الـ API تلقائي خلال 5 دقائق ⚡
+                </p>
+            </div>
+            <div class="flex items-center gap-4 text-xs font-semibold">
+                <span class="flex items-center gap-1.5 text-emerald-400">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                    <span data-i18n="latency_label">استجابة السيرفر:</span> <span id="pingCounter" class="font-mono">180ms</span>
+                </span>
+                <span class="text-gray-700">|</span>
+                <button onclick="switchMainTab('api-tab')" class="hover:text-brand-accent transition-colors flex items-center gap-1">
+                    <i class="fa-solid fa-key text-cyan-400"></i> <span data-i18n="api_keys_link">المفاتيح البرمجية</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Navigation Header -->
+    <header class="sticky top-0 z-40 glass-panel border-b border-gray-800/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                
+                <!-- Brand Logo -->
+                <a href="#" class="flex items-center gap-3 group">
+                    <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-cyan-500 via-indigo-600 to-purple-600 p-0.5 shadow-lg group-hover:scale-105 transition-transform">
+                        <div class="w-full h-full bg-slate-950 rounded-[14px] flex items-center justify-center">
+                            <i class="fa-solid fa-bolt-lightning text-2xl text-cyan-400"></i>
+                        </div>
+                    </div>
+                    <div class="flex flex-col">
+                        <div class="flex items-center gap-1.5">
+                            <span class="text-2xl font-black tracking-wide gradient-text leading-tight" data-i18n="brand_name">ريديم لي</span>
+                            <span class="text-[10px] bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 font-bold px-1.5 py-0.2 rounded">API</span>
+                        </div>
+                        <span class="text-[10px] text-gray-400 font-medium tracking-wider">REDEEMLY TOPUP HUB</span>
+                    </div>
+                </a>
+
+                <!-- Navigation Tabs Trigger -->
+                <nav class="hidden lg:flex items-center gap-1 bg-slate-900/90 p-1.5 rounded-2xl border border-gray-800 text-xs font-bold">
+                    <button onclick="switchMainTab('store-tab')" id="nav-store-tab" class="tab-btn active px-4 py-2 rounded-xl transition-all flex items-center gap-2">
+                        <i class="fa-solid fa-gamepad"></i> <span data-i18n="nav_store">متجر الشحن السريع</span>
+                    </button>
+                    <button onclick="switchMainTab('api-tab')" id="nav-api-tab" class="tab-btn px-4 py-2 rounded-xl text-gray-400 hover:text-white transition-all flex items-center gap-2">
+                        <i class="fa-solid fa-code"></i> <span data-i18n="nav_api">ربط الـ API والمطورين</span>
+                    </button>
+                    <button onclick="switchMainTab('cards-tab')" id="nav-cards-tab" class="tab-btn px-4 py-2 rounded-xl text-gray-400 hover:text-white transition-all flex items-center gap-2">
+                        <i class="fa-solid fa-credit-card"></i> <span data-i18n="nav_cards">أكواد وكروت الهدايا</span>
+                    </button>
+                    <button onclick="switchMainTab('orders-tab')" id="nav-orders-tab" class="tab-btn px-4 py-2 rounded-xl text-gray-400 hover:text-white transition-all flex items-center gap-2">
+                        <i class="fa-solid fa-chart-line"></i> <span data-i18n="nav_orders">حالة السيرفرات والطلبات</span>
+                    </button>
+                </nav>
+
+                <!-- User Balance & Quick Controls -->
+                <div class="flex items-center gap-2.5">
+                    
+                    <!-- Language Switcher Button -->
+                    <button onclick="toggleLanguage()" id="langToggleBtn" class="bg-slate-900 border border-indigo-500/40 hover:border-cyan-400 text-cyan-300 font-bold text-xs rounded-xl px-3 py-2 flex items-center gap-2 transition-all shadow-sm">
+                        <i class="fa-solid fa-globe text-cyan-400"></i>
+                        <span id="langLabel">English</span>
+                    </button>
+
+                    <!-- User Wallet Widget -->
+                    <div class="bg-slate-900/90 border border-indigo-500/30 rounded-xl px-3 py-1.5 flex items-center gap-2.5">
+                        <div class="flex flex-col text-start">
+                            <span class="text-[10px] text-gray-400 font-medium" data-i18n="balance_label">رصيد حسابك المتاح:</span>
+                            <span id="userBalance" class="text-xs sm:text-sm font-black text-emerald-400 font-mono">$1,450.00 USD</span>
+                        </div>
+                        <button onclick="openDepositModal()" class="w-8 h-8 rounded-lg bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-400 flex items-center justify-center transition-colors" title="إيداع رصيد">
+                            <i class="fa-solid fa-plus text-xs"></i>
+                        </button>
+                    </div>
+
+                    <!-- Currency Switcher -->
+                    <select id="currencySelect" onchange="changeCurrency()" class="bg-slate-900 border border-gray-700 text-gray-300 text-xs rounded-xl px-2 py-2 focus:outline-none cursor-pointer">
+                        <option value="USD">$ USD</option>
+                        <option value="SAR">SR ريال</option>
+                        <option value="EGP">EGP جنيه</option>
+                        <option value="AED">AED درهم</option>
+                    </select>
+
+                    <!-- Mobile Drawer Toggle -->
+                    <button onclick="toggleMobileMenu()" class="lg:hidden text-gray-300 hover:text-white p-2 text-xl focus:outline-none">
+                        <i class="fa-solid fa-bars" id="menuIcon"></i>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Mobile Menu Drawer -->
+        <div id="mobileMenu" class="hidden lg:hidden bg-slate-950 border-b border-gray-800 px-4 py-4 space-y-2 text-sm font-semibold">
+            <button onclick="switchMainTab('store-tab'); toggleMobileMenu();" class="w-full text-start py-2.5 px-3 rounded-lg text-gray-200 hover:bg-slate-900 flex items-center justify-between">
+                <span>🎮 <span data-i18n="nav_store">متجر الشحن السريع</span></span>
+                <i class="fa-solid fa-chevron-left text-xs icon-arrow"></i>
+            </button>
+            <button onclick="switchMainTab('api-tab'); toggleMobileMenu();" class="w-full text-start py-2.5 px-3 rounded-lg text-cyan-400 hover:bg-slate-900 flex items-center justify-between">
+                <span>🔌 <span data-i18n="nav_api">ربط الـ API والمطورين</span></span>
+                <i class="fa-solid fa-code text-xs"></i>
+            </button>
+            <button onclick="switchMainTab('cards-tab'); toggleMobileMenu();" class="w-full text-start py-2.5 px-3 rounded-lg text-gray-200 hover:bg-slate-900 flex items-center justify-between">
+                <span>💳 <span data-i18n="nav_cards">أكواد وكروت الهدايا</span></span>
+                <i class="fa-solid fa-chevron-left text-xs icon-arrow"></i>
+            </button>
+            <button onclick="switchMainTab('orders-tab'); toggleMobileMenu();" class="w-full text-start py-2.5 px-3 rounded-lg text-gray-200 hover:bg-slate-900 flex items-center justify-between">
+                <span>📊 <span data-i18n="nav_orders">حالة السيرفرات والطلبات</span></span>
+                <i class="fa-solid fa-chevron-left text-xs icon-arrow"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Banner & Stats Section -->
+    <section class="relative py-12 lg:py-16 overflow-hidden bg-gradient-to-b from-slate-950 via-slate-900/90 to-slate-950">
+        <!-- Ambient Backlights -->
+        <div class="absolute top-1/3 end-10 w-96 h-96 bg-cyan-500/10 rounded-full blur-[130px] pointer-events-none"></div>
+        <div class="absolute top-10 start-10 w-96 h-96 bg-purple-600/10 rounded-full blur-[130px] pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                
+                <!-- Main Intro Header -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-start">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full api-badge text-cyan-400 text-xs font-bold">
+                        <i class="fa-solid fa-shield-halved text-cyan-400"></i>
+                        <span data-i18n="hero_badge">المنصة الأولى المعتمدة لتوفير خدمات الـ API لربط المتاجر المباشر</span>
+                    </div>
+
+                    <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black text-white leading-tight" data-i18n="hero_title">
+                        اشحن حساباتك أو <span class="gradient-text">اربط متجرك بالـ API</span> فورياً بأسعار الجملة!
+                    </h1>
+
+                    <p class="text-gray-400 text-sm sm:text-base leading-relaxed max-w-2xl mx-auto lg:mx-0" data-i18n="hero_desc">
+                        نوفر حلول الشحن التلقائي لألعاب ببجي، فري فاير، روبلوكس، وتطبيقات البث المباشر (تيك توك، بيجو، لايكي) عبر نظام الشحن المباشر بالمعرف (Player ID) أو التكامل البرمجي للموزعين.
+                    </p>
+
+                    <!-- Hero Quick Controls -->
+                    <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-2">
+                        <button onclick="switchMainTab('store-tab')" class="bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-slate-950 font-black px-7 py-3.5 rounded-xl shadow-lg shadow-cyan-500/20 transition-all flex items-center gap-2 text-xs sm:text-sm">
+                            <i class="fa-solid fa-bolt"></i>
+                            <span data-i18n="hero_btn_store">ابتدئ الشحن السريع</span>
+                        </button>
+                        <button onclick="switchMainTab('api-tab')" class="bg-slate-900 hover:bg-slate-800 text-cyan-400 font-bold px-6 py-3.5 rounded-xl border border-cyan-500/30 transition-all flex items-center gap-2 text-xs sm:text-sm">
+                            <i class="fa-solid fa-code"></i>
+                            <span data-i18n="hero_btn_api">تجربة الـ API Sandbox</span>
+                        </button>
+                    </div>
+
+                    <!-- Platform Metrics -->
+                    <div class="pt-6 grid grid-cols-2 sm:grid-cols-4 gap-4 border-t border-gray-800/80">
+                        <div class="p-3 bg-slate-900/60 rounded-xl border border-gray-800">
+                            <div class="text-xl font-black text-white font-mono">99.99%</div>
+                            <div class="text-[11px] text-gray-400" data-i18n="hero_stat_1">استقرار خدمات الـ API</div>
+                        </div>
+                        <div class="p-3 bg-slate-900/60 rounded-xl border border-gray-800">
+                            <div class="text-xl font-black text-cyan-400 font-mono">&lt; 3 Sec</div>
+                            <div class="text-[11px] text-gray-400" data-i18n="hero_stat_2">متوسط زمن التنفيذ</div>
+                        </div>
+                        <div class="p-3 bg-slate-900/60 rounded-xl border border-gray-800">
+                            <div class="text-xl font-black text-purple-400 font-mono">+120</div>
+                            <div class="text-[11px] text-gray-400" data-i18n="hero_stat_3">خدمة ولعبة مدعومة</div>
+                        </div>
+                        <div class="p-3 bg-slate-900/60 rounded-xl border border-gray-800">
+                            <div class="text-xl font-black text-emerald-400 font-mono">+4.2M</div>
+                            <div class="text-[11px] text-gray-400" data-i18n="hero_stat_4">طلب تم معالجته</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interactive ID Top-Up Quick Widget -->
+                <div class="lg:col-span-5">
+                    <div class="glass-panel p-6 rounded-2xl border border-cyan-500/30 relative shadow-2xl">
+                        <div class="flex items-center justify-between mb-5">
+                            <h3 class="text-base font-bold text-white flex items-center gap-2">
+                                <i class="fa-solid fa-calculator text-cyan-400"></i>
+                                <span data-i18n="calc_title">حاسبة الشحن الفوري السريع</span>
+                            </h3>
+                            <span class="text-[10px] bg-emerald-500/10 text-emerald-400 font-bold px-2 py-0.5 rounded border border-emerald-500/30" data-i18n="calc_server_badge">سيرفر مباشر</span>
+                        </div>
+
+                        <!-- Form Steps -->
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-300 mb-1" data-i18n="calc_select_label">اختر الخدمة أو اللعبة:</label>
+                                <select id="heroGameSelect" onchange="updateHeroWidget()" class="w-full bg-slate-900 border border-gray-700 text-white text-xs rounded-xl p-3 focus:border-cyan-500 focus:outline-none">
+                                    <option value="pubg">PUBG Mobile UC - ببجي موبايل</option>
+                                    <option value="freefire">Free Fire Diamonds - فري فاير</option>
+                                    <option value="roblox">Roblox Robux - روبلوكس</option>
+                                    <option value="tiktok">TikTok Live Coins - عملات تيك توك</option>
+                                    <option value="bigolive">Bigo Diamonds - بيجو لايف</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-300 mb-1" data-i18n="calc_id_label">أدخل معرف اللاعب (Player ID):</label>
+                                <div class="relative">
+                                    <input type="text" id="heroPlayerId" placeholder="51293810" data-i18n-ph="calc_id_placeholder" class="w-full bg-slate-900 border border-gray-700 text-white text-xs rounded-xl p-3 pe-24 focus:border-cyan-500 focus:outline-none">
+                                    <button onclick="verifyPlayerId('heroPlayerId', 'heroPlayerName')" class="absolute end-1.5 top-1.5 bg-indigo-600 hover:bg-indigo-500 text-white text-[11px] font-bold px-3 py-1.5 rounded-lg transition-colors">
+                                        <span data-i18n="calc_verify_btn">تحقق</span>
+                                    </button>
+                                </div>
+                                <p id="heroPlayerName" class="text-xs text-emerald-400 mt-1.5 hidden font-semibold">
+                                    <i class="fa-solid fa-circle-check me-1"></i> <span data-i18n="calc_verified_name">اسم الحساب:</span> <span id="heroVerifiedName" class="text-white font-bold">AL_GAMER_99</span>
+                                </p>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-300 mb-1" data-i18n="calc_package_label">اختر الحزمة المطلوبة:</label>
+                                <div id="heroPackagesGrid" class="grid grid-cols-2 gap-2">
+                                    <!-- Dynamic items updated via JS -->
+                                </div>
+                            </div>
+
+                            <button onclick="quickTopUpFromHero()" class="w-full bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-slate-950 font-black py-3.5 rounded-xl shadow-lg transition-all flex items-center justify-center gap-2 text-xs">
+                                <span data-i18n="calc_submit_btn">تنفيذ الشحن التلقائي الآن</span>
+                                <i class="fa-solid fa-arrow-right icon-arrow"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- MAIN TABBED CONTENT SECTION -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 flex-1 w-full">
+        
+        <!-- ================= TAB 1: STORE / GAME TOP-UP ================= -->
+        <div id="store-tab" class="tab-content space-y-8">
+            
+            <!-- Store Section Header & Search Bar -->
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-gray-800 pb-6">
+                <div>
+                    <span class="text-cyan-400 text-xs font-bold uppercase tracking-wider" data-i18n="store_badge">متجر الشحن الفوري</span>
+                    <h2 class="text-2xl sm:text-3xl font-black text-white mt-0.5" data-i18n="store_title">قائمة الألعاب والتطبيقات المتاحة</h2>
+                </div>
+
+                <!-- Search & Filters -->
+                <div class="flex items-center gap-3 w-full md:w-auto">
+                    <div class="relative flex-1 md:w-72">
+                        <input type="text" 
+                               id="storeSearchInput" 
+                               onkeyup="filterStoreGames()" 
+                               placeholder="ابحث عن لعبة أو تطبيق..." 
+                               data-i18n-ph="store_search_ph"
+                               class="w-full bg-slate-900 text-xs text-gray-200 rounded-xl py-2.5 ps-9 pe-3 border border-gray-700 focus:outline-none focus:border-cyan-500">
+                        <i class="fa-solid fa-magnifying-glass absolute start-3 top-3 text-gray-400 text-xs"></i>
+                    </div>
+                    
+                    <select id="categoryFilter" onchange="filterByCategory()" class="bg-slate-900 border border-gray-700 text-gray-300 text-xs rounded-xl px-3 py-2.5 focus:outline-none cursor-pointer">
+                        <option value="all" data-i18n="cat_all">جميع الأقسام</option>
+                        <option value="games" data-i18n="cat_games">🎮 ألعاب الفيديو</option>
+                        <option value="apps" data-i18n="cat_apps">📱 تطبيقات البث والعملات</option>
+                        <option value="cards" data-i18n="cat_cards">💳 بطاقات الهدايا الرقمية</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Games Grid -->
+            <div id="gamesGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+                <!-- Rendered dynamically via JavaScript -->
+            </div>
+        </div>
+
+        <!-- ================= TAB 2: API INTEGRATION & DEVELOPERS HUB ================= -->
+        <div id="api-tab" class="tab-content hidden space-y-8">
+            
+            <!-- API Header -->
+            <div class="glass-panel p-6 rounded-2xl border border-cyan-500/30">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
+                    <div class="space-y-2">
+                        <div class="inline-flex items-center gap-2 bg-cyan-500/10 text-cyan-400 text-xs font-bold px-3 py-1 rounded-full border border-cyan-500/30">
+                            <i class="fa-solid fa-plug"></i> REDEEMLY REST API v2
+                        </div>
+                        <h2 class="text-2xl font-black text-white" data-i18n="api_title">مركز المطورين وتوصيل الـ API المباشر</h2>
+                        <p class="text-xs text-gray-400 leading-relaxed max-w-2xl" data-i18n="api_desc">
+                            يمكنك ربط متجرك الإلكتروني (سلة، زد، ووكومرس، أو موقعك الخاص) بـ API منصة ريديم لي لتنفيذ طلبات الشحن أوتوماتيكياً بدون تدخل بشري وبأسعار الموزعين.
+                        </p>
+                    </div>
+
+                    <!-- API Key Quick Action -->
+                    <div class="bg-slate-900 p-4 rounded-xl border border-gray-800 flex flex-col gap-2 min-w-[260px]">
+                        <span class="text-[11px] text-gray-400 font-bold" data-i18n="api_key_label">مفتاح الـ API الخاص بك (Live Key):</span>
+                        <div class="flex items-center gap-2">
+                            <input type="password" id="apiKeyInput" value="rdm_live_99831a0293f88d22" readonly class="bg-slate-950 text-cyan-400 font-mono text-xs p-2 rounded-lg border border-gray-800 flex-1 outline-none">
+                            <button onclick="toggleApiKeyVisibility()" class="bg-slate-800 hover:bg-slate-700 text-gray-300 p-2 rounded-lg text-xs">
+                                <i class="fa-solid fa-eye" id="keyEyeIcon"></i>
+                            </button>
+                            <button onclick="copyApiKey()" class="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold p-2 rounded-lg text-xs" title="نسخ">
+                                <i class="fa-solid fa-copy"></i>
+                            </button>
+                        </div>
+                        <button onclick="generateNewApiKey()" class="text-[10px] text-purple-400 hover:underline text-end mt-1">
+                            <i class="fa-solid fa-rotate me-1"></i> <span data-i18n="api_reset_key">إعادة توليد مفتاح جديد (Reset Key)</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- API Testing Console Sandbox -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                
+                <!-- Left: Endpoint Selector & Controls -->
+                <div class="lg:col-span-5 space-y-4">
+                    <div class="glass-panel p-5 rounded-2xl border border-gray-800 space-y-4">
+                        <h3 class="text-sm font-bold text-white flex items-center gap-2">
+                            <i class="fa-solid fa-terminal text-cyan-400"></i>
+                            <span data-i18n="api_testing_title">منصة تجربة نقاط النهاية (Endpoints Testing)</span>
+                        </h3>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-300 mb-1" data-i18n="api_select_ep_label">اختر الـ Endpoint المطلوبة:</label>
+                            <select id="apiEndpointSelect" onchange="updateApiSandboxCode()" class="w-full bg-slate-900 border border-gray-700 text-xs text-white rounded-xl p-2.5 focus:border-cyan-500 outline-none cursor-pointer">
+                                <option value="topup">POST /api/v2/topup (إرسال طلب شحن تلقائي)</option>
+                                <option value="player_info">POST /api/v2/player-info (التحقق من اسم اللاعب)</option>
+                                <option value="balance">GET /api/v2/balance (الاستعلام عن رصيد حسابك)</option>
+                                <option value="services">GET /api/v2/services (قائمة الألعاب والأسعار)</option>
+                            </select>
+                        </div>
+
+                        <!-- Language Code Switcher -->
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-300 mb-1" data-i18n="api_lang_label">لغة البرمجة (Code Example):</label>
+                            <div class="grid grid-cols-4 gap-1 bg-slate-900 p-1 rounded-xl border border-gray-800 text-[11px] font-bold">
+                                <button onclick="switchLangCode('curl')" id="lang-curl" class="lang-btn active py-1.5 text-center rounded-lg bg-indigo-600 text-white">cURL</button>
+                                <button onclick="switchLangCode('node')" id="lang-node" class="lang-btn py-1.5 text-center rounded-lg text-gray-400 hover:text-white">Node.js</button>
+                                <button onclick="switchLangCode('python')" id="lang-python" class="lang-btn py-1.5 text-center rounded-lg text-gray-400 hover:text-white">Python</button>
+                                <button onclick="switchLangCode('php')" id="lang-php" class="lang-btn py-1.5 text-center rounded-lg text-gray-400 hover:text-white">PHP</button>
+                            </div>
+                        </div>
+
+                        <!-- JSON Request Payload Editor -->
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-300 mb-1" data-i18n="api_req_body_label">بيانات الطلب (Request Body - JSON):</label>
+                            <textarea id="apiRequestJson" rows="6" dir="ltr" class="w-full bg-slate-950 border border-gray-800 font-mono text-xs text-cyan-300 rounded-xl p-3 focus:border-cyan-500 outline-none"></textarea>
+                        </div>
+
+                        <button onclick="executeApiCall()" class="w-full bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-slate-950 font-black py-3 rounded-xl transition-all flex items-center justify-center gap-2 text-xs">
+                            <i class="fa-solid fa-paper-plane"></i>
+                            <span data-i18n="api_send_btn">إرسال الطلب التجريبي (Execute Call)</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Right: Code Snippet & Live Response Viewer -->
+                <div class="lg:col-span-7 space-y-4">
+                    
+                    <!-- Code Display -->
+                    <div class="glass-panel p-5 rounded-2xl border border-gray-800 space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-bold text-gray-300 flex items-center gap-2">
+                                <i class="fa-solid fa-code text-purple-400"></i>
+                                <span data-i18n="api_code_title">كود الربط المباشر</span>
+                            </span>
+                            <button onclick="copyCodeSnippet()" class="text-xs text-cyan-400 hover:underline flex items-center gap-1">
+                                <i class="fa-solid fa-copy"></i> <span data-i18n="api_copy_code">نسخ الكود</span>
+                            </button>
+                        </div>
+                        <pre class="bg-slate-950 p-4 rounded-xl border border-gray-800 overflow-x-auto text-xs text-emerald-400"><code id="codeDisplay"></code></pre>
+                    </div>
+
+                    <!-- Live JSON Response Container -->
+                    <div class="glass-panel p-5 rounded-2xl border border-gray-800 space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-bold text-gray-300 flex items-center gap-2">
+                                <i class="fa-solid fa-reply text-emerald-400"></i>
+                                <span data-i18n="api_res_title">استجابة السيرفر المباشرة (API Response)</span>
+                            </span>
+                            <span id="responseStatusBadge" class="text-[10px] font-mono bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 px-2 py-0.5 rounded">
+                                200 OK
+                            </span>
+                        </div>
+                        <pre class="bg-slate-950 p-4 rounded-xl border border-gray-800 overflow-x-auto text-xs font-mono text-cyan-300"><code id="apiResponseDisplay">{
+  "status": "success",
+  "message": "API System Operational. Ready for requests."
+}</code></pre>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Webhook Settings Card -->
+            <div class="glass-panel p-6 rounded-2xl border border-gray-800 space-y-4">
+                <h3 class="text-base font-bold text-white flex items-center gap-2">
+                    <i class="fa-solid fa-satellite-dish text-amber-400"></i>
+                    <span data-i18n="webhook_title">إعدادات الإشعارات الفورية (Webhook Callbacks)</span>
+                </h3>
+                <p class="text-xs text-gray-400" data-i18n="webhook_desc">
+                    أدخل رابط الـ Webhook الخاص بموقعك لاستلام تحديثات حالة الطلب فور اكتمال الشحن أو فشله تلقائياً:
+                </p>
+                <div class="flex flex-col sm:flex-row gap-3">
+                    <input type="url" id="webhookUrlInput" placeholder="https://yourstore.com/api/redeemly-callback" class="flex-1 bg-slate-900 border border-gray-700 text-xs text-white rounded-xl p-3 focus:border-cyan-500 outline-none" dir="ltr">
+                    <button onclick="saveWebhookUrl()" class="bg-slate-800 hover:bg-slate-700 border border-gray-700 text-white font-bold text-xs px-6 py-3 rounded-xl transition-all">
+                        <span data-i18n="webhook_save">حفظ الرابط</span>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ================= TAB 3: CARDS & GIFT CODES STORE ================= -->
+        <div id="cards-tab" class="tab-content hidden space-y-8">
+            <div class="border-b border-gray-800 pb-6 flex justify-between items-center">
+                <div>
+                    <span class="text-purple-400 text-xs font-bold uppercase tracking-wider" data-i18n="cards_badge">البطاقات الأوتوماتيكية</span>
+                    <h2 class="text-2xl font-black text-white" data-i18n="cards_title">بطاقات الهدايا وأكواد التفعيل الرقمية</h2>
+                </div>
+                <div class="text-xs text-gray-400" data-i18n="cards_sub">تسليم الأكواد فورياً داخل حسابك</div>
+            </div>
+
+            <div id="cardsGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <!-- Gift Cards rendered dynamically -->
+            </div>
+        </div>
+
+        <!-- ================= TAB 4: ORDERS & SERVER STATUS ================= -->
+        <div id="orders-tab" class="tab-content hidden space-y-8">
+            
+            <!-- Server Gateways Health Status -->
+            <div class="space-y-4">
+                <h3 class="text-lg font-bold text-white flex items-center gap-2">
+                    <i class="fa-solid fa-server text-emerald-400"></i>
+                    <span data-i18n="orders_title">حالة سيرفرات وبوابات الشحن المباشر (Gateway Status)</span>
+                </h3>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div class="bg-slate-900 p-4 rounded-xl border border-gray-800 flex items-center justify-between">
+                        <div class="space-y-1">
+                            <span class="text-xs font-bold text-white block">PUBG Mobile API Gateway</span>
+                            <span class="text-[11px] text-emerald-400 font-mono"><span data-i18n="status_connected">متصل</span> (140ms)</span>
+                        </div>
+                        <span class="w-3 h-3 rounded-full bg-emerald-400 animate-pulse"></span>
+                    </div>
+
+                    <div class="bg-slate-900 p-4 rounded-xl border border-gray-800 flex items-center justify-between">
+                        <div class="space-y-1">
+                            <span class="text-xs font-bold text-white block">FreeFire Garena Gateway</span>
+                            <span class="text-[11px] text-emerald-400 font-mono"><span data-i18n="status_connected">متصل</span> (190ms)</span>
+                        </div>
+                        <span class="w-3 h-3 rounded-full bg-emerald-400 animate-pulse"></span>
+                    </div>
+
+                    <div class="bg-slate-900 p-4 rounded-xl border border-gray-800 flex items-center justify-between">
+                        <div class="space-y-1">
+                            <span class="text-xs font-bold text-white block">TikTok Live API Node</span>
+                            <span class="text-[11px] text-emerald-400 font-mono"><span data-i18n="status_connected">متصل</span> (210ms)</span>
+                        </div>
+                        <span class="w-3 h-3 rounded-full bg-emerald-400 animate-pulse"></span>
+                    </div>
+
+                    <div class="bg-slate-900 p-4 rounded-xl border border-gray-800 flex items-center justify-between">
+                        <div class="space-y-1">
+                            <span class="text-xs font-bold text-white block">Roblox Cloud Gateway</span>
+                            <span class="text-[11px] text-emerald-400 font-mono"><span data-i18n="status_connected">متصل</span> (160ms)</span>
+                        </div>
+                        <span class="w-3 h-3 rounded-full bg-emerald-400 animate-pulse"></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Orders Table -->
+            <div class="glass-panel rounded-2xl border border-gray-800 overflow-hidden space-y-4 p-6">
+                <div class="flex items-center justify-between">
+                    <h3 class="text-base font-bold text-white" data-i18n="orders_table_title">سجل العمليات الأخيرة عبر المنصة</h3>
+                    <button onclick="renderOrdersTable()" class="text-xs text-cyan-400 hover:underline">
+                        <i class="fa-solid fa-rotate me-1"></i> <span data-i18n="orders_refresh">تحديث الجدول</span>
+                    </button>
+                </div>
+
+                <div class="overflow-x-auto">
+                    <table class="w-full text-start text-xs">
+                        <thead class="bg-slate-950 text-gray-400 border-b border-gray-800">
+                            <tr>
+                                <th class="p-3 text-start" data-i18n="th_ord_id">رقم الطلب</th>
+                                <th class="p-3 text-start" data-i18n="th_service">الخدمة</th>
+                                <th class="p-3 text-start" data-i18n="th_player_id">المعرف / ID</th>
+                                <th class="p-3 text-start" data-i18n="th_price">المبلغ</th>
+                                <th class="p-3 text-start" data-i18n="th_method">طريقة الشحن</th>
+                                <th class="p-3 text-start" data-i18n="th_status">الحالة</th>
+                            </tr>
+                        </thead>
+                        <tbody id="ordersTableBody" class="divide-y divide-gray-800/60 text-gray-300">
+                            <!-- Dynamically populated -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- Top-Up Checkout Modal -->
+    <div id="checkoutModal" class="modal-wrapper hidden-modal fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4 overflow-y-auto">
+        <div class="modal-panel glass-panel max-w-xl w-full rounded-2xl border border-cyan-500/30 overflow-hidden shadow-2xl relative my-8">
+            
+            <!-- Modal Header -->
+            <div class="bg-slate-950 p-5 border-b border-gray-800 flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <img id="modalGameIcon" src="" alt="" class="w-10 h-10 rounded-xl object-cover border border-gray-700">
+                    <div>
+                        <h3 id="modalGameTitle" class="font-bold text-white text-sm">اسم الخدمة</h3>
+                        <span class="text-[11px] text-emerald-400 font-semibold flex items-center gap-1">
+                            <i class="fa-solid fa-circle-check text-[9px]"></i> <span data-i18n="modal_verified_server">سيرفر شحن فوري معتمد</span>
+                        </span>
+                    </div>
+                </div>
+                <button onclick="closeModal('checkoutModal')" class="w-8 h-8 rounded-full bg-slate-900 hover:bg-slate-800 text-gray-400 hover:text-white flex items-center justify-center transition-colors">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <!-- Modal Form Body -->
+            <div class="p-6 space-y-5">
+                
+                <!-- Player ID Step -->
+                <div class="space-y-1.5">
+                    <label class="block text-xs font-bold text-gray-300" data-i18n="modal_step1">
+                        1. أدخل معرّف الحساب (Player ID / Email):
+                    </label>
+                    <div class="relative">
+                        <input type="text" id="modalPlayerId" placeholder="59382019" class="w-full bg-slate-950 border border-gray-700 text-white text-xs rounded-xl py-3 ps-4 pe-28 focus:border-cyan-500 outline-none">
+                        <button onclick="verifyPlayerId('modalPlayerId', 'modalPlayerCheck')" class="absolute end-1.5 top-1.5 bg-indigo-600 hover:bg-indigo-500 text-white text-xs px-3 py-1.5 rounded-lg transition-colors">
+                            <span data-i18n="calc_verify_btn">تحقق</span>
+                        </button>
+                    </div>
+                    <p id="modalPlayerCheck" class="text-xs text-emerald-400 hidden font-semibold">
+                        <i class="fa-solid fa-circle-check"></i> <span data-i18n="calc_verified_name">الحساب:</span> <span id="modalVerifiedName" class="text-white">Player_Pro99</span>
+                    </p>
+                </div>
+
+                <!-- Package Choice Step -->
+                <div class="space-y-1.5">
+                    <label class="block text-xs font-bold text-gray-300" data-i18n="modal_step2">
+                        2. اختر الكمية أو الباقة المطلوبة:
+                    </label>
+                    <div id="modalPackagesGrid" class="grid grid-cols-2 sm:grid-cols-3 gap-2 max-h-48 overflow-y-auto p-1">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+
+                <!-- Payment Method Step -->
+                <div class="space-y-1.5">
+                    <label class="block text-xs font-bold text-gray-300" data-i18n="modal_step3">
+                        3. طريقة الدفع وتغطية الرصيد:
+                    </label>
+                    <div class="grid grid-cols-2 gap-2 text-xs">
+                        <label class="cursor-pointer border border-cyan-500/50 bg-slate-900 p-2.5 rounded-xl flex items-center justify-between hover:border-cyan-400 transition-all">
+                            <div class="flex items-center gap-2">
+                                <input type="radio" name="payment" value="wallet" checked class="accent-cyan-400">
+                                <span data-i18n="modal_pay_wallet">رصيد المحفظة المباشر</span>
+                            </div>
+                            <span class="text-[10px] text-emerald-400 font-mono">$1,450</span>
+                        </label>
+                        <label class="cursor-pointer border border-gray-700 bg-slate-900 p-2.5 rounded-xl flex items-center gap-2 hover:border-gray-600 transition-all">
+                            <input type="radio" name="payment" value="visa" class="accent-cyan-400">
+                            <span data-i18n="modal_pay_card">بطاقة فيزا / ماستركارد</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Summary Box -->
+                <div class="bg-slate-950 p-4 rounded-xl space-y-2 border border-gray-800 text-xs">
+                    <div class="flex justify-between text-gray-400">
+                        <span data-i18n="modal_summary_base">سعر الخدمة:</span>
+                        <span id="summaryBasePrice">$0.00</span>
+                    </div>
+                    <div class="flex justify-between text-sm font-extrabold text-white pt-2 border-t border-gray-800">
+                        <span data-i18n="modal_summary_total">إجمالي خصم المحفظة:</span>
+                        <span id="summaryTotalPrice" class="text-cyan-400 font-mono">$0.00</span>
+                    </div>
+                </div>
+
+                <!-- Confirm Process Button -->
+                <button onclick="processCheckoutOrder()" class="w-full bg-gradient-to-r from-emerald-500 to-indigo-600 hover:from-emerald-400 hover:to-indigo-500 text-slate-950 font-black py-3.5 rounded-xl shadow-lg transition-all text-xs flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-bolt"></i>
+                    <span data-i18n="modal_confirm_btn">تأكيد وتنفيذ الشحن المباشر الآن</span>
+                </button>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Deposit Funds Modal -->
+    <div id="depositModal" class="modal-wrapper hidden-modal fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
+        <div class="modal-panel glass-panel max-w-md w-full rounded-2xl border border-gray-800 p-6 space-y-5">
+            <div class="flex items-center justify-between">
+                <h3 class="text-base font-bold text-white flex items-center gap-2">
+                    <i class="fa-solid fa-wallet text-emerald-400"></i>
+                    <span data-i18n="modal_deposit_title">شحن وتغذية رصيد الحساب</span>
+                </h3>
+                <button onclick="closeModal('depositModal')" class="text-gray-400 hover:text-white"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+
+            <p class="text-xs text-gray-400 leading-relaxed" data-i18n="modal_deposit_desc">
+                أدخل المبلغ المطلوب إضافته لحسابك في ريديم لي لاستخدامه في شحن الألعاب أو عمليات الـ API:
+            </p>
+
+            <div>
+                <label class="block text-xs font-semibold text-gray-300 mb-1" data-i18n="modal_deposit_label">المبلغ بالمبلغ ($ USD):</label>
+                <input type="number" id="depositAmountInput" value="100" min="10" class="w-full bg-slate-950 border border-gray-700 text-white text-sm font-bold rounded-xl p-3 focus:border-emerald-500 outline-none" dir="ltr">
+            </div>
+
+            <button onclick="confirmDeposit()" class="w-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-xs py-3 rounded-xl transition-all">
+                <span data-i18n="modal_deposit_confirm">إتمام عملية الإيداع</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="bg-slate-950 border-t border-gray-800/80 text-gray-400 text-xs pt-12 pb-8 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                
+                <!-- About -->
+                <div class="space-y-3">
+                    <div class="flex items-center gap-2">
+                        <div class="w-8 h-8 rounded-lg bg-cyan-500 flex items-center justify-center text-slate-950 font-black">
+                            <i class="fa-solid fa-bolt-lightning"></i>
+                        </div>
+                        <span class="text-lg font-black text-white" data-i18n="brand_name">ريديم لي</span>
+                    </div>
+                    <p class="text-gray-400 leading-relaxed" data-i18n="footer_desc">
+                        المنصة المتكاملة الأولى بالمملكة والوطن العربي لتوفير حلول الشحن التلقائي وتوصيل الـ API المباشر للمتاجر والموزعين.
+                    </p>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-sm font-bold text-white mb-3" data-i18n="footer_services">خدمات الشحن</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" onclick="switchMainTab('store-tab')" class="hover:text-cyan-400">PUBG Mobile UC</a></li>
+                        <li><a href="#" onclick="switchMainTab('store-tab')" class="hover:text-cyan-400">Free Fire Diamonds</a></li>
+                        <li><a href="#" onclick="switchMainTab('store-tab')" class="hover:text-cyan-400">TikTok Live Coins</a></li>
+                        <li><a href="#" onclick="switchMainTab('cards-tab')" class="hover:text-cyan-400" data-i18n="nav_cards">بطاقات الهدايا الرقمية</a></li>
+                    </ul>
+                </div>
+
+                <!-- Developer Tools -->
+                <div>
+                    <h4 class="text-sm font-bold text-white mb-3" data-i18n="footer_dev_tools">أدوات المطورين</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" onclick="switchMainTab('api-tab')" class="hover:text-cyan-400">REST API v2 Docs</a></li>
+                        <li><a href="#" onclick="switchMainTab('api-tab')" class="hover:text-cyan-400" data-i18n="api_keys_link">إدارة مفاتيح API Keys</a></li>
+                        <li><a href="#" onclick="switchMainTab('api-tab')" class="hover:text-cyan-400" data-i18n="webhook_title">إعدادات Webhook Callbacks</a></li>
+                        <li><a href="#" onclick="switchMainTab('orders-tab')" class="hover:text-cyan-400" data-i18n="orders_title">مراقبة حالة السيرفرات</a></li>
+                    </ul>
+                </div>
+
+                <!-- Payment Methods -->
+                <div>
+                    <h4 class="text-sm font-bold text-white mb-3" data-i18n="footer_payment_methods">وسائل الدفع المقبولة</h4>
+                    <div class="flex flex-wrap gap-2 text-xl text-gray-300">
+                        <span class="bg-slate-900 p-2 rounded-lg border border-gray-800"><i class="fa-brands fa-cc-visa"></i></span>
+                        <span class="bg-slate-900 p-2 rounded-lg border border-gray-800"><i class="fa-brands fa-cc-mastercard"></i></span>
+                        <span class="bg-slate-900 p-2 rounded-lg border border-gray-800"><i class="fa-brands fa-apple-pay"></i></span>
+                        <span class="bg-slate-900 p-2 text-xs font-bold rounded-lg border border-gray-800 text-cyan-400 flex items-center">STC Pay</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="border-t border-gray-800/80 pt-6 flex flex-col sm:flex-row items-center justify-between text-gray-500">
+                <p data-i18n="footer_rights">© 2026 ريديم لي (Redeemly API & Topup). جميع الحقوق محفوظة.</p>
+                <div class="flex items-center gap-4 mt-3 sm:mt-0">
+                    <a href="#" class="hover:text-white"><i class="fa-brands fa-telegram"></i></a>
+                    <a href="#" class="hover:text-white"><i class="fa-brands fa-discord"></i></a>
+                    <a href="#" class="hover:text-white"><i class="fa-brands fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        /* Translation Dictionary */
+        const translations = {
+            ar: {
+                page_title: "ريديم لي | منصة شحن الألعاب والتطبيقات وتوصيل الـ API المباشر",
+                loader_title: "جاري تحميل منصة ريديم لي...",
+                loader_sub: "تجهيز بوابات الشحن وسيرفرات الـ API",
+                status_connected: "متصل",
+                banner_text: "بوابة شحن الألعاب والتطبيقات للموزعين وأصحاب المتاجر | ربط الـ API تلقائي خلال 5 دقائق ⚡",
+                latency_label: "استجابة السيرفر:",
+                api_keys_link: "المفاتيح البرمجية",
+                brand_name: "ريديم لي",
+                nav_store: "متجر الشحن السريع",
+                nav_api: "ربط الـ API والمطورين",
+                nav_cards: "أكواد وكروت الهدايا",
+                nav_orders: "حالة السيرفرات والطلبات",
+                balance_label: "رصيد حسابك المتاح:",
+                hero_badge: "المنصة الأولى المعتمدة لتوفير خدمات الـ API لربط المتاجر المباشر",
+                hero_title: 'اشحن حساباتك أو <span class="gradient-text">اربط متجرك بالـ API</span> فورياً بأسعار الجملة!',
+                hero_desc: "نوفر حلول الشحن التلقائي لألعاب ببجي، فري فاير، روبلوكس، وتطبيقات البث المباشر (تيك توك، بيجو، لايكي) عبر نظام الشحن المباشر بالمعرف (Player ID) أو التكامل البرمجي للموزعين.",
+                hero_btn_store: "ابتدئ الشحن السريع",
+                hero_btn_api: "تجربة الـ API Sandbox",
+                hero_stat_1: "استقرار خدمات الـ API",
+                hero_stat_2: "متوسط زمن التنفيذ",
+                hero_stat_3: "خدمة ولعبة مدعومة",
+                hero_stat_4: "طلب تم معالجته",
+                calc_title: "حاسبة الشحن الفوري السريع",
+                calc_server_badge: "سيرفر مباشر",
+                calc_select_label: "اختر الخدمة أو اللعبة:",
+                calc_id_label: "أدخل معرف اللاعب (Player ID):",
+                calc_id_placeholder: "أدخل الآيدي مثلاً: 51293810",
+                calc_verify_btn: "تحقق",
+                calc_verified_name: "اسم الحساب:",
+                calc_package_label: "اختر الحزمة المطلوبة:",
+                calc_submit_btn: "تنفيذ الشحن التلقائي الآن",
+                store_badge: "متجر الشحن الفوري",
+                store_title: "قائمة الألعاب والتطبيقات المتاحة",
+                store_search_ph: "ابحث عن لعبة أو تطبيق...",
+                cat_all: "جميع الأقسام",
+                cat_games: "🎮 ألعاب الفيديو",
+                cat_apps: "📱 تطبيقات البث والعملات",
+                cat_cards: "💳 بطاقات الهدايا الرقمية",
+                game_starts_from: "تبدأ من:",
+                game_charge_btn: "شحن مباشر",
+                api_title: "مركز المطورين وتوصيل الـ API المباشر",
+                api_desc: "يمكنك ربط متجرك الإلكتروني (سلة، زد، ووكومرس، أو موقعك الخاص) بـ API منصة ريديم لي لتنفيذ طلبات الشحن أوتوماتيكياً بدون تدخل بشري وبأسعار الموزعين.",
+                api_key_label: "مفتاح الـ API الخاص بك (Live Key):",
+                api_reset_key: "إعادة توليد مفتاح جديد (Reset Key)",
+                api_testing_title: "منصة تجربة نقاط النهاية (Endpoints Testing)",
+                api_select_ep_label: "اختر الـ Endpoint المطلوبة:",
+                api_lang_label: "لغة البرمجة (Code Example):",
+                api_req_body_label: "بيانات الطلب (Request Body - JSON):",
+                api_send_btn: "إرسال الطلب التجريبي (Execute Call)",
+                api_code_title: "كود الربط المباشر",
+                api_copy_code: "نسخ الكود",
+                api_res_title: "استجابة السيرفر المباشرة (API Response)",
+                webhook_title: "إعدادات الإشعارات الفورية (Webhook Callbacks)",
+                webhook_desc: "أدخل رابط الـ Webhook الخاص بموقعك لاستلام تحديثات حالة الطلب فور اكتمال الشحن أو فشله تلقائياً:",
+                webhook_save: "حفظ الرابط",
+                cards_badge: "البطاقات الأوتوماتيكية",
+                cards_title: "بطاقات الهدايا وأكواد التفعيل الرقمية",
+                cards_sub: "تسليم الأكواد فورياً داخل حسابك",
+                cards_buy_btn: "شراء وتوليد الكود فوراً",
+                orders_title: "حالة سيرفرات وبوابات الشحن المباشر (Gateway Status)",
+                orders_table_title: "سجل العمليات الأخيرة عبر المنصة",
+                orders_refresh: "تحديث الجدول",
+                th_ord_id: "رقم الطلب",
+                th_service: "الخدمة",
+                th_player_id: "المعرف / ID",
+                th_price: "المبلغ",
+                th_method: "طريقة الشحن",
+                th_status: "الحالة",
+                modal_verified_server: "سيرفر شحن فوري معتمد",
+                modal_step1: "1. أدخل معرّف الحساب (Player ID / Email):",
+                modal_step2: "2. اختر الكمية أو الباقة المطلوبة:",
+                modal_step3: "3. طريقة الدفع وتغطية الرصيد:",
+                modal_pay_wallet: "رصيد المحفظة المباشر",
+                modal_pay_card: "بطاقة فيزا / ماستركارد",
+                modal_summary_base: "سعر الخدمة:",
+                modal_summary_total: "إجمالي خصم المحفظة:",
+                modal_confirm_btn: "تأكيد وتنفيذ الشحن المباشر الآن",
+                modal_deposit_title: "شحن وتغذية رصيد الحساب",
+                modal_deposit_desc: "أدخل المبلغ المطلوب إضافته لحسابك في ريديم لي لاستخدامه في شحن الألعاب أو عمليات الـ API:",
+                modal_deposit_label: "المبلغ بالمبلغ ($ USD):",
+                modal_deposit_confirm: "إتمام عملية الإيداع",
+                footer_desc: "المنصة المتكاملة الأولى بالمملكة والوطن العربي لتوفير حلول الشحن التلقائي وتوصيل الـ API المباشر للمتاجر والموزعين.",
+                footer_services: "خدمات الشحن",
+                footer_dev_tools: "أدوات المطورين",
+                footer_payment_methods: "وسائل الدفع المقبولة",
+                footer_rights: "© 2026 ريديم لي (Redeemly API & Topup). جميع الحقوق محفوظة."
+            },
+            en: {
+                page_title: "Redeemly | Game & App Top-Up Platform & Direct API Integration",
+                loader_title: "Loading Redeemly Platform...",
+                loader_sub: "Preparing direct top-up gateways and API servers",
+                status_connected: "Connected",
+                banner_text: "Top-up gateway for sellers & store owners | 5-minute automated API integration ⚡",
+                latency_label: "Server Latency:",
+                api_keys_link: "API Keys",
+                brand_name: "Redeemly",
+                nav_store: "Instant Store",
+                nav_api: "API Integration",
+                nav_cards: "Gift Cards",
+                nav_orders: "Server Status & Orders",
+                balance_label: "Available Balance:",
+                hero_badge: "#1 Certified API Gateway for Direct Store Integration",
+                hero_title: 'Top up your games or <span class="gradient-text">connect your store via API</span> instantly at wholesale prices!',
+                hero_desc: "Automated top-up solutions for PUBG Mobile, Free Fire, Roblox, and Live Streaming apps (TikTok, Bigo, Likee) via direct Player ID recharge or merchant API integration.",
+                hero_btn_store: "Start Direct Top-Up",
+                hero_btn_api: "Explore API Sandbox",
+                hero_stat_1: "API Service Uptime",
+                hero_stat_2: "Avg Execution Time",
+                hero_stat_3: "Games & Apps Supported",
+                hero_stat_4: "Processed Orders",
+                calc_title: "Instant Top-Up Calculator",
+                calc_server_badge: "Direct Server",
+                calc_select_label: "Select Service or Game:",
+                calc_id_label: "Enter Player ID:",
+                calc_id_placeholder: "e.g. 51293810",
+                calc_verify_btn: "Verify",
+                calc_verified_name: "Account Name:",
+                calc_package_label: "Select Package:",
+                calc_submit_btn: "Execute Top-Up Now",
+                store_badge: "INSTANT TOP-UP STORE",
+                store_title: "Available Games & Applications",
+                store_search_ph: "Search game or app...",
+                cat_all: "All Categories",
+                cat_games: "🎮 Video Games",
+                cat_apps: "📱 Streaming & Apps",
+                cat_cards: "💳 Digital Gift Cards",
+                game_starts_from: "Starts from:",
+                game_charge_btn: "Direct Top-Up",
+                api_title: "Developers Hub & Direct API Integration",
+                api_desc: "Connect your e-commerce store (Salla, Zid, WooCommerce, or Custom Web App) to Redeemly API to execute top-up requests automatically without human intervention at reseller rates.",
+                api_key_label: "Your Live API Key:",
+                api_reset_key: "Reset API Key",
+                api_testing_title: "Endpoints Sandbox Console",
+                api_select_ep_label: "Select Target Endpoint:",
+                api_lang_label: "Programming Language:",
+                api_req_body_label: "Request Body (JSON):",
+                api_send_btn: "Execute Test Call",
+                api_code_title: "Integration Snippet",
+                api_copy_code: "Copy Code",
+                api_res_title: "Live Server Response",
+                webhook_title: "Instant Webhook Callbacks",
+                webhook_desc: "Enter your webhook callback URL to receive real-time order status updates upon completion or failure:",
+                webhook_save: "Save Webhook URL",
+                cards_badge: "AUTOMATED GIFT CODES",
+                cards_title: "Digital Gift Cards & Serial Keys",
+                cards_sub: "Instant code delivery directly into your account",
+                cards_buy_btn: "Buy & Generate Code Now",
+                orders_title: "Direct Gateway Server Health & Status",
+                orders_table_title: "Recent Transaction Logs",
+                orders_refresh: "Refresh Table",
+                th_ord_id: "Order ID",
+                th_service: "Service",
+                th_player_id: "Player ID",
+                th_price: "Amount",
+                th_method: "Method",
+                th_status: "Status",
+                modal_verified_server: "Certified Direct Gateway Server",
+                modal_step1: "1. Enter Account Identifier (Player ID / Email):",
+                modal_step2: "2. Select Package or Quantity:",
+                modal_step3: "3. Payment Method:",
+                modal_pay_wallet: "Direct Wallet Balance",
+                modal_pay_card: "Visa / Mastercard",
+                modal_summary_base: "Base Price:",
+                modal_summary_total: "Total Deducted:",
+                modal_confirm_btn: "Confirm & Process Top-Up Now",
+                modal_deposit_title: "Add Funds / Deposit Wallet",
+                modal_deposit_desc: "Enter the amount in USD you wish to add to your Redeemly wallet:",
+                modal_deposit_label: "Deposit Amount ($ USD):",
+                modal_deposit_confirm: "Complete Deposit",
+                footer_desc: "The premier integrated platform providing automated top-up solutions and direct merchant API integration.",
+                footer_services: "Top-Up Services",
+                footer_dev_tools: "Developer Tools",
+                footer_payment_methods: "Accepted Payments",
+                footer_rights: "© 2026 Redeemly API & Topup Platform. All rights reserved."
+            }
+        };
+
+        /* State Variables */
+        let currentLang = 'ar';
+        let userAccountBalance = 1450.00;
+        let currentCurrencySymbol = '$';
+        let currentCurrencyRate = 1.0;
+        let selectedGameItem = null;
+        let selectedPackageItem = null;
+        let currentLangCode = 'curl';
+
+        const gamesData = [
+            { id: 'pubg', title: 'PUBG Mobile UC', category: 'games', icon: 'https://placehold.co/150x150/0f172a/00f0ff?text=PUBG+UC', badge: 'ID Direct', packages: [{ name: '60 UC', price: 1.20 }, { name: '325 UC', price: 5.50 }, { name: '660 UC', price: 10.80 }, { name: '1800 UC', price: 27.50 }] },
+            { id: 'freefire', title: 'Free Fire Diamonds', category: 'games', icon: 'https://placehold.co/150x150/0f172a/a855f7?text=FreeFire', badge: 'Instant', packages: [{ name: '100 Diamonds', price: 1.00 }, { name: '310 Diamonds', price: 3.10 }, { name: '520 Diamonds', price: 5.00 }, { name: '1060 Diamonds', price: 9.90 }] },
+            { id: 'roblox', title: 'Roblox Robux', category: 'games', icon: 'https://placehold.co/150x150/0f172a/f59e0b?text=Roblox', badge: 'Auto Robux', packages: [{ name: '400 Robux', price: 4.90 }, { name: '800 Robux', price: 9.80 }, { name: '1700 Robux', price: 19.50 }] },
+            { id: 'tiktok', title: 'TikTok Live Coins', category: 'apps', icon: 'https://placehold.co/150x150/0f172a/ec4899?text=TikTok', badge: 'Wholesale', packages: [{ name: '350 Coins', price: 3.80 }, { name: '700 Coins', price: 7.40 }, { name: '1400 Coins', price: 14.50 }] },
+            { id: 'bigolive', title: 'Bigo Live Diamonds', category: 'apps', icon: 'https://placehold.co/150x150/0f172a/3b82f6?text=Bigo+Live', badge: 'Direct', packages: [{ name: '210 Diamonds', price: 3.90 }, { name: '530 Diamonds', price: 9.50 }] },
+            { id: 'fcmobile', title: 'FC Mobile Points', category: 'games', icon: 'https://placehold.co/150x150/0f172a/10b981?text=FC+24', badge: 'Points', packages: [{ name: '500 Points', price: 4.50 }, { name: '1050 Points', price: 8.90 }] }
+        ];
+
+        const cardsData = [
+            { id: 'gplay', title: 'Google Play Gift Card (US)', price: 10.00, icon: 'https://placehold.co/150x150/0f172a/10b981?text=GooglePlay' },
+            { id: 'apple', title: 'Apple Store & iTunes Card', price: 15.00, icon: 'https://placehold.co/150x150/0f172a/6366f1?text=AppleStore' },
+            { id: 'psn', title: 'PlayStation Network Card', price: 20.00, icon: 'https://placehold.co/150x150/0f172a/3b82f6?text=PlayStation' },
+            { id: 'xbox', title: 'Xbox Live Digital Code', price: 25.00, icon: 'https://placehold.co/150x150/0f172a/22c55e?text=Xbox' }
+        ];
+
+        let ordersLog = [
+            { id: '#ORD-99120', service: 'PUBG 660 UC', playerId: '51293810', price: '$10.80', mode: 'API Request', status: 'Completed' },
+            { id: '#ORD-99121', service: 'FreeFire 520 Gems', playerId: '8821039', price: '$5.00', mode: 'Direct Portal', status: 'Completed' },
+            { id: '#ORD-99122', service: 'TikTok 1400 Coins', playerId: '@gamer_pro', price: '$14.50', mode: 'API Request', status: 'Processing' }
+        ];
+
+        /* Application Initialization */
+        window.onload = function() {
+            simulatePreloader(() => {
+                showStoreSkeletonThenRender();
+                showCardsSkeletonThenRender();
+                updateHeroWidget();
+                updateApiSandboxCode();
+                renderOrdersTable();
+                startPingSimulation();
+            });
+        };
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'ar' ? 'en' : 'ar';
+            const html = document.documentElement;
+            html.lang = currentLang;
+            html.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+
+            // Update Language Switcher Button UI
+            document.getElementById('langLabel').innerText = currentLang === 'ar' ? 'English' : 'العربية';
+
+            // Update all static i18n text elements
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if(translations[currentLang][key]) {
+                    el.innerHTML = translations[currentLang][key];
+                }
+            });
+
+            // Update all placeholders
+            document.querySelectorAll('[data-i18n-ph]').forEach(el => {
+                const key = el.getAttribute('data-i18n-ph');
+                if(translations[currentLang][key]) {
+                    el.placeholder = translations[currentLang][key];
+                }
+            });
+
+            document.getElementById('pageTitle').innerText = translations[currentLang].page_title;
+
+            // Re-render dynamic components
+            renderStoreGames(gamesData);
+            renderGiftCards(cardsData);
+            updateHeroWidget();
+            renderOrdersTable();
+            showToast(currentLang === 'ar' ? "تم تغيير اللغة إلى العربية" : "Language switched to English");
+        }
+
+        function simulatePreloader(callback) {
+            const bar = document.getElementById('preloaderBar');
+            const preloader = document.getElementById('pagePreloader');
+            let progress = 0;
+            
+            const interval = setInterval(() => {
+                progress += Math.floor(Math.random() * 25) + 15;
+                if(bar) bar.style.width = Math.min(progress, 100) + '%';
+
+                if (progress >= 100) {
+                    clearInterval(interval);
+                    setTimeout(() => {
+                        preloader.classList.add('opacity-0', 'pointer-events-none');
+                        setTimeout(() => preloader.style.display = 'none', 500);
+                        if (callback) callback();
+                    }, 250);
+                }
+            }, 80);
+        }
+
+        function switchMainTab(tabId) {
+            const allTabs = document.querySelectorAll('.tab-content');
+            allTabs.forEach(el => {
+                el.classList.add('hidden');
+                el.classList.remove('tab-content-enter');
+            });
+
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active', 'text-white'));
+
+            const targetTab = document.getElementById(tabId);
+            if (targetTab) {
+                targetTab.classList.remove('hidden');
+                void targetTab.offsetWidth; // Reflow trigger
+                targetTab.classList.add('tab-content-enter');
+            }
+
+            const btnMap = {
+                'store-tab': 'nav-store-tab',
+                'api-tab': 'nav-api-tab',
+                'cards-tab': 'nav-cards-tab',
+                'orders-tab': 'nav-orders-tab'
+            };
+            if(btnMap[tabId]) {
+                document.getElementById(btnMap[tabId]).classList.add('active');
+            }
+        }
+
+        /* Skeleton Builders */
+        function showStoreSkeletonThenRender() {
+            const container = document.getElementById('gamesGrid');
+            container.innerHTML = '';
+            for(let i = 0; i < 5; i++) {
+                container.innerHTML += `
+                    <div class="glass-card rounded-2xl p-4 space-y-3">
+                        <div class="skeleton-box h-32 w-full"></div>
+                        <div class="skeleton-box h-4 w-3/4"></div>
+                        <div class="skeleton-box h-3 w-1/2"></div>
+                        <div class="skeleton-box h-8 w-full mt-2"></div>
+                    </div>
+                `;
+            }
+            setTimeout(() => renderStoreGames(gamesData), 400);
+        }
+
+        function showCardsSkeletonThenRender() {
+            const container = document.getElementById('cardsGrid');
+            container.innerHTML = '';
+            for(let i = 0; i < 4; i++) {
+                container.innerHTML += `
+                    <div class="glass-card rounded-2xl p-4 space-y-3">
+                        <div class="skeleton-box h-32 w-full"></div>
+                        <div class="skeleton-box h-4 w-2/3"></div>
+                        <div class="skeleton-box h-8 w-full mt-4"></div>
+                    </div>
+                `;
+            }
+            setTimeout(() => renderGiftCards(cardsData), 450);
+        }
+
+        function renderStoreGames(items) {
+            const container = document.getElementById('gamesGrid');
+            container.innerHTML = '';
+
+            items.forEach(item => {
+                const minPrice = (item.packages[0].price * currentCurrencyRate).toFixed(2);
+                const card = document.createElement('div');
+                card.className = 'glass-card rounded-2xl p-4 flex flex-col justify-between group cursor-pointer';
+                card.onclick = () => openCheckoutModal(item.id);
+
+                const btnLabel = translations[currentLang].game_charge_btn;
+                const startsFromLabel = translations[currentLang].game_starts_from;
+
+                card.innerHTML = `
+                    <div>
+                        <div class="relative mb-3 rounded-xl overflow-hidden bg-slate-950 aspect-square flex items-center justify-center">
+                            <img src="${item.icon}" alt="${item.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                            <span class="absolute top-2 start-2 bg-cyan-500/90 text-slate-950 text-[10px] font-black px-2 py-0.5 rounded backdrop-blur-md">
+                                ${item.badge}
+                            </span>
+                        </div>
+                        <h3 class="font-bold text-xs text-white truncate mb-1">${item.title}</h3>
+                        <div class="flex items-center justify-between text-xs mt-2">
+                            <span class="text-gray-400 text-[11px]">${startsFromLabel}</span>
+                            <span class="font-black text-cyan-400">${currentCurrencySymbol}${minPrice}</span>
+                        </div>
+                    </div>
+                    <button class="w-full mt-3 bg-slate-900 hover:bg-cyan-500 hover:text-slate-950 border border-gray-700/80 text-gray-200 font-bold text-xs py-2 rounded-xl transition-all flex items-center justify-center gap-1">
+                        <span>${btnLabel}</span>
+                        <i class="fa-solid fa-chevron-right icon-arrow text-[10px]"></i>
+                    </button>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function renderGiftCards(cards) {
+            const container = document.getElementById('cardsGrid');
+            container.innerHTML = '';
+
+            cards.forEach(card => {
+                const price = (card.price * currentCurrencyRate).toFixed(2);
+                const el = document.createElement('div');
+                el.className = 'glass-card rounded-2xl p-4 flex flex-col justify-between';
+                const buyLabel = translations[currentLang].cards_buy_btn;
+
+                el.innerHTML = `
+                    <div class="space-y-3">
+                        <img src="${card.icon}" class="w-full h-32 object-cover rounded-xl bg-slate-950">
+                        <h3 class="font-bold text-sm text-white">${card.title}</h3>
+                        <div class="text-sm font-black text-purple-400">${currentCurrencySymbol}${price}</div>
+                    </div>
+                    <button onclick="buyGiftCard('${card.title}', ${card.price})" class="w-full mt-4 bg-purple-600 hover:bg-purple-500 text-white font-bold text-xs py-2.5 rounded-xl transition-all">
+                        ${buyLabel}
+                    </button>
+                `;
+                container.appendChild(el);
+            });
+        }
+
+        function filterStoreGames() {
+            const query = document.getElementById('storeSearchInput').value.toLowerCase();
+            const filtered = gamesData.filter(g => g.title.toLowerCase().includes(query));
+            renderStoreGames(filtered);
+        }
+
+        function filterByCategory() {
+            const cat = document.getElementById('categoryFilter').value;
+            if(cat === 'all') {
+                renderStoreGames(gamesData);
+            } else {
+                const filtered = gamesData.filter(g => g.category === cat);
+                renderStoreGames(filtered);
+            }
+        }
+
+        function updateHeroWidget() {
+            const gameId = document.getElementById('heroGameSelect').value;
+            const game = gamesData.find(g => g.id === gameId);
+            const container = document.getElementById('heroPackagesGrid');
+            container.innerHTML = '';
+
+            game.packages.forEach((pkg, index) => {
+                const price = (pkg.price * currentCurrencyRate).toFixed(2);
+                const isSelected = index === 0;
+                const div = document.createElement('div');
+                div.className = `p-2 rounded-xl border text-center cursor-pointer transition-all ${isSelected ? 'border-cyan-400 bg-cyan-950/40 text-white' : 'border-gray-800 bg-slate-950 text-gray-400'}`;
+                div.onclick = () => {
+                    Array.from(container.children).forEach(c => c.className = 'p-2 rounded-xl border border-gray-800 bg-slate-950 text-gray-400 text-center cursor-pointer');
+                    div.className = 'p-2 rounded-xl border border-cyan-400 bg-cyan-950/40 text-white text-center cursor-pointer';
+                    selectedPackageItem = pkg;
+                };
+                div.innerHTML = `
+                    <div class="text-[11px] font-bold">${pkg.name}</div>
+                    <div class="text-[10px] text-cyan-400 font-mono">${currentCurrencySymbol}${price}</div>
+                `;
+                container.appendChild(div);
+                if (isSelected) selectedPackageItem = pkg;
+            });
+        }
+
+        function quickTopUpFromHero() {
+            const gameId = document.getElementById('heroGameSelect').value;
+            const heroId = document.getElementById('heroPlayerId').value.trim();
+            openCheckoutModal(gameId);
+            if(heroId) {
+                document.getElementById('modalPlayerId').value = heroId;
+            }
+        }
+
+        function updateApiSandboxCode() {
+            const endpoint = document.getElementById('apiEndpointSelect').value;
+            const jsonBox = document.getElementById('apiRequestJson');
+
+            let requestBody = {};
+            if(endpoint === 'topup') {
+                requestBody = {
+                    api_key: "rdm_live_99831a0293f88d22",
+                    action: "topup",
+                    service_id: "pubg_uc",
+                    package_id: "uc_660",
+                    player_id: "51293810"
+                };
+            } else if(endpoint === 'player_info') {
+                requestBody = {
+                    api_key: "rdm_live_99831a0293f88d22",
+                    action: "verify_player",
+                    service_id: "pubg_uc",
+                    player_id: "51293810"
+                };
+            } else if(endpoint === 'balance') {
+                requestBody = {
+                    api_key: "rdm_live_99831a0293f88d22",
+                    action: "get_balance"
+                };
+            } else if(endpoint === 'services') {
+                requestBody = {
+                    api_key: "rdm_live_99831a0293f88d22",
+                    action: "list_services"
+                };
+            }
+
+            jsonBox.value = JSON.stringify(requestBody, null, 2);
+            renderCodeSnippet(endpoint, requestBody);
+        }
+
+        function switchLangCode(lang) {
+            currentLangCode = lang;
+            document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('bg-indigo-600', 'text-white'));
+            document.querySelectorAll('.lang-btn').forEach(b => b.classList.add('text-gray-400'));
+            
+            const btn = document.getElementById(`lang-${lang}`);
+            if (btn) {
+                btn.classList.add('bg-indigo-600', 'text-white');
+                btn.classList.remove('text-gray-400');
+            }
+
+            updateApiSandboxCode();
+        }
+
+        function renderCodeSnippet(endpoint, body) {
+            let code = '';
+
+            if(currentLangCode === 'curl') {
+                code = `curl -X POST "https://api.redeemly.net/v2/${endpoint}" \\
+  -H "Content-Type: application/json" \\
+  -d '${JSON.stringify(body)}'`;
+            } else if(currentLangCode === 'node') {
+                code = `const axios = require('axios');
+
+axios.post('https://api.redeemly.net/v2/${endpoint}', ${JSON.stringify(body, null, 2)})
+  .then(response => console.log(response.data))
+  .catch(error => console.error(error));`;
+            } else if(currentLangCode === 'python') {
+                code = `import requests
+
+url = "https://api.redeemly.net/v2/${endpoint}"
+payload = ${JSON.stringify(body, null, 2)}
+
+response = requests.post(url, json=payload)
+print(response.json())`;
+            } else if(currentLangCode === 'php') {
+                code = `<?php
+$ch = curl_init("https://api.redeemly.net/v2/${endpoint}");
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_POSTFIELDS, '${JSON.stringify(body)}');
+curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
+$response = curl_exec($ch);
+curl_close($ch);
+echo $response;
+?>`;
+            }
+
+            document.getElementById('codeDisplay').innerText = code;
+        }
+
+        function executeApiCall() {
+            const endpoint = document.getElementById('apiEndpointSelect').value;
+            const responseDisplay = document.getElementById('apiResponseDisplay');
+            
+            responseDisplay.innerText = '{"status": "pending", "message": "Executing API request..."}';
+
+            setTimeout(() => {
+                let mockResponse = {};
+                if(endpoint === 'topup') {
+                    mockResponse = {
+                        status: "success",
+                        code: 200,
+                        order_id: "RDM_API_" + Math.floor(100000 + Math.random() * 900000),
+                        service: "PUBG Mobile UC",
+                        player_id: "51293810",
+                        amount_deducted: 10.80,
+                        remaining_balance: (userAccountBalance - 10.80).toFixed(2),
+                        timestamp: new Date().toISOString()
+                    };
+                } else if(endpoint === 'player_info') {
+                    mockResponse = {
+                        status: "success",
+                        verified: true,
+                        player_id: "51293810",
+                        player_name: "AL_GAMER_99",
+                        region: "MENA"
+                    };
+                } else if(endpoint === 'balance') {
+                    mockResponse = {
+                        status: "success",
+                        currency: "USD",
+                        balance: userAccountBalance.toFixed(2),
+                        tier: "VIP Reseller"
+                    };
+                } else {
+                    mockResponse = {
+                        status: "success",
+                        services_count: 120,
+                        gateway_status: "Operational"
+                    };
+                }
+
+                responseDisplay.innerText = JSON.stringify(mockResponse, null, 2);
+                showToast(currentLang === 'ar' ? "تم تنفيذ طلب الـ API بنجاح ⚡" : "API Request executed successfully ⚡");
+            }, 500);
+        }
+
+        function openCheckoutModal(gameId) {
+            selectedGameItem = gamesData.find(g => g.id === gameId);
+            document.getElementById('modalGameTitle').innerText = selectedGameItem.title;
+            document.getElementById('modalGameIcon').src = selectedGameItem.icon;
+            
+            const grid = document.getElementById('modalPackagesGrid');
+            grid.innerHTML = '';
+
+            selectedGameItem.packages.forEach((pkg, i) => {
+                const price = (pkg.price * currentCurrencyRate).toFixed(2);
+                const btn = document.createElement('button');
+                btn.className = `p-2.5 rounded-xl border text-start transition-all flex flex-col justify-between ${i === 0 ? 'border-cyan-400 bg-cyan-950/60 text-white' : 'border-gray-800 bg-slate-950 text-gray-300'}`;
+                btn.onclick = () => {
+                    Array.from(grid.children).forEach(c => c.className = 'p-2.5 rounded-xl border border-gray-800 bg-slate-950 text-gray-300 text-start');
+                    btn.className = 'p-2.5 rounded-xl border border-cyan-400 bg-cyan-950/60 text-white text-start';
+                    selectedPackageItem = pkg;
+                    updateCheckoutSummary();
+                };
+                btn.innerHTML = `
+                    <span class="text-xs font-bold">${pkg.name}</span>
+                    <span class="text-xs text-cyan-400 font-mono mt-1">${currentCurrencySymbol}${price}</span>
+                `;
+                grid.appendChild(btn);
+                if(i === 0) selectedPackageItem = pkg;
+            });
+
+            updateCheckoutSummary();
+            openModal('checkoutModal');
+        }
+
+        function updateCheckoutSummary() {
+            if(!selectedPackageItem) return;
+            const price = selectedPackageItem.price * currentCurrencyRate;
+            document.getElementById('summaryBasePrice').innerText = `${currentCurrencySymbol}${price.toFixed(2)}`;
+            document.getElementById('summaryTotalPrice').innerText = `${currentCurrencySymbol}${price.toFixed(2)}`;
+        }
+
+        function processCheckoutOrder() {
+            const playerId = document.getElementById('modalPlayerId').value.trim();
+            if(!playerId) {
+                showToast(currentLang === 'ar' ? "يرجى إدخال معرّف الحساب أولاً" : "Please enter Player ID first", "error");
+                return;
+            }
+
+            if(userAccountBalance < selectedPackageItem.price) {
+                showToast(currentLang === 'ar' ? "رصيد محفظتك غير كافٍ. يرجى تغذية الرصيد أولاً." : "Insufficient wallet balance. Please add funds.", "error");
+                return;
+            }
+
+            userAccountBalance -= selectedPackageItem.price;
+            updateBalanceDisplay();
+
+            const newOrd = {
+                id: '#ORD-' + Math.floor(10000 + Math.random() * 90000),
+                service: selectedGameItem.title,
+                playerId: playerId,
+                price: '$' + selectedPackageItem.price.toFixed(2),
+                mode: 'Direct Portal',
+                status: 'Completed'
+            };
+
+            ordersLog.unshift(newOrd);
+            renderOrdersTable();
+
+            closeModal('checkoutModal');
+            showToast(currentLang === 'ar' ? `تم الشحن بنجاح للحساب (${playerId})⚡` : `Top-up completed for ID (${playerId})⚡`);
+        }
+
+        function buyGiftCard(title, basePrice) {
+            if(userAccountBalance < basePrice) {
+                showToast(currentLang === 'ar' ? "رصيد حسابك غير كافٍ لتوليد هذا الكود" : "Insufficient balance to buy code", "error");
+                return;
+            }
+            userAccountBalance -= basePrice;
+            updateBalanceDisplay();
+
+            const pinCode = "RDM-" + Math.floor(1000 + Math.random() * 9000) + "-" + Math.floor(1000 + Math.random() * 9000);
+            showToast(currentLang === 'ar' ? `تم شراء الكود بنجاح: ${pinCode}` : `Code generated successfully: ${pinCode}`);
+        }
+
+        /* Utility Helpers */
+        function verifyPlayerId(inputId, msgId) {
+            const val = document.getElementById(inputId).value.trim();
+            if(!val) {
+                showToast(currentLang === 'ar' ? "أدخل معرّف الحساب للتحقق" : "Enter Player ID to verify", "error");
+                return;
+            }
+            const el = document.getElementById(msgId);
+            el.classList.remove('hidden');
+            showToast(currentLang === 'ar' ? "تم التحقق من وجود الحساب بالسيرفر!" : "Player ID verified on server!");
+        }
+
+        function updateBalanceDisplay() {
+            document.getElementById('userBalance').innerText = `$${userAccountBalance.toFixed(2)} USD`;
+        }
+
+        function openDepositModal() {
+            openModal('depositModal');
+        }
+
+        function confirmDeposit() {
+            const amt = parseFloat(document.getElementById('depositAmountInput').value);
+            if(amt && amt > 0) {
+                userAccountBalance += amt;
+                updateBalanceDisplay();
+                closeModal('depositModal');
+                showToast(currentLang === 'ar' ? `تمت إضافة $${amt} USD لرصيد حسابك بنجاح!` : `Successfully added $${amt} USD to wallet!`);
+            }
+        }
+
+        function renderOrdersTable() {
+            const tbody = document.getElementById('ordersTableBody');
+            tbody.innerHTML = ordersLog.map(o => `
+                <tr class="hover:bg-slate-900/50 transition-colors">
+                    <td class="p-3 font-mono text-cyan-400 font-bold">${o.id}</td>
+                    <td class="p-3 font-bold">${o.service}</td>
+                    <td class="p-3 font-mono">${o.playerId}</td>
+                    <td class="p-3 font-mono text-emerald-400 font-bold">${o.price}</td>
+                    <td class="p-3"><span class="bg-slate-800 text-gray-300 text-[10px] px-2 py-0.5 rounded border border-gray-700">${o.mode}</span></td>
+                    <td class="p-3"><span class="text-emerald-400 font-bold text-[11px]"><i class="fa-solid fa-circle-check me-1"></i> ${o.status}</span></td>
+                </tr>
+            `).join('');
+        }
+
+        function toggleApiKeyVisibility() {
+            const input = document.getElementById('apiKeyInput');
+            const icon = document.getElementById('keyEyeIcon');
+            if(input.type === 'password') {
+                input.type = 'text';
+                icon.className = 'fa-solid fa-eye-slash';
+            } else {
+                input.type = 'password';
+                icon.className = 'fa-solid fa-eye';
+            }
+        }
+
+        function copyApiKey() {
+            const val = document.getElementById('apiKeyInput').value;
+            navigator.clipboard ? navigator.clipboard.writeText(val) : document.execCommand('copy');
+            showToast(currentLang === 'ar' ? "تم نسخ مفتاح الـ API للذاكرة" : "API Key copied to clipboard");
+        }
+
+        function generateNewApiKey() {
+            const newKey = "rdm_live_" + Math.random().toString(36).substring(2, 18);
+            document.getElementById('apiKeyInput').value = newKey;
+            showToast(currentLang === 'ar' ? "تم توليد مفتاح API جديد بنجاح!" : "New API Key generated successfully!");
+        }
+
+        function copyCodeSnippet() {
+            const code = document.getElementById('codeDisplay').innerText;
+            navigator.clipboard ? navigator.clipboard.writeText(code) : document.execCommand('copy');
+            showToast(currentLang === 'ar' ? "تم نسخ الكود للذاكرة!" : "Code snippet copied!");
+        }
+
+        function saveWebhookUrl() {
+            const url = document.getElementById('webhookUrlInput').value.trim();
+            if(url) {
+                showToast(currentLang === 'ar' ? "تم حفظ رابط الـ Webhook بنجاح!" : "Webhook URL saved successfully!");
+            } else {
+                showToast(currentLang === 'ar' ? "يرجى أدخال رابط صريح أولاً" : "Please enter a valid URL first", "error");
+            }
+        }
+
+        function changeCurrency() {
+            const curr = document.getElementById('currencySelect').value;
+            if(curr === 'USD') { currentCurrencySymbol = '$'; currentCurrencyRate = 1.0; }
+            else if(curr === 'SAR') { currentCurrencySymbol = 'SR '; currentCurrencyRate = 3.75; }
+            else if(curr === 'EGP') { currentCurrencySymbol = 'EGP '; currentCurrencyRate = 48.5; }
+            else if(curr === 'AED') { currentCurrencySymbol = 'AED '; currentCurrencyRate = 3.67; }
+
+            renderStoreGames(gamesData);
+            renderGiftCards(cardsData);
+            updateHeroWidget();
+        }
+
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.remove('hidden-modal');
+                modal.classList.add('show-modal');
+            }
+        }
+
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.remove('show-modal');
+                modal.classList.add('hidden-modal');
+            }
+        }
+
+        function toggleMobileMenu() {
+            document.getElementById('mobileMenu').classList.toggle('hidden');
+        }
+
+        function startPingSimulation() {
+            setInterval(() => {
+                const ping = Math.floor(140 + Math.random() * 80);
+                const counter = document.getElementById('pingCounter');
+                if (counter) counter.innerText = `${ping}ms`;
+            }, 4000);
+        }
+
+        function showToast(message, type = "success") {
+            const container = document.getElementById('toastContainer');
+            const toast = document.createElement('div');
+            toast.className = `glass-panel p-3.5 rounded-xl border ${type === 'success' ? 'border-emerald-500/40 text-emerald-400' : 'border-red-500/40 text-red-400'} text-xs font-bold shadow-2xl flex items-center justify-between pointer-events-auto transition-all transform duration-300 translate-y-2 opacity-0`;
+            toast.innerHTML = `
+                <div class="flex items-center gap-2">
+                    <i class="${type === 'success' ? 'fa-solid fa-circle-check text-emerald-400' : 'fa-solid fa-triangle-exclamation text-red-400'}"></i>
+                    <span>${message}</span>
+                </div>
+            `;
+            container.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.classList.remove('translate-y-2', 'opacity-0');
+            }, 10);
+
+            setTimeout(() => {
+                toast.classList.add('opacity-0');
+                setTimeout(() => toast.remove(), 300);
+            }, 3500);
+        }
+    </script>
+</body>
+</html>

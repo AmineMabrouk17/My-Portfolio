@@ -1,0 +1,1308 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>جومرود | منصة بيع المنتجات الرقمية للمبدعين</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Cairo & Tajawal -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind Custom Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gumPink: '#FF90E8',
+                        gumYellow: '#FFC900',
+                        gumGreen: '#23A6F0',
+                        gumMint: '#00F5D4',
+                        gumPurple: '#B185A7',
+                        gumDark: '#000000',
+                        gumLight: '#FAF8F5'
+                    },
+                    fontFamily: {
+                        cairo: ['Cairo', 'sans-serif'],
+                        tajawal: ['Tajawal', 'sans-serif']
+                    },
+                    boxShadow: {
+                        'brutal': '4px 4px 0px 0px #000000',
+                        'brutal-lg': '6px 6px 0px 0px #000000',
+                        'brutal-xl': '10px 10px 0px 0px #000000',
+                        'brutal-hover': '2px 2px 0px 0px #000000'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #FAF8F5;
+            color: #000000;
+        }
+        .brutal-border {
+            border: 3px solid #000000;
+        }
+        .brutal-btn {
+            border: 3px solid #000000;
+            box-shadow: 4px 4px 0px 0px #000000;
+            transition: all 0.15s ease-in-out;
+        }
+        .brutal-btn:hover {
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0px 0px #000000;
+        }
+        .brutal-btn:active {
+            transform: translate(4px, 4px);
+            box-shadow: 0px 0px 0px 0px #000000;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-left: 2px solid black;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #000;
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col justify-between custom-scrollbar">
+
+    <!-- Preloader Loading Screen -->
+    <div id="page-preloader" class="fixed inset-0 z-[100] bg-gumYellow flex flex-col items-center justify-center transition-opacity duration-500 opacity-100">
+        <div class="bg-white brutal-border p-8 rounded-2xl shadow-brutal-xl flex flex-col items-center text-center max-w-sm w-11/12 relative">
+            <div class="w-16 h-16 bg-gumPink brutal-border rounded-xl flex items-center justify-center text-black font-black text-4xl mb-4 animate-bounce">
+                G
+            </div>
+            <h2 class="text-2xl font-black text-black">جومرود</h2>
+            <p class="text-xs font-bold text-gray-700 mt-1 mb-5">جاري تحميل منصة المنتجات الرقمية...</p>
+            
+            <!-- Custom Brutalist Progress Bar -->
+            <div class="w-full bg-gray-100 h-5 rounded-full brutal-border overflow-hidden p-0.5">
+                <div id="loader-progress-bar" class="bg-black h-full rounded-full w-0 transition-all duration-300 ease-out"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Top Announcement Bar -->
+    <div class="bg-gumYellow brutal-border border-t-0 border-x-0 py-2.5 px-4 text-center font-bold text-sm sm:text-base text-black flex items-center justify-center gap-2">
+        <span class="bg-black text-white text-xs px-2 py-0.5 rounded-full font-extrabold">جديد</span>
+        <span>بع منتجاتك الرقمية، الدورات، والكتب وادفع 0$ رسوم شهرية!</span>
+        <a href="#marketplace" class="underline hover:text-gray-800 font-extrabold">استكشف المنتجات &larr;</a>
+    </div>
+
+    <!-- Navigation Header -->
+    <header class="sticky top-0 z-40 bg-white brutal-border border-t-0 border-x-0">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                
+                <!-- Logo & Brand -->
+                <div class="flex items-center gap-8">
+                    <a href="#" class="flex items-center gap-2 text-2xl sm:text-3xl font-black tracking-tight group">
+                        <div class="w-10 h-10 bg-gumPink brutal-border rounded-lg flex items-center justify-center text-black font-black text-2xl group-hover:rotate-6 transition-transform">
+                            G
+                        </div>
+                        <span class="font-extrabold text-black">جومرود</span>
+                    </a>
+
+                    <!-- Desktop Nav Links -->
+                    <nav class="hidden md:flex items-center gap-6 font-bold text-base">
+                        <a href="#marketplace" class="hover:bg-gumPink/30 px-3 py-1.5 rounded-md transition-colors">السوق الرقمي</a>
+                        <a href="#features" class="hover:bg-gumYellow/30 px-3 py-1.5 rounded-md transition-colors">المميزات</a>
+                        <a href="#dashboard-demo" class="hover:bg-gumMint/30 px-3 py-1.5 rounded-md transition-colors">شاشة الصانع</a>
+                        <a href="#pricing" class="hover:bg-gumPurple/30 px-3 py-1.5 rounded-md transition-colors">الأسعار</a>
+                    </nav>
+                </div>
+
+                <!-- Header Actions -->
+                <div class="flex items-center gap-3">
+                    
+                    <!-- Search Trigger (Desktop) -->
+                    <div class="hidden lg:flex items-center bg-gray-100 brutal-border rounded-full px-3 py-1.5 w-64 focus-within:bg-white focus-within:ring-2 focus-within:ring-black">
+                        <i class="fa-solid fa-magnifying-glass text-gray-500 ml-2"></i>
+                        <input type="text" id="global-search-input" data-i18n-ph="search_ph" placeholder="ابحث عن كتاب، دورة، قالب..." class="bg-transparent border-none focus:outline-none text-sm w-full font-medium" onkeyup="handleGlobalSearch(event)">
+                    </div>
+
+                    <!-- Language Switcher Button -->
+                    <button onclick="toggleLanguage()" id="lang-toggle-btn" class="bg-white brutal-btn h-11 px-3.5 rounded-lg font-black text-xs sm:text-sm text-black flex items-center gap-1.5 hover:bg-gumYellow">
+                        <i class="fa-solid fa-globe text-base"></i>
+                        <span id="lang-label">English</span>
+                    </button>
+
+                    <!-- Cart Button -->
+                    <button onclick="toggleCartDrawer()" class="relative bg-gumYellow brutal-btn h-11 w-11 rounded-lg flex items-center justify-center font-bold text-black" title="السلة">
+                        <i class="fa-solid fa-cart-shopping text-lg"></i>
+                        <span id="cart-count-badge" class="absolute -top-2 -right-2 bg-black text-white text-xs w-5 h-5 rounded-full flex items-center justify-center font-bold">0</span>
+                    </button>
+
+                    <!-- Add Product / Start Selling CTA -->
+                    <button onclick="openAddProductModal()" class="hidden sm:inline-flex bg-gumPink brutal-btn h-11 px-5 rounded-lg font-black text-sm text-black items-center justify-center gap-2">
+                        <i class="fa-solid fa-plus-circle"></i>
+                        <span>أضف منتجك</span>
+                    </button>
+
+                    <!-- Login Button -->
+                    <button onclick="openLoginModal()" class="bg-white brutal-btn h-11 px-5 rounded-lg font-black text-sm text-black hover:bg-gray-50 inline-flex items-center justify-center">
+                        دخول
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative bg-gumPink brutal-border border-t-0 border-x-0 py-16 lg:py-24 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Hero Left / Content -->
+                <div class="lg:col-span-7 ltr:text-left rtl:text-right space-y-6">
+                    <div class="inline-flex items-center gap-2 bg-white brutal-border px-4 py-1.5 rounded-full text-sm font-extrabold shadow-brutal">
+                        <i class="fa-solid fa-bolt text-gumYellow"></i>
+                        <span data-i18n="hero_tag">منصة البيع الأولى لصُنّاع المحتوى في الوطن العربي</span>
+                    </div>
+                    
+                    <h1 class="text-4xl sm:text-6xl lg:text-7xl font-black text-black leading-tight">
+                        <span data-i18n="hero_title_1">حول معارفك وخبراتك إلى</span> <span data-i18n="hero_title_2" class="bg-gumYellow px-2 brutal-border inline-block rotate-1">أرباح حقيقية</span>
+                    </h1>
+                    
+                    <p data-i18n="hero_desc" class="text-lg sm:text-xl font-bold text-gray-900 leading-relaxed max-w-2xl">
+                        بيّع الكتب الإلكترونية، التصاميم، الأكواد، الدورات التدريبية والملفات الصوتية مباشرة لجمهورك دون تعقيدات وبدفع فوري.
+                    </p>
+
+                    <!-- Hero Buttons -->
+                    <div class="flex flex-wrap items-center gap-4 pt-4">
+                        <button onclick="openAddProductModal()" class="bg-gumYellow brutal-btn px-8 py-4 rounded-xl text-xl font-black flex items-center gap-3">
+                            <span data-i18n="hero_cta">ابدأ البيع الآن مجاناً</span>
+                            <i class="fa-solid fa-arrow-left rtl:rotate-0 ltr:rotate-180"></i>
+                        </button>
+
+                        <a href="#marketplace" class="bg-white brutal-btn px-6 py-4 rounded-xl text-lg font-bold flex items-center gap-2">
+                            <i class="fa-solid fa-compass text-gumPink"></i>
+                            <span data-i18n="hero_browse">تصفح المنتجات</span>
+                        </a>
+                    </div>
+
+                    <!-- Social Proof Stats -->
+                    <div class="pt-8 border-t-2 border-black flex flex-wrap items-center gap-8 text-black font-extrabold">
+                        <div>
+                            <div class="text-3xl font-black">+1,200,000$</div>
+                            <div class="text-xs text-gray-800 font-bold">أرباح تم تحويلها للصناع</div>
+                        </div>
+                        <div class="h-10 w-0.5 bg-black hidden sm:block"></div>
+                        <div>
+                            <div class="text-3xl font-black">+45,000</div>
+                            <div class="text-xs text-gray-800 font-bold">منتج رقمي متاح</div>
+                        </div>
+                        <div class="h-10 w-0.5 bg-black hidden sm:block"></div>
+                        <div>
+                            <div class="text-3xl font-black">4.9 ★</div>
+                            <div class="text-xs text-gray-800 font-bold">تقييم المشتريين</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Right / Visual Illustration -->
+                <div class="lg:col-span-5 relative">
+                    <div class="bg-gumYellow brutal-border brutal-shadow-lg rounded-2xl p-6 relative transform rotate-2">
+                        <div class="bg-white brutal-border rounded-xl p-4 shadow-brutal space-y-4">
+                            <div class="flex items-center justify-between border-b-2 border-black pb-3">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded-full bg-gumMint brutal-border flex items-center justify-center font-black">
+                                        أم
+                                    </div>
+                                    <div>
+                                        <h4 class="font-extrabold text-sm">أحمد المحمدي</h4>
+                                        <p class="text-xs text-gray-600">مصمم واجهات ومبرمج</p>
+                                    </div>
+                                </div>
+                                <span class="bg-gumPink brutal-border px-2 py-0.5 text-xs font-black rounded-full">صانع مميز</span>
+                            </div>
+
+                            <div class="aspect-video bg-gumMint brutal-border rounded-lg relative overflow-hidden flex items-center justify-center">
+                                <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=600&q=80" alt="Product Preview" class="w-full h-full object-cover">
+                                <div class="absolute inset-0 bg-black/20 flex items-center justify-center">
+                                    <span class="bg-white brutal-border px-3 py-1 font-black text-sm rounded-lg shadow-brutal">
+                                        دليل تصميم واجهات UI/UX 2026
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center justify-between pt-2">
+                                <div>
+                                    <p class="text-xs font-bold text-gray-500">السعر المقترح</p>
+                                    <p class="text-2xl font-black">$29.00 <span class="text-xs text-green-600 font-bold">(أو ادفع ما تشاء)</span></p>
+                                </div>
+                                <button onclick="quickBuyDemo()" class="bg-black text-white brutal-border px-4 py-2 rounded-lg font-black hover:bg-gray-800">
+                                    شراء سريع
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Floating Accent Badges -->
+                        <div class="absolute -top-4 -right-4 bg-gumMint brutal-border px-3 py-1 rounded-full text-xs font-black rotate-12 shadow-brutal">
+                            💸 مبيعات فورية
+                        </div>
+                        <div class="absolute -bottom-4 -left-4 bg-white brutal-border px-3 py-1 rounded-full text-xs font-black -rotate-6 shadow-brutal">
+                            🔒 تنزيل آمن للتطبيقات
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Marketplace Section -->
+    <main id="marketplace" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        
+        <!-- Marketplace Section Header -->
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+            <div>
+                <span class="bg-gumYellow brutal-border px-3 py-1 text-xs font-black rounded-md inline-block mb-2">استكشف المتجر</span>
+                <h2 class="text-3xl sm:text-5xl font-black text-black">أحدث المنتجات الرقمية</h2>
+                <p class="text-gray-600 font-bold mt-2">اختر من بين مئات الكتب، القوالب، والأدوات المصممة بعناية.</p>
+            </div>
+
+            <!-- Search & Sort Controls -->
+            <div class="flex flex-wrap items-center gap-3">
+                <div class="relative flex-1 sm:w-64">
+                    <input type="text" id="catalog-search" placeholder="بحث بالاسم أو الكاتب..." class="w-full bg-white brutal-border rounded-xl px-4 py-2.5 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-black" oninput="filterProducts()">
+                </div>
+                
+                <select id="catalog-sort" onchange="filterProducts()" class="bg-white brutal-border rounded-xl px-4 py-2.5 text-sm font-bold focus:outline-none cursor-pointer">
+                    <option value="featured">الأكثر شعبية 🔥</option>
+                    <option value="newest">الأحدث إضافة 🆕</option>
+                    <option value="price-low">السعر: من الأقل للأعلى 💵</option>
+                    <option value="price-high">السعر: من الأعلى للأقل 💎</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Category Filter Tabs -->
+        <div class="flex items-center gap-3 overflow-x-auto pb-4 mb-8 custom-scrollbar">
+            <button onclick="setCategory('all')" class="category-btn active border-2 border-black bg-black text-white px-5 py-2 rounded-xl text-sm font-extrabold whitespace-nowrap transition-all shadow-brutal">
+                الكل ✨
+            </button>
+            <button onclick="setCategory('ebook')" class="category-btn border-2 border-black bg-white hover:bg-gumPink px-5 py-2 rounded-xl text-sm font-extrabold whitespace-nowrap transition-all shadow-brutal">
+                كتب إلكترونية 📚
+            </button>
+            <button onclick="setCategory('course')" class="category-btn border-2 border-black bg-white hover:bg-gumYellow px-5 py-2 rounded-xl text-sm font-extrabold whitespace-nowrap transition-all shadow-brutal">
+                دورات تدريبية 🎓
+            </button>
+            <button onclick="setCategory('design')" class="category-btn border-2 border-black bg-white hover:bg-gumMint px-5 py-2 rounded-xl text-sm font-extrabold whitespace-nowrap transition-all shadow-brutal">
+                تصاميم وقوالب 🎨
+            </button>
+            <button onclick="setCategory('code')" class="category-btn border-2 border-black bg-white hover:bg-gumGreen px-5 py-2 rounded-xl text-sm font-extrabold whitespace-nowrap transition-all shadow-brutal">
+                برمجيات وأكواد 💻
+            </button>
+            <button onclick="setCategory('audio')" class="category-btn border-2 border-black bg-white hover:bg-gumPurple px-5 py-2 rounded-xl text-sm font-extrabold whitespace-nowrap transition-all shadow-brutal">
+                صوتيات وموسيقى 🎵
+            </button>
+        </div>
+
+        <!-- Products Grid Container -->
+        <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Dynamic product cards rendered by JS -->
+        </div>
+
+        <!-- Empty State Message -->
+        <div id="no-products" class="hidden text-center py-16 bg-white brutal-border rounded-2xl p-8 shadow-brutal">
+            <i class="fa-solid fa-face-frown text-5xl text-gray-400 mb-4"></i>
+            <h3 class="text-2xl font-black">لم نجد منتجات تطابق بحثك</h3>
+            <p class="text-gray-600 font-bold mt-2">جرب البحث بكلمات أخرى أو اختر فئة مختلفة.</p>
+            <button onclick="resetFilters()" class="mt-4 bg-gumYellow brutal-btn px-6 py-2.5 rounded-xl font-bold">
+                إعادة ضبط البحث
+            </button>
+        </div>
+    </main>
+
+    <!-- Creator Dashboard Demo Section -->
+    <section id="dashboard-demo" class="bg-gumYellow/20 brutal-border border-x-0 py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="bg-gumPink brutal-border px-3 py-1 text-xs font-black rounded-md inline-block mb-2">منطقة الصُنّاع</span>
+                <h2 class="text-3xl sm:text-5xl font-black">لوحة تحكم بسيطة وقوية لصناع المحتوى</h2>
+                <p class="text-gray-700 font-bold mt-3">تابع مبيعاتك، أضف منتجات جديدة، وحصل أموالك مباشرة إلى حسابك البنكي بكل سهولة.</p>
+            </div>
+
+            <!-- Dashboard Card Container -->
+            <div class="bg-white brutal-border rounded-2xl p-6 sm:p-8 shadow-brutal-xl">
+                
+                <!-- Dashboard Top Bar -->
+                <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between pb-6 border-b-2 border-black gap-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-12 h-12 bg-gumPink brutal-border rounded-xl flex items-center justify-center font-black text-xl">
+                            س
+                        </div>
+                        <div>
+                            <h3 class="font-black text-xl">متجر سارة للحلول الرقمية</h3>
+                            <p class="text-xs text-gray-500 font-bold">gumroad.com/sara_designs</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-3 w-full sm:w-auto">
+                        <button onclick="openAddProductModal()" class="flex-1 sm:flex-none bg-gumMint brutal-btn px-4 py-2 rounded-xl text-sm font-black flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-plus"></i>
+                            <span>إضافة منتج جديد</span>
+                        </button>
+                        <span class="bg-green-100 text-green-800 border border-green-400 text-xs px-3 py-2 rounded-xl font-extrabold flex items-center gap-1">
+                            <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                            نشط الآن
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Dashboard Stats Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 my-8">
+                    <div class="bg-gumPink/20 brutal-border p-5 rounded-xl">
+                        <p class="text-xs font-bold text-gray-700">إجمالي الأرباح</p>
+                        <h4 class="text-3xl font-black mt-1">$14,280.00</h4>
+                        <span class="text-xs text-green-700 font-extrabold mt-2 inline-block">↑ +18% هذا الشهر</span>
+                    </div>
+
+                    <div class="bg-gumYellow/20 brutal-border p-5 rounded-xl">
+                        <p class="text-xs font-bold text-gray-700">عدد المبيعات</p>
+                        <h4 class="text-3xl font-black mt-1">492 طلب</h4>
+                        <span class="text-xs text-green-700 font-extrabold mt-2 inline-block">↑ +24 طلب هذا الأسبوع</span>
+                    </div>
+
+                    <div class="bg-gumMint/20 brutal-border p-5 rounded-xl">
+                        <p class="text-xs font-bold text-gray-700">معدل التحويل</p>
+                        <h4 class="text-3xl font-black mt-1">5.4%</h4>
+                        <span class="text-xs text-gray-600 font-bold mt-2 inline-block">أعلى من المتوسط</span>
+                    </div>
+
+                    <div class="bg-gumPurple/20 brutal-border p-5 rounded-xl">
+                        <p class="text-xs font-bold text-gray-700">الرصيد المتاح للسحب</p>
+                        <h4 class="text-3xl font-black mt-1">$2,150.00</h4>
+                        <button onclick="alert('سيتم تحويل المبلغ لحسابك البنكي خلال 24 ساعة!')" class="mt-2 bg-black text-white text-xs px-3 py-1 rounded-lg font-black hover:bg-gray-800">
+                            طلب سحب الفوري
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Sales Chart Preview Placeholder -->
+                <div class="bg-gray-50 brutal-border p-6 rounded-xl">
+                    <div class="flex items-center justify-between mb-4">
+                        <h4 class="font-extrabold text-base">مخطط مبيعات آخر 30 يوماً</h4>
+                        <span class="text-xs bg-white brutal-border px-2.5 py-1 rounded-md font-bold">تحديث مباشر</span>
+                    </div>
+                    
+                    <!-- Simulated Bar Chart -->
+                    <div class="h-40 flex items-end justify-between gap-2 pt-6 px-2">
+                        <div class="w-full bg-gumPink rounded-t-lg border-2 border-black" style="height: 40%" title="اليوم 1: $120"></div>
+                        <div class="w-full bg-gumPink rounded-t-lg border-2 border-black" style="height: 65%" title="اليوم 2: $240"></div>
+                        <div class="w-full bg-gumPink rounded-t-lg border-2 border-black" style="height: 30%" title="اليوم 3: $90"></div>
+                        <div class="w-full bg-gumYellow rounded-t-lg border-2 border-black" style="height: 85%" title="اليوم 4: $450"></div>
+                        <div class="w-full bg-gumPink rounded-t-lg border-2 border-black" style="height: 50%" title="اليوم 5: $180"></div>
+                        <div class="w-full bg-gumPink rounded-t-lg border-2 border-black" style="height: 75%" title="اليوم 6: $310"></div>
+                        <div class="w-full bg-gumMint rounded-t-lg border-2 border-black" style="height: 100%" title="اليوم 7: $620"></div>
+                    </div>
+                    <div class="flex justify-between text-xs font-bold text-gray-500 mt-3 pt-2 border-t border-gray-300">
+                        <span>السبت</span>
+                        <span>الأحد</span>
+                        <span>الإثنين</span>
+                        <span>الثلاثاء</span>
+                        <span>الأربعاء</span>
+                        <span>الخميس</span>
+                        <span>الجمعة</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Highlight Section -->
+    <section id="features" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto mb-16">
+            <span class="bg-gumMint brutal-border px-3 py-1 text-xs font-black rounded-md inline-block mb-2">لماذا جومرود؟</span>
+            <h2 class="text-3xl sm:text-5xl font-black">كل ما تحتاجه للبيع أونلاين في مكان واحد</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            
+            <div class="bg-white brutal-border p-8 rounded-2xl shadow-brutal hover:-translate-y-1 transition-transform">
+                <div class="w-14 h-14 bg-gumPink brutal-border rounded-xl flex items-center justify-center text-2xl font-black mb-6">
+                    ⚡
+                </div>
+                <h3 class="text-2xl font-black mb-3">بدء سريع خلال 5 دقائق</h3>
+                <p class="text-gray-600 font-bold leading-relaxed">
+                    لا تحتاج لخبرة برمجية. ارفع ملفك الرقمي، حدد السعر، وابدأ بمشاركة رابط منتجك فوراً.
+                </p>
+            </div>
+
+            <div class="bg-white brutal-border p-8 rounded-2xl shadow-brutal hover:-translate-y-1 transition-transform">
+                <div class="w-14 h-14 bg-gumYellow brutal-border rounded-xl flex items-center justify-center text-2xl font-black mb-6">
+                    💰
+                </div>
+                <h3 class="text-2xl font-black mb-3">خاصية "ادفع ما تشاء"</h3>
+                <p class="text-gray-600 font-bold leading-relaxed">
+                    اسمح لجمهورك بدعمك ودفع السعر الذي يرونه مناسباً فوق الحد الأدنى الذي تحدده أنت.
+                </p>
+            </div>
+
+            <div class="bg-white brutal-border p-8 rounded-2xl shadow-brutal hover:-translate-y-1 transition-transform">
+                <div class="w-14 h-14 bg-gumMint brutal-border rounded-xl flex items-center justify-center text-2xl font-black mb-6">
+                    🛡️
+                </div>
+                <h3 class="text-2xl font-black mb-3">حماية وتسليم آمن</h3>
+                <p class="text-gray-600 font-bold leading-relaxed">
+                    روابط تنزيل مشفرة ومؤمنة تصل للمشتري فور إتمام عملية الدفع مع حماية حقوق الملكية.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black text-white brutal-border border-x-0 border-b-0 py-12 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 pb-12 border-b border-gray-800">
+                
+                <div class="space-y-4 md:col-span-1">
+                    <div class="flex items-center gap-2 text-2xl font-black">
+                        <div class="w-8 h-8 bg-gumPink brutal-border text-black rounded flex items-center justify-center font-black">G</div>
+                        <span>جومرود</span>
+                    </div>
+                    <p class="text-gray-400 text-sm font-bold leading-relaxed">
+                        المنصة العربية المتكاملة لصناع المحتوى والمطورين لبيع المنتجات الرقمية بسهولة.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="font-extrabold text-gumYellow mb-4">المنتجات</h4>
+                    <ul class="space-y-2 text-sm font-bold text-gray-300">
+                        <li><a href="#marketplace" class="hover:text-white">الكتب الإلكترونية</a></li>
+                        <li><a href="#marketplace" class="hover:text-white">الدورات التدريبية</a></li>
+                        <li><a href="#marketplace" class="hover:text-white">القوالب والتصاميم</a></li>
+                        <li><a href="#marketplace" class="hover:text-white">الأكواد والسكربتات</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-extrabold text-gumPink mb-4">الصناع</h4>
+                    <ul class="space-y-2 text-sm font-bold text-gray-300">
+                        <li><a href="javascript:void(0)" onclick="openAddProductModal()" class="hover:text-white">إضافة منتج</a></li>
+                        <li><a href="#dashboard-demo" class="hover:text-white">لوحة التحكم</a></li>
+                        <li><a href="#pricing" class="hover:text-white">عمولة البيع</a></li>
+                        <li><a href="#" class="hover:text-white">دليل النجاح</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-extrabold text-gumMint mb-4">تواصل معنا</h4>
+                    <div class="flex items-center gap-3 text-lg mb-4">
+                        <a href="#" class="w-9 h-9 bg-gray-800 brutal-border flex items-center justify-center rounded hover:bg-gumPink hover:text-black transition-colors"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#" class="w-9 h-9 bg-gray-800 brutal-border flex items-center justify-center rounded hover:bg-gumYellow hover:text-black transition-colors"><i class="fa-brands fa-github"></i></a>
+                        <a href="#" class="w-9 h-9 bg-gray-800 brutal-border flex items-center justify-center rounded hover:bg-gumMint hover:text-black transition-colors"><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                    <p class="text-xs text-gray-400 font-bold">الدعم الفني متوفر 24/7 عبر البريد الإلكتروني</p>
+                </div>
+
+            </div>
+
+            <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-400 font-bold gap-4">
+                <p>© 2026 جومرود العربي. جميع الحقوق محفوظة.</p>
+                <div class="flex items-center gap-6">
+                    <a href="#" class="hover:underline">الشروط والأحكام</a>
+                    <a href="#" class="hover:underline">سياسة الخصوصية</a>
+                    <a href="#" class="hover:underline">إعدادات الكوكيز</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    
+    <!-- Product Quick View / Purchase Modal -->
+    <div id="product-modal" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white brutal-border rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-brutal-xl relative p-6 sm:p-8 custom-scrollbar">
+            
+            <button onclick="closeProductModal()" class="absolute top-4 left-4 w-9 h-9 bg-gray-100 brutal-border rounded-full font-black text-xl flex items-center justify-center hover:bg-gumPink">
+                ✕
+            </button>
+
+            <div id="modal-content">
+                <!-- Content inserted via JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Add New Product Modal (Creator Tool) -->
+    <div id="add-product-modal" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white brutal-border rounded-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto shadow-brutal-xl relative p-6 sm:p-8 custom-scrollbar">
+            
+            <button onclick="closeAddProductModal()" class="absolute top-4 left-4 w-9 h-9 bg-gray-100 brutal-border rounded-full font-black text-xl flex items-center justify-center hover:bg-gumPink">
+                ✕
+            </button>
+
+            <div class="mb-6">
+                <span class="bg-gumMint brutal-border px-3 py-1 text-xs font-black rounded-md inline-block mb-1">صانع جديد</span>
+                <h3 class="text-2xl font-black">أضف منتجك الرقمي للبيع</h3>
+                <p class="text-gray-600 font-bold text-sm">قم بتعبئة البيانات ليظهر منتجك في المتجر فوراً.</p>
+            </div>
+
+            <form id="new-product-form" onsubmit="handleAddNewProduct(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-black mb-1">اسم المنتج</label>
+                    <input type="text" id="new-title" required placeholder="مثال: كتاب احترف لارافيل 2026" class="w-full bg-gray-50 brutal-border rounded-xl px-3.5 py-2.5 text-sm font-bold focus:outline-none focus:bg-white">
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-black mb-1">الفئة</label>
+                        <select id="new-category" class="w-full bg-gray-50 brutal-border rounded-xl px-3.5 py-2.5 text-sm font-bold focus:outline-none">
+                            <option value="ebook">كتاب إلكتروني</option>
+                            <option value="course">دورة تدريبية</option>
+                            <option value="design">تصميم / قالب</option>
+                            <option value="code">برمجيات / كود</option>
+                            <option value="audio">ملف صوتي</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-black mb-1">السعر ($)</label>
+                        <input type="number" id="new-price" min="0" step="1" required placeholder="19" class="w-full bg-gray-50 brutal-border rounded-xl px-3.5 py-2.5 text-sm font-bold focus:outline-none focus:bg-white">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-black mb-1">اسم الصانع / الكاتب</label>
+                    <input type="text" id="new-author" required placeholder="اسمك التجاري أو الشخصي" class="w-full bg-gray-50 brutal-border rounded-xl px-3.5 py-2.5 text-sm font-bold focus:outline-none focus:bg-white">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-black mb-1">وصف قصير للمنتج</label>
+                    <textarea id="new-desc" rows="3" required placeholder="اشرح للمشتري ما الذي سيحصل عليه عند الشراء..." class="w-full bg-gray-50 brutal-border rounded-xl px-3.5 py-2.5 text-sm font-bold focus:outline-none focus:bg-white"></textarea>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-black mb-1">رابط صورة الغلاف (Unsplash أو رابط مباشر)</label>
+                    <input type="url" id="new-image" placeholder="https://images.unsplash.com/..." class="w-full bg-gray-50 brutal-border rounded-xl px-3.5 py-2.5 text-sm font-bold focus:outline-none focus:bg-white">
+                </div>
+
+                <div class="flex items-center gap-2 pt-2">
+                    <input type="checkbox" id="new-pwyw" class="w-4 h-4 border-2 border-black rounded accent-black">
+                    <label for="new-pwyw" class="text-xs font-black">السماح بخاصية "ادفع ما تشاء" (Pay What You Want)</label>
+                </div>
+
+                <button type="submit" class="w-full bg-gumYellow brutal-btn py-3 rounded-xl font-black text-base mt-4">
+                    🚀 نشر المنتج الآن في المتجر
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div id="login-modal" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white brutal-border rounded-2xl max-w-md w-full p-6 sm:p-8 shadow-brutal-xl relative">
+            <button onclick="closeLoginModal()" class="absolute top-4 left-4 w-9 h-9 bg-gray-100 brutal-border rounded-full font-black text-xl flex items-center justify-center hover:bg-gumPink">
+                ✕
+            </button>
+            
+            <div class="text-center mb-6">
+                <div class="w-12 h-12 bg-gumPink brutal-border rounded-xl flex items-center justify-center font-black text-2xl mx-auto mb-2">G</div>
+                <h3 class="text-2xl font-black">تسجيل الدخول إلى جومرود</h3>
+                <p class="text-xs text-gray-600 font-bold mt-1">مرحباً بك مجدداً! ادخل لحساب الصانع أو المشتري.</p>
+            </div>
+
+            <form onsubmit="event.preventDefault(); alert('تم تسجيل الدخول بنجاح!'); closeLoginModal();" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-black mb-1">البريد الإلكتروني</label>
+                    <input type="email" required placeholder="name@example.com" class="w-full bg-gray-50 brutal-border rounded-xl px-3.5 py-2.5 text-sm font-bold focus:outline-none">
+                </div>
+                <div>
+                    <label class="block text-xs font-black mb-1">كلمة المرور</label>
+                    <input type="password" required placeholder="••••••••" class="w-full bg-gray-50 brutal-border rounded-xl px-3.5 py-2.5 text-sm font-bold focus:outline-none">
+                </div>
+                <button type="submit" class="w-full bg-gumPink brutal-btn py-3 rounded-xl font-black text-base">
+                    دخول الحساب
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Shopping Cart Drawer Side-panel -->
+    <div id="cart-drawer" class="fixed inset-y-0 left-0 w-full sm:w-96 bg-white brutal-border border-y-0 border-l-0 z-50 transform -translate-x-full transition-transform duration-300 ease-in-out shadow-brutal-xl flex flex-col justify-between">
+        
+        <!-- Cart Header -->
+        <div class="p-6 border-b-2 border-black flex items-center justify-between bg-gumYellow">
+            <div class="flex items-center gap-2">
+                <i class="fa-solid fa-cart-shopping text-xl"></i>
+                <h3 class="font-black text-xl">سلة المشتريات</h3>
+            </div>
+            <button onclick="toggleCartDrawer()" class="w-8 h-8 bg-white brutal-border rounded-full font-black flex items-center justify-center hover:bg-gumPink">
+                ✕
+            </button>
+        </div>
+
+        <!-- Cart Items List -->
+        <div id="cart-items-container" class="p-6 flex-1 overflow-y-auto space-y-4 custom-scrollbar">
+            <!-- Rendered dynamically -->
+        </div>
+
+        <!-- Cart Footer / Checkout -->
+        <div class="p-6 border-t-2 border-black bg-gray-50 space-y-4">
+            <div class="flex items-center justify-between text-lg font-black">
+                <span>المجموع الكلي:</span>
+                <span id="cart-total-price" class="text-2xl">$0.00</span>
+            </div>
+
+            <button onclick="processCheckout()" id="checkout-btn" class="w-full bg-gumMint brutal-btn py-3.5 rounded-xl font-black text-lg flex items-center justify-center gap-2">
+                <i class="fa-solid fa-lock"></i>
+                <span>إتمام الدفع الآمن</span>
+            </button>
+            <p class="text-center text-xs font-bold text-gray-500">تنزيل فوري للملفات بعد الدفع مباشرة 🚀</p>
+        </div>
+    </div>
+
+    <script>
+        // Global Application State Variables
+        let currentLang = 'ar';
+        let currentCategory = 'all';
+        let cart = [];
+
+        const i18n = {
+            ar: {
+                announcement: "بع منتجاتك الرقمية، الدورات، والكتب وادفع 0$ رسوم شهرية!",
+                explore: "استكشف المنتجات ←",
+                nav_marketplace: "السوق الرقمي",
+                nav_features: "المميزات",
+                nav_dashboard: "شاشة الصانع",
+                nav_pricing: "الأسعار",
+                btn_add_product: "أضف منتجك",
+                btn_login: "دخول",
+                search_ph: "ابحث عن كتاب، دورة، قالب...",
+                hero_tag: "منصة البيع الأولى لصُنّاع المحتوى",
+                hero_title_1: "حول معارفك وخبراتك إلى",
+                hero_title_2: "أرباح حقيقية",
+                hero_desc: "بيّع الكتب الإلكترونية، التصاميم، الأكواد، الدورات التدريبية والملفات الصوتية مباشرة لجمهورك دون تعقيدات وبدفع فوري.",
+                hero_cta: "ابدأ البيع الآن مجاناً",
+                hero_browse: "تصفح المنتجات",
+                stat_earnings: "أرباح تم تحويلها للصناع",
+                stat_products: "منتج رقمي متاح",
+                stat_rating: "تقييم المشتريين",
+                market_tag: "استكشف المتجر",
+                market_title: "أحدث المنتجات الرقمية",
+                market_subtitle: "اختر من بين مئات الكتب، القوالب، والأدوات المصممة بعناية.",
+                sort_featured: "الأكثر شعبية 🔥",
+                sort_newest: "الأحدث إضافة 🆕",
+                sort_low: "السعر: من الأقل للأعلى 💵",
+                sort_high: "السعر: من الأعلى للأقل 💎",
+                cat_all: "الكل ✨",
+                cat_ebook: "كتب إلكترونية 📚",
+                cat_course: "دورات تدريبية 🎓",
+                cat_design: "تصاميم وقوالب 🎨",
+                cat_code: "برمجيات وأكواد 💻",
+                cat_audio: "صوتيات وموسيقى 🎵",
+                cart_title: "سلة المشتريات",
+                cart_empty: "سلتك فارغة حالياً",
+                cart_total: "المجموع الكلي:",
+                cart_checkout: "إتمام الدفع الآمن",
+                pwyw_tag: "💡 ادفع ما تشاء",
+                btn_buy: "شراء",
+                btn_details: "عرض التفاصيل",
+                creator_tag: "منطقة الصُنّاع",
+                creator_title: "لوحة تحكم بسيطة وقوية لصناع المحتوى",
+                btn_withdraw: "طلب سحب الفوري",
+                lang_btn: "English"
+            },
+            en: {
+                announcement: "Sell your digital products, courses, and books with $0 monthly fees!",
+                explore: "Explore Products →",
+                nav_marketplace: "Marketplace",
+                nav_features: "Features",
+                nav_dashboard: "Dashboard",
+                nav_pricing: "Pricing",
+                btn_add_product: "Add Product",
+                btn_login: "Login",
+                search_ph: "Search books, courses, templates...",
+                hero_tag: "The #1 Selling Platform for Creators",
+                hero_title_1: "Turn your knowledge & skills into",
+                hero_title_2: "Real Income",
+                hero_desc: "Sell e-books, design assets, source code, courses, and audio files directly to your audience with instant payouts.",
+                hero_cta: "Start Selling Free",
+                hero_browse: "Browse Products",
+                stat_earnings: "Earnings Paid to Creators",
+                stat_products: "Digital Products Available",
+                stat_rating: "Buyer Rating",
+                market_tag: "Explore Store",
+                market_title: "Latest Digital Products",
+                market_subtitle: "Choose from hundreds of books, templates, and tools.",
+                sort_featured: "Most Popular 🔥",
+                sort_newest: "Newest Releases 🆕",
+                sort_low: "Price: Low to High 💵",
+                sort_high: "Price: High to Low 💎",
+                cat_all: "All ✨",
+                cat_ebook: "E-Books 📚",
+                cat_course: "Courses 🎓",
+                cat_design: "Design & Templates 🎨",
+                cat_code: "Software & Code 💻",
+                cat_audio: "Audio & Music 🎵",
+                cart_title: "Shopping Cart",
+                cart_empty: "Your cart is currently empty",
+                cart_total: "Total Amount:",
+                cart_checkout: "Secure Checkout",
+                pwyw_tag: "💡 Pay What You Want",
+                btn_buy: "Buy",
+                btn_details: "Details",
+                creator_tag: "Creator Hub",
+                creator_title: "Simple & Powerful Creator Dashboard",
+                btn_withdraw: "Instant Withdrawal",
+                lang_btn: "العربية"
+            }
+        };
+
+        // Multilingual Products Database
+        let products = [
+            {
+                id: 'prod-1',
+                title_ar: 'دليل تصميم واجهات الاستخدام الشامل 2026',
+                title_en: 'UI/UX Design Masterclass & Design System 2026',
+                category: 'design',
+                categoryLabel_ar: 'تصاميم وقوالب',
+                categoryLabel_en: 'Design & Templates',
+                price: 29,
+                author_ar: 'سارة خالد',
+                author_en: 'Sarah Khaled',
+                rating: 4.9,
+                salesCount: 1240,
+                image: 'https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=600&q=80',
+                desc_ar: 'كتاب ودليل تطبيقي يحتوي على أكثر من 300 نموذج وقالب جاهز للاستخدام في Figma مع ملفات المصدر الكاملة وشرح معايير التجاوب الحديثة.',
+                desc_en: 'A comprehensive handbook with 300+ Figma components, complete design tokens, and modern responsive UI guidelines.',
+                allowPwyw: true
+            },
+            {
+                id: 'prod-2',
+                title_ar: 'دورة احتراف تطوير تطبيقات React & Next.js',
+                title_en: 'Fullstack React & Next.js Pro Bootcamp',
+                category: 'course',
+                categoryLabel_ar: 'دورات تدريبية',
+                categoryLabel_en: 'Courses',
+                price: 79,
+                author_ar: 'مهندس عمر الشريف',
+                author_en: 'Omar Al-Sherif',
+                rating: 5.0,
+                salesCount: 850,
+                image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=600&q=80',
+                desc_ar: 'أكثر من 25 ساعة فيديو عالية الدقة مع تطبيق عملي لبناء 4 مشاريع حقيقية متكاملة بأسلوب شامل يبدأ من الصفر حتى الاحتراف.',
+                desc_en: 'Over 25 hours of HD video lessons building 4 production-ready web apps from absolute scratch to deployment.',
+                allowPwyw: false
+            },
+            {
+                id: 'prod-3',
+                title_ar: 'كتاب العمل الحر وجمع أول 10,000$ من الإنترنت',
+                title_en: 'Freelancing Blueprint: Earn Your First $10K Online',
+                category: 'ebook',
+                categoryLabel_ar: 'كتب إلكترونية',
+                categoryLabel_en: 'E-Books',
+                price: 15,
+                author_ar: 'كريم عبدالمجيد',
+                author_en: 'Kareem Abdul',
+                rating: 4.8,
+                salesCount: 3100,
+                image: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=600&q=80',
+                desc_ar: 'استراتيجية مجربة بالأدوات والخطوات العملية لبناء هوية رقمية، التسعير الصحيح للخدمات، وجلب العملاء الدوليين.',
+                desc_en: 'Actionable guide covering client acquisition, premium pricing strategy, and scaling your remote freelance career.',
+                allowPwyw: true
+            },
+            {
+                id: 'prod-4',
+                title_ar: 'حزمة المؤثرات الصوتية والموسيقى التصويرية',
+                title_en: 'Cinematic Sound Effects & Audio Tracks Bundle',
+                category: 'audio',
+                categoryLabel_ar: 'صوتيات وموسيقى',
+                categoryLabel_en: 'Audio & Music',
+                price: 19,
+                author_ar: 'استوديو صدى',
+                author_en: 'Sada Sound Studio',
+                rating: 4.7,
+                salesCount: 620,
+                image: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=600&q=80',
+                desc_ar: 'أكثر من 500 كليب صوتي ومؤثر بدقة عالية مع رخصة استخدام تجاري مفتوحة بدون أي حقوق ملكية فكرية مقيدة.',
+                desc_en: 'Over 500 high-fidelity sound effects and royalty-free soundtracks ready for commercial game and video projects.',
+                allowPwyw: true
+            },
+            {
+                id: 'prod-5',
+                title_ar: 'قالب إدارة المشاريع وإدارة الوقت لـ Notion',
+                title_en: 'Ultimate Notion Productivity & Project Hub',
+                category: 'design',
+                categoryLabel_ar: 'تصاميم وقوالب',
+                categoryLabel_en: 'Design & Templates',
+                price: 12,
+                author_ar: 'منى التميمي',
+                author_en: 'Mona Al-Tamimi',
+                rating: 4.9,
+                salesCount: 1900,
+                image: 'https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?auto=format&fit=crop&w=600&q=80',
+                desc_ar: 'قالب منظم واحترافي لإنتاجية مضاعفة مع لوحة متابعة المهام والأهداف السنوية وتتبع العادات المباشر.',
+                desc_en: 'A sleek Notion workspace designed to supercharge your goals, track daily habits, and manage team projects seamlessly.',
+                allowPwyw: false
+            },
+            {
+                id: 'prod-6',
+                title_ar: 'سكربت أتمتة المهام واستخراج البيانات بـ Python',
+                title_en: 'Python Web Scraping & Automation Suite',
+                category: 'code',
+                categoryLabel_ar: 'برمجيات وأكواد',
+                categoryLabel_en: 'Software & Code',
+                price: 35,
+                author_ar: 'طارق المبرمج',
+                author_en: 'Tarek Dev',
+                rating: 4.8,
+                salesCount: 430,
+                image: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=600&q=80',
+                desc_ar: 'مجموعة أدوات برمجية جاهزة للعمل مباشرة لتجميع البيانات، معالجة الصور، وإرسال التقارير الآلية اليومية.',
+                desc_en: 'Ready-to-run automation scripts for data extraction, image processing, automated reporting, and API bots.',
+                allowPwyw: true
+            }
+        ];
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'ar' ? 'en' : 'ar';
+            applyLanguage();
+        }
+
+        function applyLanguage() {
+            const htmlEl = document.documentElement;
+            htmlEl.lang = currentLang;
+            htmlEl.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+
+            // Update Language Toggle Button Label
+            const langLabel = document.getElementById('lang-label');
+            if (langLabel) langLabel.innerText = i18n[currentLang].lang_btn;
+
+            // Update text elements with data-i18n
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (i18n[currentLang][key]) {
+                    el.innerText = i18n[currentLang][key];
+                }
+            });
+
+            // Update placeholder attributes
+            document.querySelectorAll('[data-i18n-ph]').forEach(el => {
+                const key = el.getAttribute('data-i18n-ph');
+                if (i18n[currentLang][key]) {
+                    el.placeholder = i18n[currentLang][key];
+                }
+            });
+
+            // Update Sort dropdown text
+            const sortEl = document.getElementById('catalog-sort');
+            if (sortEl) {
+                sortEl.options[0].text = i18n[currentLang].sort_featured;
+                sortEl.options[1].text = i18n[currentLang].sort_newest;
+                sortEl.options[2].text = i18n[currentLang].sort_low;
+                sortEl.options[3].text = i18n[currentLang].sort_high;
+            }
+
+            // Re-render UI sections
+            renderCategoryTabs();
+            filterProducts();
+            updateCartUI();
+        }
+
+        function renderCategoryTabs() {
+            const categories = [
+                { id: 'all', key: 'cat_all' },
+                { id: 'ebook', key: 'cat_ebook' },
+                { id: 'course', key: 'cat_course' },
+                { id: 'design', key: 'cat_design' },
+                { id: 'code', key: 'cat_code' },
+                { id: 'audio', key: 'cat_audio' }
+            ];
+
+            const tabsContainer = document.querySelector('#marketplace .flex.items-center.gap-3.overflow-x-auto');
+            if (!tabsContainer) return;
+
+            tabsContainer.innerHTML = categories.map(cat => `
+                <button onclick="setCategory('${cat.id}')" class="category-btn ${currentCategory === cat.id ? 'bg-black text-white' : 'bg-white text-black'} border-2 border-black hover:bg-gumPink px-5 py-2 rounded-xl text-sm font-extrabold whitespace-nowrap transition-all shadow-brutal">
+                    ${i18n[currentLang][cat.key]}
+                </button>
+            `).join('');
+        }
+
+        function renderProducts(items) {
+            const container = document.getElementById('products-grid');
+            const noProductsMsg = document.getElementById('no-products');
+
+            if (!container) return;
+
+            if (items.length === 0) {
+                container.innerHTML = '';
+                if (noProductsMsg) noProductsMsg.classList.remove('hidden');
+                return;
+            }
+
+            if (noProductsMsg) noProductsMsg.classList.add('hidden');
+            
+            container.innerHTML = items.map(product => {
+                const title = currentLang === 'ar' ? product.title_ar : product.title_en;
+                const author = currentLang === 'ar' ? product.author_ar : product.author_en;
+                const desc = currentLang === 'ar' ? product.desc_ar : product.desc_en;
+                const catLabel = currentLang === 'ar' ? product.categoryLabel_ar : product.categoryLabel_en;
+                const authorPrefix = currentLang === 'ar' ? 'بقلم /' : 'By';
+                const startingPriceText = currentLang === 'ar' ? 'السعر البدء' : 'Starting Price';
+
+                return `
+                    <div class="bg-white brutal-border rounded-2xl overflow-hidden shadow-brutal flex flex-col justify-between group hover:-translate-y-1 transition-all">
+                        
+                        <div>
+                            <!-- Product Card Image Container -->
+                            <div class="relative aspect-video bg-gray-100 overflow-hidden border-b-2 border-black">
+                                <img src="${product.image}" alt="${title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                                
+                                <span class="absolute top-3 ltr:right-3 rtl:left-3 bg-gumYellow brutal-border px-2.5 py-1 text-xs font-black rounded-lg shadow-brutal">
+                                    ${catLabel}
+                                </span>
+
+                                ${product.allowPwyw ? `
+                                    <span class="absolute bottom-3 ltr:left-3 rtl:right-3 bg-gumPink brutal-border px-2 py-0.5 text-[10px] font-black rounded-md">
+                                        ${i18n[currentLang].pwyw_tag}
+                                    </span>
+                                ` : ''}
+                            </div>
+
+                            <!-- Card Body -->
+                            <div class="p-5 space-y-3">
+                                <div class="flex items-center justify-between text-xs font-bold text-gray-500">
+                                    <span>${authorPrefix} ${author}</span>
+                                    <span class="text-amber-500 font-extrabold flex items-center gap-1">
+                                        <i class="fa-solid fa-star"></i> ${product.rating} (${product.salesCount})
+                                    </span>
+                                </div>
+
+                                <h3 class="font-extrabold text-lg text-black leading-snug line-clamp-2">
+                                    ${title}
+                                </h3>
+
+                                <p class="text-xs text-gray-600 font-bold line-clamp-2 leading-relaxed">
+                                    ${desc}
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Card Footer Actions -->
+                        <div class="p-5 pt-0 flex items-center justify-between border-t-0 mt-2">
+                            <div>
+                                <span class="text-xs font-bold text-gray-400 block">${startingPriceText}</span>
+                                <span class="text-2xl font-black text-black">$${product.price}</span>
+                            </div>
+
+                            <div class="flex items-center gap-2">
+                                <button onclick="openProductModal('${product.id}')" class="bg-gray-100 brutal-btn p-2.5 rounded-lg font-bold text-black hover:bg-gumPink" title="${i18n[currentLang].btn_details}">
+                                    <i class="fa-solid fa-eye"></i>
+                                </button>
+                                
+                                <button onclick="addToCart('${product.id}')" class="bg-gumYellow brutal-btn px-4 py-2.5 rounded-lg font-black text-sm flex items-center gap-1.5">
+                                    <i class="fa-solid fa-cart-plus"></i>
+                                    <span>${i18n[currentLang].btn_buy}</span>
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function setCategory(cat) {
+            currentCategory = cat;
+            renderCategoryTabs();
+            filterProducts();
+        }
+
+        function filterProducts() {
+            const searchInput = document.getElementById('catalog-search');
+            const searchQuery = searchInput ? searchInput.value.toLowerCase().trim() : '';
+            const sortEl = document.getElementById('catalog-sort');
+            const sortOption = sortEl ? sortEl.value : 'featured';
+
+            let filtered = products.filter(p => {
+                const matchesCategory = (currentCategory === 'all' || p.category === currentCategory);
+                const title = (currentLang === 'ar' ? (p.title_ar || p.title) : (p.title_en || p.title)) || '';
+                const author = (currentLang === 'ar' ? (p.author_ar || p.author) : (p.author_en || p.author)) || '';
+                const matchesSearch = title.toLowerCase().includes(searchQuery) || author.toLowerCase().includes(searchQuery);
+                return matchesCategory && matchesSearch;
+            });
+
+            // Sorting
+            if (sortOption === 'price-low') {
+                filtered.sort((a, b) => a.price - b.price);
+            } else if (sortOption === 'price-high') {
+                filtered.sort((a, b) => b.price - a.price);
+            } else if (sortOption === 'newest') {
+                filtered.reverse();
+            }
+
+            renderProducts(filtered);
+        }
+
+        // Initialize App & Hide Preloader on Load
+        document.addEventListener('DOMContentLoaded', () => {
+            const progressBar = document.getElementById('loader-progress-bar');
+            if (progressBar) progressBar.style.width = '70%';
+            applyLanguage();
+            updateCartUI();
+        });
+
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('page-preloader');
+            const progressBar = document.getElementById('loader-progress-bar');
+            if (progressBar) progressBar.style.width = '100%';
+            
+            setTimeout(() => {
+                if (preloader) {
+                    preloader.classList.add('opacity-0', 'pointer-events-none');
+                    setTimeout(() => preloader.style.display = 'none', 500);
+                }
+            }, 300);
+        });
+
+        function handleGlobalSearch(e) {
+            const query = e.target.value;
+            document.getElementById('catalog-search').value = query;
+            filterProducts();
+            if (window.scrollY < 400) {
+                document.getElementById('marketplace').scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        function resetFilters() {
+            document.getElementById('catalog-search').value = '';
+            setCategory('all');
+        }
+
+        function addToCart(productId, customPrice = null) {
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+
+            const finalPrice = customPrice !== null ? parseFloat(customPrice) : product.price;
+
+            const existingIndex = cart.findIndex(item => item.id === productId);
+            if (existingIndex > -1) {
+                cart[existingIndex].selectedPrice = finalPrice;
+            } else {
+                cart.push({
+                    ...product,
+                    selectedPrice: finalPrice
+                });
+            }
+
+            updateCartUI();
+            toggleCartDrawer(true);
+        }
+
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const cartContainer = document.getElementById('cart-items-container');
+            const cartBadge = document.getElementById('cart-count-badge');
+            const totalPriceEl = document.getElementById('cart-total-price');
+
+            if (!cartBadge || !cartContainer || !totalPriceEl) return;
+
+            cartBadge.innerText = cart.length;
+
+            if (cart.length === 0) {
+                cartContainer.innerHTML = `
+                    <div class="text-center py-12 text-gray-500 font-bold space-y-3">
+                        <i class="fa-solid fa-basket-shopping text-4xl text-gray-300"></i>
+                        <p>${i18n[currentLang].cart_empty}</p>
+                        <button onclick="toggleCartDrawer(false)" class="text-xs bg-black text-white px-3 py-1.5 rounded-lg font-black">
+                            ${i18n[currentLang].hero_browse}
+                        </button>
+                    </div>
+                `;
+                totalPriceEl.innerText = '$0.00';
+                return;
+            }
+
+            let total = 0;
+            cartContainer.innerHTML = cart.map(item => {
+                total += item.selectedPrice;
+                const title = currentLang === 'ar' ? item.title_ar : item.title_en;
+                return `
+                    <div class="bg-gray-50 brutal-border p-3.5 rounded-xl flex items-center justify-between gap-3">
+                        <img src="${item.image}" alt="${title}" class="w-12 h-12 rounded-lg object-cover border border-black">
+                        <div class="flex-1 min-w-0">
+                            <h4 class="font-extrabold text-xs truncate">${title}</h4>
+                            <p class="text-[11px] text-gray-500 font-bold">$${item.selectedPrice.toFixed(2)}</p>
+                        </div>
+                        <button onclick="removeFromCart('${item.id}')" class="text-red-500 hover:text-red-700 font-black text-sm p-1">
+                            <i class="fa-solid fa-trash-can"></i>
+                        </button>
+                    </div>
+                `;
+            }).join('');
+
+            totalPriceEl.innerText = `$${total.toFixed(2)}`;
+        }
+
+        function toggleCartDrawer(forceOpen = null) {
+            const drawer = document.getElementById('cart-drawer');
+            if (!drawer) return;
+            if (forceOpen === true) {
+                drawer.classList.remove('-translate-x-full');
+            } else if (forceOpen === false) {
+                drawer.classList.add('-translate-x-full');
+            } else {
+                drawer.classList.toggle('-translate-x-full');
+            }
+        }
+
+        function openProductModal(productId) {
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+
+            const title = currentLang === 'ar' ? product.title_ar : product.title_en;
+            const author = currentLang === 'ar' ? product.author_ar : product.author_en;
+            const desc = currentLang === 'ar' ? product.desc_ar : product.desc_en;
+            const catLabel = currentLang === 'ar' ? product.categoryLabel_ar : product.categoryLabel_en;
+            const authorPrefix = currentLang === 'ar' ? 'بقلم /' : 'By';
+
+            const modalContent = document.getElementById('modal-content');
+            modalContent.innerHTML = `
+                <div class="space-y-6">
+                    <div class="aspect-video rounded-xl bg-gray-100 brutal-border overflow-hidden">
+                        <img src="${product.image}" class="w-full h-full object-cover">
+                    </div>
+
+                    <div>
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="bg-gumYellow brutal-border px-2.5 py-0.5 text-xs font-black rounded-md">
+                                ${catLabel}
+                            </span>
+                            <span class="text-xs font-bold text-gray-500">${authorPrefix} ${author}</span>
+                        </div>
+                        
+                        <h2 class="text-2xl font-black text-black">${title}</h2>
+                        <p class="text-sm font-bold text-gray-700 mt-3 leading-relaxed">${desc}</p>
+                    </div>
+
+                    ${product.allowPwyw ? `
+                        <div class="bg-gumPink/20 brutal-border p-4 rounded-xl space-y-2">
+                            <label class="block text-xs font-black text-black">
+                                ${i18n[currentLang].pwyw_tag} (Minimum $${product.price}):
+                            </label>
+                            <div class="flex items-center gap-2">
+                                <span class="font-black text-lg">$</span>
+                                <input type="number" id="custom-modal-price" min="${product.price}" value="${product.price}" class="w-full bg-white brutal-border rounded-lg px-3 py-2 font-black text-lg focus:outline-none">
+                            </div>
+                        </div>
+                    ` : ''}
+
+                    <div class="pt-4 border-t-2 border-black flex items-center justify-between">
+                        <div>
+                            <p class="text-xs font-bold text-gray-500">Total Price</p>
+                            <p class="text-3xl font-black text-black">$${product.price}</p>
+                        </div>
+
+                        <button onclick="confirmModalPurchase('${product.id}', ${product.allowPwyw})" class="bg-gumYellow brutal-btn px-6 py-3 rounded-xl font-black text-base flex items-center gap-2">
+                            <i class="fa-solid fa-bag-shopping"></i>
+                            <span>${i18n[currentLang].btn_buy}</span>
+                        </button>
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('product-modal').classList.remove('hidden');
+        }
+
+        function confirmModalPurchase(productId, isPwyw) {
+            let customPrice = null;
+            if (isPwyw) {
+                const input = document.getElementById('custom-modal-price');
+                if (input) customPrice = input.value;
+            }
+            addToCart(productId, customPrice);
+            closeProductModal();
+        }
+
+        function closeProductModal() {
+            document.getElementById('product-modal').classList.add('hidden');
+        }
+
+        // Creator Modal logic
+        function openAddProductModal() {
+            document.getElementById('add-product-modal').classList.remove('hidden');
+        }
+        function closeAddProductModal() {
+            document.getElementById('add-product-modal').classList.add('hidden');
+        }
+
+        function handleAddNewProduct(e) {
+            e.preventDefault();
+            const title = document.getElementById('new-title').value;
+            const category = document.getElementById('new-category').value;
+            const price = parseFloat(document.getElementById('new-price').value);
+            const author = document.getElementById('new-author').value;
+            const desc = document.getElementById('new-desc').value;
+            const image = document.getElementById('new-image').value || 'https://images.unsplash.com/photo-1522542550221-31fd19575a2d?auto=format&fit=crop&w=600&q=80';
+            const pwyw = document.getElementById('new-pwyw').checked;
+
+            const categoryLabelsAr = { ebook: 'كتب إلكترونية', course: 'دورات تدريبية', design: 'تصاميم وقوالب', code: 'برمجيات وأكواد', audio: 'صوتيات وموسيقى' };
+            const categoryLabelsEn = { ebook: 'E-Books', course: 'Courses', design: 'Design & Templates', code: 'Software & Code', audio: 'Audio & Music' };
+
+            const newProd = {
+                id: 'prod-' + Date.now(),
+                title_ar: title,
+                title_en: title,
+                category: category,
+                categoryLabel_ar: categoryLabelsAr[category] || 'منتج رقمي',
+                categoryLabel_en: categoryLabelsEn[category] || 'Digital Product',
+                price: price,
+                author_ar: author,
+                author_en: author,
+                rating: 5.0,
+                salesCount: 1,
+                image: image,
+                desc_ar: desc,
+                desc_en: desc,
+                allowPwyw: pwyw
+            };
+
+            products.unshift(newProd);
+            filterProducts();
+            closeAddProductModal();
+            document.getElementById('new-product-form').reset();
+        }
+
+        // Login Modal
+        function openLoginModal() { document.getElementById('login-modal').classList.remove('hidden'); }
+        function closeLoginModal() { document.getElementById('login-modal').classList.add('hidden'); }
+
+        // Checkout process
+        function processCheckout() {
+            if (cart.length === 0) return;
+            cart = [];
+            updateCartUI();
+            toggleCartDrawer(false);
+        }
+
+        function quickBuyDemo() {
+            addToCart('prod-1');
+        }
+    </script>
+</body>
+</html>
