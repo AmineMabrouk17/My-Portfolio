@@ -39,11 +39,7 @@ docs: update README with setup instructions
 
 ### AI Agent Credit
 
-If an AI coding agent (Claude Code, etc.) authors or co-authors a commit, it must credit itself with a trailer, e.g.:
-
-```
-Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
-```
+Do NOT add `Co-Authored-By` or any other self-credit trailer for AI coding agents (Claude Code, etc.) in commit messages. Commits should read as if written by the repo owner.
 
 ## Lint & Typecheck
 
