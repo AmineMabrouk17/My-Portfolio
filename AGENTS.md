@@ -36,3 +36,24 @@ style: switch to warm color palette
 chore: add AGENTS.md with commit convention
 docs: update README with setup instructions
 ```
+
+## Package Manager
+
+Use **pnpm** for all package management commands:
+
+```bash
+pnpm install          # Install dependencies
+pnpm add <pkg>        # Add a dependency
+pnpm add -D <pkg>     # Add a dev dependency
+pnpm dev              # Start dev server
+pnpm build            # Build for production
+pnpm start            # Start production server
+pnpm lint             # Run ESLint
+```
+
+## Tech Stack
+
+- **Framework**: Next.js 16 (App Router)
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS v4
+- **Package Manager**: pnpm
