@@ -1,0 +1,141 @@
+{
+  "nav": {
+    "about": "About",
+    "skills": "Skills",
+    "experience": "Experience",
+    "projects": "Projects",
+    "education": "Education",
+    "contact": "Get in touch"
+  },
+  "hero": {
+    "tag": "Available for new opportunities",
+    "role": "Full Stack Developer — Angular · Next.js · Node.js · Laravel",
+    "summary": "I build production-ready web platforms that businesses rely on daily. From telecom dashboards to real-time systems, I deliver clean, scalable solutions that solve real operational problems — not just write code.",
+    "cta1": "Let's work together",
+    "cta2": "View projects",
+    "svc1": { "title": "Web Applications", "desc": "Full stack apps with Angular, Next.js & Laravel" },
+    "svc2": { "title": "Dashboards & Admin", "desc": "Internal tools and operational dashboards" },
+    "svc3": { "title": "API Integration", "desc": "REST APIs, real-time systems & automation" }
+  },
+  "about": {
+    "num": "01 / ABOUT",
+    "h2": "Engineer who ships.",
+    "sub": "Full Stack Developer with a National Engineering Diploma — fully recognized as equivalent to a Master's degree.",
+    "bio": "I build secure, high-performance web applications and digital solutions that help businesses scale. Specializing in reliable software architecture, real-time features, and data-driven systems, I focus on turning complex challenges—such as cloud migrations, advanced system security, and automated monitoring—into seamless, user-friendly experiences that drive business value."
+  },
+  "skills": {
+    "num": "02 / SKILLS",
+    "h2": "Technical toolkit.",
+    "sub": "From modern frontends to scalable backends and DevOps pipelines.",
+    "frontend": "Frontend",
+    "backend": "Backend",
+    "databases": "Databases",
+    "devops": "DevOps",
+    "ai": "AI / Other"
+  },
+  "exp": {
+    "num": "03 / EXPERIENCE",
+    "h2": "Career timeline.",
+    "sub": "Four chapters at Infraway — from intern to production-grade Full Stack Developer.",
+    "job1": {
+      "title": "Full Stack Developer — Angular / Laravel",
+      "desc": "Nouara Platform — Telecom Eligibility, Billing & Operations Dashboard",
+      "b1": "Developing and maintaining Nouara, a production telecom platform (Angular 20 frontend + Laravel 12 backend API)",
+      "b2": "Migrated ticket attachment storage to RustFS (S3-compatible) hosted on a dedicated VM",
+      "b3": "Implemented JWT authentication via httpOnly cookies with 2FA on a dedicated security branch",
+      "b4": "Built a real-time anomaly detection system with IQR-based alerting and SMTP notifications via Office365",
+      "b5": "Developed operational dashboards for internal teams"
+    },
+    "job2": {
+      "title": "Graduation Project Intern (PFE)",
+      "desc": "Real-Time AI-Powered Voice Translation Assistant for Telephony",
+      "b1": "Designed and implemented an AI voice assistant for real-time bilingual translation in live phone calls",
+      "b2": "Integrated Hugging Face pre-trained models for speech-to-text, translation, and text-to-speech processing",
+      "b3": "Developed a scalable Flask/Python backend and configured Asterisk + FastAGI for voice stream routing"
+    },
+    "job3": {
+      "title": "AI & Data Engineering Intern",
+      "desc": "Predictive Analytics Tool for Telephony & Business Metrics",
+      "b1": "Built an ML-based prediction tool forecasting ACR, ACD, and revenue KPIs from historical telephony data",
+      "b2": "Engineered clean data pipelines and applied statistical models for business intelligence reporting"
+    },
+    "job4": {
+      "title": "Software Engineering Intern",
+      "desc": "Operations & Infrastructure Monitoring Dashboard",
+      "b1": "Designed and deployed a unified monitoring dashboard for real-time system health metrics using Grafana"
+    }
+  },
+  "proj": {
+    "num": "04 / PROJECTS",
+    "h2": "Things I'm building.",
+    "sub": "Software applications and static designs built for clients and experiments.",
+    "rizz": {
+      "title": "Rizz — Real-Time Video Chat",
+      "desc": "Building an Omegle-style random video chat app with real-time peer matching, room management, and user moderation features. Monorepo architecture for clean separation of concerns."
+    },
+    "ai": {
+      "sub": "Featured · Graduation Project",
+      "title": "AI Voice Translation for Telephony",
+      "desc": "Real-time bilingual voice translation assistant integrated into live phone calls via Asterisk + FastAGI. Powered by Hugging Face models for STT, translation, and TTS — built on a scalable Flask/Python backend."
+    },
+    "landing": "Landing Pages",
+    "demo": "View Live Demo",
+    "lp1": { "sub": "Static Design · 01", "title": "Custom Landing Page One", "desc": "A modern, interactive static landing page built utilizing custom CSS variables, responsive typography, and semantic HTML layouts." },
+    "lp2": { "sub": "Static Design · 02", "title": "Custom Landing Page Two", "desc": "An optimized single-page landing layout featuring clean UI configurations and mobile-first responsive design implementation." },
+    "lp3": { "sub": "Static Design · 03", "title": "Custom Landing Page Three", "desc": "A responsive landing page design focused on smooth layouts, navigation adjustments, and clean structural aesthetics." },
+    "concept": {
+      "h3": "Proactive Concept Designs",
+      "intro": "I don't just wait for clients to ask for designs — I proactively build solutions. These are two fully functional web prototypes I built from scratch to demonstrate rapid-prototyping and high-converting UX for the e-commerce and digital rewards spaces.",
+      "ctatext": "Want a custom, proactive prototype built specifically for your business to see what's possible?",
+      "ctabtn": "Let's talk"
+    },
+    "souq": {
+      "sub": "Concept 1 · Digital Marketplace",
+      "title": "Souq Digital",
+      "desc": "A sleek, modern digital marketplace concept designed to maximize product visibility and drive seamless checkouts — turning a cluttered e-commerce store into a frictionless, conversion-driven shopping experience.",
+      "b1": "Clean typography & high-contrast call-to-action buttons",
+      "b2": "Card-based layout that scales across mobile and desktop",
+      "b3": "Checkout flow built for conversion"
+    },
+    "redeemly": {
+      "sub": "Concept 2 · Loyalty & Rewards Platform",
+      "title": "Redeemly",
+      "desc": "An engaging, trust-building landing page for a digital rewards and loyalty platform, designed with psychology-driven layout choices to make the \"redeem\" process feel intuitive and exciting.",
+      "b1": "Vibrant UI with smooth micro-interactions",
+      "b2": "Narrative flow from discovery to sign-up",
+      "b3": "Designed for user retention and engagement"
+    }
+  },
+  "edu": {
+    "num": "05 / EDUCATION",
+    "h2": "Academic foundation.",
+    "sub": "Engineering training in Computer Science & Software Engineering.",
+    "diploma": {
+      "title": "National Engineering Diploma",
+      "desc": "Computer Science & Software Engineering. Specialization in Software Engineering & Data Science. Recognized as equivalent to a Master's degree."
+    },
+    "prep": {
+      "title": "Integrated Preparatory Cycle",
+      "desc": "Two-year intensive program in Mathematics, Physics, and Computer Science — building the analytical foundation for engineering studies."
+    }
+  },
+  "langs": {
+    "num": "06 / LANGUAGES",
+    "h2": "Multilingual.",
+    "sub": "Four languages across three language families.",
+    "fr": "B2 · Upper-Intermediate",
+    "ar": "C2 · Native",
+    "en": "A2 · Elementary",
+    "de": "A2 · Elementary"
+  },
+  "contact": {
+    "num": "07 / CONTACT",
+    "h2": "Let's build something.",
+    "text": "Open to Full Stack roles, freelance projects, and collaborations. Feel free to reach out — I usually reply within 24 hours.",
+    "email": "Send email"
+  },
+  "footer": {
+    "built": "Built with",
+    "in": "in"
+  }
+}

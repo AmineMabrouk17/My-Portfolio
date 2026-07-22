@@ -1,0 +1,141 @@
+{
+  "nav": {
+    "about": "À propos",
+    "skills": "Compétences",
+    "experience": "Expérience",
+    "projects": "Projets",
+    "education": "Formation",
+    "contact": "Contactez-moi"
+  },
+  "hero": {
+    "tag": "Disponible pour de nouvelles opportunités",
+    "role": "Développeur Full Stack — Angular · Next.js · Node.js · Laravel",
+    "summary": "Je construis des plateformes web prêtes pour la production dont les entreprises se servent quotidiennement. Des tableaux de bord télécom aux systèmes en temps réel, je livre des solutions propres et évolutives qui résolvent de vrais problèmes opérationnels.",
+    "cta1": "Travaillons ensemble",
+    "cta2": "Voir les projets",
+    "svc1": { "title": "Applications Web", "desc": "Apps full stack avec Angular, Next.js & Laravel" },
+    "svc2": { "title": "Dashboards & Admin", "desc": "Outils internes et tableaux de bord opérationnels" },
+    "svc3": { "title": "Intégration API", "desc": "APIs REST, systèmes en temps réel & automatisation" }
+  },
+  "about": {
+    "num": "01 / À PROPOS",
+    "h2": "Ingénieur qui livre.",
+    "sub": "Développeur Full Stack avec un Diplôme National d'Ingénieur — reconnu comme équivalent à un Master.",
+    "bio": "Je construis des applications web et des solutions numériques performantes et sécurisées qui aident les entreprises à évoluer. Spécialisé dans l'architecture logicielle fiable, les fonctionnalités en temps réel et les systèmes basés sur les données, je me concentre sur la transformation de défis complexes — tels que les migrations cloud, la sécurité avancée des systèmes et la surveillance automatisée — en expériences fluides et conviviales qui créent de la valeur commerciale."
+  },
+  "skills": {
+    "num": "02 / COMPÉTENCES",
+    "h2": "Boîte à outils technique.",
+    "sub": "Des frontends modernes aux backends évolutifs et aux pipelines DevOps.",
+    "frontend": "Frontend",
+    "backend": "Backend",
+    "databases": "Bases de données",
+    "devops": "DevOps",
+    "ai": "IA / Autres"
+  },
+  "exp": {
+    "num": "03 / EXPÉRIENCE",
+    "h2": "Parcours professionnel.",
+    "sub": "Quatre chapitres chez Infraway — de stagiaire à développeur Full Stack de production.",
+    "job1": {
+      "title": "Développeur Full Stack — Angular / Laravel",
+      "desc": "Plateforme Nouara — Tableau de bord d'éligibilité, facturation et opérations télécom",
+      "b1": "Développement et maintenance de Nouara, une plateforme télécom de production (frontend Angular 20 + backend API Laravel 12)",
+      "b2": "Migration du stockage des pièces jointes vers RustFS (compatible S3) hébergé sur une VM dédiée",
+      "b3": "Implémentation de l'authentification JWT via des cookies httpOnly avec double authentification (2FA)",
+      "b4": "Mise en place d'un système de détection d'anomalies en temps réel avec alertes basées sur IQR et notifications SMTP via Office365",
+      "b5": "Développement de tableaux de bord opérationnels pour les équipes internes"
+    },
+    "job2": {
+      "title": "Stagiaire Projet de Fin d'Études (PFE)",
+      "desc": "Assistant de traduction vocale IA en temps réel pour la téléphonie",
+      "b1": "Conception et implémentation d'un assistant vocal IA pour la traduction bilingue en temps réel lors d'appels téléphoniques",
+      "b2": "Intégration des modèles pré-entraînés de Hugging Face pour la reconnaissance vocale, la traduction et la synthèse vocale",
+      "b3": "Développement d'un backend évolutif Flask/Python et configuration d'Asterisk + FastAGI pour le routage des flux vocaux"
+    },
+    "job3": {
+      "title": "Stagiaire IA & Ingénierie des Données",
+      "desc": "Outil d'analyse prédictive pour la téléphonie et les métriques commerciales",
+      "b1": "Création d'un outil de prédiction ML prédisant les KPI ACR, ACD et revenus à partir de données télécom historiques",
+      "b2": "Conception de pipelines de données propres et application de modèles statistiques pour le reporting en intelligence commerciale"
+    },
+    "job4": {
+      "title": "Stagiaire en Génie Logiciel",
+      "desc": "Tableau de bord de surveillance des opérations et de l'infrastructure",
+      "b1": "Conception et déploiement d'un tableau de bord de surveillance unifié pour les métriques de santé des systèmes en temps réel avec Grafana"
+    }
+  },
+  "proj": {
+    "num": "04 / PROJETS",
+    "h2": "Ce que je construis.",
+    "sub": "Applications logicielles et designs statiques réalisés pour des clients et des expérimentations.",
+    "rizz": {
+      "title": "Rizz — Chat Vidéo en Temps Réel",
+      "desc": "Développement d'une application de chat vidéo aléatoire de style Omegle avec appariement de pairs en temps réel, gestion de salles et fonctionnalités de modération. Architecture monorepo pour une séparation claire des responsabilités."
+    },
+    "ai": {
+      "sub": "Projet vedette · Projet de fin d'études",
+      "title": "Traduction Vocale IA pour la Téléphonie",
+      "desc": "Assistant de traduction vocale bilingue en temps réel intégré dans des appels téléphoniques via Asterisk + FastAGI. Alimenté par les modèles Hugging Face pour la reconnaissance vocale, la traduction et la synthèse vocale — construit sur un backend évolutif Flask/Python."
+    },
+    "landing": "Landing Pages",
+    "demo": "Voir la démo",
+    "lp1": { "sub": "Design statique · 01", "title": "Landing Page Personnalisée 1", "desc": "Une landing page statique moderne et interactive construite avec des variables CSS personnalisées, une typographie responsive et des mises en page HTML sémantiques." },
+    "lp2": { "sub": "Design statique · 02", "title": "Landing Page Personnalisée 2", "desc": "Une mise en page de landing page single-page optimisée avec des configurations UI soignées et un design responsive mobile-first." },
+    "lp3": { "sub": "Design statique · 03", "title": "Landing Page Personnalisée 3", "desc": "Un design de landing page responsive axé sur des mises en page fluides, des ajustements de navigation et une esthétique structurelle épurée." },
+    "concept": {
+      "h3": "Designs de concept proactifs",
+      "intro": "Je n'attends pas que les clients demandent des designs — je construis proactivement des solutions. Voici deux prototypes web entièrement fonctionnels que j'ai développés de A à Z pour démontrer le prototypage rapide et une UX à fort taux de conversion dans l'e-commerce et les programmes de fidélité.",
+      "ctatext": "Envie d'un prototype proactif sur mesure pour votre activité, pour voir ce qui est possible ?",
+      "ctabtn": "Discutons-en"
+    },
+    "souq": {
+      "sub": "Concept 1 · Marketplace digitale",
+      "title": "Souq Digital",
+      "desc": "Une marketplace digitale moderne et épurée, conçue pour maximiser la visibilité des produits et fluidifier le checkout — transformant une boutique e-commerce encombrée en une expérience d'achat fluide et orientée conversion.",
+      "b1": "Typographie soignée et boutons d'appel à l'action à fort contraste",
+      "b2": "Mise en page en cartes, adaptée au mobile comme au desktop",
+      "b3": "Parcours de checkout pensé pour la conversion"
+    },
+    "redeemly": {
+      "sub": "Concept 2 · Plateforme de fidélité",
+      "title": "Redeemly",
+      "desc": "Une landing page engageante et rassurante pour une plateforme de récompenses et de fidélité digitale, conçue avec des choix de mise en page pensés pour rendre le parcours de 'récupération de récompense' intuitif et motivant.",
+      "b1": "UI vibrante avec micro-interactions fluides",
+      "b2": "Parcours narratif de la découverte à l'inscription",
+      "b3": "Conçu pour la rétention et l'engagement utilisateur"
+    }
+  },
+  "edu": {
+    "num": "05 / FORMATION",
+    "h2": "Base académique.",
+    "sub": "Formation en ingénierie informatique et génie logiciel.",
+    "diploma": {
+      "title": "Diplôme National d'Ingénieur",
+      "desc": "Informatique et Génie Logiciel. Spécialisation en Génie Logiciel et Science des Données. Reconnu comme équivalent à un Master."
+    },
+    "prep": {
+      "title": "Cycle Préparatoire Intégré",
+      "desc": "Programme intensif de deux ans en Mathématiques, Physique et Informatique — posant les bases analytiques pour les études d'ingénieur."
+    }
+  },
+  "langs": {
+    "num": "06 / LANGUES",
+    "h2": "Multilingue.",
+    "sub": "Quatre langues à travers trois familles linguistiques.",
+    "fr": "B2 · Intermédiaire avancé",
+    "ar": "C2 · Natif",
+    "en": "A2 · Élémentaire",
+    "de": "A2 · Élémentaire"
+  },
+  "contact": {
+    "num": "07 / CONTACT",
+    "h2": "Construisons quelque chose.",
+    "text": "Ouvert aux postes Full Stack, projets freelance et collaborations. N'hésitez pas à me contacter — je réponds généralement dans les 24 heures.",
+    "email": "Envoyer un email"
+  },
+  "footer": {
+    "built": "Fait avec",
+    "in": "à"
+  }
+}
