@@ -32,7 +32,7 @@ export default function Contact() {
 
             <a
               href="mailto:amx72001@gmail.com"
-              className="font-semibold text-[clamp(24px,4vw,38px)] bg-gradient text-transparent bg-clip-text no-underline inline-block mb-7 relative hover:opacity-85 transition-opacity"
+              className="contact-email font-semibold text-[clamp(24px,4vw,38px)] bg-gradient text-transparent bg-clip-text no-underline inline-block mb-7 relative hover:opacity-85 transition-opacity"
             >
               amx72001@gmail.com
             </a>

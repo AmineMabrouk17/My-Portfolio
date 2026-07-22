@@ -85,7 +85,7 @@ body::after {
 
 /* Gradient background utility */
 .bg-gradient {
-  background: var(--grad);
+  background-image: var(--grad);
 }
 
 /* Reveal animation */
@@ -156,6 +156,11 @@ body::after {
 
 [dir="rtl"] .lang-switcher-option {
   text-align: right;
+}
+
+[dir="rtl"] .contact-email {
+  direction: ltr;
+  unicode-bidi: embed;
 }
 
 /* Selection */
