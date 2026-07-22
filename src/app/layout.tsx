@@ -8,10 +8,53 @@ const inter = Inter({
   variable: "--font-inter",
 });
 
+const siteUrl = "https://my-portfolio-seven-chi-94.vercel.app";
+const title = "Amine Mabrouk — Full Stack Developer";
+const description =
+  "Amine Mabrouk — Full Stack Developer specializing in Angular, Next.js, Node.js and Laravel. Based in Tunis, Tunisia.";
+
 export const metadata: Metadata = {
-  title: "Amine Mabrouk — Full Stack Developer",
-  description:
-    "Amine Mabrouk — Full Stack Developer specializing in Angular, Next.js, Node.js and Laravel. Based in Tunis, Tunisia.",
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: title,
+    template: "%s | Amine Mabrouk",
+  },
+  description,
+  keywords: [
+    "Amine Mabrouk",
+    "Full Stack Developer",
+    "Angular Developer",
+    "Next.js Developer",
+    "Node.js Developer",
+    "Laravel Developer",
+    "Tunisia software engineer",
+  ],
+  authors: [{ name: "Amine Mabrouk", url: siteUrl }],
+  creator: "Amine Mabrouk",
+  alternates: {
+    canonical: "/",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
+  },
+  openGraph: {
+    type: "website",
+    url: siteUrl,
+    siteName: "Amine Mabrouk — Full Stack Developer",
+    title,
+    description,
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
+  },
   icons: {
     icon: "/favicon.ico",
   },
