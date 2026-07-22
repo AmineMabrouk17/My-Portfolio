@@ -19,7 +19,7 @@ export default function Projects() {
       subKey: "proj.ai.sub",
       titleKey: "proj.ai.title",
       descKey: "proj.ai.desc",
-      tags: ["Hugging Face", "Python", "Flask", "Asterisk", "FastAGI"],
+      tags: ["Hugging Face", "Python", "Flask", "Machine Learning"],
     },
   ];
 

@@ -22,12 +22,12 @@ const skills = [
   {
     icon: "infinity",
     titleKey: "skills.devops",
-    tags: ["Docker", "Git / GitHub", "Grafana", "RustFS (S3)", "JWT Auth"],
+    tags: ["Docker", "Git / GitHub"],
   },
   {
     icon: "cpu",
     titleKey: "skills.ai",
-    tags: ["Hugging Face (NLP)", "Python", "Asterisk", "FastAGI", "CDR Analytics"],
+    tags: ["Hugging Face (NLP)", "Python", "Machine Learning"],
   },
 ];
 
