@@ -57,3 +57,26 @@ pnpm lint             # Run ESLint
 - **Language**: TypeScript
 - **Styling**: Tailwind CSS v4
 - **Package Manager**: pnpm
+
+## Project Status
+
+Migration from vanilla HTML to Next.js App Router is complete:
+
+| Section | Status | Commit |
+|---------|--------|--------|
+| Project scaffold | Done | `ec222f9` |
+| Global styles & theme | Done | `d23b52f` |
+| i18n (EN/FR/AR) | Done | `7cdf432` |
+| Navbar, Footer, LanguageSwitcher | Done | `831f83a` |
+| ScrollReveal, BackToTop | Done | `2f0fd3b` |
+| All portfolio sections | Done | `30e955a` |
+| Landing pages 1-3 | Done | `26c66a6` |
+| Gumroad concept | Done | `88d4e73` |
+| Redeemly concept | Done | `88d4e73` |
+
+### Routes
+
+- `/` — Main portfolio
+- `/landing-1`, `/landing-2`, `/landing-3` — Arabic course landing pages
+- `/concepts/gumroad` — Gumroad marketplace concept
+- `/concepts/redeemly` — Redeemly topup platform concept
