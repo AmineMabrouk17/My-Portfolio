@@ -6,7 +6,7 @@ import ScrollReveal from "@/components/ui/ScrollReveal";
 const languages = [
   { name: "French", levelKey: "langs.fr", width: "75%" },
   { name: "Arabic", levelKey: "langs.ar", width: "100%" },
-  { name: "English", levelKey: "langs.en", width: "50%" },
+  { name: "English", levelKey: "langs.en", width: "80%" },
   { name: "German", levelKey: "langs.de", width: "50%" },
 ];
 
