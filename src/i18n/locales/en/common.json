@@ -47,22 +47,22 @@
       "b5": "Developed operational dashboards for internal teams"
     },
     "job2": {
-      "title": "Graduation Project Intern (PFE)",
+      "title": "AI Voice Translation Assistant for Telephony (Proof of Concept)",
       "desc": "Real-Time AI-Powered Voice Translation Assistant for Telephony",
-      "b1": "Designed and implemented an AI voice assistant for real-time bilingual translation in live phone calls",
-      "b2": "Integrated Hugging Face pre-trained models for speech-to-text, translation, and text-to-speech processing",
-      "b3": "Developed a scalable Flask/Python backend and configured Asterisk + FastAGI for voice stream routing"
+      "b1": "Integrated Asterisk + FastAGI with a Flask/Python backend to route and process live telephony voice streams in real time",
+      "b2": "Evaluated a chained STT → Translation → TTS model pipeline using Hugging Face pre-trained models for bilingual voice translation",
+      "b3": "Prototyped end-to-end system integration between telephony infrastructure and AI inference services as a proof of concept"
     },
     "job3": {
       "title": "AI & Data Engineering Intern",
       "desc": "Predictive Analytics Tool for Telephony & Business Metrics",
-      "b1": "Built an ML-based prediction tool forecasting ACR, ACD, and revenue KPIs from historical telephony data",
-      "b2": "Engineered clean data pipelines and applied statistical models for business intelligence reporting"
+      "b1": "Preprocessed and cleaned historical telephony datasets with Pandas to prepare features for forecasting models",
+      "b2": "Built baseline regression models to forecast telephony KPIs (ACR, ACD, Revenue) for business intelligence reporting"
     },
     "job4": {
       "title": "Software Engineering Intern",
       "desc": "Operations & Infrastructure Monitoring Dashboard",
-      "b1": "Designed and deployed a unified monitoring dashboard for real-time system health metrics using Grafana"
+      "b1": "Designed and deployed a Grafana monitoring dashboard tracking real-time infrastructure health and system uptime metrics"
     }
   },
   "proj": {
@@ -74,7 +74,7 @@
       "desc": "Building an Omegle-style random video chat app with real-time peer matching, room management, and user moderation features. Monorepo architecture for clean separation of concerns."
     },
     "ai": {
-      "sub": "Featured · Graduation Project",
+      "sub": "Featured · Graduation Project (Proof of Concept)",
       "title": "AI Voice Translation for Telephony",
       "desc": "Real-time bilingual voice translation assistant integrated into live phone calls via Asterisk + FastAGI. Powered by Hugging Face models for STT, translation, and TTS — built on a scalable Flask/Python backend."
     },
