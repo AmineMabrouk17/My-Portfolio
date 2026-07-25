@@ -1,5 +1,25 @@
 "use client";
 
+import type { IconType } from "react-icons";
+import {
+  SiAngular,
+  SiDocker,
+  SiFlask,
+  SiGit,
+  SiGithub,
+  SiHuggingface,
+  SiJavascript,
+  SiLaravel,
+  SiMysql,
+  SiNextdotjs,
+  SiNodedotjs,
+  SiPostgresql,
+  SiPython,
+  SiReact,
+  SiSupabase,
+  SiTypescript,
+} from "react-icons/si";
+import { TbApi, TbBrain, TbDatabase } from "react-icons/tb";
 import { useI18n } from "@/i18n/I18nContext";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import { TiltCard } from "@/components/motion/tilt-card";
@@ -23,7 +43,7 @@ const skills = [
   {
     icon: "infinity",
     titleKey: "skills.devops",
-    tags: ["Docker", "Git / GitHub"],
+    tags: ["Docker", "Git", "GitHub"],
   },
   {
     icon: "cpu",
@@ -31,6 +51,28 @@ const skills = [
     tags: ["Hugging Face (NLP)", "Python", "Machine Learning"],
   },
 ];
+
+const techIcons: Record<string, IconType> = {
+  "Angular 20": SiAngular,
+  "Next.js 14": SiNextdotjs,
+  "React.js": SiReact,
+  TypeScript: SiTypescript,
+  "JavaScript ES2025": SiJavascript,
+  "Node.js": SiNodedotjs,
+  "Laravel 12 (PHP)": SiLaravel,
+  "Flask (Python)": SiFlask,
+  "REST APIs": TbApi,
+  MySQL: SiMysql,
+  Supabase: SiSupabase,
+  PostgreSQL: SiPostgresql,
+  NoSQL: TbDatabase,
+  Docker: SiDocker,
+  Git: SiGit,
+  GitHub: SiGithub,
+  "Hugging Face (NLP)": SiHuggingface,
+  Python: SiPython,
+  "Machine Learning": TbBrain,
+};
 
 const iconMap: Record<string, React.JSX.Element> = {
   window: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="2" y="3" width="20" height="14" rx="2" /><line x1="8" y1="21" x2="16" y2="21" /><line x1="12" y1="17" x2="12" y2="21" /></svg>,
@@ -74,14 +116,18 @@ export default function Skills() {
                   {t(skill.titleKey)}
                 </h3>
                 <div className="flex flex-wrap gap-2">
-                  {skill.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="text-[12.5px] py-[5px] px-[11px] rounded-lg bg-white/[0.04] border border-[var(--color-border)] text-[var(--color-muted)] font-medium"
-                    >
-                      {tag}
-                    </span>
-                  ))}
+                  {skill.tags.map((tag) => {
+                    const TechIcon = techIcons[tag];
+                    return (
+                      <span
+                        key={tag}
+                        className="inline-flex items-center gap-1.5 text-[12.5px] py-[5px] px-[11px] rounded-lg bg-white/[0.04] border border-[var(--color-border)] text-[var(--color-muted)] font-medium"
+                      >
+                        {TechIcon ? <TechIcon size={13} className="shrink-0" /> : null}
+                        {tag}
+                      </span>
+                    );
+                  })}
                 </div>
               </TiltCard>
             </ScrollReveal>

@@ -30,6 +30,7 @@ export default function Hero() {
                 words={[t("hero.headlineAccent")]}
                 colors={["#ff6b6b", "#ffa94d", "#ffd93d"]}
                 startOnView={false}
+                className="text-[clamp(20px,6vw,82px)]"
               />
             </h1>
 
