@@ -132,7 +132,21 @@
     "num": "07 / CONTACT",
     "h2": "Construisons quelque chose.",
     "text": "Ouvert aux postes Full Stack, projets freelance et collaborations. N'hésitez pas à me contacter — je réponds généralement dans les 24 heures.",
-    "email": "Envoyer un email"
+    "email": "Envoyer un email",
+    "form": {
+      "name": "Nom",
+      "namePlaceholder": "Votre nom",
+      "email": "Email",
+      "emailPlaceholder": "vous@exemple.com",
+      "budget": "Budget estimé",
+      "budgetPlaceholder": "ex. 1 000 – 5 000 €",
+      "message": "Message",
+      "messagePlaceholder": "Décrivez votre projet…",
+      "submit": "Envoyer le message",
+      "subject": "Demande via portfolio",
+      "success": "Message envoyé !",
+      "successHint": "Votre client mail devrait s'ouvrir sous peu."
+    }
   },
   "footer": {
     "built": "Fait avec",
