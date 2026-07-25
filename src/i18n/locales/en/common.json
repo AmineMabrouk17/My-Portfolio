@@ -134,7 +134,21 @@
     "num": "07 / CONTACT",
     "h2": "Let's build something.",
     "text": "Open to Full Stack roles, freelance projects, and collaborations. Feel free to reach out — I usually reply within 24 hours.",
-    "email": "Send email"
+    "email": "Send email",
+    "form": {
+      "name": "Name",
+      "namePlaceholder": "Your name",
+      "email": "Email",
+      "emailPlaceholder": "you@example.com",
+      "budget": "Estimated budget",
+      "budgetPlaceholder": "e.g. $1,000 – $5,000",
+      "message": "Message",
+      "messagePlaceholder": "Tell me about your project…",
+      "submit": "Send message",
+      "subject": "Portfolio inquiry",
+      "success": "Message sent!",
+      "successHint": "Your email client should open shortly."
+    }
   },
   "footer": {
     "built": "Built with",
