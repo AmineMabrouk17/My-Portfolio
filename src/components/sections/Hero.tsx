@@ -23,9 +23,8 @@ export default function Hero() {
             </div>
 
             <h1 className="font-bold leading-[1.02] tracking-[-0.035em] mb-5 text-[clamp(44px,6.5vw,82px)]">
-              I build{" "}
-              <span className="text-gradient">production-grade</span>{" "}
-              software.
+              {t("hero.headline")}{" "}
+              <span className="text-gradient">{t("hero.headlineAccent")}</span>
             </h1>
 
             <p className="text-[clamp(18px,2vw,22px)] text-[var(--color-muted)] mb-6 font-normal">
@@ -39,12 +38,12 @@ export default function Hero() {
             <div className="flex gap-3.5 flex-wrap">
               <a
                 href="#contact"
-                className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl no-underline font-semibold text-sm bg-[var(--color-accent)] text-[var(--color-accent-dark)] transition-all duration-200 hover:-translate-y-0.5"
+                className="inline-flex items-center gap-2.5 px-7 py-4 rounded-xl no-underline font-bold text-[15px] bg-[var(--color-accent)] text-[var(--color-accent-dark)] transition-all duration-200 hover:-translate-y-0.5 hover:scale-[1.03]"
                 style={{
                   boxShadow: "0 10px 30px -10px rgba(255,107,107,0.5)",
                 }}
               >
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M22 2L11 13M22 2L15 22L11 13M22 2L2 9L11 13" />
                 </svg>
                 {t("hero.cta1")}
