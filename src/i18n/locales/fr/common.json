@@ -9,9 +9,11 @@
   },
   "hero": {
     "tag": "Disponible pour de nouvelles opportunités",
+    "headline": "Je conçois des applications web et mobiles sur-mesure, rapides et optimisées pour",
+    "headlineAccent": "faire grandir votre entreprise",
     "role": "Développeur Full Stack — Angular · Next.js · Node.js · Laravel",
     "summary": "Je construis des plateformes web prêtes pour la production dont les entreprises se servent quotidiennement. Des tableaux de bord télécom aux systèmes en temps réel, je livre des solutions propres et évolutives qui résolvent de vrais problèmes opérationnels.",
-    "cta1": "Travaillons ensemble",
+    "cta1": "Discuter de votre projet",
     "cta2": "Voir les projets",
     "svc1": { "title": "Applications Web", "desc": "Apps full stack avec Angular, Next.js & Laravel" },
     "svc2": { "title": "Dashboards & Admin", "desc": "Outils internes et tableaux de bord opérationnels" },
