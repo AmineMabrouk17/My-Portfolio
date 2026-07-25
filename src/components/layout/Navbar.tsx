@@ -66,6 +66,9 @@ export default function Navbar() {
           >
             AM
           </div>
+          <span className="hidden sm:inline text-[var(--color-text)] font-semibold text-[15px] tracking-tight">
+            Amine Mabrouk
+          </span>
         </a>
 
         <div

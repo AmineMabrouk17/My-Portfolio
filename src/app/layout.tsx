@@ -10,9 +10,9 @@ const inter = Inter({
 });
 
 const siteUrl = "https://my-portfolio-seven-chi-94.vercel.app";
-const title = "Amine Mabrouk — Full Stack Developer";
+const title = "Amine Mabrouk — Full Stack Developer Portfolio";
 const description =
-  "Amine Mabrouk — Full Stack Developer specializing in Angular, Next.js, Node.js and Laravel. Based in Tunis, Tunisia.";
+  "Amine Mabrouk's portfolio — Full Stack Developer specializing in Angular, Next.js, Node.js and Laravel. Based in Tunis, Tunisia.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -23,6 +23,7 @@ export const metadata: Metadata = {
   description,
   keywords: [
     "Amine Mabrouk",
+    "Amine Mabrouk Portfolio",
     "Full Stack Developer",
     "Angular Developer",
     "Next.js Developer",
@@ -46,7 +47,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: siteUrl,
-    siteName: "Amine Mabrouk — Full Stack Developer",
+    siteName: "Amine Mabrouk — Full Stack Developer Portfolio",
     title,
     description,
     locale: "en_US",
