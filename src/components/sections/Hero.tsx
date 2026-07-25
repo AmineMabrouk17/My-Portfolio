@@ -12,6 +12,10 @@ export default function Hero() {
       <div className="max-w-[1200px] mx-auto px-8">
         <div className="grid grid-cols-[1.3fr_0.7fr] gap-15 items-center max-lg:grid-cols-1 max-lg:gap-12">
           <ScrollReveal>
+            <p className="text-[13px] font-semibold tracking-[0.12em] uppercase text-[var(--color-accent)] mb-3">
+              Amine Mabrouk
+            </p>
+
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 border border-[var(--color-border-2)] rounded-full text-[13px] text-[var(--color-muted)] bg-white/[0.02] mb-6">
               <span
                 className="w-[7px] h-[7px] rounded-full bg-[var(--color-accent)]"
