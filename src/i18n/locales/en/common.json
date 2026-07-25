@@ -73,18 +73,24 @@
     "sub": "Software applications and static designs built for clients and experiments.",
     "rizz": {
       "title": "Rizz — Real-Time Video Chat",
-      "desc": "Architected a real-time WebRTC & Node.js video streaming monorepo, achieving peer-to-peer connection establishment in under 1.5s, with real-time peer matching, automated room moderation, and clean separation of concerns."
+      "desc": "Architected a real-time WebRTC & Node.js video streaming monorepo, achieving peer-to-peer connection establishment in under 1.5s, with real-time peer matching, automated room moderation, and clean separation of concerns.",
+      "problem": "Users needed a seamless way to connect face-to-face in real time without relying on third-party platforms.",
+      "solution": "Built a full WebRTC & Node.js monorepo with real-time peer matching, automated room moderation, and clean architecture.",
+      "result": "Peer-to-peer connections established in under 1.5 seconds with a smooth, reliable video experience."
     },
     "ai": {
       "sub": "Featured · Graduation Project (Proof of Concept)",
       "title": "AI Voice Translation for Telephony",
-      "desc": "Real-time bilingual voice translation assistant integrated into live phone calls via Asterisk + FastAGI. Powered by Hugging Face models for STT, translation, and TTS — built on a scalable Flask/Python backend."
+      "desc": "Real-time bilingual voice translation assistant integrated into live phone calls via Asterisk + FastAGI. Powered by Hugging Face models for STT, translation, and TTS — built on a scalable Flask/Python backend.",
+      "problem": "Language barriers during live phone calls prevent effective cross-lingual communication in real time.",
+      "solution": "Integrated Asterisk + FastAGI with a Flask/Python backend, chaining Hugging Face models for STT, translation, and TTS in a real-time pipeline.",
+      "result": "Achieved sub-second (<800ms) bilingual voice translation during live telephony streams as a working proof of concept."
     },
     "landing": "Landing Pages",
     "demo": "View Live Demo",
-    "lp1": { "sub": "Static Design · 01", "title": "Custom Landing Page One", "desc": "A modern, interactive static landing page built utilizing custom CSS variables, responsive typography, and semantic HTML layouts." },
-    "lp2": { "sub": "Static Design · 02", "title": "Custom Landing Page Two", "desc": "An optimized single-page landing layout featuring clean UI configurations and mobile-first responsive design implementation." },
-    "lp3": { "sub": "Static Design · 03", "title": "Custom Landing Page Three", "desc": "A responsive landing page design focused on smooth layouts, navigation adjustments, and clean structural aesthetics." },
+    "lp1": { "sub": "Static Design · 01", "title": "Custom Landing Page One", "desc": "A modern, interactive static landing page built utilizing custom CSS variables, responsive typography, and semantic HTML layouts.", "tags": ["HTML5", "CSS3", "JavaScript"] },
+    "lp2": { "sub": "Static Design · 02", "title": "Custom Landing Page Two", "desc": "An optimized single-page landing layout featuring clean UI configurations and mobile-first responsive design implementation.", "tags": ["HTML5", "CSS3", "JavaScript"] },
+    "lp3": { "sub": "Static Design · 03", "title": "Custom Landing Page Three", "desc": "A responsive landing page design focused on smooth layouts, navigation adjustments, and clean structural aesthetics.", "tags": ["HTML5", "CSS3", "JavaScript"] },
     "concept": {
       "h3": "Proactive Concept Designs",
       "intro": "I don't just wait for clients to ask for designs — I proactively build solutions. These are two fully functional web prototypes I built from scratch to demonstrate rapid-prototyping and high-converting UX for the e-commerce and digital rewards spaces.",
@@ -95,17 +101,25 @@
       "sub": "Concept 1 · Digital Marketplace",
       "title": "Souq Digital",
       "desc": "A sleek, modern digital marketplace concept designed to maximize product visibility and drive seamless checkouts — turning a cluttered e-commerce store into a frictionless, conversion-driven shopping experience.",
+      "problem": "Cluttered e-commerce stores lose customers to poor product visibility and clunky checkout flows.",
+      "solution": "Designed a sleek marketplace with clean typography, high-contrast CTAs, and a card-based layout that scales across devices.",
+      "result": "A frictionless, conversion-driven shopping experience optimized for seamless checkouts.",
       "b1": "Clean typography & high-contrast call-to-action buttons",
       "b2": "Card-based layout that scales across mobile and desktop",
-      "b3": "Checkout flow built for conversion"
+      "b3": "Checkout flow built for conversion",
+      "tags": ["UI/UX", "HTML5", "CSS3", "JavaScript", "Responsive"]
     },
     "redeemly": {
       "sub": "Concept 2 · Loyalty & Rewards Platform",
       "title": "Redeemly",
       "desc": "An engaging, trust-building landing page for a digital rewards and loyalty platform, designed with psychology-driven layout choices to make the \"redeem\" process feel intuitive and exciting.",
+      "problem": "Loyalty platforms often feel generic and fail to excite users about redeeming their rewards.",
+      "solution": "Built a psychology-driven landing page with vibrant UI, micro-interactions, and a narrative flow from discovery to sign-up.",
+      "result": "An engaging experience designed for user retention, making the redeem process feel intuitive and rewarding.",
       "b1": "Vibrant UI with smooth micro-interactions",
       "b2": "Narrative flow from discovery to sign-up",
-      "b3": "Designed for user retention and engagement"
+      "b3": "Designed for user retention and engagement",
+      "tags": ["UI/UX", "HTML5", "CSS3", "JavaScript", "Responsive"]
     }
   },
   "edu": {
