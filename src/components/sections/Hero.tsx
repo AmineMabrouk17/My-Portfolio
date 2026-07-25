@@ -27,9 +27,11 @@ export default function Hero() {
               {t("hero.headline")}
               <ChromaticTextReveal
                 prefix=""
-                words={[t("hero.headlineAccent")]}
+                words={[t("hero.headlineAccent"), t("hero.headlineAccent")]}
                 colors={["#ff6b6b", "#ffa94d", "#ffd93d"]}
                 startOnView={false}
+                loop
+                pauseDuration={1.2}
                 className="text-[clamp(20px,6vw,82px)]"
               />
             </h1>
