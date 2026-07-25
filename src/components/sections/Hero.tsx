@@ -2,6 +2,7 @@
 
 import { useI18n } from "@/i18n/I18nContext";
 import ScrollReveal from "@/components/ui/ScrollReveal";
+import { ChromaticTextReveal } from "@/components/motion/chromatic-text-reveal";
 
 export default function Hero() {
   const { t } = useI18n();
@@ -23,8 +24,13 @@ export default function Hero() {
             </div>
 
             <h1 className="font-bold leading-[1.02] tracking-[-0.035em] mb-5 text-[clamp(44px,6.5vw,82px)]">
-              {t("hero.headline")}{" "}
-              <span className="text-gradient">{t("hero.headlineAccent")}</span>
+              {t("hero.headline")}
+              <ChromaticTextReveal
+                prefix=""
+                words={[t("hero.headlineAccent")]}
+                colors={["#ff6b6b", "#ffa94d", "#ffd93d"]}
+                startOnView={false}
+              />
             </h1>
 
             <p className="text-[clamp(18px,2vw,22px)] text-[var(--color-muted)] mb-6 font-normal">

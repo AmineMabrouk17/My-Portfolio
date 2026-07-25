@@ -26,6 +26,13 @@
 :root {
   --grad: linear-gradient(135deg, #ff6b6b 0%, #ffa94d 50%, #ffd93d 100%);
   --shadow: 0 20px 50px -20px rgba(0, 0, 0, 0.6);
+  /* Aliases the site's text color for motion components (beui.dev) that
+     read `var(--foreground)` / use `bg-foreground`, `text-foreground`. */
+  --foreground: var(--color-text);
+}
+
+@theme inline {
+  --color-foreground: var(--foreground);
 }
 
 @layer base {

@@ -2,6 +2,7 @@
 
 import { useI18n } from "@/i18n/I18nContext";
 import ScrollReveal from "@/components/ui/ScrollReveal";
+import { TiltCard } from "@/components/motion/tilt-card";
 
 const skills = [
   {
@@ -64,7 +65,7 @@ export default function Skills() {
         <div className="grid grid-cols-[repeat(auto-fit,minmax(260px,1fr))] gap-[18px]">
           {skills.map((skill, i) => (
             <ScrollReveal key={skill.titleKey} delay={i * 80}>
-              <div className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-[18px] p-[26px] transition-all duration-300 relative overflow-hidden hover:border-[var(--color-border-2)] hover:-translate-y-[3px] hover:bg-[var(--color-surface-2)] group">
+              <TiltCard className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-[18px] p-[26px] transition-colors duration-300 hover:border-[var(--color-border-2)] hover:bg-[var(--color-surface-2)] group">
                 <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                 <div className="w-[46px] h-[46px] rounded-[12px] bg-[rgba(255,107,107,0.08)] text-[var(--color-accent)] grid place-items-center text-xl mb-4.5">
                   {iconMap[skill.icon]}
@@ -82,7 +83,7 @@ export default function Skills() {
                     </span>
                   ))}
                 </div>
-              </div>
+              </TiltCard>
             </ScrollReveal>
           ))}
         </div>
