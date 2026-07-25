@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useMemo, useCallback } from "react";
+import Image from "next/image";
 
 // Types
 interface Product {
@@ -218,7 +219,7 @@ export default function GumroadApp() {
               <div className="mt-3 space-y-2">
                 {initialProducts.slice(0, 3).map((p) => (
                   <div key={p.id} className="flex items-center gap-3 p-2 bg-gray-50 rounded-lg border border-gray-200">
-                    <img src={p.image} alt="" className="w-10 h-10 rounded-lg object-cover border border-black" />
+                    <Image src={p.image} alt="" width={40} height={40} loading="lazy" className="w-10 h-10 rounded-lg object-cover border border-black" />
                     <div className="flex-1 min-w-0">
                       <p className="text-xs font-black truncate">{p[`title_${lang}`]}</p>
                       <p className="text-[10px] text-gray-500 font-bold">${p.price}</p>
@@ -291,7 +292,7 @@ export default function GumroadApp() {
                 <div key={product.id} className="bg-white brutal-border rounded-2xl overflow-hidden shadow-[4px_4px_0px_0px_#000] flex flex-col justify-between group hover:-translate-y-1 transition-all">
                   <div>
                     <div className="relative aspect-video bg-gray-100 overflow-hidden border-b-2 border-black">
-                      <img src={product.image} alt={product[`title_${lang}`]} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+                      <Image src={product.image} alt={product[`title_${lang}`]} fill loading="lazy" className="object-cover group-hover:scale-105 transition-transform duration-300" />
                       <span className="absolute top-3 right-3 ltr:left-3 bg-[#FFC900] brutal-border px-2 py-0.5 text-[10px] font-black rounded-lg">
                         {product[`categoryLabel_${lang}`]}
                       </span>
@@ -352,7 +353,7 @@ export default function GumroadApp() {
           ) : (
             cart.map((item) => (
               <div key={item.id} className="bg-gray-50 brutal-border p-3 rounded-xl flex items-center gap-3">
-                <img src={item.image} alt="" className="w-12 h-12 rounded-lg object-cover border border-black" />
+                <Image src={item.image} alt="" width={48} height={48} loading="lazy" className="w-12 h-12 rounded-lg object-cover border border-black" />
                 <div className="flex-1 min-w-0">
                   <h4 className="font-extrabold text-xs truncate">{item[`title_${lang}`]}</h4>
                   <p className="text-[11px] text-gray-500 font-bold">${item.selectedPrice.toFixed(2)}</p>
@@ -381,7 +382,7 @@ export default function GumroadApp() {
         <div className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4" onClick={() => setModalProduct(null)}>
           <div className="bg-white brutal-border rounded-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto p-6 relative" onClick={(e) => e.stopPropagation()}>
             <button onClick={() => setModalProduct(null)} className="absolute top-4 left-4 w-8 h-8 bg-gray-100 brutal-border rounded-full font-black text-sm">✕</button>
-            <img src={modalProduct.image} alt="" className="w-full aspect-video object-cover rounded-xl brutal-border mb-4" />
+            <Image src={modalProduct.image} alt="" width={600} height={340} loading="lazy" className="w-full aspect-video object-cover rounded-xl brutal-border mb-4" />
             <span className="bg-[#FFC900] brutal-border px-2 py-0.5 text-[10px] font-black rounded-md">{modalProduct[`categoryLabel_${lang}`]}</span>
             <h2 className="text-xl font-black mt-2">{modalProduct[`title_${lang}`]}</h2>
             <p className="text-sm font-bold text-gray-700 mt-2">{modalProduct[`desc_${lang}`]}</p>
