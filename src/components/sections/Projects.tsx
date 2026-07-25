@@ -10,7 +10,7 @@ export default function Projects() {
     {
       icon: "video",
       titleKey: "proj.rizz.title",
-      descKey: "proj.rizz.desc",
+      caseStudy: { problem: "proj.rizz.problem", solution: "proj.rizz.solution", result: "proj.rizz.result" },
       tags: ["Next.js", "WebRTC", "Node.js", "Supabase", "Monorepo"],
       date: "2025 – Present",
     },
@@ -18,15 +18,15 @@ export default function Projects() {
       icon: "tower",
       subKey: "proj.ai.sub",
       titleKey: "proj.ai.title",
-      descKey: "proj.ai.desc",
+      caseStudy: { problem: "proj.ai.problem", solution: "proj.ai.solution", result: "proj.ai.result" },
       tags: ["Hugging Face", "Python", "Flask", "Machine Learning"],
     },
   ];
 
   const landingPages = [
-    { icon: "window", subKey: "proj.lp1.sub", titleKey: "proj.lp1.title", descKey: "proj.lp1.desc", link: "/landing-1" },
-    { icon: "pager", subKey: "proj.lp2.sub", titleKey: "proj.lp2.title", descKey: "proj.lp2.desc", link: "/landing-2" },
-    { icon: "compass", subKey: "proj.lp3.sub", titleKey: "proj.lp3.title", descKey: "proj.lp3.desc", link: "/landing-3" },
+    { icon: "window", subKey: "proj.lp1.sub", titleKey: "proj.lp1.title", descKey: "proj.lp1.desc", link: "/landing-1", tags: ["HTML5", "CSS3", "JavaScript"] },
+    { icon: "pager", subKey: "proj.lp2.sub", titleKey: "proj.lp2.title", descKey: "proj.lp2.desc", link: "/landing-2", tags: ["HTML5", "CSS3", "JavaScript"] },
+    { icon: "compass", subKey: "proj.lp3.sub", titleKey: "proj.lp3.title", descKey: "proj.lp3.desc", link: "/landing-3", tags: ["HTML5", "CSS3", "JavaScript"] },
   ];
 
   const concepts = [
@@ -34,17 +34,19 @@ export default function Projects() {
       icon: "store",
       subKey: "proj.souq.sub",
       titleKey: "proj.souq.title",
-      descKey: "proj.souq.desc",
+      caseStudy: { problem: "proj.souq.problem", solution: "proj.souq.solution", result: "proj.souq.result" },
       bullets: ["proj.souq.b1", "proj.souq.b2", "proj.souq.b3"],
       link: "/concepts/gumroad",
+      tags: ["UI/UX", "HTML5", "CSS3", "JavaScript", "Responsive"],
     },
     {
       icon: "gift",
       subKey: "proj.redeemly.sub",
       titleKey: "proj.redeemly.title",
-      descKey: "proj.redeemly.desc",
+      caseStudy: { problem: "proj.redeemly.problem", solution: "proj.redeemly.solution", result: "proj.redeemly.result" },
       bullets: ["proj.redeemly.b1", "proj.redeemly.b2", "proj.redeemly.b3"],
       link: "/concepts/redeemly",
+      tags: ["UI/UX", "HTML5", "CSS3", "JavaScript", "Responsive"],
     },
   ];
 
@@ -84,15 +86,22 @@ export default function Projects() {
                     {t(project.subKey)}
                   </div>
                 )}
-                <div className="text-[var(--color-muted-2)] text-[13px] mb-3.5 font-medium">
-                  {project.date}
-                </div>
-                <h3 className="text-[21px] font-semibold tracking-[-0.02em] mb-2">
+                {project.date && (
+                  <div className="text-[var(--color-muted-2)] text-[13px] mb-3.5 font-medium">
+                    {project.date}
+                  </div>
+                )}
+                <h3 className="text-[21px] font-semibold tracking-[-0.02em] mb-3">
                   {t(project.titleKey)}
                 </h3>
-                <p className="text-[var(--color-muted)] text-[14.5px] mb-4.5">
-                  {t(project.descKey)}
-                </p>
+                <div className="flex flex-col gap-2.5 mb-4.5">
+                  {(["problem", "solution", "result"] as const).map((key) => (
+                    <div key={key} className="flex gap-2.5 text-[14px] leading-[1.55]">
+                      <span className="text-[var(--color-accent)] font-semibold whitespace-nowrap">{key.charAt(0).toUpperCase() + key.slice(1)}:</span>
+                      <span className="text-[var(--color-muted)]">{t(project.caseStudy[key])}</span>
+                    </div>
+                  ))}
+                </div>
                 <div className="flex flex-wrap gap-[7px] mb-4.5">
                   {project.tags.map((tag) => (
                     <span
@@ -133,9 +142,9 @@ export default function Projects() {
                   {t(page.descKey)}
                 </p>
                 <div className="flex flex-wrap gap-[7px] mb-4.5">
-                  <span className="text-[12.5px] py-[5px] px-[11px] rounded-lg bg-white/[0.04] border border-[var(--color-border)] text-[var(--color-muted)] font-medium">HTML5</span>
-                  <span className="text-[12.5px] py-[5px] px-[11px] rounded-lg bg-white/[0.04] border border-[var(--color-border)] text-[var(--color-muted)] font-medium">CSS3</span>
-                  <span className="text-[12.5px] py-[5px] px-[11px] rounded-lg bg-white/[0.04] border border-[var(--color-border)] text-[var(--color-muted)] font-medium">JavaScript</span>
+                  {page.tags.map((tag) => (
+                    <span key={tag} className="text-[12.5px] py-[5px] px-[11px] rounded-lg bg-white/[0.04] border border-[var(--color-border)] text-[var(--color-muted)] font-medium">{tag}</span>
+                  ))}
                 </div>
                 <a href={page.link} className="inline-flex items-center gap-2 text-[var(--color-accent)] no-underline text-[13.5px] font-semibold tracking-tight hover:gap-3 transition-all duration-200">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" /><circle cx="12" cy="12" r="3" /></svg>
@@ -172,23 +181,26 @@ export default function Projects() {
                 <div className="text-[var(--color-muted-2)] text-[13px] mb-3.5 font-medium">
                   {t(concept.subKey)}
                 </div>
-                <h3 className="text-[21px] font-semibold tracking-[-0.02em] mb-2">
+                <h3 className="text-[21px] font-semibold tracking-[-0.02em] mb-3">
                   {t(concept.titleKey)}
                 </h3>
-                <p className="text-[var(--color-muted)] text-[14.5px] mb-4.5">
-                  {t(concept.descKey)}
-                </p>
+                <div className="flex flex-col gap-2.5 mb-4.5">
+                  {(["problem", "solution", "result"] as const).map((key) => (
+                    <div key={key} className="flex gap-2.5 text-[14px] leading-[1.55]">
+                      <span className="text-[var(--color-accent)] font-semibold whitespace-nowrap">{key.charAt(0).toUpperCase() + key.slice(1)}:</span>
+                      <span className="text-[var(--color-muted)]">{t(concept.caseStudy[key])}</span>
+                    </div>
+                  ))}
+                </div>
                 <ul className="text-[var(--color-muted)] text-[14.5px] mb-4.5 pl-[18px] flex flex-col gap-1.5">
                   {concept.bullets.map((bullet) => (
                     <li key={bullet}>{t(bullet)}</li>
                   ))}
                 </ul>
                 <div className="flex flex-wrap gap-[7px] mb-4.5">
-                  <span className="text-[12.5px] py-[5px] px-[11px] rounded-lg bg-white/[0.04] border border-[var(--color-border)] text-[var(--color-muted)] font-medium">UI/UX</span>
-                  <span className="text-[12.5px] py-[5px] px-[11px] rounded-lg bg-white/[0.04] border border-[var(--color-border)] text-[var(--color-muted)] font-medium">HTML5</span>
-                  <span className="text-[12.5px] py-[5px] px-[11px] rounded-lg bg-white/[0.04] border border-[var(--color-border)] text-[var(--color-muted)] font-medium">CSS3</span>
-                  <span className="text-[12.5px] py-[5px] px-[11px] rounded-lg bg-white/[0.04] border border-[var(--color-border)] text-[var(--color-muted)] font-medium">JavaScript</span>
-                  <span className="text-[12.5px] py-[5px] px-[11px] rounded-lg bg-white/[0.04] border border-[var(--color-border)] text-[var(--color-muted)] font-medium">Responsive</span>
+                  {concept.tags.map((tag) => (
+                    <span key={tag} className="text-[12.5px] py-[5px] px-[11px] rounded-lg bg-white/[0.04] border border-[var(--color-border)] text-[var(--color-muted)] font-medium">{tag}</span>
+                  ))}
                 </div>
                 <a href={concept.link} className="inline-flex items-center gap-2 text-[var(--color-accent)] no-underline text-[13.5px] font-semibold tracking-tight hover:gap-3 transition-all duration-200">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" /><circle cx="12" cy="12" r="3" /></svg>

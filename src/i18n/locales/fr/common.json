@@ -71,18 +71,24 @@
     "sub": "Applications logicielles et designs statiques réalisés pour des clients et des expérimentations.",
     "rizz": {
       "title": "Rizz — Chat Vidéo en Temps Réel",
-      "desc": "Architecture d'un monorepo de streaming vidéo WebRTC & Node.js, établissant les connexions pair-à-pair en moins de 1,5s, avec appariement de pairs en temps réel, modération de salles automatisée et séparation claire des responsabilités."
+      "desc": "Architecture d'un monorepo de streaming vidéo WebRTC & Node.js, établissant les connexions pair-à-pair en moins de 1,5s, avec appariement de pairs en temps réel, modération de salles automatisée et séparation claire des responsabilités.",
+      "problem": "Les utilisateurs avaient besoin d'un moyen fluide de se connecter en face-à-face en temps réel sans dépendre de plateformes tierces.",
+      "solution": "Construction d'un monorepo complet WebRTC & Node.js avec appariement de pairs en temps réel, modération automatisée des salles et architecture modulaire.",
+      "result": "Connexions pair-à-pair établies en moins de 1,5 seconde avec une expérience vidéo fluide et fiable."
     },
     "ai": {
       "sub": "Projet vedette · Projet de fin d'études (Preuve de Concept)",
       "title": "Traduction Vocale IA pour la Téléphonie",
-      "desc": "Assistant de traduction vocale bilingue en temps réel intégré dans des appels téléphoniques via Asterisk + FastAGI. Alimenté par les modèles Hugging Face pour la reconnaissance vocale, la traduction et la synthèse vocale — construit sur un backend évolutif Flask/Python."
+      "desc": "Assistant de traduction vocale bilingue en temps réel intégré dans des appels téléphoniques via Asterisk + FastAGI. Alimenté par les modèles Hugging Face pour la reconnaissance vocale, la traduction et la synthèse vocale — construit sur un backend évolutif Flask/Python.",
+      "problem": "Les barrières linguistiques lors des appels téléphoniques en direct empêchent une communication efficace entre/langues en temps réel.",
+      "solution": "Intégration d'Asterisk + FastAGI avec un backend Flask/Python, enchaînant les modèles Hugging Face pour la reconnaissance vocale, la traduction et la synthèse vocale dans un pipeline en temps réel.",
+      "result": "Traduction vocale bilingue en temps réel (<800ms) lors de flux téléphoniques directs, validée comme preuve de concept fonctionnelle."
     },
     "landing": "Landing Pages",
     "demo": "Voir la démo",
-    "lp1": { "sub": "Design statique · 01", "title": "Landing Page Personnalisée 1", "desc": "Une landing page statique moderne et interactive construite avec des variables CSS personnalisées, une typographie responsive et des mises en page HTML sémantiques." },
-    "lp2": { "sub": "Design statique · 02", "title": "Landing Page Personnalisée 2", "desc": "Une mise en page de landing page single-page optimisée avec des configurations UI soignées et un design responsive mobile-first." },
-    "lp3": { "sub": "Design statique · 03", "title": "Landing Page Personnalisée 3", "desc": "Un design de landing page responsive axé sur des mises en page fluides, des ajustements de navigation et une esthétique structurelle épurée." },
+    "lp1": { "sub": "Design statique · 01", "title": "Landing Page Personnalisée 1", "desc": "Une landing page statique moderne et interactive construite avec des variables CSS personnalisées, une typographie responsive et des mises en page HTML sémantiques.", "tags": ["HTML5", "CSS3", "JavaScript"] },
+    "lp2": { "sub": "Design statique · 02", "title": "Landing Page Personnalisée 2", "desc": "Une mise en page de landing page single-page optimisée avec des configurations UI soignées et un design responsive mobile-first.", "tags": ["HTML5", "CSS3", "JavaScript"] },
+    "lp3": { "sub": "Design statique · 03", "title": "Landing Page Personnalisée 3", "desc": "Un design de landing page responsive axé sur des mises en page fluides, des ajustements de navigation et une esthétique structurelle épurée.", "tags": ["HTML5", "CSS3", "JavaScript"] },
     "concept": {
       "h3": "Designs de concept proactifs",
       "intro": "Je n'attends pas que les clients demandent des designs — je construis proactivement des solutions. Voici deux prototypes web entièrement fonctionnels que j'ai développés de A à Z pour démontrer le prototypage rapide et une UX à fort taux de conversion dans l'e-commerce et les programmes de fidélité.",
@@ -93,17 +99,25 @@
       "sub": "Concept 1 · Marketplace digitale",
       "title": "Souq Digital",
       "desc": "Une marketplace digitale moderne et épurée, conçue pour maximiser la visibilité des produits et fluidifier le checkout — transformant une boutique e-commerce encombrée en une expérience d'achat fluide et orientée conversion.",
+      "problem": "Les boutiques e-commerce encombrées perdent des clients à cause d'une mauvaise visibilité des produits et de processus de paiement lourds.",
+      "solution": "Conception d'une marketplace épurée avec une typographie soignée, des boutons CTA à fort contraste et un layout en cartes adapté à tous les écrans.",
+      "result": "Une expérience d'achat fluide et orientée conversion, optimisée pour des checkouts sans friction.",
       "b1": "Typographie soignée et boutons d'appel à l'action à fort contraste",
       "b2": "Mise en page en cartes, adaptée au mobile comme au desktop",
-      "b3": "Parcours de checkout pensé pour la conversion"
+      "b3": "Parcours de checkout pensé pour la conversion",
+      "tags": ["UI/UX", "HTML5", "CSS3", "JavaScript", "Responsive"]
     },
     "redeemly": {
       "sub": "Concept 2 · Plateforme de fidélité",
       "title": "Redeemly",
       "desc": "Une landing page engageante et rassurante pour une plateforme de récompenses et de fidélité digitale, conçue avec des choix de mise en page pensés pour rendre le parcours de 'récupération de récompense' intuitif et motivant.",
+      "problem": "Les plateformes de fidélité paraissent souvent génériques et ne parviennent pas à enthousiasmer les utilisateurs pour l'utilisation de leurs points.",
+      "solution": "Création d'une landing page à fort impact psychologique avec une UI vibrante, des micro-interactions et un parcours narratif de la découverte à l'inscription.",
+      "result": "Une expérience engageante conçue pour la rétention, rendant le processus de redemption intuitif et gratifiant.",
       "b1": "UI vibrante avec micro-interactions fluides",
       "b2": "Parcours narratif de la découverte à l'inscription",
-      "b3": "Conçu pour la rétention et l'engagement utilisateur"
+      "b3": "Conçu pour la rétention et l'engagement utilisateur",
+      "tags": ["UI/UX", "HTML5", "CSS3", "JavaScript", "Responsive"]
     }
   },
   "edu": {
