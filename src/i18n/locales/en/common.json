@@ -11,6 +11,9 @@
     "tag": "Available for new opportunities",
     "headline": "I build fast, custom web & mobile apps to",
     "headlineAccent": "grow your business",
+    "headlineAccent2": "scale your vision",
+    "headlineAccent3": "accelerate growth",
+    "headlineAccent4": "boost your impact",
     "role": "Full Stack Developer — Angular · Next.js · Node.js · Laravel",
     "summary": "I build production-ready web platforms that businesses rely on daily. From telecom dashboards to real-time systems, I deliver clean, scalable solutions that solve real operational problems — not just write code.",
     "cta1": "Discuss your project",
@@ -86,11 +89,17 @@
       "solution": "Integrated Asterisk + FastAGI with a Flask/Python backend, chaining Hugging Face models for STT, translation, and TTS in a real-time pipeline.",
       "result": "Achieved sub-second (<800ms) bilingual voice translation during live telephony streams as a working proof of concept."
     },
-    "landing": "Landing Pages",
     "demo": "View Live Demo",
-    "lp1": { "sub": "Static Design · 01", "title": "Custom Landing Page One", "desc": "A modern, interactive static landing page built utilizing custom CSS variables, responsive typography, and semantic HTML layouts.", "tags": ["HTML5", "CSS3", "JavaScript"] },
-    "lp2": { "sub": "Static Design · 02", "title": "Custom Landing Page Two", "desc": "An optimized single-page landing layout featuring clean UI configurations and mobile-first responsive design implementation.", "tags": ["HTML5", "CSS3", "JavaScript"] },
-    "lp3": { "sub": "Static Design · 03", "title": "Custom Landing Page Three", "desc": "A responsive landing page design focused on smooth layouts, navigation adjustments, and clean structural aesthetics.", "tags": ["HTML5", "CSS3", "JavaScript"] },
+    "source": "Source Code",
+    "crypto": {
+      "section": "Featured Project",
+      "sub": "Next.js · Real-time Market Intelligence",
+      "title": "Crypto & Stocks Dashboard",
+      "desc": "An end-to-end financial analytics dashboard and portfolio tracking platform built with Next.js. Integrates real-time market data, interactive dynamic charting, custom browser price alerts, and a grounded AI assistant with Bring Your Own Key (BYOK) support.",
+      "problem": "Accessing real-time financial intelligence requires juggling multiple disjointed platforms with no unified view or AI-powered analysis.",
+      "solution": "Built a comprehensive dashboard with real-time market tickers, SWR-cached edge data fetching, dynamic Recharts visualizations, and a BYOK AI copilot (Gemini Flash) grounded in live market data.",
+      "result": "A single-pane-of-glass platform with near-zero latency updates, AI-driven insights, CSV/PDF export, and native browser price alerts."
+    },
     "concept": {
       "h3": "Proactive Concept Designs",
       "intro": "I don't just wait for clients to ask for designs — I proactively build solutions. These are two fully functional web prototypes I built from scratch to demonstrate rapid-prototyping and high-converting UX for the e-commerce and digital rewards spaces.",

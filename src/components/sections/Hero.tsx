@@ -2,7 +2,7 @@
 
 import { useI18n } from "@/i18n/I18nContext";
 import ScrollReveal from "@/components/ui/ScrollReveal";
-import { ChromaticTextReveal } from "@/components/motion/chromatic-text-reveal";
+import { Typewriter } from "@/components/motion/typewriter";
 
 export default function Hero() {
   const { t } = useI18n();
@@ -28,15 +28,10 @@ export default function Hero() {
             </div>
 
             <h1 className="font-bold leading-[1.02] tracking-[-0.035em] mb-5 text-[clamp(44px,6.5vw,82px)]">
-              {t("hero.headline")}
-              <ChromaticTextReveal
-                prefix=""
-                words={[t("hero.headlineAccent"), t("hero.headlineAccent")]}
-                colors={["#ff6b6b", "#ffa94d", "#ffd93d"]}
-                startOnView={false}
-                loop
-                pauseDuration={1.2}
-                className="text-[clamp(20px,6vw,82px)]"
+              {t("hero.headline")}{" "}
+              <Typewriter
+                words={[t("hero.headlineAccent"), t("hero.headlineAccent2"), t("hero.headlineAccent3"), t("hero.headlineAccent4")]}
+                className="text-[clamp(20px,6vw,82px)] text-[var(--color-accent)]"
               />
             </h1>
 

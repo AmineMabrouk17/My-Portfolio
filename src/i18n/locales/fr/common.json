@@ -11,6 +11,9 @@
     "tag": "Disponible pour de nouvelles opportunités",
     "headline": "Je conçois des applications web & mobiles rapides et sur-mesure pour",
     "headlineAccent": "faire grandir votre entreprise",
+    "headlineAccent2": "amplifier votre vision",
+    "headlineAccent3": "accélérer la croissance",
+    "headlineAccent4": "maximiser votre impact",
     "role": "Développeur Full Stack — Angular · Next.js · Node.js · Laravel",
     "summary": "Je construis des plateformes web prêtes pour la production dont les entreprises se servent quotidiennement. Des tableaux de bord télécom aux systèmes en temps réel, je livre des solutions propres et évolutives qui résolvent de vrais problèmes opérationnels.",
     "cta1": "Discuter de votre projet",
@@ -86,11 +89,17 @@
       "solution": "Intégration d'Asterisk + FastAGI avec un backend Flask/Python, enchaînant les modèles Hugging Face pour la reconnaissance vocale, la traduction et la synthèse vocale dans un pipeline en temps réel.",
       "result": "Traduction vocale bilingue en temps réel (<800ms) lors de flux téléphoniques directs, validée comme preuve de concept fonctionnelle."
     },
-    "landing": "Landing Pages",
     "demo": "Voir la démo",
-    "lp1": { "sub": "Design statique · 01", "title": "Landing Page Personnalisée 1", "desc": "Une landing page statique moderne et interactive construite avec des variables CSS personnalisées, une typographie responsive et des mises en page HTML sémantiques.", "tags": ["HTML5", "CSS3", "JavaScript"] },
-    "lp2": { "sub": "Design statique · 02", "title": "Landing Page Personnalisée 2", "desc": "Une mise en page de landing page single-page optimisée avec des configurations UI soignées et un design responsive mobile-first.", "tags": ["HTML5", "CSS3", "JavaScript"] },
-    "lp3": { "sub": "Design statique · 03", "title": "Landing Page Personnalisée 3", "desc": "Un design de landing page responsive axé sur des mises en page fluides, des ajustements de navigation et une esthétique structurelle épurée.", "tags": ["HTML5", "CSS3", "JavaScript"] },
+    "source": "Code Source",
+    "crypto": {
+      "section": "Projet Vedette",
+      "sub": "Next.js · Intelligence de marché en temps réel",
+      "title": "Crypto & Stocks Dashboard",
+      "desc": "Un tableau de bord complet d'analyse financière et de suivi de portefeuille construit avec Next.js. Intègre des données de marché en temps réel, des graphiques dynamiques interactifs, des alertes de prix personnalisées et un assistant IA avec support BYOK (Bring Your Own Key).",
+      "problem": "Accéder à l'intelligence financière en temps réel nécessite de jongler entre plusieurs plateformes disparates sans vue unifiée ni analyse IA.",
+      "solution": "Construction d'un tableau de bord complet avec des tickers de marché en temps réel, des données mises en cache via SWR, des visualisations Recharts dynamiques et un copilote IA BYOK (Gemini Flash) ancré dans les données de marché.",
+      "result": "Une plateforme à guichet unique avec des mises à jour à latence quasi nulle, des insights IA, l'export CSV/PDF et des alertes de prix natives dans le navigateur."
+    },
     "concept": {
       "h3": "Designs de concept proactifs",
       "intro": "Je n'attends pas que les clients demandent des designs — je construis proactivement des solutions. Voici deux prototypes web entièrement fonctionnels que j'ai développés de A à Z pour démontrer le prototypage rapide et une UX à fort taux de conversion dans l'e-commerce et les programmes de fidélité.",
