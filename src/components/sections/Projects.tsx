@@ -23,12 +23,6 @@ export default function Projects() {
     },
   ];
 
-  const landingPages = [
-    { icon: "window", subKey: "proj.lp1.sub", titleKey: "proj.lp1.title", descKey: "proj.lp1.desc", link: "/landing-1", tags: ["HTML5", "CSS3", "JavaScript"] },
-    { icon: "pager", subKey: "proj.lp2.sub", titleKey: "proj.lp2.title", descKey: "proj.lp2.desc", link: "/landing-2", tags: ["HTML5", "CSS3", "JavaScript"] },
-    { icon: "compass", subKey: "proj.lp3.sub", titleKey: "proj.lp3.title", descKey: "proj.lp3.desc", link: "/landing-3", tags: ["HTML5", "CSS3", "JavaScript"] },
-  ];
-
   const concepts = [
     {
       icon: "store",
@@ -117,43 +111,77 @@ export default function Projects() {
           ))}
         </div>
 
-        {/* Landing Pages */}
+        {/* Featured Project */}
         <ScrollReveal>
           <h3 className="text-[24px] font-semibold mb-6 text-[var(--color-accent)] flex items-center gap-2.5">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="2" y="2" width="20" height="20" rx="2" /><line x1="2" y1="8" x2="22" y2="8" /></svg>
-            {t("proj.landing")}
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 20V10M18 20V4M6 20v-4" /></svg>
+            {t("proj.crypto.section")}
           </h3>
         </ScrollReveal>
 
-        <div className="grid grid-cols-2 gap-[22px] max-lg:grid-cols-1">
-          {landingPages.map((page, i) => (
-            <ScrollReveal key={page.titleKey} delay={i * 80}>
-              <div className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-[20px] p-[30px] transition-all duration-300 relative overflow-hidden hover:-translate-y-1 hover:border-[var(--color-accent)]">
-                <div className="w-[54px] h-[54px] rounded-[14px] bg-[rgba(255,169,77,0.1)] text-[var(--color-accent-2)] grid place-items-center text-[22px] mb-4.5">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="2" y="3" width="20" height="14" rx="2" /><line x1="8" y1="21" x2="16" y2="21" /><line x1="12" y1="17" x2="12" y2="21" /></svg>
-                </div>
+        <div className="grid grid-cols-1 gap-[22px]">
+          <ScrollReveal>
+            <div className="group bg-[var(--color-surface)] border border-[var(--color-border)] rounded-[20px] overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-[var(--color-accent)]" style={{ boxShadow: "0 20px 40px -20px rgba(255,107,107,0.0)" }}>
+              <div className="relative w-full aspect-[16/9] max-h-[420px] overflow-hidden bg-[var(--color-bg)]">
+                <img
+                  src="/projects/crypto-stocks/hero-dashboard.png"
+                  alt="Crypto & Stocks Dashboard"
+                  className="w-full h-full object-cover transition-opacity duration-300 group-hover:opacity-0"
+                  loading="lazy"
+                />
+                <img
+                  src="/projects/crypto-stocks/demo.gif"
+                  alt="Crypto & Stocks Dashboard Demo"
+                  className="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                  loading="lazy"
+                />
+              </div>
+              <div className="p-[30px]">
                 <div className="text-[var(--color-muted-2)] text-[13px] mb-3.5 font-medium">
-                  {t(page.subKey)}
+                  {t("proj.crypto.sub")}
                 </div>
-                <h3 className="text-[21px] font-semibold tracking-[-0.02em] mb-2">
-                  {t(page.titleKey)}
+                <h3 className="text-[21px] font-semibold tracking-[-0.02em] mb-3">
+                  {t("proj.crypto.title")}
                 </h3>
                 <p className="text-[var(--color-muted)] text-[14.5px] mb-4.5">
-                  {t(page.descKey)}
+                  {t("proj.crypto.desc")}
                 </p>
+                <div className="flex flex-col gap-2.5 mb-4.5">
+                  {(["problem", "solution", "result"] as const).map((key) => (
+                    <div key={key} className="flex gap-2.5 text-[14px] leading-[1.55]">
+                      <span className="text-[var(--color-accent)] font-semibold whitespace-nowrap">{key.charAt(0).toUpperCase() + key.slice(1)}:</span>
+                      <span className="text-[var(--color-muted)]">{t(`proj.crypto.${key}`)}</span>
+                    </div>
+                  ))}
+                </div>
                 <div className="flex flex-wrap gap-[7px] mb-4.5">
-                  {page.tags.map((tag) => (
+                  {["Next.js", "TypeScript", "Tailwind CSS", "SWR", "Gemini API", "Recharts"].map((tag) => (
                     <span key={tag} className="text-[12.5px] py-[5px] px-[11px] rounded-lg bg-white/[0.04] border border-[var(--color-border)] text-[var(--color-muted)] font-medium">{tag}</span>
                   ))}
                 </div>
-                <a href={page.link} className="inline-flex items-center gap-2 text-[var(--color-accent)] no-underline text-[13.5px] font-semibold tracking-tight hover:gap-3 transition-all duration-200">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" /><circle cx="12" cy="12" r="3" /></svg>
-                  {t("proj.demo")}
-                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" /></svg>
-                </a>
+                <div className="flex flex-wrap gap-3">
+                  <a
+                    href="https://crypto-stocks.vercel.app"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl no-underline font-semibold text-sm bg-[var(--color-accent)] text-[var(--color-accent-dark)] transition-all duration-200 hover:-translate-y-0.5"
+                  >
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" /><circle cx="12" cy="12" r="3" /></svg>
+                    {t("proj.demo")}
+                  </a>
+                  <a
+                    href="https://github.com/AmineMabrouk17/crypto-stocks"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl no-underline font-semibold text-sm border border-[var(--color-border)] text-[var(--color-text)] transition-all duration-200 hover:-translate-y-0.5 hover:border-[var(--color-accent)]"
+                  >
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22" /></svg>
+                    {t("proj.source")}
+                  </a>
+                </div>
               </div>
-            </ScrollReveal>
-          ))}
+            </div>
+          </ScrollReveal>
         </div>
 
         {/* Concept Designs */}
