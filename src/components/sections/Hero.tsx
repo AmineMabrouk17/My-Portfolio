@@ -28,7 +28,7 @@ export default function Hero() {
             </div>
 
             <h1 className="font-bold leading-[1.02] tracking-[-0.035em] mb-5 text-[clamp(44px,6.5vw,82px)]">
-              {t("hero.headline")}
+              {t("hero.headline")}{" "}
               <Typewriter
                 words={[t("hero.headlineAccent")]}
                 className="text-[clamp(20px,6vw,82px)] text-[var(--color-accent)]"

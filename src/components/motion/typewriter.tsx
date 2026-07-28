@@ -1,12 +1,10 @@
 "use client";
 
 import { motion, useReducedMotion } from "motion/react";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
-const TYPING_SPEED = 80;
-const DELETING_SPEED = 40;
-const PAUSE_AFTER_TYPING = 2000;
-const PAUSE_AFTER_DELETING = 500;
+const WORD_INTERVAL = 180;
+const DISPLAY_DURATION = 2200;
 
 export function Typewriter({
   words,
@@ -17,55 +15,64 @@ export function Typewriter({
 }) {
   const reduceMotion = useReducedMotion();
   const [wordIndex, setWordIndex] = useState(0);
-  const [charIndex, setCharIndex] = useState(0);
-  const [isDeleting, setIsDeleting] = useState(false);
+  const [visibleCount, setVisibleCount] = useState(0);
+  const dirRef = useRef<1 | -1>(1);
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  const currentWord = words[wordIndex % words.length] ?? "";
+  const currentPhrase = words[wordIndex % words.length] ?? "";
+  const tokens = currentPhrase.split(" ");
 
   useEffect(() => {
     if (reduceMotion) return;
 
-    const timeout = setTimeout(
-      () => {
-        if (!isDeleting) {
-          if (charIndex < currentWord.length) {
-            setCharIndex((i) => i + 1);
-          } else {
-            setIsDeleting(true);
-          }
+    const tick = () => {
+      if (dirRef.current === 1) {
+        if (visibleCount < tokens.length) {
+          setVisibleCount((c) => c + 1);
+          timerRef.current = setTimeout(tick, WORD_INTERVAL);
         } else {
-          if (charIndex > 0) {
-            setCharIndex((i) => i - 1);
-          } else {
-            setIsDeleting(false);
-            setWordIndex((i) => (i + 1) % words.length);
-          }
+          dirRef.current = -1;
+          timerRef.current = setTimeout(tick, DISPLAY_DURATION);
         }
-      },
-      isDeleting
-        ? charIndex === 0
-          ? PAUSE_AFTER_DELETING
-          : DELETING_SPEED
-        : charIndex === currentWord.length
-          ? PAUSE_AFTER_TYPING
-          : TYPING_SPEED,
-    );
+      } else {
+        if (visibleCount > 0) {
+          setVisibleCount((c) => c - 1);
+          timerRef.current = setTimeout(tick, 50);
+        } else {
+          dirRef.current = 1;
+          setWordIndex((i) => (i + 1) % words.length);
+          timerRef.current = setTimeout(tick, WORD_INTERVAL);
+        }
+      }
+    };
 
-    return () => clearTimeout(timeout);
-  }, [charIndex, isDeleting, currentWord, wordIndex, words.length, reduceMotion]);
+    timerRef.current = setTimeout(tick, visibleCount === 0 ? 0 : WORD_INTERVAL);
+    return () => {
+      if (timerRef.current) clearTimeout(timerRef.current);
+    };
+  }, [visibleCount, tokens.length, wordIndex, words.length, reduceMotion]);
 
   if (reduceMotion) {
-    return <span className={className}>{words[0] ?? ""}</span>;
+    return <span className={className}>{currentPhrase}</span>;
   }
 
   return (
     <span className={className}>
-      {currentWord.slice(0, charIndex)}
-      <motion.span
-        animate={{ opacity: [1, 0] }}
-        transition={{ duration: 0.6, repeat: Infinity, repeatType: "reverse" }}
-        className="inline-block ml-[1px] w-[2px] h-[0.85em] bg-[var(--color-accent)] align-middle"
-      />
+      {tokens.map((token, i) => (
+        <motion.span
+          key={`${wordIndex}-${i}`}
+          initial={{ opacity: 0, y: 12, filter: "blur(6px)" }}
+          animate={
+            i < visibleCount
+              ? { opacity: 1, y: 0, filter: "blur(0px)" }
+              : { opacity: 0, y: -8, filter: "blur(4px)" }
+          }
+          transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
+          className="inline-block mr-[0.35em] whitespace-nowrap"
+        >
+          {token}
+        </motion.span>
+      ))}
     </span>
   );
 }
