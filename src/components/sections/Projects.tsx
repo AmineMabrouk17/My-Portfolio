@@ -122,18 +122,17 @@ export default function Projects() {
         <div className="grid grid-cols-1 gap-[22px]">
           <ScrollReveal>
             <div className="group bg-[var(--color-surface)] border border-[var(--color-border)] rounded-[20px] overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-[var(--color-accent)]" style={{ boxShadow: "0 20px 40px -20px rgba(255,107,107,0.0)" }}>
-              <div className="relative w-full aspect-[16/9] max-h-[420px] overflow-hidden bg-[var(--color-bg)]">
+              <div className="relative w-full min-h-[460px] max-lg:min-h-[320px] overflow-hidden" style={{ background: "linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 50%, #0a0a0f 100%)" }}>
                 <img
                   src="/projects/crypto-stocks/hero-dashboard.png"
                   alt="Crypto & Stocks Dashboard"
-                  className="w-full h-full object-cover transition-opacity duration-300 group-hover:opacity-0"
-                  loading="lazy"
+                  className="w-full h-full object-contain transition-opacity duration-300 group-hover:opacity-0"
+                  loading="eager"
                 />
                 <img
                   src="/projects/crypto-stocks/demo.gif"
                   alt="Crypto & Stocks Dashboard Demo"
-                  className="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-                  loading="lazy"
+                  className="absolute inset-0 w-full h-full object-contain opacity-0 transition-opacity duration-300 group-hover:opacity-100"
                 />
               </div>
               <div className="p-[30px]">
@@ -161,7 +160,7 @@ export default function Projects() {
                 </div>
                 <div className="flex flex-wrap gap-3">
                   <a
-                    href="https://crypto-stocks.vercel.app"
+                    href="https://crypto-stocks-web-taupe.vercel.app"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl no-underline font-semibold text-sm bg-[var(--color-accent)] text-[var(--color-accent-dark)] transition-all duration-200 hover:-translate-y-0.5"
