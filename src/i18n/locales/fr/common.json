@@ -89,6 +89,14 @@
       "solution": "Intégration d'Asterisk + FastAGI avec un backend Flask/Python, enchaînant les modèles Hugging Face pour la reconnaissance vocale, la traduction et la synthèse vocale dans un pipeline en temps réel.",
       "result": "Traduction vocale bilingue en temps réel (<800ms) lors de flux téléphoniques directs, validée comme preuve de concept fonctionnelle."
     },
+    "leadgen": {
+      "sub": "Astro · Lighthouse 100/100/100",
+      "title": "Page d'Atterrissage pour Génération de Leads",
+      "desc": "Une page d'atterrissage minimaliste et ultra-performante pour la capture de leads, construite avec Astro 7 et obtenant un score Lighthouse parfait. Intègre Google Tag Manager, GA4 et Meta Pixel avec déduplication des événements, un backend formulaire sans serveur (Formspree) et un système de design en CSS pur — le tout en ~10 KB.",
+      "problem": "Les pages d'atterrissage sont souvent alourdies par des frameworks JavaScript, nuisant aux taux de conversion à cause de temps de chargement lents et de mauvais Core Web Vitals.",
+      "solution": "Création d'une page statique sans framework JS avec Astro 7 SSG, tout le CSS intégré dans un seul fichier HTML. Intégration d'un backend formulaire sans serveur (Formspree) avec validation côté client, états de chargement et suivi d'événements analytics (GTM → GA4 + Meta Pixel) avec déduplication des événements.",
+      "result": "Une page de 10,4 KB avec Lighthouse 100/100/100, 0ms TBT, 0 CLS, 1,6s LCP et des analytics de qualité production."
+    },
     "demo": "Voir la démo",
     "source": "Code Source",
     "crypto": {

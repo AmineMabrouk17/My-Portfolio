@@ -89,6 +89,14 @@
       "solution": "Integrated Asterisk + FastAGI with a Flask/Python backend, chaining Hugging Face models for STT, translation, and TTS in a real-time pipeline.",
       "result": "Achieved sub-second (<800ms) bilingual voice translation during live telephony streams as a working proof of concept."
     },
+    "leadgen": {
+      "sub": "Astro · Lighthouse 100/100/100",
+      "title": "Lead Generation Landing Page",
+      "desc": "A minimal, high-performance lead capture landing page built with Astro 7, achieving a perfect Lighthouse score. Features Google Tag Manager, GA4, and Meta Pixel analytics events with event deduplication, Formspree serverless form backend, and a comprehensive CSS custom properties design system — all in ~10 KB total page weight.",
+      "problem": "Business landing pages are often bloated with JavaScript frameworks, hurting conversion rates through slow load times and poor Core Web Vitals.",
+      "solution": "Built a zero-JS-framework static landing page with Astro 7 SSG, inlining all CSS into a single HTML payload. Integrated a serverless form backend (Formspree) with client-side validation, loading states, and analytics event tracking (GTM → GA4 + Meta Pixel) with proper event deduplication.",
+      "result": "A 10.4 KB landing page with Lighthouse 100/100/100, 0ms TBT, 0 CLS, 1.6s LCP, and production-grade analytics — outperforming sites built with heavy frameworks."
+    },
     "demo": "View Live Demo",
     "source": "Source Code",
     "crypto": {
