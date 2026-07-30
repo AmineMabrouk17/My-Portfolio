@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useState, useCallback, type ReactNode } from "react";
+import { createContext, useContext, useState, useCallback, useEffect, type ReactNode } from "react";
 import en from "./locales/en/common.json";
 import fr from "./locales/fr/common.json";
 import ar from "./locales/ar/common.json";
@@ -25,14 +25,17 @@ function getNestedValue(obj: Record<string, unknown>, path: string): string {
   }, obj) as string;
 }
 
-function getInitialLocale(): Locale {
-  if (typeof window === "undefined") return "en";
-  const saved = localStorage.getItem("preferred-lang") as Locale | null;
-  return saved && saved in locales ? saved : "en";
-}
-
 export function I18nProvider({ children }: { children: ReactNode }) {
-  const [locale, setLocaleState] = useState<Locale>(getInitialLocale);
+  const [locale, setLocaleState] = useState<Locale>("en");
+
+  useEffect(() => {
+    const saved = localStorage.getItem("preferred-lang") as Locale | null;
+    if (saved && saved in locales) {
+      setLocaleState(saved);
+    }
+    document.documentElement.setAttribute("lang", saved && saved in locales ? saved : "en");
+    document.documentElement.setAttribute("dir", saved === "ar" ? "rtl" : "ltr");
+  }, []);
 
   const setLocale = useCallback((newLocale: Locale) => {
     setLocaleState(newLocale);
