@@ -1,12 +1,14 @@
 "use client";
 
-import { createContext, useContext, useState, useCallback, useEffect, type ReactNode } from "react";
+import { createContext, useContext, useState, useCallback, useSyncExternalStore, type ReactNode } from "react";
 import en from "./locales/en/common.json";
 import fr from "./locales/fr/common.json";
 import ar from "./locales/ar/common.json";
 
 const locales = { en, fr, ar } as const;
 type Locale = keyof typeof locales;
+
+const STORAGE_KEY = "preferred-lang";
 
 interface I18nContextType {
   locale: Locale;
@@ -25,23 +27,29 @@ function getNestedValue(obj: Record<string, unknown>, path: string): string {
   }, obj) as string;
 }
 
-export function I18nProvider({ children }: { children: ReactNode }) {
-  const [locale, setLocaleState] = useState<Locale>("en");
+function subscribeToStorage(cb: () => void): () => void {
+  window.addEventListener("storage", cb);
+  return () => window.removeEventListener("storage", cb);
+}
 
-  useEffect(() => {
-    const saved = localStorage.getItem("preferred-lang") as Locale | null;
-    if (saved && saved in locales) {
-      setLocaleState(saved);
-    }
-    document.documentElement.setAttribute("lang", saved && saved in locales ? saved : "en");
-    document.documentElement.setAttribute("dir", saved === "ar" ? "rtl" : "ltr");
-  }, []);
+function getSnapshot(): Locale {
+  const saved = localStorage.getItem(STORAGE_KEY) as Locale | null;
+  return saved && saved in locales ? saved : "en";
+}
+
+function getServerSnapshot(): Locale {
+  return "en";
+}
+
+export function I18nProvider({ children }: { children: ReactNode }) {
+  const locale = useSyncExternalStore(subscribeToStorage, getSnapshot, getServerSnapshot);
+  const [, forceRender] = useState(0);
 
   const setLocale = useCallback((newLocale: Locale) => {
-    setLocaleState(newLocale);
-    localStorage.setItem("preferred-lang", newLocale);
+    localStorage.setItem(STORAGE_KEY, newLocale);
     document.documentElement.setAttribute("lang", newLocale);
     document.documentElement.setAttribute("dir", newLocale === "ar" ? "rtl" : "ltr");
+    forceRender((n) => n + 1);
   }, []);
 
   const t = useCallback(
