@@ -28,6 +28,8 @@ export default function Projects() {
       caseStudy: { problem: "proj.leadgen.problem", solution: "proj.leadgen.solution", result: "proj.leadgen.result" },
       tags: ["Astro", "TypeScript", "Cloudflare Pages", "Formspree", "GTM", "GA4", "Meta Pixel"],
       date: "2026",
+      link: "https://lead-generation-landing-page.pages.dev",
+      source: "https://github.com/AmineMabrouk17/lead-generation-landing-page",
     },
   ];
 
@@ -116,6 +118,32 @@ export default function Projects() {
                     </span>
                   ))}
                 </div>
+                {(project.link || project.source) && (
+                  <div className="flex flex-wrap gap-3 mt-auto">
+                    {project.link && (
+                      <a
+                        href={project.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl no-underline font-semibold text-sm bg-[var(--color-accent)] text-[var(--color-accent-dark)] transition-all duration-200 hover:-translate-y-0.5"
+                      >
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" /><circle cx="12" cy="12" r="3" /></svg>
+                        {t("proj.demo")}
+                      </a>
+                    )}
+                    {project.source && (
+                      <a
+                        href={project.source}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl no-underline font-semibold text-sm border border-[var(--color-border)] text-[var(--color-text)] transition-all duration-200 hover:-translate-y-0.5 hover:border-[var(--color-accent)]"
+                      >
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22" /></svg>
+                        {t("proj.source")}
+                      </a>
+                    )}
+                  </div>
+                )}
               </div>
             </ScrollReveal>
           ))}
