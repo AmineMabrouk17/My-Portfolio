@@ -89,16 +89,24 @@
       "solution": "Intégration d'Asterisk + FastAGI avec un backend Flask/Python, enchaînant les modèles Hugging Face pour la reconnaissance vocale, la traduction et la synthèse vocale dans un pipeline en temps réel.",
       "result": "Traduction vocale bilingue en temps réel (<800ms) lors de flux téléphoniques directs, validée comme preuve de concept fonctionnelle."
     },
+    "leadgen": {
+      "sub": "Astro · Lighthouse 100/100/100",
+      "title": "Page d'Atterrissage pour Génération de Leads",
+      "desc": "Une page d'atterrissage minimaliste et ultra-performante pour la capture de leads, construite avec Astro 7 et obtenant un score Lighthouse parfait. Intègre Google Tag Manager, GA4 et Meta Pixel avec déduplication des événements, un backend formulaire sans serveur (Formspree) et un système de design en CSS pur — le tout en ~10 KB.",
+      "problem": "Les pages d'atterrissage sont souvent alourdies par des frameworks JavaScript, nuisant aux taux de conversion à cause de temps de chargement lents et de mauvais Core Web Vitals.",
+      "solution": "Création d'une page statique sans framework JS avec Astro 7 SSG, tout le CSS intégré dans un seul fichier HTML. Intégration d'un backend formulaire sans serveur (Formspree) avec validation côté client, états de chargement et suivi d'événements analytics (GTM → GA4 + Meta Pixel) avec déduplication des événements.",
+      "result": "Une page de 10,4 KB avec Lighthouse 100/100/100, 0ms TBT, 0 CLS, 1,6s LCP et des analytics de qualité production."
+    },
     "demo": "Voir la démo",
     "source": "Code Source",
     "crypto": {
       "section": "Projet Vedette",
       "sub": "Next.js · Intelligence de marché en temps réel",
       "title": "Crypto & Stocks Dashboard",
-      "desc": "Un tableau de bord complet d'analyse financière et de suivi de portefeuille construit avec Next.js. Intègre des données de marché en temps réel, des graphiques dynamiques interactifs, des alertes de prix personnalisées et un assistant IA avec support BYOK (Bring Your Own Key).",
+      "desc": "Un tableau de bord hybride crypto + actions avec streaming WebSocket Binance en temps réel, intégration Yahoo Finance, graphiques style TradingView (bascule courbe/bougie), prédictions de prix participatives sur 5 minutes, alertes de prix natives, et un assistant IA multi-fournisseur (7 modèles gratuits + BYOK pour OpenAI/Anthropic/Groq).",
       "problem": "Accéder à l'intelligence financière en temps réel nécessite de jongler entre plusieurs plateformes disparates sans vue unifiée ni analyse IA.",
-      "solution": "Construction d'un tableau de bord complet avec des tickers de marché en temps réel, des données mises en cache via SWR, des visualisations Recharts dynamiques et un copilote IA BYOK (Gemini Flash) ancré dans les données de marché.",
-      "result": "Une plateforme à guichet unique avec des mises à jour à latence quasi nulle, des insights IA, l'export CSV/PDF et des alertes de prix natives dans le navigateur."
+      "solution": "Construction d'un tableau de bord unifié combinant les flux WebSocket Binance (crypto) avec le polling Yahoo Finance (actions/ETF) sous un modèle de données unique, avec graphiques style TradingView, 7 modèles IA gratuits intégrés plus BYOK, des votes de prédiction participative résolus toutes les 5 minutes, et des alertes de prix natives.",
+      "result": "Une plateforme à guichet unique avec des mises à jour à latence quasi nulle via WebSocket, bascule de type de graphique, assistant IA multilingue ancré dans les données de marché, export CSV, et prédictions de sentiment participatives en temps réel."
     },
     "concept": {
       "h3": "Designs de concept proactifs",

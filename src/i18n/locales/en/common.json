@@ -89,16 +89,24 @@
       "solution": "Integrated Asterisk + FastAGI with a Flask/Python backend, chaining Hugging Face models for STT, translation, and TTS in a real-time pipeline.",
       "result": "Achieved sub-second (<800ms) bilingual voice translation during live telephony streams as a working proof of concept."
     },
+    "leadgen": {
+      "sub": "Astro · Lighthouse 100/100/100",
+      "title": "Lead Generation Landing Page",
+      "desc": "A minimal, high-performance lead capture landing page built with Astro 7, achieving a perfect Lighthouse score. Features Google Tag Manager, GA4, and Meta Pixel analytics events with event deduplication, Formspree serverless form backend, and a comprehensive CSS custom properties design system — all in ~10 KB total page weight.",
+      "problem": "Business landing pages are often bloated with JavaScript frameworks, hurting conversion rates through slow load times and poor Core Web Vitals.",
+      "solution": "Built a zero-JS-framework static landing page with Astro 7 SSG, inlining all CSS into a single HTML payload. Integrated a serverless form backend (Formspree) with client-side validation, loading states, and analytics event tracking (GTM → GA4 + Meta Pixel) with proper event deduplication.",
+      "result": "A 10.4 KB landing page with Lighthouse 100/100/100, 0ms TBT, 0 CLS, 1.6s LCP, and production-grade analytics — outperforming sites built with heavy frameworks."
+    },
     "demo": "View Live Demo",
     "source": "Source Code",
     "crypto": {
       "section": "Featured Project",
       "sub": "Next.js · Real-time Market Intelligence",
       "title": "Crypto & Stocks Dashboard",
-      "desc": "An end-to-end financial analytics dashboard and portfolio tracking platform built with Next.js. Integrates real-time market data, interactive dynamic charting, custom browser price alerts, and a grounded AI assistant with Bring Your Own Key (BYOK) support.",
-      "problem": "Accessing real-time financial intelligence requires juggling multiple disjointed platforms with no unified view or AI-powered analysis.",
-      "solution": "Built a comprehensive dashboard with real-time market tickers, SWR-cached edge data fetching, dynamic Recharts visualizations, and a BYOK AI copilot (Gemini Flash) grounded in live market data.",
-      "result": "A single-pane-of-glass platform with near-zero latency updates, AI-driven insights, CSV/PDF export, and native browser price alerts."
+      "desc": "A hybrid crypto + stock dashboard with real-time Binance WebSocket streaming, Yahoo Finance integration, TradingView-style charts (area/candlestick toggle), crowd-sourced 5-minute price predictions, browser-native price alerts, and a multi-provider AI chat assistant (7 free models + BYOK for OpenAI/Anthropic/Groq).",
+      "problem": "Accessing real-time financial intelligence requires juggling multiple disjointed platforms with no unified view or AI-powered analysis. Most dashboards specialize in one asset class.",
+      "solution": "Built a unified dashboard blending Binance WebSocket streams (crypto) with Yahoo Finance polling (stocks/ETFs) under a single data model, with TradingView-style charts, SWR-cached edge data fetching, 7 free built-in AI models plus BYOK (Gemini, Groq, OpenAI, Anthropic), crowd-sourced prediction voting resolved every 5 minutes, and browser-native price alerts.",
+      "result": "A single-pane-of-glass platform with near-zero latency updates from WebSocket streaming, chart type toggle (area/candlestick), multilingual AI assistant grounded in live market data, CSV export, and real-time crowd sentiment predictions."
     },
     "concept": {
       "h3": "Proactive Concept Designs",
