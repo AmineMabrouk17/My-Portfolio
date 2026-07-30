@@ -95,10 +95,10 @@
       "section": "Projet Vedette",
       "sub": "Next.js · Intelligence de marché en temps réel",
       "title": "Crypto & Stocks Dashboard",
-      "desc": "Un tableau de bord complet d'analyse financière et de suivi de portefeuille construit avec Next.js. Intègre des données de marché en temps réel, des graphiques dynamiques interactifs, des alertes de prix personnalisées et un assistant IA avec support BYOK (Bring Your Own Key).",
+      "desc": "Un tableau de bord hybride crypto + actions avec streaming WebSocket Binance en temps réel, intégration Yahoo Finance, graphiques style TradingView (bascule courbe/bougie), prédictions de prix participatives sur 5 minutes, alertes de prix natives, et un assistant IA multi-fournisseur (7 modèles gratuits + BYOK pour OpenAI/Anthropic/Groq).",
       "problem": "Accéder à l'intelligence financière en temps réel nécessite de jongler entre plusieurs plateformes disparates sans vue unifiée ni analyse IA.",
-      "solution": "Construction d'un tableau de bord complet avec des tickers de marché en temps réel, des données mises en cache via SWR, des visualisations Recharts dynamiques et un copilote IA BYOK (Gemini Flash) ancré dans les données de marché.",
-      "result": "Une plateforme à guichet unique avec des mises à jour à latence quasi nulle, des insights IA, l'export CSV/PDF et des alertes de prix natives dans le navigateur."
+      "solution": "Construction d'un tableau de bord unifié combinant les flux WebSocket Binance (crypto) avec le polling Yahoo Finance (actions/ETF) sous un modèle de données unique, avec graphiques style TradingView, 7 modèles IA gratuits intégrés plus BYOK, des votes de prédiction participative résolus toutes les 5 minutes, et des alertes de prix natives.",
+      "result": "Une plateforme à guichet unique avec des mises à jour à latence quasi nulle via WebSocket, bascule de type de graphique, assistant IA multilingue ancré dans les données de marché, export CSV, et prédictions de sentiment participatives en temps réel."
     },
     "concept": {
       "h3": "Designs de concept proactifs",

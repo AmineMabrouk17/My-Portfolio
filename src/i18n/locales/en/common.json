@@ -95,10 +95,10 @@
       "section": "Featured Project",
       "sub": "Next.js · Real-time Market Intelligence",
       "title": "Crypto & Stocks Dashboard",
-      "desc": "An end-to-end financial analytics dashboard and portfolio tracking platform built with Next.js. Integrates real-time market data, interactive dynamic charting, custom browser price alerts, and a grounded AI assistant with Bring Your Own Key (BYOK) support.",
-      "problem": "Accessing real-time financial intelligence requires juggling multiple disjointed platforms with no unified view or AI-powered analysis.",
-      "solution": "Built a comprehensive dashboard with real-time market tickers, SWR-cached edge data fetching, dynamic Recharts visualizations, and a BYOK AI copilot (Gemini Flash) grounded in live market data.",
-      "result": "A single-pane-of-glass platform with near-zero latency updates, AI-driven insights, CSV/PDF export, and native browser price alerts."
+      "desc": "A hybrid crypto + stock dashboard with real-time Binance WebSocket streaming, Yahoo Finance integration, TradingView-style charts (area/candlestick toggle), crowd-sourced 5-minute price predictions, browser-native price alerts, and a multi-provider AI chat assistant (7 free models + BYOK for OpenAI/Anthropic/Groq).",
+      "problem": "Accessing real-time financial intelligence requires juggling multiple disjointed platforms with no unified view or AI-powered analysis. Most dashboards specialize in one asset class.",
+      "solution": "Built a unified dashboard blending Binance WebSocket streams (crypto) with Yahoo Finance polling (stocks/ETFs) under a single data model, with TradingView-style charts, SWR-cached edge data fetching, 7 free built-in AI models plus BYOK (Gemini, Groq, OpenAI, Anthropic), crowd-sourced prediction voting resolved every 5 minutes, and browser-native price alerts.",
+      "result": "A single-pane-of-glass platform with near-zero latency updates from WebSocket streaming, chart type toggle (area/candlestick), multilingual AI assistant grounded in live market data, CSV export, and real-time crowd sentiment predictions."
     },
     "concept": {
       "h3": "Proactive Concept Designs",
