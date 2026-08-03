@@ -97,6 +97,20 @@
       "solution": "Built a zero-JS-framework static landing page with Astro 7 SSG, inlining all CSS into a single HTML payload. Integrated a serverless form backend (Formspree) with client-side validation, loading states, and analytics event tracking (GTM → GA4 + Meta Pixel) with proper event deduplication.",
       "result": "A 10.4 KB landing page with Lighthouse 100/100/100, 0ms TBT, 0 CLS, 1.6s LCP, and production-grade analytics — outperforming sites built with heavy frameworks."
     },
+    "budgetiq": {
+      "sub": "Next.js · AI-Powered Personal Finance",
+      "title": "BudgetIQ — AI Budget Planner",
+      "problem": "Managing personal finances across salary, expenses, and assets is fragmented, and most tools offer no intelligent way to log spending.",
+      "solution": "Built an open-source finance manager with Supabase auth, real-time dashboards, category charts, daily quotes, and a Gemini AI chatbot that parses natural language to suggest transactions.",
+      "result": "A planner where chatting in plain language instantly captures expenses and income into an interactive dashboard."
+    },
+    "trustless": {
+      "sub": "Solidity · Foundry · On-Chain",
+      "title": "TrustlessEscrow — Trust-Minimized Escrow",
+      "problem": "Peer-to-peer trades rely on centralized intermediaries that hold funds and charge fees, introducing trust and custody risk.",
+      "solution": "Engineered an on-chain escrow state machine in Solidity with deposit, delivery confirmation, disputes, and arbiter resolution, plus a wagmi/viem frontend deployed on Sepolia.",
+      "result": "A fully auditable, fee-free escrow protocol where funds release only on confirmed delivery or arbiter decision."
+    },
     "demo": "View Live Demo",
     "source": "Source Code",
     "crypto": {
@@ -107,36 +121,6 @@
       "problem": "Accessing real-time financial intelligence requires juggling multiple disjointed platforms with no unified view or AI-powered analysis. Most dashboards specialize in one asset class.",
       "solution": "Built a unified dashboard blending Binance WebSocket streams (crypto) with Yahoo Finance polling (stocks/ETFs) under a single data model, with TradingView-style charts, SWR-cached edge data fetching, 7 free built-in AI models plus BYOK (Gemini, Groq, OpenAI, Anthropic), crowd-sourced prediction voting resolved every 5 minutes, and browser-native price alerts.",
       "result": "A single-pane-of-glass platform with near-zero latency updates from WebSocket streaming, chart type toggle (area/candlestick), multilingual AI assistant grounded in live market data, CSV export, and real-time crowd sentiment predictions."
-    },
-    "concept": {
-      "h3": "Proactive Concept Designs",
-      "intro": "I don't just wait for clients to ask for designs — I proactively build solutions. These are two fully functional web prototypes I built from scratch to demonstrate rapid-prototyping and high-converting UX for the e-commerce and digital rewards spaces.",
-      "ctatext": "Want a custom, proactive prototype built specifically for your business to see what's possible?",
-      "ctabtn": "Let's talk"
-    },
-    "souq": {
-      "sub": "Concept 1 · Digital Marketplace",
-      "title": "Souq Digital",
-      "desc": "A sleek, modern digital marketplace concept designed to maximize product visibility and drive seamless checkouts — turning a cluttered e-commerce store into a frictionless, conversion-driven shopping experience.",
-      "problem": "Cluttered e-commerce stores lose customers to poor product visibility and clunky checkout flows.",
-      "solution": "Designed a sleek marketplace with clean typography, high-contrast CTAs, and a card-based layout that scales across devices.",
-      "result": "A frictionless, conversion-driven shopping experience optimized for seamless checkouts.",
-      "b1": "Clean typography & high-contrast call-to-action buttons",
-      "b2": "Card-based layout that scales across mobile and desktop",
-      "b3": "Checkout flow built for conversion",
-      "tags": ["UI/UX", "HTML5", "CSS3", "JavaScript", "Responsive"]
-    },
-    "redeemly": {
-      "sub": "Concept 2 · Loyalty & Rewards Platform",
-      "title": "Redeemly",
-      "desc": "An engaging, trust-building landing page for a digital rewards and loyalty platform, designed with psychology-driven layout choices to make the \"redeem\" process feel intuitive and exciting.",
-      "problem": "Loyalty platforms often feel generic and fail to excite users about redeeming their rewards.",
-      "solution": "Built a psychology-driven landing page with vibrant UI, micro-interactions, and a narrative flow from discovery to sign-up.",
-      "result": "An engaging experience designed for user retention, making the redeem process feel intuitive and rewarding.",
-      "b1": "Vibrant UI with smooth micro-interactions",
-      "b2": "Narrative flow from discovery to sign-up",
-      "b3": "Designed for user retention and engagement",
-      "tags": ["UI/UX", "HTML5", "CSS3", "JavaScript", "Responsive"]
     }
   },
   "edu": {

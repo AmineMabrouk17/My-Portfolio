@@ -97,6 +97,20 @@
       "solution": "Création d'une page statique sans framework JS avec Astro 7 SSG, tout le CSS intégré dans un seul fichier HTML. Intégration d'un backend formulaire sans serveur (Formspree) avec validation côté client, états de chargement et suivi d'événements analytics (GTM → GA4 + Meta Pixel) avec déduplication des événements.",
       "result": "Une page de 10,4 KB avec Lighthouse 100/100/100, 0ms TBT, 0 CLS, 1,6s LCP et des analytics de qualité production."
     },
+    "budgetiq": {
+      "sub": "Next.js · Finance personnelle propulsée par IA",
+      "title": "BudgetIQ — Planificateur budgétaire IA",
+      "problem": "Gérer ses finances personnelles (salaire, dépenses, actifs) est fragmenté, et la plupart des outils n'offrent aucun moyen intelligent de saisir ses dépenses.",
+      "solution": "Développement d'un gestionnaire financier open-source avec authentification Supabase, tableaux de bord en temps réel, graphiques par catégorie, citations quotidiennes et un chatbot Gemini qui analyse le langage naturel pour proposer des transactions.",
+      "result": "Un planificateur où discuter en langage naturel capture instantanément dépenses et revenus dans un tableau de bord interactif."
+    },
+    "trustless": {
+      "sub": "Solidity · Foundry · On-chain",
+      "title": "TrustlessEscrow — Escrow sans confiance",
+      "problem": "Les échanges pair-à-pair reposent sur des intermédiaires centralisés qui détiennent les fonds et prélèvent des frais, introduisant des risques de confiance et de garde.",
+      "solution": "Conception d'une machine à états d'escrow on-chain en Solidity avec dépôt, confirmation de livraison, litiges et résolution par arbitre, plus un frontend wagmi/viem déployé sur Sepolia.",
+      "result": "Un protocole d'escrow auditable et sans frais où les fonds ne sont libérés qu'après confirmation de livraison ou décision de l'arbitre."
+    },
     "demo": "Voir la démo",
     "source": "Code Source",
     "crypto": {
@@ -107,36 +121,6 @@
       "problem": "Accéder à l'intelligence financière en temps réel nécessite de jongler entre plusieurs plateformes disparates sans vue unifiée ni analyse IA.",
       "solution": "Construction d'un tableau de bord unifié combinant les flux WebSocket Binance (crypto) avec le polling Yahoo Finance (actions/ETF) sous un modèle de données unique, avec graphiques style TradingView, 7 modèles IA gratuits intégrés plus BYOK, des votes de prédiction participative résolus toutes les 5 minutes, et des alertes de prix natives.",
       "result": "Une plateforme à guichet unique avec des mises à jour à latence quasi nulle via WebSocket, bascule de type de graphique, assistant IA multilingue ancré dans les données de marché, export CSV, et prédictions de sentiment participatives en temps réel."
-    },
-    "concept": {
-      "h3": "Designs de concept proactifs",
-      "intro": "Je n'attends pas que les clients demandent des designs — je construis proactivement des solutions. Voici deux prototypes web entièrement fonctionnels que j'ai développés de A à Z pour démontrer le prototypage rapide et une UX à fort taux de conversion dans l'e-commerce et les programmes de fidélité.",
-      "ctatext": "Envie d'un prototype proactif sur mesure pour votre activité, pour voir ce qui est possible ?",
-      "ctabtn": "Discutons-en"
-    },
-    "souq": {
-      "sub": "Concept 1 · Marketplace digitale",
-      "title": "Souq Digital",
-      "desc": "Une marketplace digitale moderne et épurée, conçue pour maximiser la visibilité des produits et fluidifier le checkout — transformant une boutique e-commerce encombrée en une expérience d'achat fluide et orientée conversion.",
-      "problem": "Les boutiques e-commerce encombrées perdent des clients à cause d'une mauvaise visibilité des produits et de processus de paiement lourds.",
-      "solution": "Conception d'une marketplace épurée avec une typographie soignée, des boutons CTA à fort contraste et un layout en cartes adapté à tous les écrans.",
-      "result": "Une expérience d'achat fluide et orientée conversion, optimisée pour des checkouts sans friction.",
-      "b1": "Typographie soignée et boutons d'appel à l'action à fort contraste",
-      "b2": "Mise en page en cartes, adaptée au mobile comme au desktop",
-      "b3": "Parcours de checkout pensé pour la conversion",
-      "tags": ["UI/UX", "HTML5", "CSS3", "JavaScript", "Responsive"]
-    },
-    "redeemly": {
-      "sub": "Concept 2 · Plateforme de fidélité",
-      "title": "Redeemly",
-      "desc": "Une landing page engageante et rassurante pour une plateforme de récompenses et de fidélité digitale, conçue avec des choix de mise en page pensés pour rendre le parcours de 'récupération de récompense' intuitif et motivant.",
-      "problem": "Les plateformes de fidélité paraissent souvent génériques et ne parviennent pas à enthousiasmer les utilisateurs pour l'utilisation de leurs points.",
-      "solution": "Création d'une landing page à fort impact psychologique avec une UI vibrante, des micro-interactions et un parcours narratif de la découverte à l'inscription.",
-      "result": "Une expérience engageante conçue pour la rétention, rendant le processus de redemption intuitif et gratifiant.",
-      "b1": "UI vibrante avec micro-interactions fluides",
-      "b2": "Parcours narratif de la découverte à l'inscription",
-      "b3": "Conçu pour la rétention et l'engagement utilisateur",
-      "tags": ["UI/UX", "HTML5", "CSS3", "JavaScript", "Responsive"]
     }
   },
   "edu": {
