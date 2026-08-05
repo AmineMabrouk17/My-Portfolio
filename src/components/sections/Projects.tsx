@@ -37,6 +37,7 @@ export default function Projects() {
       titleKey: "proj.budgetiq.title",
       caseStudy: { problem: "proj.budgetiq.problem", solution: "proj.budgetiq.solution", result: "proj.budgetiq.result" },
       tags: ["Next.js", "TypeScript", "Supabase", "Gemini AI", "Tailwind CSS"],
+      link: "https://budgetiq-two.vercel.app",
       source: "https://github.com/AmineMabrouk17/BudgetIQ",
     },
     {
