@@ -98,6 +98,13 @@
       "solution": "Built a zero-JS-framework static landing page with Astro 7 SSG, inlining all CSS into a single HTML payload. Integrated a serverless form backend (Formspree) with client-side validation, loading states, and analytics event tracking (GTM → GA4 + Meta Pixel) with proper event deduplication.",
       "result": "A 10.4 KB landing page with Lighthouse 100/100/100, 0ms TBT, 0 CLS, 1.6s LCP, and production-grade analytics — outperforming sites built with heavy frameworks."
     },
+    "ecom": {
+      "sub": "Next.js · Full-Stack Commerce",
+      "title": "E-Commerce Website — Full-Stack Storefront",
+      "problem": "Running a real store means wiring catalog, cart, checkout, and fulfillment together — most templates stop at a static product grid.",
+      "solution": "Built a complete commerce engine: Supabase-backed catalog, auth, storage and order lifecycle, Stripe Checkout, locally-persisted cart, verified-purchase reviews, trending rankings, admin order fulfillment, and shipping rules.",
+      "result": "A single-system storefront where stock, reviews, payments, and fulfillment stay consistent from product page to delivered order."
+    },
     "budgetiq": {
       "sub": "Next.js · AI-Powered Personal Finance",
       "title": "BudgetIQ — AI Budget Planner",

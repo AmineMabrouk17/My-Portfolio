@@ -32,6 +32,15 @@ export default function Projects() {
       source: "https://github.com/AmineMabrouk17/lead-generation-landing-page",
     },
     {
+      icon: "cart",
+      subKey: "proj.ecom.sub",
+      titleKey: "proj.ecom.title",
+      caseStudy: { problem: "proj.ecom.problem", solution: "proj.ecom.solution", result: "proj.ecom.result" },
+      tags: ["Next.js", "TypeScript", "Tailwind CSS", "Supabase", "PostgreSQL", "Stripe", "Zustand"],
+      link: "https://ecommerce-website-puce-beta.vercel.app/",
+      source: "https://github.com/AmineMabrouk17/ecommerce-website",
+    },
+    {
       icon: "pie",
       subKey: "proj.budgetiq.sub",
       titleKey: "proj.budgetiq.title",
@@ -84,6 +93,8 @@ export default function Projects() {
                     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21.21 15.89A10 10 0 118 2.83" /><path d="M22 12A10 10 0 0012 2v10z" /></svg>
                   ) : project.icon === "shield" ? (
                     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 01-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 011-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 011.52 0C14.51 3.81 17 5 19 5a1 1 0 011 1z" /><polyline points="9 12 11 14 15 10" /></svg>
+                  ) : project.icon === "cart" ? (
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="9" cy="21" r="1" /><circle cx="20" cy="21" r="1" /><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6" /></svg>
                   ) : (
                     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z" /><line x1="4" y1="22" x2="4" y2="15" /></svg>
                   )}
