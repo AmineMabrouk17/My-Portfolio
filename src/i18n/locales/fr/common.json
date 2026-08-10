@@ -98,6 +98,13 @@
       "solution": "Création d'une page statique sans framework JS avec Astro 7 SSG, tout le CSS intégré dans un seul fichier HTML. Intégration d'un backend formulaire sans serveur (Formspree) avec validation côté client, états de chargement et suivi d'événements analytics (GTM → GA4 + Meta Pixel) avec déduplication des événements.",
       "result": "Une page de 10,4 KB avec Lighthouse 100/100/100, 0ms TBT, 0 CLS, 1,6s LCP et des analytics de qualité production."
     },
+    "ecom": {
+      "sub": "Next.js · Commerce full-stack",
+      "title": "Site E-Commerce — Boutique full-stack",
+      "problem": "Faire tourner une vraie boutique impose de relier catalogue, panier, paiement et expédition — la plupart des modèles s'arrêtent à une simple grille de produits.",
+      "solution": "Construction d'un moteur commercial complet : catalogue Supabase, authentification, stockage et cycle de vie des commandes, paiement Stripe Checkout, panier persistant en local, avis de clients vérifiés, classement tendance, traitement des commandes côté admin et règles d'expédition.",
+      "result": "Une boutique à système unique où stocks, avis, paiements et expédition restent cohérents de la page produit jusqu'à la livraison de la commande."
+    },
     "budgetiq": {
       "sub": "Next.js · Finance personnelle propulsée par IA",
       "title": "BudgetIQ — Planificateur budgétaire IA",
