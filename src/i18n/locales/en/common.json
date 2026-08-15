@@ -82,13 +82,12 @@
       "solution": "Built a full WebRTC & Node.js monorepo with real-time peer matching, automated room moderation, and clean architecture.",
       "result": "Peer-to-peer connections established in under 1.5 seconds with a smooth, reliable video experience."
     },
-    "ai": {
-      "sub": "Featured · Graduation Project (Proof of Concept)",
-      "title": "AI Voice Translation for Telephony",
-      "desc": "Real-time bilingual voice translation assistant integrated into live phone calls via Asterisk + FastAGI. Powered by Hugging Face models for STT, translation, and TTS — built on a scalable Flask/Python backend.",
-      "problem": "Language barriers during live phone calls prevent effective cross-lingual communication in real time.",
-      "solution": "Integrated Asterisk + FastAGI with a Flask/Python backend, chaining Hugging Face models for STT, translation, and TTS in a real-time pipeline.",
-      "result": "Achieved sub-second (<800ms) bilingual voice translation during live telephony streams as a working proof of concept."
+    "castcue": {
+      "sub": "Next.js · Cloudflare Workers",
+      "title": "Cast n Cue — Movie & TV Tracker",
+      "problem": "Juggling a dozen shows at once means losing track of where you stopped, what airs next, and what's worth watching.",
+      "solution": "Built an episode-level media tracker on Cloudflare Workers + D1 with TMDB/Trakt/TVmaze search, half-star ratings, private autosaved notes, watchlist roulette, and Google sign-in via Better Auth.",
+      "result": "A private-by-design, free app that bookmarks movies, series, and episodes — so your watchlist and progress are always one click away."
     },
     "leadgen": {
       "sub": "Astro · Lighthouse 100/100/100",

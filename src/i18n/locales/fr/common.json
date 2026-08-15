@@ -82,13 +82,12 @@
       "solution": "Construction d'un monorepo complet WebRTC & Node.js avec appariement de pairs en temps réel, modération automatisée des salles et architecture modulaire.",
       "result": "Connexions pair-à-pair établies en moins de 1,5 seconde avec une expérience vidéo fluide et fiable."
     },
-    "ai": {
-      "sub": "Projet vedette · Projet de fin d'études (Preuve de Concept)",
-      "title": "Traduction Vocale IA pour la Téléphonie",
-      "desc": "Assistant de traduction vocale bilingue en temps réel intégré dans des appels téléphoniques via Asterisk + FastAGI. Alimenté par les modèles Hugging Face pour la reconnaissance vocale, la traduction et la synthèse vocale — construit sur un backend évolutif Flask/Python.",
-      "problem": "Les barrières linguistiques lors des appels téléphoniques en direct empêchent une communication efficace entre/langues en temps réel.",
-      "solution": "Intégration d'Asterisk + FastAGI avec un backend Flask/Python, enchaînant les modèles Hugging Face pour la reconnaissance vocale, la traduction et la synthèse vocale dans un pipeline en temps réel.",
-      "result": "Traduction vocale bilingue en temps réel (<800ms) lors de flux téléphoniques directs, validée comme preuve de concept fonctionnelle."
+    "castcue": {
+      "sub": "Next.js · Cloudflare Workers",
+      "title": "Cast n Cue — Suivi de films & séries",
+      "problem": "Suivre une douzaine de séries à la fois signifie perdre la trace de où vous en êtes, de ce qui sort ensuite et de ce qui vaut la peine d'être regardé.",
+      "solution": "Développement d'un tracker média au niveau épisode sur Cloudflare Workers + D1 avec recherche TMDB/Trakt/TVmaze, notations en demi-étoiles, notes privées à sauvegarde automatique, roulette de liste de visionnage et connexion Google via Better Auth.",
+      "result": "Une application gratuite et privée par conception qui enregistre films, séries et épisodes — votre liste et votre progression toujours à un clic."
     },
     "leadgen": {
       "sub": "Astro · Lighthouse 100/100/100",
