@@ -11,15 +11,17 @@ export default function Projects() {
       icon: "video",
       titleKey: "proj.rizz.title",
       caseStudy: { problem: "proj.rizz.problem", solution: "proj.rizz.solution", result: "proj.rizz.result" },
-      tags: ["Next.js", "WebRTC", "Node.js", "Supabase", "Monorepo"],
+      tags: ["Next.js", "TypeScript", "WebRTC", "Node.js", "Express", "Supabase", "Turborepo"],
       date: "2025 – Present",
     },
     {
-      icon: "tower",
-      subKey: "proj.ai.sub",
-      titleKey: "proj.ai.title",
-      caseStudy: { problem: "proj.ai.problem", solution: "proj.ai.solution", result: "proj.ai.result" },
-      tags: ["Hugging Face", "Python", "Flask", "Machine Learning"],
+      icon: "clapper",
+      subKey: "proj.castcue.sub",
+      titleKey: "proj.castcue.title",
+      caseStudy: { problem: "proj.castcue.problem", solution: "proj.castcue.solution", result: "proj.castcue.result" },
+      tags: ["Next.js", "React 19", "TypeScript", "Cloudflare Workers", "Cloudflare D1", "Better Auth", "HeroUI"],
+      link: "https://cast-cue.cast-cue.workers.dev",
+      source: "https://github.com/AmineMabrouk17/Cast-Cue",
     },
     {
       icon: "zap",
@@ -36,7 +38,7 @@ export default function Projects() {
       subKey: "proj.ecom.sub",
       titleKey: "proj.ecom.title",
       caseStudy: { problem: "proj.ecom.problem", solution: "proj.ecom.solution", result: "proj.ecom.result" },
-      tags: ["Next.js", "TypeScript", "Tailwind CSS", "Supabase", "PostgreSQL", "Stripe", "Zustand"],
+      tags: ["Next.js", "TypeScript", "Tailwind CSS", "shadcn/ui", "Supabase", "PostgreSQL", "Stripe", "Zustand"],
       link: "https://ecommerce-website-puce-beta.vercel.app/",
       source: "https://github.com/AmineMabrouk17/ecommerce-website",
     },
@@ -45,7 +47,7 @@ export default function Projects() {
       subKey: "proj.budgetiq.sub",
       titleKey: "proj.budgetiq.title",
       caseStudy: { problem: "proj.budgetiq.problem", solution: "proj.budgetiq.solution", result: "proj.budgetiq.result" },
-      tags: ["Next.js", "TypeScript", "Supabase", "Gemini AI", "Tailwind CSS"],
+      tags: ["Next.js", "TypeScript", "Supabase", "Gemini AI", "Tailwind CSS", "DaisyUI", "Recharts"],
       link: "https://budgetiq-two.vercel.app",
       source: "https://github.com/AmineMabrouk17/BudgetIQ",
     },
@@ -95,6 +97,8 @@ export default function Projects() {
                     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 01-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 011-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 011.52 0C14.51 3.81 17 5 19 5a1 1 0 011 1z" /><polyline points="9 12 11 14 15 10" /></svg>
                   ) : project.icon === "cart" ? (
                     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="9" cy="21" r="1" /><circle cx="20" cy="21" r="1" /><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6" /></svg>
+                  ) : project.icon === "clapper" ? (
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="2" y="2" width="20" height="20" rx="2.18" /><line x1="7" y1="2" x2="7" y2="22" /><line x1="17" y1="2" x2="17" y2="22" /><line x1="2" y1="12" x2="22" y2="12" /><line x1="2" y1="7" x2="7" y2="7" /><line x1="2" y1="17" x2="7" y2="17" /><line x1="17" y1="17" x2="22" y2="17" /><line x1="17" y1="7" x2="22" y2="7" /></svg>
                   ) : (
                     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z" /><line x1="4" y1="22" x2="4" y2="15" /></svg>
                   )}
@@ -204,7 +208,7 @@ export default function Projects() {
                   ))}
                 </div>
                 <div className="flex flex-wrap gap-[7px] mb-4.5">
-                  {["Next.js", "TypeScript", "Tailwind CSS", "Motion", "lightweight-charts", "Binance WebSocket", "SWR", "Gemini API", "Groq", "Supabase"].map((tag) => (
+                  {["Next.js", "TypeScript", "Tailwind CSS", "Motion", "lightweight-charts", "Binance WebSocket", "Yahoo Finance", "SWR", "Gemini API", "Groq", "Turborepo"].map((tag) => (
                     <span key={tag} className="text-[12.5px] py-[5px] px-[11px] rounded-lg bg-white/[0.04] border border-[var(--color-border)] text-[var(--color-muted)] font-medium">{tag}</span>
                   ))}
                 </div>
