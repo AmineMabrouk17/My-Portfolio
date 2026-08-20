@@ -62,10 +62,10 @@ function CursorFollower({ containerRef }: { containerRef: React.RefObject<HTMLDi
 function MockWidgetCastCue() {
   const movies = [
     { w: "w-10", h: "h-14", from: "from-[#ff6b6b]/30", to: "to-[#ffa94d]/20" },
-    { w: "w-10", h: "h-14", from: "from-[#ffa94d]/30", to: "to-[#ffd93d]/20" },
-    { w: "w-10", h: "h-14", from: "from-[#ffd93d]/30", to: "to-[#ff6b6b]/20" },
+    { w: "w-10", h: "h-14", from: "from-[#ffa94d]/30", to: "to-[#FFE566]/20" },
+    { w: "w-10", h: "h-14", from: "from-[#FFE566]/30", to: "to-[#ff6b6b]/20" },
     { w: "w-10", h: "h-14", from: "from-[#ff6b6b]/20", to: "to-[#ffa94d]/30" },
-    { w: "w-10", h: "h-14", from: "from-[#ffa94d]/20", to: "to-[#ffd93d]/30" },
+    { w: "w-10", h: "h-14", from: "from-[#ffa94d]/20", to: "to-[#FFE566]/30" },
   ];
   return (
     <div className="flex h-full w-full flex-col p-5 gap-3">
@@ -77,12 +77,12 @@ function MockWidgetCastCue() {
       <div className="flex-1 rounded-xl bg-white/[0.04] border border-white/[0.06] p-3 flex flex-col gap-2">
         <div className="flex items-center gap-2">
           <div className="h-2.5 rounded-full bg-white/10 w-24" />
-          <div className="h-2 rounded-full bg-[#FFD93D]/40 w-12" />
+          <div className="h-2 rounded-full bg-[#FFE566]/40 w-12" />
         </div>
         <div className="h-2 rounded-full bg-white/[0.06] w-40" />
         <div className="flex gap-1 mt-auto">
           {[1,2,3,4,5].map(i => (
-            <svg key={i} width="12" height="12" viewBox="0 0 24 24" fill={i <= 3 ? "#FFD93D" : "none"} stroke="#FFD93D" strokeWidth="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
+            <svg key={i} width="12" height="12" viewBox="0 0 24 24" fill={i <= 3 ? "#FFE566" : "none"} stroke="#FFE566" strokeWidth="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
           ))}
         </div>
       </div>
@@ -93,7 +93,7 @@ function MockWidgetCastCue() {
 function MockWidgetLeadGen() {
   return (
     <div className="flex h-full w-full flex-col p-5 gap-3">
-      <div className="h-5 rounded-lg bg-gradient-to-r from-[#ff6b6b]/20 via-[#ffa94d]/15 to-[#ffd93d]/10 w-32" />
+      <div className="h-5 rounded-lg bg-gradient-to-r from-[#ff6b6b]/20 via-[#ffa94d]/15 to-[#FFE566]/10 w-32" />
       <div className="h-3 rounded-md bg-white/[0.06] w-48" />
       <div className="h-3 rounded-md bg-white/[0.04] w-36" />
       <div className="flex gap-2 mt-2">
@@ -112,7 +112,7 @@ function MockWidgetLeadGen() {
 }
 
 function MockWidgetEcom() {
-  const items = ["from-[#ff6b6b]/25", "from-[#ffa94d]/25", "from-[#ffd93d]/25"];
+  const items = ["from-[#ff6b6b]/25", "from-[#ffa94d]/25", "from-[#FFE566]/25"];
   return (
     <div className="flex h-full w-full flex-col p-5 gap-3">
       <div className="flex items-center justify-between">
@@ -181,7 +181,7 @@ function MockWidgetEscrow() {
         <div className="flex flex-col items-center gap-1">
           <div className="h-px w-10 bg-gradient-to-r from-[#ff6b6b] to-[#22c55e]" />
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-[var(--color-accent-2)]"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>
-          <div className="h-px w-10 bg-gradient-to-r from-[#22c55e] to-[#ffd93d]" />
+          <div className="h-px w-10 bg-gradient-to-r from-[#22c55e] to-[#FFE566]" />
         </div>
         <div className="flex-1 rounded-xl bg-white/[0.04] border border-white/[0.06] p-3 text-center">
           <div className="w-8 h-8 rounded-full bg-[#22c55e]/20 mx-auto mb-2 flex items-center justify-center">
