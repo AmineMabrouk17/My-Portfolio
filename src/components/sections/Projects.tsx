@@ -217,6 +217,7 @@ interface Project {
   link?: string;
   source?: string;
   featured?: boolean;
+  screenshot?: string;
 }
 
 const projects: Project[] = [
@@ -228,6 +229,7 @@ const projects: Project[] = [
     tags: ["Next.js", "React 19", "TypeScript", "Cloudflare Workers", "Cloudflare D1", "Better Auth", "HeroUI"],
     link: "https://cast-cue.cast-cue.workers.dev",
     source: "https://github.com/AmineMabrouk17/Cast-Cue",
+    screenshot: "/projects/castncue.png",
   },
   {
     slug: "leadgen",
@@ -238,6 +240,7 @@ const projects: Project[] = [
     date: "2026",
     link: "https://lead-generation-landing-page.pages.dev",
     source: "https://github.com/AmineMabrouk17/lead-generation-landing-page",
+    screenshot: "/projects/lead-generation.png",
   },
   {
     slug: "ecom",
@@ -247,6 +250,7 @@ const projects: Project[] = [
     tags: ["Next.js", "TypeScript", "Tailwind CSS", "shadcn/ui", "Supabase", "PostgreSQL", "Stripe", "Zustand"],
     link: "https://ecommerce-website-puce-beta.vercel.app/",
     source: "https://github.com/AmineMabrouk17/ecommerce-website",
+    screenshot: "/projects/ecommerce.png",
   },
   {
     slug: "budgetiq",
@@ -256,6 +260,7 @@ const projects: Project[] = [
     tags: ["Next.js", "TypeScript", "Supabase", "Gemini AI", "Tailwind CSS", "DaisyUI", "Recharts"],
     link: "https://budgetiq-two.vercel.app",
     source: "https://github.com/AmineMabrouk17/BudgetIQ",
+    screenshot: "/projects/budgetiq.png",
   },
   {
     slug: "trustless",
@@ -265,6 +270,7 @@ const projects: Project[] = [
     tags: ["Solidity", "Foundry", "Next.js", "wagmi", "viem"],
     link: "https://trustless-escrow-demo.vercel.app",
     source: "https://github.com/AmineMabrouk17/nextjs-solidity-escrow",
+    screenshot: "/projects/trustlesseScrow.png",
   },
 ];
 
@@ -320,7 +326,16 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
 
         <div className="relative aspect-[16/10] w-full bg-[#0a0d14] border-b border-[var(--color-border)] overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-white/[0.02] to-transparent" />
-          {MockWidget && <MockWidget />}
+          {project.screenshot ? (
+            <img
+              src={project.screenshot}
+              alt={t(project.titleKey)}
+              className="w-full h-full object-cover absolute inset-0"
+              loading="lazy"
+            />
+          ) : (
+            MockWidget && <MockWidget />
+          )}
         </div>
 
         <div className="p-[30px]">
