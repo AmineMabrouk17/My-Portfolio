@@ -1,32 +1,12 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 import { useI18n } from "@/i18n/I18nContext";
 import LanguageSwitcher from "./LanguageSwitcher";
 
 export default function Navbar() {
   const { t } = useI18n();
-  const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
-
-  const handleScroll = useCallback(() => {
-    setIsScrolled(window.scrollY > 30);
-  }, []);
-
-  useEffect(() => {
-    let ticking = false;
-    const onScroll = () => {
-      if (!ticking) {
-        requestAnimationFrame(() => {
-          handleScroll();
-          ticking = false;
-        });
-        ticking = true;
-      }
-    };
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, [handleScroll]);
 
   useEffect(() => {
     if (isMobileOpen) {
@@ -40,84 +20,92 @@ export default function Navbar() {
   }, [isMobileOpen]);
 
   const navLinks = [
+    { href: "#projects", key: "nav.work" },
     { href: "#about", key: "nav.about" },
-    { href: "#skills", key: "nav.skills" },
-    { href: "#experience", key: "nav.experience" },
-    { href: "#projects", key: "nav.projects" },
-    { href: "#education", key: "nav.education" },
+    { href: "#skills", key: "nav.services" },
   ];
 
   return (
-    <nav
-      className="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl border-b transition-all duration-300"
-      style={{
-        padding: isScrolled ? "12px 0" : "18px 0",
-        background: isScrolled
-          ? "rgba(10, 13, 20, 0.85)"
-          : "rgba(10, 13, 20, 0.6)",
-        borderColor: "var(--color-border)",
-      }}
-    >
-      <div className="max-w-[1200px] mx-auto px-8 flex items-center justify-between">
-        <a href="#top" className="flex items-center gap-2.5 no-underline">
-          <div
-            className="w-[34px] h-[34px] rounded-[9px] bg-gradient grid place-items-center text-[var(--color-accent-dark)] font-extrabold text-[15px]"
-            style={{ boxShadow: "0 0 24px rgba(255, 107, 107, 0.4)" }}
-          >
-            AM
-          </div>
-          <span className="hidden sm:inline text-[var(--color-text)] font-semibold text-[15px] tracking-tight">
-            Amine Mabrouk
-          </span>
+    <header className="fixed top-6 left-0 w-full flex justify-center z-50 px-5">
+      <nav
+        className="flex items-center justify-between w-full max-w-[620px] h-[52px] rounded-full border backdrop-blur-xl transition-all duration-300"
+        style={{
+          padding: "5px 6px 5px 24px",
+          background: "rgba(24, 26, 30, 0.72)",
+          borderColor: "rgba(255, 255, 255, 0.09)",
+          boxShadow: "0 20px 40px rgba(0, 0, 0, 0.45)",
+        }}
+      >
+        <a
+          href="#top"
+          className="text-[0.88rem] font-bold tracking-[0.22em] uppercase text-[var(--color-text)] no-underline"
+        >
+          A M
         </a>
 
         <div
           className={`${
             isMobileOpen ? "flex" : "hidden"
-          } lg:flex items-center gap-2 max-lg:absolute max-lg:top-full max-lg:left-0 max-lg:right-0 max-lg:flex-col max-lg:bg-[rgba(10,13,20,0.98)] max-lg:p-8 max-lg:gap-1.5 max-lg:border-b`}
-          style={{ borderColor: "var(--color-border)" }}
+          } lg:flex items-center gap-6 max-lg:absolute max-lg:top-full max-lg:left-1/2 max-lg:-translate-x-1/2 max-lg:flex-col max-lg:bg-[rgba(24,26,30,0.98)] max-lg:p-6 max-lg:gap-3 max-lg:rounded-2xl max-lg:border max-lg:min-w-[220px] max-lg:mt-3`}
+          style={{ borderColor: "rgba(255, 255, 255, 0.09)" }}
         >
           {navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className="text-[var(--color-muted)] no-underline text-sm font-medium px-3.5 py-2 rounded-lg transition-all duration-200 hover:text-[var(--color-text)] hover:bg-white/5"
+              className="text-[var(--color-muted)] no-underline text-[0.86rem] font-medium transition-colors duration-200 hover:text-[var(--color-text)]"
               onClick={() => setIsMobileOpen(false)}
             >
               {t(link.key)}
             </a>
           ))}
-          <a
-            href="#contact"
-            className="bg-[var(--color-text)] text-[var(--color-accent-dark)] no-underline px-4 py-2.5 rounded-[10px] font-semibold text-sm transition-all duration-200 hover:bg-[var(--color-accent)] hover:-translate-y-px"
-            onClick={() => setIsMobileOpen(false)}
-          >
-            {t("nav.contact")}
-          </a>
           <LanguageSwitcher />
         </div>
 
-        <button
-          className="lg:hidden bg-transparent border-none text-[var(--color-text)] text-[22px] cursor-pointer"
-          onClick={() => setIsMobileOpen(!isMobileOpen)}
-          aria-label="Toggle menu"
-        >
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
+        <div className="flex items-center gap-1.5">
+          <a
+            href="#contact"
+            className="inline-flex items-center gap-1.5 bg-[var(--color-text)] text-[var(--color-accent-dark)] no-underline px-[18px] py-2 rounded-full text-[0.86rem] font-semibold transition-all duration-200 hover:-translate-y-px hover:opacity-95"
+            onClick={() => setIsMobileOpen(false)}
           >
-            {isMobileOpen ? (
-              <path d="M18 6L6 18M6 6l12 12" />
-            ) : (
-              <path d="M3 12h18M3 6h18M3 18h18" />
-            )}
-          </svg>
-        </button>
-      </div>
-    </nav>
+            {t("nav.contact")}
+            <svg
+              width="13"
+              height="13"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <line x1="5" y1="12" x2="19" y2="12" />
+              <polyline points="12 5 19 12 12 19" />
+            </svg>
+          </a>
+
+          <button
+            className="lg:hidden bg-transparent border-none text-[var(--color-text)] text-[22px] cursor-pointer p-2"
+            onClick={() => setIsMobileOpen(!isMobileOpen)}
+            aria-label="Toggle menu"
+          >
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+            >
+              {isMobileOpen ? (
+                <path d="M18 6L6 18M6 6l12 12" />
+              ) : (
+                <path d="M3 12h18M3 6h18M3 18h18" />
+              )}
+            </svg>
+          </button>
+        </div>
+      </nav>
+    </header>
   );
 }
