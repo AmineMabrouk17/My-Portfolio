@@ -1,26 +1,17 @@
 {
   "nav": {
+    "work": "Work",
     "about": "About",
-    "skills": "Skills",
-    "experience": "Experience",
-    "projects": "Projects",
-    "education": "Education",
-    "contact": "Get in touch"
+    "services": "Services",
+    "contact": "Contact"
   },
   "hero": {
-    "tag": "Available for new opportunities",
-    "headline": "I build fast, custom web & mobile apps to",
-    "headlineAccent": "grow your business",
-    "headlineAccent2": "scale your vision",
-    "headlineAccent3": "accelerate growth",
-    "headlineAccent4": "boost your impact",
-    "role": "Full Stack Developer — Angular · Next.js · Node.js · Laravel",
-    "summary": "I build production-ready web platforms that businesses rely on daily. From telecom dashboards to real-time systems, I deliver clean, scalable solutions that solve real operational problems — not just write code.",
-    "cta1": "Discuss your project",
-    "cta2": "View projects",
-    "svc1": { "title": "Web Applications", "desc": "Full stack apps with Angular, Next.js & Laravel" },
-    "svc2": { "title": "Dashboards & Admin", "desc": "Internal tools and operational dashboards" },
-    "svc3": { "title": "API Integration", "desc": "REST APIs, real-time systems & automation" }
+    "eyebrow1": "Product Partner",
+    "eyebrow2": "Design Advisory for Product Teams",
+    "headline": "I help founders",
+    "headlineWord": "shape",
+    "headlineEnd": "their product, not just build it.",
+    "subhead": "From uncertainty to a product ready to ship — strategy, UX and research in one ongoing partnership."
   },
   "about": {
     "num": "01 / ABOUT",

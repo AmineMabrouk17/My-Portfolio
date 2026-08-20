@@ -1,26 +1,17 @@
 {
   "nav": {
+    "work": "Projets",
     "about": "À propos",
-    "skills": "Compétences",
-    "experience": "Expérience",
-    "projects": "Projets",
-    "education": "Formation",
-    "contact": "Contactez-moi"
+    "services": "Services",
+    "contact": "Contact"
   },
   "hero": {
-    "tag": "Disponible pour de nouvelles opportunités",
-    "headline": "Je conçois des applications web & mobiles rapides et sur-mesure pour",
-    "headlineAccent": "faire grandir votre entreprise",
-    "headlineAccent2": "amplifier votre vision",
-    "headlineAccent3": "accélérer la croissance",
-    "headlineAccent4": "maximiser votre impact",
-    "role": "Développeur Full Stack — Angular · Next.js · Node.js · Laravel",
-    "summary": "Je construis des plateformes web prêtes pour la production dont les entreprises se servent quotidiennement. Des tableaux de bord télécom aux systèmes en temps réel, je livre des solutions propres et évolutives qui résolvent de vrais problèmes opérationnels.",
-    "cta1": "Discuter de votre projet",
-    "cta2": "Voir les projets",
-    "svc1": { "title": "Applications Web", "desc": "Apps full stack avec Angular, Next.js & Laravel" },
-    "svc2": { "title": "Dashboards & Admin", "desc": "Outils internes et tableaux de bord opérationnels" },
-    "svc3": { "title": "Intégration API", "desc": "APIs REST, systèmes en temps réel & automatisation" }
+    "eyebrow1": "Partenaire Produit",
+    "eyebrow2": "Conseil Design pour Équipes Produit",
+    "headline": "J'aide les fondateurs à",
+    "headlineWord": "façonner",
+    "headlineEnd": "leur produit, pas simplement le construire.",
+    "subhead": "De l'incertitude à un produit prêt à livrer — stratégie, UX et recherche dans un partenariat continu."
   },
   "about": {
     "num": "01 / À PROPOS",
