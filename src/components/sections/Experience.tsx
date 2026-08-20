@@ -2,7 +2,6 @@
 
 import { useRef, useState, useEffect, useCallback } from "react";
 import { useI18n } from "@/i18n/I18nContext";
-import { cn } from "@/lib/utils";
 
 const ARC_PATH = "M 60 260 C 260 30, 740 30, 940 260";
 const ARC_LENGTH = 1000;
@@ -99,10 +98,54 @@ function StaticExperience({ t }: { t: (key: string) => string }) {
 export default function Experience() {
   const { t } = useI18n();
   const containerRef = useRef<HTMLDivElement>(null);
-  const arcTrackRef = useRef<SVGPathElement>(null);
-  const headRef = useRef<SVGGElement>(null);
+  const progressPathRef = useRef<SVGPathElement>(null);
+  const headRef = useRef<SVGCircleElement>(null);
+  const nodeRefs = useRef<(SVGCircleElement | null)[]>([]);
   const [activeStep, setActiveStep] = useState(0);
   const rafRef = useRef<number>(0);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const syncArc = useCallback((progress: number) => {
+    const clamped = Math.min(1, Math.max(0, progress));
+
+    if (progressPathRef.current) {
+      progressPathRef.current.style.strokeDashoffset = String(ARC_LENGTH * (1 - clamped));
+    }
+
+    const headPt = getPointAtProgress(clamped);
+    if (headRef.current) {
+      headRef.current.setAttribute("cx", String(headPt.x));
+      headRef.current.setAttribute("cy", String(headPt.y));
+    }
+
+    let step = 0;
+    for (let i = MILESTONE_PCTS.length - 1; i >= 0; i--) {
+      if (clamped >= MILESTONE_PCTS[i] - 0.01) {
+        step = i;
+        break;
+      }
+    }
+
+    setActiveStep((prev) => {
+      if (prev !== step) return step;
+      return prev;
+    });
+
+    nodeRefs.current.forEach((circle, i) => {
+      if (!circle) return;
+      if (clamped >= MILESTONE_PCTS[i] - 0.01) {
+        circle.setAttribute("fill", "#ffffff");
+        circle.setAttribute("r", String(i === step ? 6 : 4.5));
+      } else {
+        circle.setAttribute("fill", "#262629");
+        circle.setAttribute("r", "4.5");
+      }
+    });
+  }, []);
 
   const handleScroll = useCallback(() => {
     cancelAnimationFrame(rafRef.current);
@@ -113,42 +156,17 @@ export default function Experience() {
       const scrollable = el.offsetHeight - window.innerHeight;
       if (scrollable <= 0) return;
       const raw = -rect.top / scrollable;
-      const progress = Math.min(1, Math.max(0, raw));
-
-      const offset = ARC_LENGTH * (1 - progress);
-      if (arcTrackRef.current) {
-        arcTrackRef.current.style.strokeDashoffset = String(offset);
-      }
-
-      let pos = NODE_POSITIONS[0];
-      for (let i = MILESTONE_PCTS.length - 1; i >= 0; i--) {
-        if (progress >= MILESTONE_PCTS[i]) {
-          pos = NODE_POSITIONS[i];
-          break;
-        }
-      }
-      if (headRef.current) {
-        headRef.current.setAttribute("transform", `translate(${pos.x}, ${pos.y})`);
-      }
-
-      let step = 0;
-      for (let i = MILESTONE_PCTS.length - 1; i >= 0; i--) {
-        if (progress >= MILESTONE_PCTS[i]) {
-          step = i;
-          break;
-        }
-      }
-      setActiveStep(step);
+      syncArc(raw);
     });
-  }, []);
+  }, [syncArc]);
 
   useEffect(() => {
-    const el = containerRef.current;
-    if (!el) return;
-    window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("resize", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
       cancelAnimationFrame(rafRef.current);
     };
   }, [handleScroll]);
@@ -170,148 +188,152 @@ export default function Experience() {
   }
 
   return (
-    <div ref={containerRef} className="relative" style={{ height: "420vh" }}>
-      <div className="sticky top-0 h-screen flex flex-col">
-        <div className="flex-1 flex flex-col max-w-[1200px] w-full mx-auto px-8 pt-[100px] pb-10 max-lg:pt-[80px]">
-          <div className="mb-8 max-lg:mb-6">
-            <div className="text-[var(--color-accent)] text-[13px] font-medium tracking-[0.15em] mb-2">
-              {t("exp.num")}
-            </div>
-            <h2 className="text-[clamp(30px,4vw,44px)] font-bold tracking-[-0.03em] leading-none">
-              {t("exp.h2")}
-            </h2>
-          </div>
+    <div
+      ref={containerRef}
+      className="relative h-[420vh]"
+      id="timeline-scroll-wrapper"
+    >
+      <div className="sticky top-0 h-screen w-full flex flex-col justify-between overflow-hidden px-4 sm:px-8 py-8 sm:py-12">
+        <header className="w-full max-w-4xl mx-auto border-b border-white/[0.06] pb-5">
+          <span className="text-[11px] font-semibold tracking-[0.25em] text-[var(--color-accent)] uppercase block mb-1.5">
+            {t("exp.num")}
+          </span>
+          <h1 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight">
+            {t("exp.h2")}
+          </h1>
+        </header>
 
-          <div className="flex-1 flex items-center gap-12 min-h-0 max-xl:flex-col max-xl:gap-6 max-xl:justify-center">
-            <div className="relative w-[480px] h-[290px] shrink-0 max-xl:w-full max-xl:max-w-[500px] max-xl:h-auto max-xl:aspect-[480/290]">
+        <div className="w-full max-w-3xl mx-auto flex flex-col items-center justify-center my-auto">
+          <div className="relative w-full h-32 sm:h-44 flex items-center justify-center">
+            {mounted && (
               <svg
-                viewBox="0 0 1000 290"
-                className="w-full h-full"
-                preserveAspectRatio="xMidYMid meet"
+                viewBox="0 0 1000 280"
+                className="w-full h-full overflow-visible"
               >
                 <defs>
-                  <filter id="arc-glow" x="-20%" y="-20%" width="140%" height="140%">
-                    <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur" />
-                    <feComposite in="SourceGraphic" in2="blur" operator="over" />
-                  </filter>
-                  <filter id="head-glow" x="-100%" y="-100%" width="300%" height="300%">
-                    <feDropShadow dx="0" dy="0" stdDeviation="8" floodColor="white" floodOpacity="0.6" />
+                  <filter id="node-glow" x="-60%" y="-60%" width="220%" height="220%">
+                    <feDropShadow dx="0" dy="0" stdDeviation="3" floodColor="#ffffff" floodOpacity="0.9" />
+                    <feDropShadow dx="0" dy="0" stdDeviation="9" floodColor="#ffffff" floodOpacity="0.6" />
                   </filter>
                 </defs>
 
                 <path
                   d={ARC_PATH}
                   fill="none"
-                  stroke="var(--color-border)"
-                  strokeWidth="2"
+                  stroke="rgba(255, 255, 255, 0.12)"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
                 />
 
                 <path
-                  ref={arcTrackRef}
+                  ref={progressPathRef}
                   d={ARC_PATH}
                   fill="none"
-                  stroke="var(--color-accent)"
-                  strokeWidth="3"
+                  stroke="#ffffff"
+                  strokeWidth="2"
                   strokeLinecap="round"
-                  filter="url(#arc-glow)"
                   strokeDasharray={ARC_LENGTH}
                   strokeDashoffset={ARC_LENGTH}
                 />
 
                 {NODE_POSITIONS.map((pos, i) => (
-                  <g key={i} onClick={() => jumpToStep(i)} className="cursor-pointer">
-                    <circle
-                      cx={pos.x}
-                      cy={pos.y}
-                      r={22}
-                      fill="transparent"
-                    />
-                    <circle
-                      cx={pos.x}
-                      cy={pos.y}
-                      r={7}
-                      className={cn(
-                        "transition-all duration-500",
-                        i <= activeStep
-                          ? "fill-[var(--color-accent)] stroke-[var(--color-accent)]"
-                          : "fill-[var(--color-bg)] stroke-[var(--color-border)]"
-                      )}
-                      strokeWidth="2"
-                    />
-                    <circle
-                      cx={pos.x}
-                      cy={pos.y}
-                      r={3}
-                      className={cn(
-                        "transition-all duration-500",
-                        i <= activeStep ? "fill-white" : "fill-[var(--color-border)]"
-                      )}
-                    />
-                  </g>
+                  <circle
+                    key={i}
+                    ref={(el) => { nodeRefs.current[i] = el; }}
+                    cx={pos.x}
+                    cy={pos.y}
+                    r={4.5}
+                    fill="#262629"
+                    className="cursor-pointer transition-all duration-300"
+                    onClick={() => jumpToStep(i)}
+                  />
                 ))}
 
-                <g ref={headRef} filter="url(#head-glow)">
-                  <circle cx="0" cy="0" r={5} fill="white" />
-                </g>
+                <circle
+                  ref={headRef}
+                  cx={NODE_POSITIONS[0].x}
+                  cy={NODE_POSITIONS[0].y}
+                  r={4.5}
+                  fill="#ffffff"
+                  filter="url(#node-glow)"
+                  className="pointer-events-none"
+                />
               </svg>
-            </div>
+            )}
+          </div>
 
-            <div className="relative flex-1 min-h-[320px] max-xl:min-h-[260px] max-w-[600px]">
-              {jobs.map((job, i) => (
-                <div
-                  key={job.titleKey}
-                  className={cn(
-                    "absolute inset-0 transition-all duration-500",
-                    i === activeStep
-                      ? "opacity-100 translate-y-0 pointer-events-auto"
-                      : "opacity-0 translate-y-4 pointer-events-none"
-                  )}
-                >
-                  <div className="mb-4">
-                    <span className="text-[var(--color-accent)] text-sm font-medium tracking-[0.02em]">
-                      {job.company}
-                    </span>
-                  </div>
-                  <h3 className="text-[22px] font-semibold tracking-[-0.02em] mb-1.5 leading-tight">
-                    {t(job.titleKey)}
-                  </h3>
-                  <span className="inline-block text-[13px] text-[var(--color-muted-2)] bg-white/[0.04] px-[11px] py-[5px] rounded-full border border-[var(--color-border)] mb-3.5">
+          <div className="relative w-full min-h-[300px] sm:min-h-[280px] mt-2">
+            {jobs.map((job, i) => (
+              <div
+                key={job.titleKey}
+                className={
+                  i === activeStep
+                    ? "transition-all duration-500 opacity-100 transform translate-y-0"
+                    : "absolute inset-0 transition-all duration-500 opacity-0 pointer-events-none transform translate-y-4"
+                }
+              >
+                <div className="flex items-center gap-3 mb-2">
+                  <span className="text-xs font-mono font-bold text-[var(--color-accent)] tracking-widest uppercase">
+                    {`0${i + 1} / ${jobs[i].company}`}
+                  </span>
+                  <span className="text-neutral-600 font-mono">·</span>
+                  <span className="text-xs font-mono text-neutral-400 bg-white/[0.04] px-2.5 py-0.5 rounded-full border border-white/10">
                     {job.date}
                   </span>
-                  <p className="text-[var(--color-muted)] text-[15px] mb-4">
-                    {t(job.descKey)}
-                  </p>
-                  <ul className="list-none flex flex-col gap-2">
-                    {job.bullets.map((bullet) => (
-                      <li
-                        key={bullet}
-                        className="text-sm text-[var(--color-muted)] pl-[22px] relative"
-                      >
-                        <span className="absolute left-0 top-0 text-[var(--color-accent)]">▹</span>
-                        {t(bullet)}
-                      </li>
-                    ))}
-                  </ul>
                 </div>
-              ))}
-            </div>
+
+                <h2 className="text-xl sm:text-2xl font-bold text-white mb-1 tracking-tight">
+                  {t(job.titleKey)}
+                </h2>
+                <p className="text-xs sm:text-sm text-neutral-400 font-medium mb-4">
+                  {t(job.descKey)}
+                </p>
+
+                <ul className="space-y-2 text-xs sm:text-[13px] text-neutral-300 leading-relaxed border-l border-white/10 pl-4">
+                  {job.bullets.map((bullet) => (
+                    <li key={bullet}>{t(bullet)}</li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
         </div>
 
+        <footer className="w-full text-center pb-2">
+          <div className="inline-flex items-center gap-2 text-[11px] font-mono text-neutral-500 tracking-widest uppercase">
+            <span>{t("exp.sub")}</span>
+            <svg
+              className="w-3.5 h-3.5 animate-bounce text-neutral-400"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M19 14l-7 7m0 0l-7-7m7 7V3"
+              />
+            </svg>
+          </div>
+        </footer>
+
         <div
-          className="pointer-events-none absolute inset-0"
+          className="pointer-events-none absolute inset-0 arc-ambient-glow"
           style={{
             background:
               "radial-gradient(ellipse 60% 40% at 50% 30%, rgba(255,255,255,0.03), transparent 70%)",
           }}
         />
-
-        <div className="absolute bottom-8 left-0 right-0 text-center">
-          <p className="text-[var(--color-muted)] text-sm tracking-wide opacity-60">
-            {t("exp.sub")}
-          </p>
-        </div>
       </div>
     </div>
   );
+}
+
+function getPointAtProgress(t: number) {
+  const mt = 1 - t;
+  return {
+    x: mt ** 3 * 60 + 3 * mt ** 2 * t * 260 + 3 * mt * t ** 2 * 740 + t ** 3 * 940,
+    y: mt ** 3 * 260 + 3 * mt ** 2 * t * 30 + 3 * mt * t ** 2 * 30 + t ** 3 * 260,
+  };
 }
