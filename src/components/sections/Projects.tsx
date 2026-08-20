@@ -2,65 +2,510 @@
 
 import { useI18n } from "@/i18n/I18nContext";
 import ScrollReveal from "@/components/ui/ScrollReveal";
+import { useEffect, useRef, useState } from "react";
+
+function CursorFollower({ containerRef }: { containerRef: React.RefObject<HTMLDivElement | null> }) {
+  const badgeRef = useRef<HTMLDivElement>(null);
+  const mouse = useRef({ x: 0, y: 0 });
+  const pos = useRef({ x: 0, y: 0 });
+  const visible = useRef(false);
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    const onEnter = () => { visible.current = true; };
+    const onLeave = () => { visible.current = false; };
+    const onMove = (e: MouseEvent) => {
+      const rect = container.getBoundingClientRect();
+      mouse.current = { x: e.clientX - rect.left, y: e.clientY - rect.top };
+    };
+
+    container.addEventListener("mouseenter", onEnter);
+    container.addEventListener("mouseleave", onLeave);
+    container.addEventListener("mousemove", onMove);
+
+    let raf: number;
+    const tick = () => {
+      const b = badgeRef.current;
+      if (b) {
+        const lerp = visible.current ? 0.12 : 0.25;
+        pos.current.x += (mouse.current.x - pos.current.x) * lerp;
+        pos.current.y += (mouse.current.y - pos.current.y) * lerp;
+        const opacity = visible.current ? 1 : 0;
+        const scale = visible.current ? 1 : 0.7;
+        b.style.transform = `translate(${pos.current.x}px, ${pos.current.y}px) scale(${scale})`;
+        b.style.opacity = String(opacity);
+      }
+      raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+
+    return () => {
+      container.removeEventListener("mouseenter", onEnter);
+      container.removeEventListener("mouseleave", onLeave);
+      container.removeEventListener("mousemove", onMove);
+      cancelAnimationFrame(raf);
+    };
+  }, [containerRef]);
+
+  return (
+    <div
+      ref={badgeRef}
+      className="pointer-events-none absolute top-0 left-0 z-30 -translate-x-1/2 -translate-y-1/2 whitespace-nowrap rounded-full bg-[#FFE566] px-4 py-2 text-[13px] font-semibold text-black opacity-0 transition-[opacity,scale] duration-200"
+    >
+      View Project →
+    </div>
+  );
+}
+
+function MockWidgetRizz() {
+  return (
+    <div className="flex h-full w-full flex-col p-5 gap-3">
+      <div className="flex gap-3 flex-1">
+        <div className="flex-1 rounded-xl bg-white/[0.04] border border-white/[0.06] flex items-center justify-center overflow-hidden relative">
+          <div className="absolute inset-0 bg-gradient-to-br from-[#ff6b6b]/20 to-[#ffa94d]/10" />
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="relative text-[var(--color-accent)] opacity-50"><polygon points="23 7 16 12 23 17 23 7" /><rect x="1" y="5" width="15" height="14" rx="2" /></svg>
+        </div>
+        <div className="flex-1 rounded-xl bg-white/[0.04] border border-white/[0.06] flex items-center justify-center overflow-hidden relative">
+          <div className="absolute inset-0 bg-gradient-to-br from-[#ffa94d]/20 to-[#ffd93d]/10" />
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="relative text-[var(--color-accent-2)] opacity-50"><polygon points="23 7 16 12 23 17 23 7" /><rect x="1" y="5" width="15" height="14" rx="2" /></svg>
+        </div>
+      </div>
+      <div className="flex gap-2">
+        <div className="flex-1 h-9 rounded-lg bg-white/[0.04] border border-white/[0.06] flex items-center px-3">
+          <div className="w-2 h-2 rounded-full bg-[#22c55e] animate-pulse mr-2" />
+          <div className="h-2 rounded-full bg-white/10 w-16" />
+        </div>
+        <div className="h-9 w-20 rounded-lg bg-[var(--color-accent)]/90 flex items-center justify-center">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-black"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72" /></svg>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function MockWidgetCastCue() {
+  const movies = [
+    { w: "w-10", h: "h-14", from: "from-[#ff6b6b]/30", to: "to-[#ffa94d]/20" },
+    { w: "w-10", h: "h-14", from: "from-[#ffa94d]/30", to: "to-[#ffd93d]/20" },
+    { w: "w-10", h: "h-14", from: "from-[#ffd93d]/30", to: "to-[#ff6b6b]/20" },
+    { w: "w-10", h: "h-14", from: "from-[#ff6b6b]/20", to: "to-[#ffa94d]/30" },
+    { w: "w-10", h: "h-14", from: "from-[#ffa94d]/20", to: "to-[#ffd93d]/30" },
+  ];
+  return (
+    <div className="flex h-full w-full flex-col p-5 gap-3">
+      <div className="flex gap-2 overflow-hidden">
+        {movies.map((m, i) => (
+          <div key={i} className={`${m.w} ${m.h} rounded-lg bg-gradient-to-br ${m.from} ${m.to} border border-white/[0.06] shrink-0`} />
+        ))}
+      </div>
+      <div className="flex-1 rounded-xl bg-white/[0.04] border border-white/[0.06] p-3 flex flex-col gap-2">
+        <div className="flex items-center gap-2">
+          <div className="h-2.5 rounded-full bg-white/10 w-24" />
+          <div className="h-2 rounded-full bg-[#FFD93D]/40 w-12" />
+        </div>
+        <div className="h-2 rounded-full bg-white/[0.06] w-40" />
+        <div className="flex gap-1 mt-auto">
+          {[1,2,3,4,5].map(i => (
+            <svg key={i} width="12" height="12" viewBox="0 0 24 24" fill={i <= 3 ? "#FFD93D" : "none"} stroke="#FFD93D" strokeWidth="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function MockWidgetLeadGen() {
+  return (
+    <div className="flex h-full w-full flex-col p-5 gap-3">
+      <div className="h-5 rounded-lg bg-gradient-to-r from-[#ff6b6b]/20 via-[#ffa94d]/15 to-[#ffd93d]/10 w-32" />
+      <div className="h-3 rounded-md bg-white/[0.06] w-48" />
+      <div className="h-3 rounded-md bg-white/[0.04] w-36" />
+      <div className="flex gap-2 mt-2">
+        <div className="h-8 w-24 rounded-lg bg-[var(--color-accent)]/80" />
+        <div className="h-8 flex-1 rounded-lg bg-white/[0.04] border border-white/[0.06]" />
+      </div>
+      <div className="flex gap-3 mt-auto">
+        {[1,2,3].map(i => (
+          <div key={i} className="flex-1 h-10 rounded-lg bg-white/[0.04] border border-white/[0.06] flex items-center justify-center">
+            <div className="h-1.5 rounded-full bg-white/10 w-8" />
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function MockWidgetEcom() {
+  const items = ["from-[#ff6b6b]/25", "from-[#ffa94d]/25", "from-[#ffd93d]/25"];
+  return (
+    <div className="flex h-full w-full flex-col p-5 gap-3">
+      <div className="flex items-center justify-between">
+        <div className="h-3 rounded-full bg-white/10 w-20" />
+        <div className="flex gap-2">
+          <div className="h-7 w-7 rounded-lg bg-white/[0.04] border border-white/[0.06]" />
+          <div className="h-7 w-7 rounded-lg bg-white/[0.04] border border-white/[0.06]" />
+        </div>
+      </div>
+      <div className="grid grid-cols-3 gap-2 flex-1">
+        {items.map((bg, i) => (
+          <div key={i} className={`rounded-xl bg-gradient-to-br ${bg} to-transparent border border-white/[0.06] flex flex-col justify-end p-2`}>
+            <div className="h-1.5 rounded-full bg-white/10 w-8 mb-1" />
+            <div className="h-1.5 rounded-full bg-white/[0.06] w-6" />
+          </div>
+        ))}
+      </div>
+      <div className="flex justify-between items-center">
+        <div className="h-2 rounded-full bg-white/[0.06] w-16" />
+        <div className="h-6 w-16 rounded-md bg-[var(--color-accent)]/80" />
+      </div>
+    </div>
+  );
+}
+
+function MockWidgetBudgetIQ() {
+  return (
+    <div className="flex h-full w-full flex-col p-5 gap-3">
+      <div className="flex gap-2">
+        <div className="flex-1 rounded-xl bg-white/[0.04] border border-white/[0.06] p-2">
+          <div className="h-1.5 rounded-full bg-[#22c55e]/50 w-10 mb-1" />
+          <div className="h-3 rounded-full bg-white/10 w-14" />
+        </div>
+        <div className="flex-1 rounded-xl bg-white/[0.04] border border-white/[0.06] p-2">
+          <div className="h-1.5 rounded-full bg-[#ff6b6b]/50 w-10 mb-1" />
+          <div className="h-3 rounded-full bg-white/10 w-14" />
+        </div>
+      </div>
+      <div className="flex-1 rounded-xl bg-white/[0.04] border border-white/[0.06] p-3 relative overflow-hidden">
+        <svg viewBox="0 0 200 60" className="w-full h-full opacity-40" preserveAspectRatio="none">
+          <polyline points="0,50 30,40 60,45 90,25 120,30 150,15 180,20 200,10" fill="none" stroke="#ff6b6b" strokeWidth="2" />
+          <polyline points="0,55 30,50 60,42 90,35 120,38 150,28 180,32 200,22" fill="none" stroke="#22c55e" strokeWidth="1.5" strokeDasharray="4 3" />
+        </svg>
+      </div>
+      <div className="flex gap-2">
+        {[1,2,3].map(i => (
+          <div key={i} className="flex-1 h-7 rounded-lg bg-white/[0.04] border border-white/[0.06] flex items-center justify-center">
+            <div className="h-1.5 rounded-full bg-white/[0.08] w-6" />
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function MockWidgetEscrow() {
+  return (
+    <div className="flex h-full w-full flex-col p-5 gap-3 items-center justify-center">
+      <div className="flex items-center gap-3 w-full">
+        <div className="flex-1 rounded-xl bg-white/[0.04] border border-white/[0.06] p-3 text-center">
+          <div className="w-8 h-8 rounded-full bg-[#ff6b6b]/20 mx-auto mb-2 flex items-center justify-center">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#ff6b6b" strokeWidth="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2" /><circle cx="12" cy="7" r="4" /></svg>
+          </div>
+          <div className="h-1.5 rounded-full bg-white/10 w-12 mx-auto" />
+        </div>
+        <div className="flex flex-col items-center gap-1">
+          <div className="h-px w-10 bg-gradient-to-r from-[#ff6b6b] to-[#22c55e]" />
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-[var(--color-accent-2)]"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>
+          <div className="h-px w-10 bg-gradient-to-r from-[#22c55e] to-[#ffd93d]" />
+        </div>
+        <div className="flex-1 rounded-xl bg-white/[0.04] border border-white/[0.06] p-3 text-center">
+          <div className="w-8 h-8 rounded-full bg-[#22c55e]/20 mx-auto mb-2 flex items-center justify-center">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2" /><circle cx="12" cy="7" r="4" /></svg>
+          </div>
+          <div className="h-1.5 rounded-full bg-white/10 w-12 mx-auto" />
+        </div>
+      </div>
+      <div className="w-full rounded-xl bg-[#22c55e]/10 border border-[#22c55e]/20 p-2 text-center">
+        <div className="h-2 rounded-full bg-[#22c55e]/30 w-20 mx-auto" />
+      </div>
+    </div>
+  );
+}
+
+const mockWidgets: Record<string, () => React.JSX.Element> = {
+  rizz: MockWidgetRizz,
+  castcue: MockWidgetCastCue,
+  leadgen: MockWidgetLeadGen,
+  ecom: MockWidgetEcom,
+  budgetiq: MockWidgetBudgetIQ,
+  trustless: MockWidgetEscrow,
+};
+
+type CaseStudy = { problem: string; solution: string; result: string };
+
+interface Project {
+  slug: string;
+  titleKey: string;
+  subKey?: string;
+  date?: string;
+  caseStudy: CaseStudy;
+  tags: string[];
+  link?: string;
+  source?: string;
+  featured?: boolean;
+}
+
+const projects: Project[] = [
+  {
+    slug: "rizz",
+    titleKey: "proj.rizz.title",
+    date: "2025 – Present",
+    caseStudy: { problem: "proj.rizz.problem", solution: "proj.rizz.solution", result: "proj.rizz.result" },
+    tags: ["Next.js", "TypeScript", "WebRTC", "Node.js", "Express", "Supabase", "Turborepo"],
+  },
+  {
+    slug: "castcue",
+    subKey: "proj.castcue.sub",
+    titleKey: "proj.castcue.title",
+    caseStudy: { problem: "proj.castcue.problem", solution: "proj.castcue.solution", result: "proj.castcue.result" },
+    tags: ["Next.js", "React 19", "TypeScript", "Cloudflare Workers", "Cloudflare D1", "Better Auth", "HeroUI"],
+    link: "https://cast-cue.cast-cue.workers.dev",
+    source: "https://github.com/AmineMabrouk17/Cast-Cue",
+  },
+  {
+    slug: "leadgen",
+    subKey: "proj.leadgen.sub",
+    titleKey: "proj.leadgen.title",
+    caseStudy: { problem: "proj.leadgen.problem", solution: "proj.leadgen.solution", result: "proj.leadgen.result" },
+    tags: ["Astro", "TypeScript", "Cloudflare Pages", "Formspree", "GTM", "GA4", "Meta Pixel"],
+    date: "2026",
+    link: "https://lead-generation-landing-page.pages.dev",
+    source: "https://github.com/AmineMabrouk17/lead-generation-landing-page",
+  },
+  {
+    slug: "ecom",
+    subKey: "proj.ecom.sub",
+    titleKey: "proj.ecom.title",
+    caseStudy: { problem: "proj.ecom.problem", solution: "proj.ecom.solution", result: "proj.ecom.result" },
+    tags: ["Next.js", "TypeScript", "Tailwind CSS", "shadcn/ui", "Supabase", "PostgreSQL", "Stripe", "Zustand"],
+    link: "https://ecommerce-website-puce-beta.vercel.app/",
+    source: "https://github.com/AmineMabrouk17/ecommerce-website",
+  },
+  {
+    slug: "budgetiq",
+    subKey: "proj.budgetiq.sub",
+    titleKey: "proj.budgetiq.title",
+    caseStudy: { problem: "proj.budgetiq.problem", solution: "proj.budgetiq.solution", result: "proj.budgetiq.result" },
+    tags: ["Next.js", "TypeScript", "Supabase", "Gemini AI", "Tailwind CSS", "DaisyUI", "Recharts"],
+    link: "https://budgetiq-two.vercel.app",
+    source: "https://github.com/AmineMabrouk17/BudgetIQ",
+  },
+  {
+    slug: "trustless",
+    subKey: "proj.trustless.sub",
+    titleKey: "proj.trustless.title",
+    caseStudy: { problem: "proj.trustless.problem", solution: "proj.trustless.solution", result: "proj.trustless.result" },
+    tags: ["Solidity", "Foundry", "Next.js", "wagmi", "viem"],
+    link: "https://trustless-escrow-demo.vercel.app",
+    source: "https://github.com/AmineMabrouk17/nextjs-solidity-escrow",
+  },
+];
+
+const cryptoProject: Project = {
+  slug: "crypto",
+  subKey: "proj.crypto.sub",
+  titleKey: "proj.crypto.title",
+  featured: true,
+  caseStudy: { problem: "proj.crypto.problem", solution: "proj.crypto.solution", result: "proj.crypto.result" },
+  tags: ["Next.js", "TypeScript", "Tailwind CSS", "Motion", "lightweight-charts", "Binance WebSocket", "Yahoo Finance", "SWR", "Gemini API", "Groq", "Turborepo"],
+  link: "https://crypto-stocks-web-taupe.vercel.app",
+  source: "https://github.com/AmineMabrouk17/crypto-stocks",
+};
+
+function CaseStudyDrawer({ caseStudy, t }: { caseStudy: CaseStudy; t: (k: string) => string }) {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <div className="mt-3">
+      <button
+        onClick={() => setOpen(!open)}
+        className="flex items-center gap-2 text-[13px] font-medium text-[var(--color-accent)] hover:text-[#FFE566] transition-colors cursor-pointer"
+      >
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className={`transition-transform duration-200 ${open ? "rotate-90" : ""}`}><polyline points="9 18 15 12 9 6" /></svg>
+        {open ? "Hide details" : "Problem → Solution → Result"}
+      </button>
+      <div className={`overflow-hidden transition-all duration-300 ${open ? "max-h-[400px] mt-3 opacity-100" : "max-h-0 opacity-0"}`}>
+        <div className="flex flex-col gap-2.5 text-[14px] leading-[1.55]">
+          {(["problem", "solution", "result"] as const).map((key) => (
+            <div key={key} className="flex gap-2.5">
+              <span className="text-[#FFE566] font-semibold whitespace-nowrap">{key.charAt(0).toUpperCase() + key.slice(1)}:</span>
+              <span className="text-[var(--color-muted)]">{t(caseStudy[key])}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function ProjectCard({ project, index }: { project: Project; index: number }) {
+  const { t } = useI18n();
+  const containerRef = useRef<HTMLDivElement>(null);
+  const MockWidget = mockWidgets[project.slug];
+
+  return (
+    <ScrollReveal delay={index * 80}>
+      <div
+        ref={containerRef}
+        className="group relative bg-[var(--color-surface)] border border-[var(--color-border)] rounded-[20px] overflow-hidden transition-all duration-300 hover:border-[var(--color-accent)]"
+      >
+        <CursorFollower containerRef={containerRef} />
+
+        <div className="relative aspect-[16/10] w-full bg-[#0a0d14] border-b border-[var(--color-border)] overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-br from-white/[0.02] to-transparent" />
+          {MockWidget && <MockWidget />}
+        </div>
+
+        <div className="p-[30px]">
+          {project.subKey && (
+            <div className="text-[var(--color-muted-2)] text-[12px] font-semibold uppercase tracking-[0.12em] mb-2">
+              {t(project.subKey)}
+            </div>
+          )}
+          {project.date && !project.subKey && (
+            <div className="text-[var(--color-muted-2)] text-[12px] font-semibold uppercase tracking-[0.12em] mb-2">
+              {project.date}
+            </div>
+          )}
+          <h3 className="text-[22px] font-bold tracking-[-0.02em] mb-1">
+            <span className="text-[#FFE566]">/</span> {t(project.titleKey)}
+          </h3>
+
+          <CaseStudyDrawer caseStudy={project.caseStudy} t={t} />
+
+          <div className="flex flex-wrap gap-[7px] mt-4 mb-4">
+            {project.tags.map((tag) => (
+              <span
+                key={tag}
+                className="text-[11.5px] py-[4px] px-[10px] rounded-md bg-white/[0.04] border border-[var(--color-border)] text-[var(--color-muted)] font-medium tracking-wide uppercase"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+
+          {(project.link || project.source) && (
+            <div className="flex flex-wrap gap-3">
+              {project.link && (
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl no-underline font-semibold text-sm bg-[#FFE566] text-black transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_-8px_rgba(255,229,102,0.4)]"
+                >
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" /><circle cx="12" cy="12" r="3" /></svg>
+                  {t("proj.demo")}
+                </a>
+              )}
+              {project.source && (
+                <a
+                  href={project.source}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl no-underline font-semibold text-sm border border-[var(--color-border)] text-[var(--color-text)] transition-all duration-200 hover:-translate-y-0.5 hover:border-[#FFE566]"
+                >
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22" /></svg>
+                  {t("proj.source")}
+                </a>
+              )}
+            </div>
+          )}
+        </div>
+      </div>
+    </ScrollReveal>
+  );
+}
+
+function FeaturedProjectCard() {
+  const { t } = useI18n();
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [hovered, setHovered] = useState(false);
+
+  return (
+    <ScrollReveal>
+      <div
+        ref={containerRef}
+        className="group relative bg-[var(--color-surface)] border border-[var(--color-border)] rounded-[20px] overflow-hidden transition-all duration-300 hover:border-[#FFE566]"
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+      >
+        <CursorFollower containerRef={containerRef} />
+
+        <div className="relative w-full min-h-[420px] max-lg:min-h-[280px] overflow-hidden bg-gradient-to-br from-[#0a0a0f] via-[#1a1a2e] to-[#0a0a0f] border-b border-[var(--color-border)]">
+          <img
+            src="/projects/crypto-stocks/hero-dashboard.png"
+            alt="Crypto & Stocks Dashboard"
+            className="w-full h-full object-contain absolute inset-0 transition-opacity duration-300"
+            style={{ opacity: hovered ? 0 : 1 }}
+            loading="eager"
+          />
+          <img
+            src="/projects/crypto-stocks/demo.gif"
+            alt="Crypto & Stocks Dashboard Demo"
+            className="w-full h-full object-contain absolute inset-0 transition-opacity duration-300"
+            style={{ opacity: hovered ? 1 : 0 }}
+          />
+        </div>
+
+        <div className="p-[30px]">
+          {cryptoProject.subKey && (
+            <div className="text-[var(--color-muted-2)] text-[12px] font-semibold uppercase tracking-[0.12em] mb-2">
+              {t(cryptoProject.subKey)}
+            </div>
+          )}
+          <h3 className="text-[22px] font-bold tracking-[-0.02em] mb-1">
+            <span className="text-[#FFE566]">/</span> {t(cryptoProject.titleKey)}
+          </h3>
+          <p className="text-[var(--color-muted)] text-[14.5px] mb-2 leading-relaxed">
+            {t("proj.crypto.desc")}
+          </p>
+
+          <CaseStudyDrawer caseStudy={cryptoProject.caseStudy} t={t} />
+
+          <div className="flex flex-wrap gap-[7px] mt-4 mb-4">
+            {cryptoProject.tags.map((tag) => (
+              <span
+                key={tag}
+                className="text-[11.5px] py-[4px] px-[10px] rounded-md bg-white/[0.04] border border-[var(--color-border)] text-[var(--color-muted)] font-medium tracking-wide uppercase"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+
+          <div className="flex flex-wrap gap-3">
+            {cryptoProject.link && (
+              <a
+                href={cryptoProject.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl no-underline font-semibold text-sm bg-[#FFE566] text-black transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_-8px_rgba(255,229,102,0.4)]"
+              >
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" /><circle cx="12" cy="12" r="3" /></svg>
+                {t("proj.demo")}
+              </a>
+            )}
+            {cryptoProject.source && (
+              <a
+                href={cryptoProject.source}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl no-underline font-semibold text-sm border border-[var(--color-border)] text-[var(--color-text)] transition-all duration-200 hover:-translate-y-0.5 hover:border-[#FFE566]"
+              >
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22" /></svg>
+                {t("proj.source")}
+              </a>
+            )}
+          </div>
+        </div>
+      </div>
+    </ScrollReveal>
+  );
+}
 
 export default function Projects() {
   const { t } = useI18n();
-
-  const mainProjects = [
-    {
-      icon: "video",
-      titleKey: "proj.rizz.title",
-      caseStudy: { problem: "proj.rizz.problem", solution: "proj.rizz.solution", result: "proj.rizz.result" },
-      tags: ["Next.js", "TypeScript", "WebRTC", "Node.js", "Express", "Supabase", "Turborepo"],
-      date: "2025 – Present",
-    },
-    {
-      icon: "clapper",
-      subKey: "proj.castcue.sub",
-      titleKey: "proj.castcue.title",
-      caseStudy: { problem: "proj.castcue.problem", solution: "proj.castcue.solution", result: "proj.castcue.result" },
-      tags: ["Next.js", "React 19", "TypeScript", "Cloudflare Workers", "Cloudflare D1", "Better Auth", "HeroUI"],
-      link: "https://cast-cue.cast-cue.workers.dev",
-      source: "https://github.com/AmineMabrouk17/Cast-Cue",
-    },
-    {
-      icon: "zap",
-      subKey: "proj.leadgen.sub",
-      titleKey: "proj.leadgen.title",
-      caseStudy: { problem: "proj.leadgen.problem", solution: "proj.leadgen.solution", result: "proj.leadgen.result" },
-      tags: ["Astro", "TypeScript", "Cloudflare Pages", "Formspree", "GTM", "GA4", "Meta Pixel"],
-      date: "2026",
-      link: "https://lead-generation-landing-page.pages.dev",
-      source: "https://github.com/AmineMabrouk17/lead-generation-landing-page",
-    },
-    {
-      icon: "cart",
-      subKey: "proj.ecom.sub",
-      titleKey: "proj.ecom.title",
-      caseStudy: { problem: "proj.ecom.problem", solution: "proj.ecom.solution", result: "proj.ecom.result" },
-      tags: ["Next.js", "TypeScript", "Tailwind CSS", "shadcn/ui", "Supabase", "PostgreSQL", "Stripe", "Zustand"],
-      link: "https://ecommerce-website-puce-beta.vercel.app/",
-      source: "https://github.com/AmineMabrouk17/ecommerce-website",
-    },
-    {
-      icon: "pie",
-      subKey: "proj.budgetiq.sub",
-      titleKey: "proj.budgetiq.title",
-      caseStudy: { problem: "proj.budgetiq.problem", solution: "proj.budgetiq.solution", result: "proj.budgetiq.result" },
-      tags: ["Next.js", "TypeScript", "Supabase", "Gemini AI", "Tailwind CSS", "DaisyUI", "Recharts"],
-      link: "https://budgetiq-two.vercel.app",
-      source: "https://github.com/AmineMabrouk17/BudgetIQ",
-    },
-    {
-      icon: "shield",
-      subKey: "proj.trustless.sub",
-      titleKey: "proj.trustless.title",
-      caseStudy: { problem: "proj.trustless.problem", solution: "proj.trustless.solution", result: "proj.trustless.result" },
-      tags: ["Solidity", "Foundry", "Next.js", "wagmi", "viem"],
-      link: "https://trustless-escrow-demo.vercel.app",
-      source: "https://github.com/AmineMabrouk17/nextjs-solidity-escrow",
-    },
-  ];
 
   return (
     <section id="projects" className="py-[90px] max-lg:py-[70px]">
@@ -81,161 +526,20 @@ export default function Projects() {
           </div>
         </ScrollReveal>
 
-        {/* Main Projects */}
-        <div className="grid grid-cols-2 gap-[22px] max-lg:grid-cols-1 mb-[60px]">
-          {mainProjects.map((project, i) => (
-            <ScrollReveal key={project.titleKey} delay={i * 80}>
-              <div className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-[20px] p-[30px] transition-all duration-300 relative overflow-hidden hover:-translate-y-1 hover:border-[var(--color-accent)]" style={{ boxShadow: "0 20px 40px -20px rgba(255,107,107,0.0)" }}>
-                <div className="w-[54px] h-[54px] rounded-[14px] bg-[rgba(255,169,77,0.1)] text-[var(--color-accent-2)] grid place-items-center text-[22px] mb-4.5">
-                  {project.icon === "video" ? (
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polygon points="23 7 16 12 23 17 23 7" /><rect x="1" y="5" width="15" height="14" rx="2" /></svg>
-                  ) : project.icon === "zap" ? (
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" /></svg>
-                  ) : project.icon === "pie" ? (
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21.21 15.89A10 10 0 118 2.83" /><path d="M22 12A10 10 0 0012 2v10z" /></svg>
-                  ) : project.icon === "shield" ? (
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 01-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 011-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 011.52 0C14.51 3.81 17 5 19 5a1 1 0 011 1z" /><polyline points="9 12 11 14 15 10" /></svg>
-                  ) : project.icon === "cart" ? (
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="9" cy="21" r="1" /><circle cx="20" cy="21" r="1" /><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6" /></svg>
-                  ) : project.icon === "clapper" ? (
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="2" y="2" width="20" height="20" rx="2.18" /><line x1="7" y1="2" x2="7" y2="22" /><line x1="17" y1="2" x2="17" y2="22" /><line x1="2" y1="12" x2="22" y2="12" /><line x1="2" y1="7" x2="7" y2="7" /><line x1="2" y1="17" x2="7" y2="17" /><line x1="17" y1="17" x2="22" y2="17" /><line x1="17" y1="7" x2="22" y2="7" /></svg>
-                  ) : (
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z" /><line x1="4" y1="22" x2="4" y2="15" /></svg>
-                  )}
-                </div>
-                {project.subKey && (
-                  <div className="text-[var(--color-muted-2)] text-[13px] mb-3.5 font-medium">
-                    {t(project.subKey)}
-                  </div>
-                )}
-                {project.date && (
-                  <div className="text-[var(--color-muted-2)] text-[13px] mb-3.5 font-medium">
-                    {project.date}
-                  </div>
-                )}
-                <h3 className="text-[21px] font-semibold tracking-[-0.02em] mb-3">
-                  {t(project.titleKey)}
-                </h3>
-                <div className="flex flex-col gap-2.5 mb-4.5">
-                  {(["problem", "solution", "result"] as const).map((key) => (
-                    <div key={key} className="flex gap-2.5 text-[14px] leading-[1.55]">
-                      <span className="text-[var(--color-accent)] font-semibold whitespace-nowrap">{key.charAt(0).toUpperCase() + key.slice(1)}:</span>
-                      <span className="text-[var(--color-muted)]">{t(project.caseStudy[key])}</span>
-                    </div>
-                  ))}
-                </div>
-                <div className="flex flex-wrap gap-[7px] mb-4.5">
-                  {project.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="text-[12.5px] py-[5px] px-[11px] rounded-lg bg-white/[0.04] border border-[var(--color-border)] text-[var(--color-muted)] font-medium"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-                {(project.link || project.source) && (
-                  <div className="flex flex-wrap gap-3 mt-auto">
-                    {project.link && (
-                      <a
-                        href={project.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl no-underline font-semibold text-sm bg-[var(--color-accent)] text-[var(--color-accent-dark)] transition-all duration-200 hover:-translate-y-0.5"
-                      >
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" /><circle cx="12" cy="12" r="3" /></svg>
-                        {t("proj.demo")}
-                      </a>
-                    )}
-                    {project.source && (
-                      <a
-                        href={project.source}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl no-underline font-semibold text-sm border border-[var(--color-border)] text-[var(--color-text)] transition-all duration-200 hover:-translate-y-0.5 hover:border-[var(--color-accent)]"
-                      >
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22" /></svg>
-                        {t("proj.source")}
-                      </a>
-                    )}
-                  </div>
-                )}
-              </div>
-            </ScrollReveal>
+        <div className="flex flex-col gap-[22px] mb-[60px]">
+          {projects.map((project, i) => (
+            <ProjectCard key={project.titleKey} project={project} index={i} />
           ))}
         </div>
 
-        {/* Featured Project */}
         <ScrollReveal>
-          <h3 className="text-[24px] font-semibold mb-6 text-[var(--color-accent)] flex items-center gap-2.5">
+          <h3 className="text-[24px] font-semibold mb-6 text-[#FFE566] flex items-center gap-2.5">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 20V10M18 20V4M6 20v-4" /></svg>
             {t("proj.crypto.section")}
           </h3>
         </ScrollReveal>
 
-        <div className="grid grid-cols-1 gap-[22px]">
-          <ScrollReveal>
-            <div className="group bg-[var(--color-surface)] border border-[var(--color-border)] rounded-[20px] overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-[var(--color-accent)]" style={{ boxShadow: "0 20px 40px -20px rgba(255,107,107,0.0)" }}>
-              <div className="relative w-full min-h-[460px] max-lg:min-h-[320px] overflow-hidden" style={{ background: "linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 50%, #0a0a0f 100%)" }}>
-                <img
-                  src="/projects/crypto-stocks/hero-dashboard.png"
-                  alt="Crypto & Stocks Dashboard"
-                  className="w-full h-full object-contain transition-opacity duration-300 group-hover:opacity-0"
-                  loading="eager"
-                />
-                <img
-                  src="/projects/crypto-stocks/demo.gif"
-                  alt="Crypto & Stocks Dashboard Demo"
-                  className="absolute inset-0 w-full h-full object-contain opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-                />
-              </div>
-              <div className="p-[30px]">
-                <div className="text-[var(--color-muted-2)] text-[13px] mb-3.5 font-medium">
-                  {t("proj.crypto.sub")}
-                </div>
-                <h3 className="text-[21px] font-semibold tracking-[-0.02em] mb-3">
-                  {t("proj.crypto.title")}
-                </h3>
-                <p className="text-[var(--color-muted)] text-[14.5px] mb-4.5">
-                  {t("proj.crypto.desc")}
-                </p>
-                <div className="flex flex-col gap-2.5 mb-4.5">
-                  {(["problem", "solution", "result"] as const).map((key) => (
-                    <div key={key} className="flex gap-2.5 text-[14px] leading-[1.55]">
-                      <span className="text-[var(--color-accent)] font-semibold whitespace-nowrap">{key.charAt(0).toUpperCase() + key.slice(1)}:</span>
-                      <span className="text-[var(--color-muted)]">{t(`proj.crypto.${key}`)}</span>
-                    </div>
-                  ))}
-                </div>
-                <div className="flex flex-wrap gap-[7px] mb-4.5">
-                  {["Next.js", "TypeScript", "Tailwind CSS", "Motion", "lightweight-charts", "Binance WebSocket", "Yahoo Finance", "SWR", "Gemini API", "Groq", "Turborepo"].map((tag) => (
-                    <span key={tag} className="text-[12.5px] py-[5px] px-[11px] rounded-lg bg-white/[0.04] border border-[var(--color-border)] text-[var(--color-muted)] font-medium">{tag}</span>
-                  ))}
-                </div>
-                <div className="flex flex-wrap gap-3">
-                  <a
-                    href="https://crypto-stocks-web-taupe.vercel.app"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl no-underline font-semibold text-sm bg-[var(--color-accent)] text-[var(--color-accent-dark)] transition-all duration-200 hover:-translate-y-0.5"
-                  >
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" /><circle cx="12" cy="12" r="3" /></svg>
-                    {t("proj.demo")}
-                  </a>
-                  <a
-                    href="https://github.com/AmineMabrouk17/crypto-stocks"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl no-underline font-semibold text-sm border border-[var(--color-border)] text-[var(--color-text)] transition-all duration-200 hover:-translate-y-0.5 hover:border-[var(--color-accent)]"
-                  >
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22" /></svg>
-                    {t("proj.source")}
-                  </a>
-                </div>
-              </div>
-            </div>
-          </ScrollReveal>
-        </div>
+        <FeaturedProjectCard />
       </div>
     </section>
   );
