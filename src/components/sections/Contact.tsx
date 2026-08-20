@@ -32,12 +32,12 @@ export default function Contact() {
     <section id="contact" className="py-[90px] max-lg:py-[70px]">
       <div className="max-w-[1200px] mx-auto px-8">
         <ScrollReveal>
-          <div className="bg-gradient-to-br from-[rgba(255,107,107,0.06)] to-[rgba(255,169,77,0.06)] border border-[var(--color-border-2)] rounded-[28px] py-[60px] px-[60px] max-md:py-10 max-md:px-6 relative overflow-hidden">
+          <div className="bg-gradient-to-br from-[color-mix(in_srgb,var(--color-accent)_6%,transparent)] to-[color-mix(in_srgb,var(--color-accent-2)_6%,transparent)] border border-[var(--color-border-2)] rounded-[28px] py-[60px] px-[60px] max-md:py-10 max-md:px-6 relative overflow-hidden">
             <div
               className="absolute -top-1/2 left-1/2 -translate-x-1/2 w-[600px] h-[600px] pointer-events-none"
               style={{
                 background:
-                  "radial-gradient(circle, rgba(255,107,107,0.1), transparent 60%)",
+                  "radial-gradient(circle, color-mix(in srgb, var(--color-accent) 10%, transparent), transparent 60%)",
               }}
             />
 

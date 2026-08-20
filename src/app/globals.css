@@ -13,7 +13,8 @@
   --color-muted-2: #6b7385;
   --color-accent: #ff6b6b;
   --color-accent-2: #ffa94d;
-  --color-accent-3: #ffd93d;
+  --color-accent-3: #FFE566;
+  --color-accent-dim: #E05D5D;
   --color-accent-dark: #0a0d14;
   --animate-pulse: pulse 2s infinite;
 }
@@ -24,7 +25,7 @@
 }
 
 :root {
-  --grad: linear-gradient(135deg, #ff6b6b 0%, #ffa94d 50%, #ffd93d 100%);
+  --grad: linear-gradient(135deg, #ff6b6b 0%, #ffa94d 50%, #FFE566 100%);
   --shadow: 0 20px 50px -20px rgba(0, 0, 0, 0.6);
   /* Aliases the site's text color for motion components (beui.dev) that
      read `var(--foreground)` / use `bg-foreground`, `text-foreground`. */
@@ -62,9 +63,9 @@ body::before {
   position: fixed;
   inset: 0;
   background:
-    radial-gradient(900px 600px at 12% -5%, rgba(255, 107, 107, 0.10), transparent 60%),
-    radial-gradient(800px 600px at 90% 10%, rgba(255, 169, 77, 0.10), transparent 60%),
-    radial-gradient(700px 500px at 50% 110%, rgba(255, 217, 61, 0.08), transparent 60%);
+    radial-gradient(900px 600px at 12% -5%, rgba(255, 107, 107, 0.08), transparent 60%),
+    radial-gradient(800px 600px at 90% 10%, rgba(255, 169, 77, 0.08), transparent 60%),
+    radial-gradient(700px 500px at 50% 110%, rgba(255, 229, 102, 0.06), transparent 60%);
   pointer-events: none;
   z-index: -1;
 }
@@ -126,31 +127,6 @@ body::after {
 }
 
 /* RTL support */
-[dir="rtl"] .timeline {
-  padding-left: 0;
-  padding-right: 30px;
-}
-
-[dir="rtl"] .timeline::before {
-  left: auto;
-  right: 8px;
-}
-
-[dir="rtl"] .job::before {
-  left: auto;
-  right: -30px;
-}
-
-[dir="rtl"] .job-list li {
-  padding-left: 0;
-  padding-right: 22px;
-}
-
-[dir="rtl"] .job-list li::before {
-  left: auto;
-  right: 0;
-}
-
 [dir="rtl"] .lang-switcher {
   margin-left: 0;
   margin-right: 8px;
@@ -188,9 +164,9 @@ body::after {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(600px 400px at 50% 20%, rgba(224, 93, 93, 0.08), transparent 60%),
-    radial-gradient(500px 350px at 30% 60%, rgba(255, 107, 107, 0.05), transparent 50%),
-    radial-gradient(400px 300px at 70% 40%, rgba(255, 169, 77, 0.04), transparent 50%);
+    radial-gradient(600px 400px at 50% 20%, rgba(224, 93, 93, 0.06), transparent 60%),
+    radial-gradient(500px 350px at 30% 60%, rgba(255, 107, 107, 0.04), transparent 50%),
+    radial-gradient(400px 300px at 70% 40%, rgba(255, 169, 77, 0.03), transparent 50%);
   pointer-events: none;
 }
 
@@ -206,12 +182,12 @@ body::after {
 }
 
 @keyframes pulse-dot {
-  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(224, 93, 93, 0.5); }
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(224, 93, 93, 0.4); }
   50% { opacity: 0.6; box-shadow: 0 0 0 4px rgba(224, 93, 93, 0); }
 }
 
 /* Selection */
 ::selection {
-  background: rgba(255, 107, 107, 0.3);
+  background: rgba(255, 229, 102, 0.25);
   color: var(--color-text);
 }

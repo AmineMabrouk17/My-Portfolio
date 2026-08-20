@@ -52,7 +52,7 @@ function CursorFollower({ containerRef }: { containerRef: React.RefObject<HTMLDi
   return (
     <div
       ref={badgeRef}
-      className="pointer-events-none absolute top-0 left-0 z-30 -translate-x-1/2 -translate-y-1/2 whitespace-nowrap rounded-full bg-[#FFE566] px-4 py-2 text-[13px] font-semibold text-black opacity-0 transition-[opacity,scale] duration-200"
+      className="pointer-events-none absolute top-0 left-0 z-30 -translate-x-1/2 -translate-y-1/2 whitespace-nowrap rounded-full bg-[var(--color-accent-3)] px-4 py-2 text-[13px] font-semibold text-black opacity-0 transition-[opacity,scale] duration-200"
     >
       View Project →
     </div>
@@ -286,7 +286,7 @@ function CaseStudyDrawer({ caseStudy, t }: { caseStudy: CaseStudy; t: (k: string
     <div className="mt-3">
       <button
         onClick={() => setOpen(!open)}
-        className="flex items-center gap-2 text-[13px] font-medium text-[var(--color-accent)] hover:text-[#FFE566] transition-colors cursor-pointer"
+        className="flex items-center gap-2 text-[13px] font-medium text-[var(--color-accent)] hover:text-[var(--color-accent-3)] transition-colors cursor-pointer"
       >
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className={`transition-transform duration-200 ${open ? "rotate-90" : ""}`}><polyline points="9 18 15 12 9 6" /></svg>
         {open ? "Hide details" : "Problem → Solution → Result"}
@@ -295,7 +295,7 @@ function CaseStudyDrawer({ caseStudy, t }: { caseStudy: CaseStudy; t: (k: string
         <div className="flex flex-col gap-2.5 text-[14px] leading-[1.55]">
           {(["problem", "solution", "result"] as const).map((key) => (
             <div key={key} className="flex gap-2.5">
-              <span className="text-[#FFE566] font-semibold whitespace-nowrap">{key.charAt(0).toUpperCase() + key.slice(1)}:</span>
+              <span className="text-[var(--color-accent-3)] font-semibold whitespace-nowrap">{key.charAt(0).toUpperCase() + key.slice(1)}:</span>
               <span className="text-[var(--color-muted)]">{t(caseStudy[key])}</span>
             </div>
           ))}
@@ -335,7 +335,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
             </div>
           )}
           <h3 className="text-[22px] font-bold tracking-[-0.02em] mb-1">
-            <span className="text-[#FFE566]">/</span> {t(project.titleKey)}
+            <span className="text-[var(--color-accent-3)]">/</span> {t(project.titleKey)}
           </h3>
 
           <CaseStudyDrawer caseStudy={project.caseStudy} t={t} />
@@ -358,7 +358,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
                   href={project.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl no-underline font-semibold text-sm bg-[#FFE566] text-black transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_-8px_rgba(255,229,102,0.4)]"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl no-underline font-semibold text-sm bg-[var(--color-accent-3)] text-black transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_-8px_color-mix(in_srgb,var(--color-accent-3)_40%,transparent)]"
                 >
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" /><circle cx="12" cy="12" r="3" /></svg>
                   {t("proj.demo")}
@@ -369,7 +369,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
                   href={project.source}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl no-underline font-semibold text-sm border border-[var(--color-border)] text-[var(--color-text)] transition-all duration-200 hover:-translate-y-0.5 hover:border-[#FFE566]"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl no-underline font-semibold text-sm border border-[var(--color-border)] text-[var(--color-text)] transition-all duration-200 hover:-translate-y-0.5 hover:border-[var(--color-accent-3)]"
                 >
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22" /></svg>
                   {t("proj.source")}
@@ -392,7 +392,7 @@ function FeaturedProjectCard() {
     <ScrollReveal>
       <div
         ref={containerRef}
-        className="group relative bg-[var(--color-surface)] border border-[var(--color-border)] rounded-[20px] overflow-hidden transition-all duration-300 hover:border-[#FFE566]"
+        className="group relative bg-[var(--color-surface)] border border-[var(--color-border)] rounded-[20px] overflow-hidden transition-all duration-300 hover:border-[var(--color-accent-3)]"
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
       >
@@ -421,7 +421,7 @@ function FeaturedProjectCard() {
             </div>
           )}
           <h3 className="text-[22px] font-bold tracking-[-0.02em] mb-1">
-            <span className="text-[#FFE566]">/</span> {t(cryptoProject.titleKey)}
+            <span className="text-[var(--color-accent-3)]">/</span> {t(cryptoProject.titleKey)}
           </h3>
           <p className="text-[var(--color-muted)] text-[14.5px] mb-2 leading-relaxed">
             {t("proj.crypto.desc")}
@@ -446,7 +446,7 @@ function FeaturedProjectCard() {
                 href={cryptoProject.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl no-underline font-semibold text-sm bg-[#FFE566] text-black transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_-8px_rgba(255,229,102,0.4)]"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl no-underline font-semibold text-sm bg-[var(--color-accent-3)] text-black transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_-8px_color-mix(in_srgb,var(--color-accent-3)_40%,transparent)]"
               >
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" /><circle cx="12" cy="12" r="3" /></svg>
                 {t("proj.demo")}
@@ -457,7 +457,7 @@ function FeaturedProjectCard() {
                 href={cryptoProject.source}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl no-underline font-semibold text-sm border border-[var(--color-border)] text-[var(--color-text)] transition-all duration-200 hover:-translate-y-0.5 hover:border-[#FFE566]"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl no-underline font-semibold text-sm border border-[var(--color-border)] text-[var(--color-text)] transition-all duration-200 hover:-translate-y-0.5 hover:border-[var(--color-accent-3)]"
               >
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22" /></svg>
                 {t("proj.source")}
@@ -499,7 +499,7 @@ export default function Projects() {
         </div>
 
         <ScrollReveal>
-          <h3 className="text-[24px] font-semibold mb-6 text-[#FFE566] flex items-center gap-2.5">
+          <h3 className="text-[24px] font-semibold mb-6 text-[var(--color-accent-3)] flex items-center gap-2.5">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 20V10M18 20V4M6 20v-4" /></svg>
             {t("proj.crypto.section")}
           </h3>
