@@ -23,10 +23,6 @@ export const Education = dynamic(() => import("@/components/sections/Education")
   ssr: false,
   loading: SectionLoader,
 });
-export const Languages = dynamic(() => import("@/components/sections/Languages"), {
-  ssr: false,
-  loading: SectionLoader,
-});
 export const Contact = dynamic(() => import("@/components/sections/Contact"), {
   ssr: false,
   loading: SectionLoader,

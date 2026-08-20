@@ -4,7 +4,7 @@ import BackToTop from "@/components/ui/BackToTop";
 import Hero from "@/components/sections/Hero";
 import About from "@/components/sections/About";
 import Skills from "@/components/sections/Skills";
-import { Experience, Projects, Education, Languages, Contact } from "@/components/sections/LazySections";
+import { Experience, Projects, Education, Contact } from "@/components/sections/LazySections";
 
 const siteUrl = "https://my-portfolio-seven-chi-94.vercel.app";
 
@@ -58,7 +58,6 @@ export default function Home() {
         <Experience />
         <Projects />
         <Education />
-        <Languages />
         <Contact />
       </main>
       <Footer />
