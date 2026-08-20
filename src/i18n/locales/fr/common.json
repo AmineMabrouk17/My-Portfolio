@@ -66,13 +66,6 @@
     "num": "04 / PROJETS",
     "h2": "Ce que je construis.",
     "sub": "Applications logicielles et designs statiques réalisés pour des clients et des expérimentations.",
-    "rizz": {
-      "title": "Rizz — Chat Vidéo en Temps Réel",
-      "desc": "Architecture d'un monorepo de streaming vidéo WebRTC & Node.js, établissant les connexions pair-à-pair en moins de 1,5s, avec appariement de pairs en temps réel, modération de salles automatisée et séparation claire des responsabilités.",
-      "problem": "Les utilisateurs avaient besoin d'un moyen fluide de se connecter en face-à-face en temps réel sans dépendre de plateformes tierces.",
-      "solution": "Construction d'un monorepo complet WebRTC & Node.js avec appariement de pairs en temps réel, modération automatisée des salles et architecture modulaire.",
-      "result": "Connexions pair-à-pair établies en moins de 1,5 seconde avec une expérience vidéo fluide et fiable."
-    },
     "castcue": {
       "sub": "Next.js · Cloudflare Workers",
       "title": "Cast n Cue — Suivi de films & séries",

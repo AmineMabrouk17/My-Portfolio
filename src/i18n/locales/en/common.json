@@ -66,13 +66,6 @@
     "num": "04 / PROJECTS",
     "h2": "Things I'm building.",
     "sub": "Software applications and static designs built for clients and experiments.",
-    "rizz": {
-      "title": "Rizz — Real-Time Video Chat",
-      "desc": "Architected a real-time WebRTC & Node.js video streaming monorepo, achieving peer-to-peer connection establishment in under 1.5s, with real-time peer matching, automated room moderation, and clean separation of concerns.",
-      "problem": "Users needed a seamless way to connect face-to-face in real time without relying on third-party platforms.",
-      "solution": "Built a full WebRTC & Node.js monorepo with real-time peer matching, automated room moderation, and clean architecture.",
-      "result": "Peer-to-peer connections established in under 1.5 seconds with a smooth, reliable video experience."
-    },
     "castcue": {
       "sub": "Next.js · Cloudflare Workers",
       "title": "Cast n Cue — Movie & TV Tracker",

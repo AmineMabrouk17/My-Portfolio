@@ -59,32 +59,6 @@ function CursorFollower({ containerRef }: { containerRef: React.RefObject<HTMLDi
   );
 }
 
-function MockWidgetRizz() {
-  return (
-    <div className="flex h-full w-full flex-col p-5 gap-3">
-      <div className="flex gap-3 flex-1">
-        <div className="flex-1 rounded-xl bg-white/[0.04] border border-white/[0.06] flex items-center justify-center overflow-hidden relative">
-          <div className="absolute inset-0 bg-gradient-to-br from-[#ff6b6b]/20 to-[#ffa94d]/10" />
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="relative text-[var(--color-accent)] opacity-50"><polygon points="23 7 16 12 23 17 23 7" /><rect x="1" y="5" width="15" height="14" rx="2" /></svg>
-        </div>
-        <div className="flex-1 rounded-xl bg-white/[0.04] border border-white/[0.06] flex items-center justify-center overflow-hidden relative">
-          <div className="absolute inset-0 bg-gradient-to-br from-[#ffa94d]/20 to-[#ffd93d]/10" />
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="relative text-[var(--color-accent-2)] opacity-50"><polygon points="23 7 16 12 23 17 23 7" /><rect x="1" y="5" width="15" height="14" rx="2" /></svg>
-        </div>
-      </div>
-      <div className="flex gap-2">
-        <div className="flex-1 h-9 rounded-lg bg-white/[0.04] border border-white/[0.06] flex items-center px-3">
-          <div className="w-2 h-2 rounded-full bg-[#22c55e] animate-pulse mr-2" />
-          <div className="h-2 rounded-full bg-white/10 w-16" />
-        </div>
-        <div className="h-9 w-20 rounded-lg bg-[var(--color-accent)]/90 flex items-center justify-center">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-black"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72" /></svg>
-        </div>
-      </div>
-    </div>
-  );
-}
-
 function MockWidgetCastCue() {
   const movies = [
     { w: "w-10", h: "h-14", from: "from-[#ff6b6b]/30", to: "to-[#ffa94d]/20" },
@@ -224,7 +198,6 @@ function MockWidgetEscrow() {
 }
 
 const mockWidgets: Record<string, () => React.JSX.Element> = {
-  rizz: MockWidgetRizz,
   castcue: MockWidgetCastCue,
   leadgen: MockWidgetLeadGen,
   ecom: MockWidgetEcom,
@@ -247,13 +220,6 @@ interface Project {
 }
 
 const projects: Project[] = [
-  {
-    slug: "rizz",
-    titleKey: "proj.rizz.title",
-    date: "2025 – Present",
-    caseStudy: { problem: "proj.rizz.problem", solution: "proj.rizz.solution", result: "proj.rizz.result" },
-    tags: ["Next.js", "TypeScript", "WebRTC", "Node.js", "Express", "Supabase", "Turborepo"],
-  },
   {
     slug: "castcue",
     subKey: "proj.castcue.sub",
