@@ -126,7 +126,7 @@ export default function Skills() {
             <ScrollReveal key={skill.titleKey} delay={i * 80}>
               <TiltCard className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-[18px] p-[26px] transition-colors duration-300 hover:border-[var(--color-border-2)] hover:bg-[var(--color-surface-2)] group">
                 <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-                <div className="w-[46px] h-[46px] rounded-[12px] bg-[rgba(255,107,107,0.08)] text-[var(--color-accent)] grid place-items-center text-xl mb-4.5">
+                <div className="w-[46px] h-[46px] rounded-[12px] bg-[color-mix(in_srgb,var(--color-accent)_8%,transparent)] text-[var(--color-accent)] grid place-items-center text-xl mb-4.5">
                   {iconMap[skill.icon]}
                 </div>
                 <h3 className="text-lg font-semibold mb-3.5">

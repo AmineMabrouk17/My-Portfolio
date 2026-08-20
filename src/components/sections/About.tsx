@@ -18,13 +18,13 @@ export default function About() {
               <span
                 className="absolute inline-flex h-full w-full rounded-full opacity-75"
                 style={{
-                  backgroundColor: "#E05D5D",
+                  backgroundColor: "var(--color-accent-dim)",
                   animation: "pulse-dot 2s ease-in-out infinite",
                 }}
               />
               <span
                 className="relative inline-flex h-2 w-2 rounded-full"
-                style={{ backgroundColor: "#E05D5D" }}
+                style={{ backgroundColor: "var(--color-accent-dim)" }}
               />
             </span>
             <span className="text-[13px] font-medium tracking-[0.15em] uppercase text-[var(--color-muted)]">

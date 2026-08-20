@@ -62,7 +62,7 @@ function StaticExperience({ t }: { t: (key: string) => string }) {
             <div key={job.titleKey} className="relative pl-8 border-l-2 border-[var(--color-accent)]/30">
               <div
                 className="absolute left-[-9px] top-1 w-[17px] h-[17px] rounded-full bg-[var(--color-bg)] border-2 border-[var(--color-accent)]"
-                style={{ boxShadow: "0 0 14px rgba(255,107,107,0.5)" }}
+                style={{ boxShadow: "0 0 14px color-mix(in srgb, var(--color-accent) 50%, transparent)" }}
               />
               <div className="flex justify-between items-start flex-wrap gap-2.5 mb-1.5">
                 <div>
