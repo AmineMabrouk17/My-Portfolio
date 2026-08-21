@@ -28,20 +28,20 @@ class Particle {
   constructor(x: number, y: number) {
     this.originX = x;
     this.originY = y;
-    this.x = x + (Math.random() - 0.5) * 8;
-    this.y = y + (Math.random() - 0.5) * 8;
+    this.x = x + (Math.random() - 0.5) * 12;
+    this.y = y + (Math.random() - 0.5) * 12;
     this.vx = 0;
     this.vy = 0;
     this.radius = Math.random() * 0.7 + 0.65;
     this.alpha = Number((Math.random() * 0.35 + 0.65).toFixed(2));
     this.color = `rgba(255, 255, 255, ${this.alpha})`;
-    this.spring = 0.018 + Math.random() * 0.008;
-    this.friction = 0.92;
-    this.noiseSpeedX = 0.00045 + Math.random() * 0.0003;
-    this.noiseSpeedY = 0.0006 + Math.random() * 0.0003;
+    this.spring = 0.055 + Math.random() * 0.02;
+    this.friction = 0.84;
+    this.noiseSpeedX = 0.0012 + Math.random() * 0.001;
+    this.noiseSpeedY = 0.0016 + Math.random() * 0.001;
     this.phaseX = Math.random() * Math.PI * 2;
     this.phaseY = Math.random() * Math.PI * 2;
-    this.ambientAmp = 0.6 + Math.random() * 0.5;
+    this.ambientAmp = 0.7 + Math.random() * 0.6;
   }
 
   update(
@@ -55,8 +55,8 @@ class Particle {
     if (dist < mouse.radius && dist > 0) {
       const force = Math.pow(1 - dist / mouse.radius, 2);
       const angle = Math.atan2(dy, dx);
-      this.vx -= Math.cos(angle) * force * 3.5;
-      this.vy -= Math.sin(angle) * force * 3.5;
+      this.vx -= Math.cos(angle) * force * 11;
+      this.vy -= Math.sin(angle) * force * 11;
     }
 
     this.vx += (this.originX - this.x) * this.spring;
@@ -69,8 +69,8 @@ class Particle {
     const waveY =
       Math.cos(time * this.noiseSpeedY + this.phaseY) * this.ambientAmp;
 
-    this.x += this.vx + waveX * 0.04;
-    this.y += this.vy + waveY * 0.04;
+    this.x += this.vx + waveX * 0.08;
+    this.y += this.vy + waveY * 0.08;
   }
 
   draw(ctx: CanvasRenderingContext2D) {
@@ -83,7 +83,7 @@ class Particle {
 
 export default function ParticleText({ text, className }: ParticleTextProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const mouseRef = useRef({ x: -9999, y: -9999, radius: 75 });
+  const mouseRef = useRef({ x: -9999, y: -9999, radius: 68 });
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -144,8 +144,8 @@ export default function ParticleText({ text, className }: ParticleTextProps) {
           const alpha = imgData[(py * totalWidth + px) * 4 + 3];
 
           if (alpha > 80) {
-            const jitterX = (Math.random() - 0.5) * 0.6;
-            const jitterY = (Math.random() - 0.5) * 0.6;
+            const jitterX = (Math.random() - 0.5) * 0.7;
+            const jitterY = (Math.random() - 0.5) * 0.7;
             particles.push(new Particle(x + jitterX, y + jitterY));
           }
         }
