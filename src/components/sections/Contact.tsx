@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useI18n } from "@/i18n/I18nContext";
 import ScrollReveal from "@/components/ui/ScrollReveal";
+import { AnimatedText } from "@/components/motion/animated-text";
 
 export default function Contact() {
   const { t } = useI18n();
@@ -44,9 +45,11 @@ export default function Contact() {
             <div className="text-[var(--color-accent)] text-[13px] font-medium tracking-[0.15em] mb-3 relative">
               {t("contact.num")}
             </div>
-            <h2 className="text-[clamp(30px,4vw,44px)] font-bold tracking-[-0.03em] leading-none mb-3.5 relative">
-              {t("contact.h2")}
-            </h2>
+            <AnimatedText
+              as="h2"
+              text={t("contact.h2")}
+              className="text-[clamp(30px,4vw,44px)] font-bold tracking-[-0.03em] leading-none mb-3.5 relative"
+            />
             <p className="text-[var(--color-muted)] text-base max-w-[520px] mb-10 relative">
               {t("contact.text")}
             </p>

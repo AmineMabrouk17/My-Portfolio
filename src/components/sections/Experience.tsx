@@ -1,7 +1,10 @@
 "use client";
 
-import { useRef, useState, useEffect, useCallback } from "react";
+import { useRef, useState, useEffect, useCallback, useSyncExternalStore } from "react";
 import { useI18n } from "@/i18n/I18nContext";
+import { AnimatedText } from "@/components/motion/animated-text";
+
+const emptySubscribe = () => () => {};
 
 const ARC_PATH = "M 60 260 C 260 30, 740 30, 940 260";
 const ARC_LENGTH = 1000;
@@ -51,9 +54,11 @@ function StaticExperience({ t }: { t: (key: string) => string }) {
           <div className="text-[var(--color-accent)] text-[13px] font-medium tracking-[0.15em] mb-2">
             {t("exp.num")}
           </div>
-          <h2 className="text-[clamp(30px,4vw,44px)] font-bold tracking-[-0.03em] leading-none">
-            {t("exp.h2")}
-          </h2>
+          <AnimatedText
+            as="h2"
+            text={t("exp.h2")}
+            className="text-[clamp(30px,4vw,44px)] font-bold tracking-[-0.03em] leading-none"
+          />
         </div>
 
         <div className="flex flex-col gap-10">
@@ -103,11 +108,11 @@ export default function Experience() {
   const nodeRefs = useRef<(SVGCircleElement | null)[]>([]);
   const [activeStep, setActiveStep] = useState(0);
   const rafRef = useRef<number>(0);
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  const mounted = useSyncExternalStore(
+    emptySubscribe,
+    () => true,
+    () => false,
+  );
 
   const syncArc = useCallback((progress: number) => {
     const clamped = Math.min(1, Math.max(0, progress));

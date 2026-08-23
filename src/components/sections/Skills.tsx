@@ -28,6 +28,7 @@ import { TbApi, TbBrain, TbDatabase, TbTools } from "react-icons/tb";
 import { useI18n } from "@/i18n/I18nContext";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import { TiltCard } from "@/components/motion/tilt-card";
+import { AnimatedText } from "@/components/motion/animated-text";
 
 const skills = [
   {
@@ -111,9 +112,11 @@ export default function Skills() {
               <div className="text-[var(--color-accent)] text-[13px] font-medium tracking-[0.15em] mb-2">
                 {t("skills.num")}
               </div>
-              <h2 className="text-[clamp(30px,4vw,44px)] font-bold tracking-[-0.03em] leading-none">
-                {t("skills.h2")}
-              </h2>
+              <AnimatedText
+                as="h2"
+                text={t("skills.h2")}
+                className="text-[clamp(30px,4vw,44px)] font-bold tracking-[-0.03em] leading-none"
+              />
             </div>
             <p className="text-[var(--color-muted)] max-w-[480px] text-[15px]">
               {t("skills.sub")}
