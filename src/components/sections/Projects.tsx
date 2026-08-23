@@ -3,6 +3,7 @@
 import { useI18n } from "@/i18n/I18nContext";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import { AnimatedText } from "@/components/motion/animated-text";
+import ProjectList from "@/components/ProjectList";
 import { useEffect, useRef, useState } from "react";
 
 function CursorFollower({ containerRef }: { containerRef: React.RefObject<HTMLDivElement | null> }) {
@@ -509,6 +510,10 @@ export default function Projects() {
             </p>
           </div>
         </ScrollReveal>
+
+        <div className="mb-[60px]">
+          <ProjectList />
+        </div>
 
         <div className="flex flex-col gap-[22px] mb-[60px]">
           {projects.map((project, i) => (
