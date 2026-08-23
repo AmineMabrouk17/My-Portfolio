@@ -2,6 +2,7 @@
 
 import { useI18n } from "@/i18n/I18nContext";
 import ScrollReveal from "@/components/ui/ScrollReveal";
+import { AnimatedText } from "@/components/motion/animated-text";
 
 export default function About() {
   const { t } = useI18n();
@@ -34,15 +35,19 @@ export default function About() {
         </ScrollReveal>
 
         <ScrollReveal>
-          <h2 className="text-[clamp(2rem,4vw,3rem)] font-bold tracking-[-0.03em] leading-tight mb-8 text-[var(--color-text)]">
-            {t("about.h2")}
-          </h2>
+          <AnimatedText
+            as="h2"
+            text={t("about.h2")}
+            className="text-[clamp(2rem,4vw,3rem)] font-bold tracking-[-0.03em] leading-tight mb-8 text-[var(--color-text)]"
+          />
         </ScrollReveal>
 
         <ScrollReveal>
-          <p className="text-[clamp(0.95rem,1.4vw,1.1rem)] leading-[1.75] text-[var(--color-muted)] mb-6">
-            {t("about.bio")}
-          </p>
+          <AnimatedText
+            as="p"
+            text={t("about.bio")}
+            className="text-[clamp(0.95rem,1.4vw,1.1rem)] leading-[1.75] text-[var(--color-muted)] mb-6"
+          />
         </ScrollReveal>
 
         <ScrollReveal>

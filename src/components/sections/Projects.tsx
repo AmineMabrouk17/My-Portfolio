@@ -2,6 +2,7 @@
 
 import { useI18n } from "@/i18n/I18nContext";
 import ScrollReveal from "@/components/ui/ScrollReveal";
+import { AnimatedText } from "@/components/motion/animated-text";
 import { useEffect, useRef, useState } from "react";
 
 function CursorFollower({ containerRef }: { containerRef: React.RefObject<HTMLDivElement | null> }) {
@@ -497,9 +498,11 @@ export default function Projects() {
               <div className="text-[var(--color-accent)] text-[13px] font-medium tracking-[0.15em] mb-2">
                 {t("proj.num")}
               </div>
-              <h2 className="text-[clamp(30px,4vw,44px)] font-bold tracking-[-0.03em] leading-none">
-                {t("proj.h2")}
-              </h2>
+              <AnimatedText
+                as="h2"
+                text={t("proj.h2")}
+                className="text-[clamp(30px,4vw,44px)] font-bold tracking-[-0.03em] leading-none"
+              />
             </div>
             <p className="text-[var(--color-muted)] max-w-[480px] text-[15px]">
               {t("proj.sub")}

@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useI18n } from "@/i18n/I18nContext";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import ParticleText from "@/components/ui/ParticleText";
+import { AnimatedText } from "@/components/motion/animated-text";
 
 export default function Hero() {
   const { t } = useI18n();
@@ -34,7 +35,7 @@ export default function Hero() {
           </div>
 
           <h1 className="font-semibold leading-[1.14] tracking-[-0.035em] mb-8 max-w-[980px] text-[clamp(2.4rem,5.6vw,4.6rem)]">
-            {t("hero.headline")}{" "}
+            <AnimatedText as="span" text={t("hero.headline")} stagger={0.05} />{" "}
             <ParticleText text={accents[accentIndex]} />
           </h1>
 
