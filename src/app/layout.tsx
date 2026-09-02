@@ -3,6 +3,7 @@ import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import Providers from "./providers";
 import SmoothScroll from "@/components/SmoothScroll";
+import Preloader from "@/components/Preloader";
 import { ScrollProgress } from "@/components/motion/scroll-progress";
 
 const plusJakarta = Plus_Jakarta_Sans({
@@ -72,6 +73,7 @@ export default function RootLayout({
     <html lang="en" className={plusJakarta.variable} suppressHydrationWarning>
       <body suppressHydrationWarning>
         <ScrollProgress className="bg-[var(--color-accent)]" />
+        <Preloader />
         <Providers>
           <SmoothScroll>{children}</SmoothScroll>
         </Providers>
