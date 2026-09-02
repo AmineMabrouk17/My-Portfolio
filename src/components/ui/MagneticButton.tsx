@@ -14,6 +14,11 @@ interface MagneticButtonProps {
   "aria-label"?: string;
 }
 
+const WIGGLE = CustomWiggle.create("magneticWiggle", {
+  wiggles: 3,
+  type: "easeOut",
+});
+
 export function MagneticButton({
   children,
   strength = 0.35,
@@ -32,14 +37,22 @@ export function MagneticButton({
       const { left, top, width, height } = el.getBoundingClientRect();
       const x = (e.clientX - (left + width / 2)) * strength;
       const y = (e.clientY - (top + height / 2)) * strength;
-      gsap.to(el, { x, y, duration: 0.6, ease: "power3.out", overwrite: true });
+      gsap.to(el, {
+        x,
+        y,
+        duration: 0.35,
+        ease: "power2.out",
+        force3D: true,
+        overwrite: true,
+      });
     };
     const onLeave = () => {
       gsap.to(el, {
         x: 0,
         y: 0,
-        duration: 0.8,
-        ease: CustomWiggle.create("magneticWiggle", { wiggles: 6, type: "easeOut" }),
+        duration: 0.9,
+        ease: WIGGLE,
+        force3D: true,
         overwrite: true,
       });
     };
