@@ -14,11 +14,6 @@ interface MagneticButtonProps {
   "aria-label"?: string;
 }
 
-const WIGGLE = CustomWiggle.create("magneticWiggle", {
-  wiggles: 3,
-  type: "easeOut",
-});
-
 export function MagneticButton({
   children,
   strength = 0.35,
@@ -32,6 +27,11 @@ export function MagneticButton({
     const el = ref.current;
     if (!el) return;
     if (typeof window !== "undefined" && "ontouchstart" in window) return;
+
+    const wiggleEase = CustomWiggle.create("magneticWiggle", {
+      wiggles: 3,
+      type: "easeOut",
+    });
 
     const onMove = (e: MouseEvent) => {
       const { left, top, width, height } = el.getBoundingClientRect();
@@ -51,7 +51,7 @@ export function MagneticButton({
         x: 0,
         y: 0,
         duration: 0.9,
-        ease: WIGGLE,
+        ease: wiggleEase,
         force3D: true,
         overwrite: true,
       });
