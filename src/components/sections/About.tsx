@@ -3,6 +3,26 @@
 import { useI18n } from "@/i18n/I18nContext";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import { AnimatedText } from "@/components/motion/animated-text";
+import Marquee from "@/components/Marquee";
+
+const MARQUEE_ROWS = [
+  [
+    "Secure Architecture",
+    "High-Performance Apps",
+    "Real-time Features",
+    "Cloud Migrations",
+    "System Security",
+    "Automated Monitoring",
+    "Data-Driven Systems",
+    "Seamless UX",
+    "Business Value",
+    "Next.js",
+    "Angular",
+    "Laravel",
+    "TypeScript",
+    "Node.js",
+  ],
+];
 
 export default function About() {
   const { t } = useI18n();
@@ -12,7 +32,7 @@ export default function About() {
       <div className="about-glow" />
       <div className="about-texture" />
 
-      <div className="relative max-w-[720px] mx-auto px-8 text-center">
+      <div className="relative mx-auto px-8 text-center">
         <ScrollReveal>
           <div className="inline-flex items-center gap-2.5 mb-8">
             <span className="relative flex h-2 w-2">
@@ -42,17 +62,20 @@ export default function About() {
           />
         </ScrollReveal>
 
+        {/* SEO / screen-reader paragraph */}
+        <p className="sr-only">
+          {t("about.bio")} {t("about.sub")}
+        </p>
+
+        {/* Marquee rows (two) */}
         <ScrollReveal>
-          <AnimatedText
-            as="p"
-            text={t("about.bio")}
-            className="text-[clamp(0.95rem,1.4vw,1.1rem)] leading-[1.75] text-[var(--color-muted)] mb-6"
-          />
+          <Marquee rows={MARQUEE_ROWS} className="mb-6" />
         </ScrollReveal>
 
+        {/* Static diploma badge */}
         <ScrollReveal>
-          <p className="text-[14px] leading-[1.7] text-[var(--color-muted-2)] italic">
-            {t("about.sub")}
+          <p className="inline-block rounded-full border border-[var(--color-muted)]/20 bg-[var(--color-surface)]/60 px-5 py-2 text-[14px] leading-[1.7] text-[var(--color-muted)]">
+            Full Stack Developer — National Engineering Diploma (Master&apos;s equivalent)
           </p>
         </ScrollReveal>
       </div>
