@@ -16,17 +16,11 @@ const MARQUEE_ROWS = [
     "Data-Driven Systems",
     "Seamless UX",
     "Business Value",
-  ],
-  [
     "Next.js",
     "Angular",
     "Laravel",
     "TypeScript",
     "Node.js",
-    "Telecom Dashboards",
-    "Billing Systems",
-    "Anomaly Detection",
-    "REST APIs",
   ],
 ];
 
