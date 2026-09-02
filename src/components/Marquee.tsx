@@ -4,11 +4,11 @@ import { useEffect, useRef } from "react";
 import { gsap, Observer } from "@/lib/gsap";
 
 export interface MarqueeProps {
-  rows: string[][];
+  items: string[];
   className?: string;
 }
 
-export default function Marquee({ rows, className }: MarqueeProps) {
+export default function Marquee({ items, className }: MarqueeProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const reducedRef = useRef(false);
 
@@ -20,52 +20,37 @@ export default function Marquee({ rows, className }: MarqueeProps) {
 
   useEffect(() => {
     if (reducedRef.current) return;
-    const container = containerRef.current;
-    if (!container) return;
-
-    const rowEls = Array.from(
-      container.querySelectorAll<HTMLElement>("[data-marquee-row]"),
+    const row = containerRef.current?.querySelector<HTMLElement>(
+      "[data-marquee-row]",
     );
+    if (!row) return;
 
-    // Base direction for each row: even rows move forward (+1),
-    // odd rows move in reverse (-1) to alternate the rhythm.
-    const baseSigns = rowEls.map((_, i) => (i % 2 === 0 ? 1 : -1));
-
-    const tweens = rowEls.map((row, i) =>
-      gsap.to(row, {
-        xPercent: -50 * baseSigns[i],
-        repeat: -1,
-        duration: 30,
-        ease: "none",
-      }),
-    );
+    // The row is built from two identical halves (data-marquee-half).
+    // Animating the whole track to xPercent -50 shifts it by exactly one
+    // half, which is identical to the other half — so the wrap is perfectly
+    // seamless: nothing ever appears or disappears at the edges.
+    const tween = gsap.to(row, {
+      xPercent: -50,
+      repeat: -1,
+      duration: 30,
+      ease: "none",
+    });
 
     let observer: ReturnType<typeof Observer.create> | null = null;
-
-    if (tweens.length > 0) {
-      observer = Observer.create({
-        type: "wheel,touch",
-        onUp: () => {
-          // Scrolling up: rows run forward (base direction)
-          gsap.to(tweens, {
-            timeScale: (index: number) => baseSigns[index],
-            duration: 0.3,
-            overwrite: true,
-          });
-        },
-        onDown: () => {
-          // Scrolling down: reverse every row
-          gsap.to(tweens, {
-            timeScale: (index: number) => -baseSigns[index],
-            duration: 0.3,
-            overwrite: true,
-          });
-        },
-      });
-    }
+    observer = Observer.create({
+      type: "wheel,touch",
+      onUp: () => {
+        // Scrolling up: run forward
+        gsap.to(tween, { timeScale: 1, duration: 0.3, overwrite: true });
+      },
+      onDown: () => {
+        // Scrolling down: reverse
+        gsap.to(tween, { timeScale: -1, duration: 0.3, overwrite: true });
+      },
+    });
 
     return () => {
-      tweens.forEach((tw) => tw.kill());
+      tween.kill();
       observer?.kill();
     };
   }, []);
@@ -74,39 +59,44 @@ export default function Marquee({ rows, className }: MarqueeProps) {
     typeof window !== "undefined" &&
     window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+  // Build one wide "half" by repeating the phrase set enough times that it is
+  // always much wider than any viewport. The track duplicates this identical
+  // half so the -50% wrap is seamless.
+  const REPEATS = 6;
+  const half: string[] = [];
+  for (let i = 0; i < REPEATS; i++) {
+    half.push(...items);
+  }
+
+  if (prefersReducedMotion) {
+    return (
+      <div ref={containerRef} className={className}>
+        <div className="overflow-hidden py-2">
+          <p className="text-center text-sm text-[var(--color-muted)]">
+            {items.join(" • ")}
+          </p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div ref={containerRef} className={className}>
-      {rows.map((items, rowIdx) => {
-        // Duplicate each row's content once. The row is animated to
-        // xPercent -50, so the second identical half exactly replaces the
-        // first — a perfectly seamless wrap with no visible seam or pop.
-        const track = [...items, ...items];
-
-        if (prefersReducedMotion) {
-          return (
-            <div key={rowIdx} className="overflow-hidden py-2">
-              <p className="text-center text-sm text-[var(--color-muted)]">
-                {items.join(" • ")}
-              </p>
-            </div>
-          );
-        }
-
-        return (
-          <div key={rowIdx} aria-hidden="true" className="overflow-hidden py-2">
-            <div data-marquee-row className="flex w-max">
-              {track.map((text, itemIdx) => (
-                <span
-                  key={`${rowIdx}-${itemIdx}`}
-                  className="block shrink-0 whitespace-nowrap px-4 text-[clamp(1rem,2.5vw,1.5rem)] font-bold tracking-tight text-[var(--color-text)] opacity-80"
-                >
-                  {text}
-                </span>
-              ))}
-            </div>
-          </div>
-        );
-      })}
+      <div aria-hidden="true" className="overflow-hidden py-2">
+        <div data-marquee-row className="flex w-max">
+          {[half, half].map((group, gi) =>
+            group.map((text, itemIdx) => (
+              <span
+                key={`${gi}-${itemIdx}`}
+                data-marquee-half={gi}
+                className="block shrink-0 whitespace-nowrap px-4 text-[clamp(1rem,2.5vw,1.5rem)] font-bold tracking-tight text-[var(--color-text)] opacity-80"
+              >
+                {text}
+              </span>
+            )),
+          )}
+        </div>
+      </div>
     </div>
   );
 }

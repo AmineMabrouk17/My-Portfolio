@@ -5,13 +5,21 @@ import ScrollReveal from "@/components/ui/ScrollReveal";
 import { AnimatedText } from "@/components/motion/animated-text";
 import Marquee from "@/components/Marquee";
 
-const MARQUEE_ROWS = [
-  ["Secure Architecture", "High-Performance Apps", "Real-time Features"],
-  ["Cloud Migrations", "System Security", "Automated Monitoring"],
-  ["Data-Driven Systems", "Seamless UX", "Business Value"],
-  ["Next.js", "Angular", "Laravel", "TypeScript", "Node.js"],
-  ["Telecom Dashboards", "Billing Systems", "Anomaly Detection", "REST APIs"],
-  ["PostgreSQL", "Redis", "Docker", "Cloudflare", "CI/CD"],
+const MARQUEE_ITEMS = [
+  "Secure Architecture",
+  "High-Performance Apps",
+  "Real-time Features",
+  "Cloud Migrations",
+  "System Security",
+  "Automated Monitoring",
+  "Data-Driven Systems",
+  "Seamless UX",
+  "Business Value",
+  "Next.js",
+  "Angular",
+  "Laravel",
+  "TypeScript",
+  "Node.js",
 ];
 
 export default function About() {
@@ -57,9 +65,9 @@ export default function About() {
           {t("about.bio")} {t("about.sub")}
         </p>
 
-        {/* Marquee rows */}
+        {/* Marquee row (single) */}
         <ScrollReveal>
-          <Marquee rows={MARQUEE_ROWS} className="mb-6" />
+          <Marquee items={MARQUEE_ITEMS} className="mb-6" />
         </ScrollReveal>
 
         {/* Static diploma badge */}
