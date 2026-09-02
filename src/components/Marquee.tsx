@@ -31,7 +31,7 @@ export default function Marquee({ rows, className }: MarqueeProps) {
       gsap.to(row, {
         xPercent: -50 * baseSigns[i],
         repeat: -1,
-        duration: 30,
+        duration: 60,
         ease: "none",
       }),
     );
