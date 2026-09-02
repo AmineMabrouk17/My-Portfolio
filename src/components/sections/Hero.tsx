@@ -1,14 +1,16 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useI18n } from "@/i18n/I18nContext";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import ParticleText from "@/components/ui/ParticleText";
-import { AnimatedText } from "@/components/motion/animated-text";
+import { gsap, SplitText } from "@/lib/gsap";
 
 export default function Hero() {
   const { t } = useI18n();
   const [accentIndex, setAccentIndex] = useState(0);
+  const headlineRef = useRef<HTMLHeadingElement>(null);
+  const summaryRef = useRef<HTMLParagraphElement>(null);
 
   const accents = [
     t("hero.headlineAccent"),
@@ -24,6 +26,46 @@ export default function Hero() {
     return () => clearInterval(interval);
   }, [accents.length]);
 
+  useEffect(() => {
+    if (
+      typeof window === "undefined" ||
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
+      return;
+    }
+
+    const el = headlineRef.current;
+    if (!el) return;
+
+    let split: SplitText | undefined;
+
+    const ctx = gsap.context(() => {
+      split = SplitText.create(el, { type: "words", mask: "words" });
+
+      gsap.from(split.words, {
+        yPercent: 120,
+        duration: 0.8,
+        stagger: 0.06,
+        ease: "power4.out",
+      });
+
+      if (summaryRef.current) {
+        gsap.from(summaryRef.current, {
+          y: 20,
+          opacity: 0,
+          duration: 0.6,
+          delay: split.words.length * 0.06 + 0.8 + 0.2,
+          ease: "power3.out",
+        });
+      }
+    }, el);
+
+    return () => {
+      ctx.revert();
+      split?.revert();
+    };
+  }, []);
+
   return (
     <section className="pt-[140px] pb-[60px] max-lg:pt-[120px]">
       <div className="max-w-[1120px] mx-auto px-8">
@@ -34,12 +76,18 @@ export default function Hero() {
             <span className="text-[#d2e823]">{t("hero.tag")}</span>
           </div>
 
-          <h1 className="font-semibold leading-[1.14] tracking-[-0.035em] mb-8 max-w-[980px] text-[clamp(2.4rem,5.6vw,4.6rem)]">
-            <AnimatedText as="span" text={t("hero.headline")} stagger={0.05} />{" "}
+          <h1
+            ref={headlineRef}
+            className="font-semibold leading-[1.14] tracking-[-0.035em] mb-8 max-w-[980px] text-[clamp(2.4rem,5.6vw,4.6rem)]"
+          >
+            {t("hero.headline")}{" "}
             <ParticleText text={accents[accentIndex]} />
           </h1>
 
-          <p className="text-[clamp(1.05rem,1.8vw,1.25rem)] leading-[1.6] text-[var(--color-muted)] max-w-[580px] font-normal mb-10">
+          <p
+            ref={summaryRef}
+            className="text-[clamp(1.05rem,1.8vw,1.25rem)] leading-[1.6] text-[var(--color-muted)] max-w-[580px] font-normal mb-10"
+          >
             {t("hero.summary")}
           </p>
 
