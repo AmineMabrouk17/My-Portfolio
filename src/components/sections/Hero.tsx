@@ -1,30 +1,14 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { useI18n } from "@/i18n/I18nContext";
 import ScrollReveal from "@/components/ui/ScrollReveal";
-import ParticleText from "@/components/ui/ParticleText";
 import { gsap, SplitText } from "@/lib/gsap";
 
 export default function Hero() {
   const { t } = useI18n();
-  const [accentIndex, setAccentIndex] = useState(0);
   const headlineRef = useRef<HTMLHeadingElement>(null);
   const summaryRef = useRef<HTMLParagraphElement>(null);
-
-  const accents = [
-    t("hero.headlineAccent"),
-    t("hero.headlineAccent2"),
-    t("hero.headlineAccent3"),
-    t("hero.headlineAccent4"),
-  ];
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setAccentIndex((i) => (i + 1) % accents.length);
-    }, 4000);
-    return () => clearInterval(interval);
-  }, [accents.length]);
 
   useEffect(() => {
     if (
@@ -37,10 +21,13 @@ export default function Hero() {
     const el = headlineRef.current;
     if (!el) return;
 
+    const staticSpan = el.querySelector("span");
+    if (!staticSpan) return;
+
     let split: SplitText | undefined;
 
     const ctx = gsap.context(() => {
-      split = SplitText.create(el, { type: "words", mask: "words" });
+      split = SplitText.create(staticSpan, { type: "words", mask: "words" });
 
       gsap.from(split.words, {
         yPercent: 120,
@@ -80,8 +67,8 @@ export default function Hero() {
             ref={headlineRef}
             className="font-semibold leading-[1.14] tracking-[-0.035em] mb-8 max-w-[980px] text-[clamp(2.4rem,5.6vw,4.6rem)]"
           >
-            {t("hero.headline")}{" "}
-            <ParticleText text={accents[accentIndex]} />
+            <span className="inline-block">{t("hero.headline")}</span>{" "}
+            <span className="text-[#d2e823] font-normal">{t("hero.headlineAccent")}</span>
           </h1>
 
           <p
