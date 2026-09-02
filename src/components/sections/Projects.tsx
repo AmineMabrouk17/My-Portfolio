@@ -4,7 +4,9 @@ import { useI18n } from "@/i18n/I18nContext";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import { AnimatedText } from "@/components/motion/animated-text";
 import ProjectList from "@/components/ProjectList";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
+import ProjectFilter, { matchesFilter, FILTER_TAGS, type FilterValue } from "@/components/ProjectFilter";
+import { gsap, Flip } from "@/lib/gsap";
 
 function CursorFollower({ containerRef }: { containerRef: React.RefObject<HTMLDivElement | null> }) {
   const badgeRef = useRef<HTMLDivElement>(null);
@@ -487,8 +489,89 @@ function FeaturedProjectCard() {
   );
 }
 
+const FILTER_SLUG_MAP: Record<string, string> = {
+  castcue: "castcue",
+  leadgen: "leadgen",
+  ecom: "ecom",
+  budgetiq: "budgetiq",
+  trustless: "trustless",
+  crypto: "crypto",
+};
+
 export default function Projects() {
   const { t } = useI18n();
+  const [activeFilter, setActiveFilter] = useState<FilterValue>("all");
+  const gridRef = useRef<HTMLDivElement>(null);
+  const prefersReducedMotion =
+    typeof window !== "undefined" &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  const counts = FILTER_TAGS.reduce(
+    (acc, { value }) => {
+      if (value === "all") {
+        acc[value] = projects.length + 1;
+      } else {
+        acc[value] =
+          projects.filter((p) => matchesFilter(FILTER_SLUG_MAP[p.slug] ?? p.slug, value)).length +
+          (matchesFilter("crypto", value) ? 1 : 0);
+      }
+      return acc;
+    },
+    {} as Record<FilterValue, number>,
+  );
+
+  const handleFilterChange = useCallback(
+    (filter: FilterValue) => {
+      if (filter === activeFilter) return;
+
+      if (prefersReducedMotion) {
+        setActiveFilter(filter);
+        return;
+      }
+
+      const cards = gridRef.current?.querySelectorAll<HTMLElement>("[data-project-card]");
+      if (!cards?.length) {
+        setActiveFilter(filter);
+        return;
+      }
+
+      const state = Flip.getState(cards);
+      setActiveFilter(filter);
+
+      requestAnimationFrame(() => {
+        Flip.from(state, {
+          duration: 0.6,
+          ease: "power3.inOut",
+          absolute: true,
+          stagger: 0.05,
+          onComplete: () => {
+            cards.forEach((card) => {
+              const slug = card.getAttribute("data-slug") ?? "";
+              const visible = filter === "all" || matchesFilter(FILTER_SLUG_MAP[slug] ?? slug, filter);
+              card.style.display = visible ? "" : "none";
+            });
+          },
+        });
+      });
+    },
+    [activeFilter, prefersReducedMotion],
+  );
+
+  useEffect(() => {
+    if (prefersReducedMotion) {
+      const cards = gridRef.current?.querySelectorAll<HTMLElement>("[data-project-card]");
+      cards?.forEach((card) => {
+        const slug = card.getAttribute("data-slug") ?? "";
+        const visible = activeFilter === "all" || matchesFilter(FILTER_SLUG_MAP[slug] ?? slug, activeFilter);
+        card.style.display = visible ? "" : "none";
+      });
+    }
+  }, [activeFilter, prefersReducedMotion]);
+
+  const isProjectVisible = (slug: string) =>
+    activeFilter === "all" || matchesFilter(FILTER_SLUG_MAP[slug] ?? slug, activeFilter);
+
+  const isCryptoVisible = activeFilter === "all" || matchesFilter("crypto", activeFilter);
 
   return (
     <section id="projects" className="py-[90px] max-lg:py-[70px]">
@@ -515,20 +598,31 @@ export default function Projects() {
           <ProjectList />
         </div>
 
-        <div className="flex flex-col gap-[22px] mb-[60px]">
+        <ProjectFilter activeFilter={activeFilter} onFilterChange={handleFilterChange} counts={counts} />
+
+        <div ref={gridRef} className="flex flex-col gap-[22px] mb-[60px]">
           {projects.map((project, i) => (
-            <ProjectCard key={project.titleKey} project={project} index={i} />
+            <div
+              key={project.titleKey}
+              data-project-card
+              data-slug={FILTER_SLUG_MAP[project.slug] ?? project.slug}
+              style={{ display: isProjectVisible(FILTER_SLUG_MAP[project.slug] ?? project.slug) ? "" : "none" }}
+            >
+              <ProjectCard project={project} index={i} />
+            </div>
           ))}
         </div>
 
-        <ScrollReveal>
-          <h3 className="text-[24px] font-semibold mb-6 text-[var(--color-accent-3)] flex items-center gap-2.5">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 20V10M18 20V4M6 20v-4" /></svg>
-            {t("proj.crypto.section")}
-          </h3>
-        </ScrollReveal>
+        <div data-project-card data-slug="crypto" style={{ display: isCryptoVisible ? "" : "none" }}>
+          <ScrollReveal>
+            <h3 className="text-[24px] font-semibold mb-6 text-[var(--color-accent-3)] flex items-center gap-2.5">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 20V10M18 20V4M6 20v-4" /></svg>
+              {t("proj.crypto.section")}
+            </h3>
+          </ScrollReveal>
 
-        <FeaturedProjectCard />
+          <FeaturedProjectCard />
+        </div>
       </div>
     </section>
   );
