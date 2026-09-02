@@ -9,6 +9,9 @@ const MARQUEE_ROWS = [
   ["Secure Architecture", "High-Performance Apps", "Real-time Features"],
   ["Cloud Migrations", "System Security", "Automated Monitoring"],
   ["Data-Driven Systems", "Seamless UX", "Business Value"],
+  ["Next.js", "Angular", "Laravel", "TypeScript", "Node.js"],
+  ["Telecom Dashboards", "Billing Systems", "Anomaly Detection", "REST APIs"],
+  ["PostgreSQL", "Redis", "Docker", "Cloudflare", "CI/CD"],
 ];
 
 export default function About() {
