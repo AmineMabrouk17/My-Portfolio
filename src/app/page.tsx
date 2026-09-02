@@ -1,7 +1,6 @@
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import BackToTop from "@/components/ui/BackToTop";
-import LoopingPanels from "@/components/LoopingPanels";
 import Hero from "@/components/sections/Hero";
 import About from "@/components/sections/About";
 import Skills from "@/components/sections/Skills";
@@ -54,17 +53,11 @@ export default function Home() {
       <Navbar />
       <main id="top">
         <Hero />
-        <LoopingPanels />
         <About />
-        <LoopingPanels />
         <Skills />
-        <LoopingPanels />
         <Experience />
-        <LoopingPanels />
         <Projects />
-        <LoopingPanels />
         <Education />
-        <LoopingPanels />
         <Contact />
       </main>
       <Footer />
