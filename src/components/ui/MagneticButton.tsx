@@ -28,10 +28,16 @@ export function MagneticButton({
     if (!el) return;
     if (typeof window !== "undefined" && "ontouchstart" in window) return;
 
-    const wiggleEase = CustomWiggle.create("magneticWiggle", {
-      wiggles: 3,
-      type: "easeOut",
-    });
+    let wiggleEase: number | ((progress: number) => number) | string =
+      "back.out(1.4)";
+    try {
+      wiggleEase = CustomWiggle.create("magneticWiggle", {
+        wiggles: 3,
+        type: "easeOut",
+      });
+    } catch {
+      wiggleEase = "back.out(1.4)";
+    }
 
     const onMove = (e: MouseEvent) => {
       const { left, top, width, height } = el.getBoundingClientRect();
