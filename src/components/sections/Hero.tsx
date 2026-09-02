@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import { useI18n } from "@/i18n/I18nContext";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import { gsap, SplitText } from "@/lib/gsap";
+import { MagneticButton } from "@/components/ui/MagneticButton";
 
 export default function Hero() {
   const { t } = useI18n();
@@ -79,7 +80,7 @@ export default function Hero() {
           </p>
 
           <div className="flex gap-3.5 flex-wrap">
-            <a
+            <MagneticButton
               href="#contact"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-full no-underline font-semibold text-[15px] bg-[#f3f4f6] text-[#111827] transition-all duration-200 hover:-translate-y-px hover:opacity-95"
               style={{ boxShadow: "0 20px 40px rgba(0, 0, 0, 0.45)" }}
@@ -88,7 +89,7 @@ export default function Hero() {
                 <path d="M22 2L11 13M22 2L15 22L11 13M22 2L2 9L11 13" />
               </svg>
               {t("hero.cta1")}
-            </a>
+            </MagneticButton>
             <a
               href="#projects"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-full no-underline font-semibold text-[15px] border border-white/15 text-[var(--color-text)] transition-all duration-200 hover:bg-white/[0.06] hover:-translate-y-px"
