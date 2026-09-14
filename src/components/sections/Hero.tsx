@@ -85,9 +85,6 @@ export default function Hero() {
               className="inline-flex items-center gap-2 px-6 py-3 rounded-full no-underline font-semibold text-[15px] bg-[#f3f4f6] text-[#111827] transition-all duration-200 hover:-translate-y-px hover:opacity-95"
               style={{ boxShadow: "0 20px 40px rgba(0, 0, 0, 0.45)" }}
             >
-              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                <path d="M22 2L11 13M22 2L15 22L11 13M22 2L2 9L11 13" />
-              </svg>
               {t("hero.cta1")}
             </MagneticButton>
             <a
@@ -115,6 +112,17 @@ export default function Hero() {
               </svg>
             </a>
             <a
+              href="https://www.linkedin.com/in/amine-mabrouk"
+              target="_blank"
+              rel="noopener"
+              aria-label="LinkedIn"
+              className="w-[42px] h-[42px] grid place-items-center rounded-full bg-white/[0.03] border border-white/10 text-[var(--color-muted)] no-underline transition-all duration-200 hover:text-white hover:border-white/30 hover:-translate-y-0.5"
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+              </svg>
+            </a>
+            <a
               href="mailto:amx72001@gmail.com?subject=Inquiry%20via%20Portfolio"
               aria-label="Email"
               className="w-[42px] h-[42px] grid place-items-center rounded-full bg-white/[0.03] border border-white/10 text-[var(--color-muted)] no-underline transition-all duration-200 hover:text-white hover:border-white/30 hover:-translate-y-0.5"
@@ -122,25 +130,6 @@ export default function Hero() {
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <rect x="2" y="4" width="20" height="16" rx="2" />
                 <path d="M22 4L12 13L2 4" />
-              </svg>
-            </a>
-            <a
-              href="tel:+21627865121"
-              aria-label="Phone"
-              className="w-[42px] h-[42px] grid place-items-center rounded-full bg-white/[0.03] border border-white/10 text-[var(--color-muted)] no-underline transition-all duration-200 hover:text-white hover:border-white/30 hover:-translate-y-0.5"
-            >
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" />
-              </svg>
-            </a>
-            <a
-              href="#contact"
-              aria-label="Location"
-              className="w-[42px] h-[42px] grid place-items-center rounded-full bg-white/[0.03] border border-white/10 text-[var(--color-muted)] no-underline transition-all duration-200 hover:text-white hover:border-white/30 hover:-translate-y-0.5"
-            >
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
-                <circle cx="12" cy="10" r="3" />
               </svg>
             </a>
           </div>
