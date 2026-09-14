@@ -7,20 +7,15 @@ import Marquee from "@/components/Marquee";
 
 const MARQUEE_ROWS = [
   [
-    "Secure Architecture",
-    "High-Performance Apps",
-    "Real-time Features",
-    "Cloud Migrations",
-    "System Security",
-    "Automated Monitoring",
-    "Data-Driven Systems",
-    "Seamless UX",
-    "Business Value",
-    "Next.js",
-    "Angular",
-    "Laravel",
-    "TypeScript",
-    "Node.js",
+    "Clean Architecture",
+    "Automated CI/CD",
+    "Pull Requests & Code Review",
+    "REST API Design",
+    "Relational Databases",
+    "Production Deployments",
+    "Component Architecture",
+    "Automated Testing",
+    "GitHub Issues & Tracking",
   ],
 ];
 
