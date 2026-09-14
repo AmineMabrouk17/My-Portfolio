@@ -16,20 +16,20 @@ interface Project {
 
 const PROJECTS: Project[] = [
   {
+    id: "crypto",
+    titleKey: "proj.crypto.title",
+    categoryKey: "proj.crypto.sub",
+    year: "2026",
+    href: "https://crypto-stocks-web-taupe.vercel.app",
+    image: "/projects/crypto-stocks/hero-dashboard.png",
+  },
+  {
     id: "castcue",
     titleKey: "proj.castcue.title",
     categoryKey: "proj.castcue.sub",
     year: "2026",
     href: "https://cast-cue.cast-cue.workers.dev",
     image: "/projects/castncue.png",
-  },
-  {
-    id: "leadgen",
-    titleKey: "proj.leadgen.title",
-    categoryKey: "proj.leadgen.sub",
-    year: "2026",
-    href: "https://lead-generation-landing-page.pages.dev",
-    image: "/projects/lead-generation.png",
   },
   {
     id: "ecom",
@@ -46,22 +46,6 @@ const PROJECTS: Project[] = [
     year: "2026",
     href: "https://budgetiq-two.vercel.app",
     image: "/projects/budgetiq.png",
-  },
-  {
-    id: "trustless",
-    titleKey: "proj.trustless.title",
-    categoryKey: "proj.trustless.sub",
-    year: "2026",
-    href: "https://trustless-escrow-demo.vercel.app",
-    image: "/projects/trustlesseScrow.png",
-  },
-  {
-    id: "crypto",
-    titleKey: "proj.crypto.title",
-    categoryKey: "proj.crypto.sub",
-    year: "2026",
-    href: "https://crypto-stocks-web-taupe.vercel.app",
-    image: "/projects/crypto-stocks/hero-dashboard.png",
   },
 ];
 

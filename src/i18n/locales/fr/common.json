@@ -58,48 +58,33 @@
   "proj": {
     "num": "04 / PROJETS",
     "h2": "Ce que je construis.",
-    "sub": "Applications logicielles et designs statiques réalisés pour des clients et des expérimentations.",
+    "sub": "Applications full-stack prêtes pour la production, construites avec des architectures modernes, des données en temps réel et une infrastructure cloud.",
     "castcue": {
-      "sub": "Next.js · Cloudflare Workers",
+      "sub": "Next.js · Cloudflare Workers · Base D1",
       "title": "Cast n Cue — Suivi de films & séries",
       "problem": "Suivre une douzaine de séries à la fois signifie perdre la trace de où vous en êtes, de ce qui sort ensuite et de ce qui vaut la peine d'être regardé.",
       "solution": "Développement d'un tracker média au niveau épisode sur Cloudflare Workers + D1 avec recherche TMDB/Trakt/TVmaze, notations en demi-étoiles, notes privées à sauvegarde automatique, roulette de liste de visionnage et connexion Google via Better Auth.",
       "result": "Une application gratuite et privée par conception qui enregistre films, séries et épisodes — votre liste et votre progression toujours à un clic."
     },
-    "leadgen": {
-      "sub": "Astro · Lighthouse 100/100/100",
-      "title": "Page d'Atterrissage pour Génération de Leads",
-      "desc": "Une page d'atterrissage minimaliste et ultra-performante pour la capture de leads, construite avec Astro 7 et obtenant un score Lighthouse parfait. Intègre Google Tag Manager, GA4 et Meta Pixel avec déduplication des événements, un backend formulaire sans serveur (Formspree) et un système de design en CSS pur — le tout en ~10 KB.",
-      "problem": "Les pages d'atterrissage sont souvent alourdies par des frameworks JavaScript, nuisant aux taux de conversion à cause de temps de chargement lents et de mauvais Core Web Vitals.",
-      "solution": "Création d'une page statique sans framework JS avec Astro 7 SSG, tout le CSS intégré dans un seul fichier HTML. Intégration d'un backend formulaire sans serveur (Formspree) avec validation côté client, états de chargement et suivi d'événements analytics (GTM → GA4 + Meta Pixel) avec déduplication des événements.",
-      "result": "Une page de 10,4 KB avec Lighthouse 100/100/100, 0ms TBT, 0 CLS, 1,6s LCP et des analytics de qualité production."
-    },
     "ecom": {
-      "sub": "Next.js · Commerce full-stack",
-      "title": "Site E-Commerce — Boutique full-stack",
+      "sub": "Next.js · Stripe · PostgreSQL · Supabase",
+      "title": "Lumina — Plateforme E-Commerce Full-Stack",
       "problem": "Faire tourner une vraie boutique impose de relier catalogue, panier, paiement et expédition — la plupart des modèles s'arrêtent à une simple grille de produits.",
       "solution": "Construction d'un moteur commercial complet : catalogue Supabase, authentification, stockage et cycle de vie des commandes, paiement Stripe Checkout, panier persistant en local, avis de clients vérifiés, classement tendance, traitement des commandes côté admin et règles d'expédition.",
       "result": "Une boutique à système unique où stocks, avis, paiements et expédition restent cohérents de la page produit jusqu'à la livraison de la commande."
     },
     "budgetiq": {
-      "sub": "Next.js · Finance personnelle propulsée par IA",
+      "sub": "Next.js · Gemini AI · Supabase · Analytics",
       "title": "BudgetIQ — Planificateur budgétaire IA",
       "problem": "Gérer ses finances personnelles (salaire, dépenses, actifs) est fragmenté, et la plupart des outils n'offrent aucun moyen intelligent de saisir ses dépenses.",
       "solution": "Développement d'un gestionnaire financier open-source avec authentification Supabase, tableaux de bord en temps réel, graphiques par catégorie, citations quotidiennes et un chatbot Gemini qui analyse le langage naturel pour proposer des transactions.",
       "result": "Un planificateur où discuter en langage naturel capture instantanément dépenses et revenus dans un tableau de bord interactif."
     },
-    "trustless": {
-      "sub": "Solidity · Foundry · On-chain",
-      "title": "TrustlessEscrow — Escrow sans confiance",
-      "problem": "Les échanges pair-à-pair reposent sur des intermédiaires centralisés qui détiennent les fonds et prélèvent des frais, introduisant des risques de confiance et de garde.",
-      "solution": "Conception d'une machine à états d'escrow on-chain en Solidity avec dépôt, confirmation de livraison, litiges et résolution par arbitre, plus un frontend wagmi/viem déployé sur Sepolia.",
-      "result": "Un protocole d'escrow auditable et sans frais où les fonds ne sont libérés qu'après confirmation de livraison ou décision de l'arbitre."
-    },
     "demo": "Voir la démo",
     "source": "Code Source",
     "crypto": {
       "section": "Projet Vedette",
-      "sub": "Next.js · Intelligence de marché en temps réel",
+      "sub": "Next.js · WebSockets en temps réel · Turborepo",
       "title": "Crypto & Stocks Dashboard",
       "desc": "Un tableau de bord hybride crypto + actions avec streaming WebSocket Binance en temps réel, intégration Yahoo Finance, graphiques style TradingView (bascule courbe/bougie), prédictions de prix participatives sur 5 minutes, alertes de prix natives, et un assistant IA multi-fournisseur (7 modèles gratuits + BYOK pour OpenAI/Anthropic/Groq).",
       "problem": "Accéder à l'intelligence financière en temps réel nécessite de jongler entre plusieurs plateformes disparates sans vue unifiée ni analyse IA.",

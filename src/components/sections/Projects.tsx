@@ -95,27 +95,6 @@ function MockWidgetCastCue() {
   );
 }
 
-function MockWidgetLeadGen() {
-  return (
-    <div className="flex h-full w-full flex-col p-5 gap-3">
-      <div className="h-5 rounded-lg bg-gradient-to-r from-[#ff6b6b]/20 via-[#ffa94d]/15 to-[#FFE566]/10 w-32" />
-      <div className="h-3 rounded-md bg-white/[0.06] w-48" />
-      <div className="h-3 rounded-md bg-white/[0.04] w-36" />
-      <div className="flex gap-2 mt-2">
-        <div className="h-8 w-24 rounded-lg bg-[var(--color-accent)]/80" />
-        <div className="h-8 flex-1 rounded-lg bg-white/[0.04] border border-white/[0.06]" />
-      </div>
-      <div className="flex gap-3 mt-auto">
-        {[1,2,3].map(i => (
-          <div key={i} className="flex-1 h-10 rounded-lg bg-white/[0.04] border border-white/[0.06] flex items-center justify-center">
-            <div className="h-1.5 rounded-full bg-white/10 w-8" />
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
 function MockWidgetEcom() {
   const items = ["from-[#ff6b6b]/25", "from-[#ffa94d]/25", "from-[#FFE566]/25"];
   return (
@@ -173,41 +152,10 @@ function MockWidgetBudgetIQ() {
   );
 }
 
-function MockWidgetEscrow() {
-  return (
-    <div className="flex h-full w-full flex-col p-5 gap-3 items-center justify-center">
-      <div className="flex items-center gap-3 w-full">
-        <div className="flex-1 rounded-xl bg-white/[0.04] border border-white/[0.06] p-3 text-center">
-          <div className="w-8 h-8 rounded-full bg-[#ff6b6b]/20 mx-auto mb-2 flex items-center justify-center">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#ff6b6b" strokeWidth="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2" /><circle cx="12" cy="7" r="4" /></svg>
-          </div>
-          <div className="h-1.5 rounded-full bg-white/10 w-12 mx-auto" />
-        </div>
-        <div className="flex flex-col items-center gap-1">
-          <div className="h-px w-10 bg-gradient-to-r from-[#ff6b6b] to-[#22c55e]" />
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-[var(--color-accent-2)]"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>
-          <div className="h-px w-10 bg-gradient-to-r from-[#22c55e] to-[#FFE566]" />
-        </div>
-        <div className="flex-1 rounded-xl bg-white/[0.04] border border-white/[0.06] p-3 text-center">
-          <div className="w-8 h-8 rounded-full bg-[#22c55e]/20 mx-auto mb-2 flex items-center justify-center">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2" /><circle cx="12" cy="7" r="4" /></svg>
-          </div>
-          <div className="h-1.5 rounded-full bg-white/10 w-12 mx-auto" />
-        </div>
-      </div>
-      <div className="w-full rounded-xl bg-[#22c55e]/10 border border-[#22c55e]/20 p-2 text-center">
-        <div className="h-2 rounded-full bg-[#22c55e]/30 w-20 mx-auto" />
-      </div>
-    </div>
-  );
-}
-
 const mockWidgets: Record<string, () => React.JSX.Element> = {
   castcue: MockWidgetCastCue,
-  leadgen: MockWidgetLeadGen,
   ecom: MockWidgetEcom,
   budgetiq: MockWidgetBudgetIQ,
-  trustless: MockWidgetEscrow,
 };
 
 type CaseStudy = { problem: string; solution: string; result: string };
@@ -237,17 +185,6 @@ const projects: Project[] = [
     screenshot: "/projects/castncue.png",
   },
   {
-    slug: "leadgen",
-    subKey: "proj.leadgen.sub",
-    titleKey: "proj.leadgen.title",
-    caseStudy: { problem: "proj.leadgen.problem", solution: "proj.leadgen.solution", result: "proj.leadgen.result" },
-    tags: ["Astro", "TypeScript", "Cloudflare Pages", "Formspree", "GTM", "GA4", "Meta Pixel"],
-    date: "2026",
-    link: "https://lead-generation-landing-page.pages.dev",
-    source: "https://github.com/AmineMabrouk17/lead-generation-landing-page",
-    screenshot: "/projects/lead-generation.png",
-  },
-  {
     slug: "ecom",
     subKey: "proj.ecom.sub",
     titleKey: "proj.ecom.title",
@@ -266,16 +203,6 @@ const projects: Project[] = [
     link: "https://budgetiq-two.vercel.app",
     source: "https://github.com/AmineMabrouk17/BudgetIQ",
     screenshot: "/projects/budgetiq.png",
-  },
-  {
-    slug: "trustless",
-    subKey: "proj.trustless.sub",
-    titleKey: "proj.trustless.title",
-    caseStudy: { problem: "proj.trustless.problem", solution: "proj.trustless.solution", result: "proj.trustless.result" },
-    tags: ["Solidity", "Foundry", "Next.js", "wagmi", "viem"],
-    link: "https://trustless-escrow-demo.vercel.app",
-    source: "https://github.com/AmineMabrouk17/nextjs-solidity-escrow",
-    screenshot: "/projects/trustlesseScrow.png",
   },
 ];
 
@@ -496,10 +423,8 @@ function FeaturedProjectCard() {
 
 const FILTER_SLUG_MAP: Record<string, string> = {
   castcue: "castcue",
-  leadgen: "leadgen",
   ecom: "ecom",
   budgetiq: "budgetiq",
-  trustless: "trustless",
   crypto: "crypto",
 };
 
