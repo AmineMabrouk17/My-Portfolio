@@ -4,7 +4,6 @@ import type { IconType } from "react-icons";
 import {
   SiAngular,
   SiDocker,
-  SiEthereum,
   SiFlask,
   SiGit,
   SiGithub,
@@ -18,13 +17,11 @@ import {
   SiPostgresql,
   SiPython,
   SiReact,
-  SiSolidity,
   SiSupabase,
   SiTailwindcss,
   SiTypescript,
-  SiWagmi,
 } from "react-icons/si";
-import { TbApi, TbBrain, TbDatabase, TbTools } from "react-icons/tb";
+import { TbApi, TbBrain, TbDatabase } from "react-icons/tb";
 import { useI18n } from "@/i18n/I18nContext";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import { TiltCard } from "@/components/motion/tilt-card";
@@ -34,12 +31,12 @@ const skills = [
   {
     icon: "window",
     titleKey: "skills.frontend",
-    tags: ["Angular 20", "Next.js 14", "React.js", "TypeScript", "JavaScript ES2025", "Tailwind CSS"],
+    tags: ["Angular", "Next.js", "React.js", "TypeScript", "JavaScript", "Tailwind CSS"],
   },
   {
     icon: "server",
     titleKey: "skills.backend",
-    tags: ["Node.js", "Laravel 12 (PHP)", "Flask (Python)", "REST APIs"],
+    tags: ["Node.js", "Laravel", "Flask", "Python", "REST APIs"],
   },
   {
     icon: "database",
@@ -54,25 +51,22 @@ const skills = [
   {
     icon: "cpu",
     titleKey: "skills.ai",
-    tags: ["Hugging Face (NLP)", "Python", "Machine Learning", "Gemini AI"],
-  },
-  {
-    icon: "shield",
-    titleKey: "skills.blockchain",
-    tags: ["Solidity", "Foundry", "Ethereum", "wagmi", "viem"],
+    tags: ["Hugging Face (NLP)", "Machine Learning", "Gemini AI"],
+    full: true,
   },
 ];
 
 const techIcons: Record<string, IconType> = {
-  "Angular 20": SiAngular,
-  "Next.js 14": SiNextdotjs,
+  Angular: SiAngular,
+  "Next.js": SiNextdotjs,
   "React.js": SiReact,
   TypeScript: SiTypescript,
-  "JavaScript ES2025": SiJavascript,
+  JavaScript: SiJavascript,
   "Tailwind CSS": SiTailwindcss,
   "Node.js": SiNodedotjs,
-  "Laravel 12 (PHP)": SiLaravel,
-  "Flask (Python)": SiFlask,
+  Laravel: SiLaravel,
+  Flask: SiFlask,
+  Python: SiPython,
   "REST APIs": TbApi,
   MySQL: SiMysql,
   Supabase: SiSupabase,
@@ -82,13 +76,8 @@ const techIcons: Record<string, IconType> = {
   Git: SiGit,
   GitHub: SiGithub,
   "Hugging Face (NLP)": SiHuggingface,
-  Python: SiPython,
   "Machine Learning": TbBrain,
   "Gemini AI": SiGooglegemini,
-  Solidity: SiSolidity,
-  Foundry: TbTools,
-  Ethereum: SiEthereum,
-  wagmi: SiWagmi,
 };
 
 const iconMap: Record<string, React.JSX.Element> = {
@@ -97,7 +86,6 @@ const iconMap: Record<string, React.JSX.Element> = {
   database: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><ellipse cx="12" cy="5" rx="9" ry="3" /><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3" /><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" /></svg>,
   infinity: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 12c-2-2.67-4-4-6-4a4 4 0 100 8c2 0 4-1.33 6-4zm0 0c2 2.67 4 4 6 4a4 4 0 000-8c-2 0-4 1.33-6 4z" /></svg>,
   cpu: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="4" y="4" width="16" height="16" rx="2" /><rect x="9" y="9" width="6" height="6" /><line x1="9" y1="1" x2="9" y2="4" /><line x1="15" y1="1" x2="15" y2="4" /><line x1="9" y1="20" x2="9" y2="23" /><line x1="15" y1="20" x2="15" y2="23" /><line x1="20" y1="9" x2="23" y2="9" /><line x1="20" y1="14" x2="23" y2="14" /><line x1="1" y1="9" x2="4" y2="9" /><line x1="1" y1="14" x2="4" y2="14" /></svg>,
-  shield: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 01-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 011-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 011.52 0C14.51 3.81 17 5 19 5a1 1 0 011 1z" /><polyline points="9 12 11 14 15 10" /></svg>,
 };
 
 export default function Skills() {
@@ -124,10 +112,14 @@ export default function Skills() {
           </div>
         </ScrollReveal>
 
-        <div className="grid grid-cols-[repeat(auto-fit,minmax(260px,1fr))] gap-[18px]">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-[18px]">
           {skills.map((skill, i) => (
-            <ScrollReveal key={skill.titleKey} delay={i * 80}>
-              <TiltCard className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-[18px] p-[26px] transition-colors duration-300 hover:border-[var(--color-border-2)] hover:bg-[var(--color-surface-2)] group">
+            <ScrollReveal
+              key={skill.titleKey}
+              delay={i * 80}
+              className={skill.full ? "sm:col-span-2 lg:col-span-4" : undefined}
+            >
+              <TiltCard className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-[18px] p-[26px] h-full transition-colors duration-300 hover:border-[var(--color-border-2)] hover:bg-[var(--color-surface-2)] group">
                 <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                 <div className="w-[46px] h-[46px] rounded-[12px] bg-[color-mix(in_srgb,var(--color-accent)_8%,transparent)] text-[var(--color-accent)] grid place-items-center text-xl mb-4.5">
                   {iconMap[skill.icon]}
