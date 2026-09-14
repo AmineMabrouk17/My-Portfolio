@@ -96,13 +96,10 @@
     "num": "05 / FORMATION",
     "h2": "Base académique.",
     "sub": "Formation en ingénierie informatique et génie logiciel.",
-    "diploma": {
-      "title": "Diplôme National d'Ingénieur",
-      "desc": "Informatique et Génie Logiciel. Spécialisation en Génie Logiciel et Science des Données. Reconnu comme équivalent à un Master."
-    },
-    "prep": {
-      "title": "Cycle Préparatoire Intégré",
-      "desc": "Programme intensif de deux ans en Mathématiques, Physique et Informatique — posant les bases analytiques pour les études d'ingénieur."
+    "degree": {
+      "title": "Diplôme d'État d'Ingénieur en Informatique (équivalent M.Sc.)",
+      "program": "Programme d'ingénierie intégré de 5 ans",
+      "desc": "Premières 2 années intensives de pré-ingénierie (Mathématiques avancées & Informatique), suivies de 3 années de spécialisation en Génie Logiciel et Architecture des Systèmes."
     }
   },
   "contact": {

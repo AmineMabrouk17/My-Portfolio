@@ -95,13 +95,10 @@
     "num": "05 / EDUCATION",
     "h2": "Academic foundation.",
     "sub": "Engineering training in Computer Science & Software Engineering.",
-    "diploma": {
-      "title": "National Engineering Diploma",
-      "desc": "Computer Science & Software Engineering. Specialization in Software Engineering & Data Science. Recognized as equivalent to a Master's degree."
-    },
-    "prep": {
-      "title": "Integrated Preparatory Cycle",
-      "desc": "Two-year intensive program in Mathematics, Physics, and Computer Science — building the analytical foundation for engineering studies."
+    "degree": {
+      "title": "State Engineering Degree in Computer Science (M.Sc. Equivalent)",
+      "program": "5-Year Integrated Engineering Program",
+      "desc": "Completed 2 years of intensive pre-engineering foundations (Advanced Math & CS) followed by 3 years of specialized Software Engineering and System Architecture."
     }
   },
   "contact": {

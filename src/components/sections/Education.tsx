@@ -7,15 +7,10 @@ import { AnimatedText } from "@/components/motion/animated-text";
 const education = [
   {
     school: "FSB Bizerte",
-    titleKey: "edu.diploma.title",
-    date: "Sep 2022 – Sep 2025",
-    descKey: "edu.diploma.desc",
-  },
-  {
-    school: "FSB Bizerte",
-    titleKey: "edu.prep.title",
-    date: "Sep 2020 – Jun 2022",
-    descKey: "edu.prep.desc",
+    titleKey: "edu.degree.title",
+    date: "2020 – 2025",
+    programKey: "edu.degree.program",
+    descKey: "edu.degree.desc",
   },
 ];
 
@@ -43,7 +38,7 @@ export default function Education() {
           </div>
         </ScrollReveal>
 
-        <div className="grid grid-cols-2 gap-[18px] max-lg:grid-cols-1">
+        <div className="flex flex-col gap-[18px] max-w-[520px]">
           {education.map((edu, i) => (
             <ScrollReveal key={edu.titleKey} delay={i * 80}>
               <div className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-[18px] p-7 transition-all duration-300 hover:border-[var(--color-border-2)]">
@@ -54,9 +49,9 @@ export default function Education() {
                   {t(edu.titleKey)}
                 </h3>
                 <div className="text-[12.5px] text-[var(--color-muted-2)] mb-3 font-medium">
-                  {edu.date}
+                  {edu.date} · {t(edu.programKey)}
                 </div>
-                <p className="text-[var(--color-muted)] text-sm">
+                <p className="text-[var(--color-muted)] text-sm italic">
                   {t(edu.descKey)}
                 </p>
               </div>
