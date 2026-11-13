@@ -125,5 +125,8 @@
   "footer": {
     "built": "Fait avec",
     "in": "à"
+  },
+  "strip": {
+    "items": "Projets sélectionnés|2026|Livrer vite|Livrer sûr|Architecture propre"
   }
 }
