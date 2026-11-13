@@ -1,0 +1,52 @@
+name: Telegram Notification
+
+on:
+  push:
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - closed
+      - synchronize
+      - edited
+      - ready_for_review
+  release:
+    types:
+      - published
+
+permissions:
+  contents: read
+
+concurrency:
+  group: telegram-notify-${{ github.event_name }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  notify:
+    name: Send Telegram notification
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Verify notification secrets are configured
+        id: secrets_check
+        env:
+          BOT_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          CHAT_ID: ${{ secrets.TELEGRAM_TO }}
+        run: |
+          if [ -n "$BOT_TOKEN" ] && [ -n "$CHAT_ID" ]; then
+            echo "configured=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "configured=false" >> "$GITHUB_OUTPUT"
+            echo "::warning::TELEGRAM_TOKEN and/or TELEGRAM_TO are not set; skipping Telegram notification."
+          fi
+
+      - name: Send Telegram notification
+        if: steps.secrets_check.outputs.configured == 'true'
+        uses: EverythingSuckz/github-telegram-notify@main
+        with:
+          bot_token: ${{ secrets.TELEGRAM_TOKEN }}
+          chat_id: ${{ secrets.TELEGRAM_TO }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
