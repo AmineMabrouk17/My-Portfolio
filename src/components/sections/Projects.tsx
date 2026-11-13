@@ -204,6 +204,22 @@ const projects: Project[] = [
     source: "https://github.com/AmineMabrouk17/BudgetIQ",
     screenshot: "/projects/budgetiq.png",
   },
+  {
+    slug: "rakt3adi",
+    subKey: "proj.rakt3adi.sub",
+    titleKey: "proj.rakt3adi.title",
+    caseStudy: { problem: "proj.rakt3adi.problem", solution: "proj.rakt3adi.solution", result: "proj.rakt3adi.result" },
+    tags: ["Python", "python-telegram-bot", "SQLite", "Systemd", "pytest", "GitHub Actions"],
+    screenshot: "/projects/rakt3adi.png",
+  },
+  {
+    slug: "saletbot",
+    subKey: "proj.saletbot.sub",
+    titleKey: "proj.saletbot.title",
+    caseStudy: { problem: "proj.saletbot.problem", solution: "proj.saletbot.solution", result: "proj.saletbot.result" },
+    tags: ["Python", "python-telegram-bot", "Gemini API", "SQLite", "Pillow", "APScheduler"],
+    screenshot: "/projects/saletbot.png",
+  },
 ];
 
 const cryptoProject: Project = {
@@ -425,6 +441,8 @@ const FILTER_SLUG_MAP: Record<string, string> = {
   castcue: "castcue",
   ecom: "ecom",
   budgetiq: "budgetiq",
+  rakt3adi: "rakt3adi",
+  saletbot: "saletbot",
   crypto: "crypto",
 };
 

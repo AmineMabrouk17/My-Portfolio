@@ -47,6 +47,20 @@ const PROJECTS: Project[] = [
     href: "https://budgetiq-two.vercel.app",
     image: "/projects/budgetiq.png",
   },
+  {
+    id: "rakt3adi",
+    titleKey: "proj.rakt3adi.title",
+    categoryKey: "proj.rakt3adi.sub",
+    year: "2026",
+    image: "/projects/rakt3adi.png",
+  },
+  {
+    id: "saletbot",
+    titleKey: "proj.saletbot.title",
+    categoryKey: "proj.saletbot.sub",
+    year: "2026",
+    image: "/projects/saletbot.png",
+  },
 ];
 
 const OFFSET_X = 20;
@@ -166,12 +180,14 @@ export default function ProjectList() {
                 <span className="hidden text-sm tabular-nums text-[var(--color-muted)] md:block">
                   {project.year}
                 </span>
-                <span
-                  aria-hidden
-                  className="text-lg text-[var(--color-muted)] transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[var(--color-accent-3)]"
-                >
-                  &#8599;
-                </span>
+                {project.href && (
+                  <span
+                    aria-hidden
+                    className="text-lg text-[var(--color-muted)] transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[var(--color-accent-3)]"
+                  >
+                    &#8599;
+                  </span>
+                )}
               </div>
             </a>
           ))}

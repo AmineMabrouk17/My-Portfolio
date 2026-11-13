@@ -8,6 +8,7 @@ const FILTER_TAGS = [
   { label: "Next.js", value: "nextjs" },
   { label: "AI", value: "ai" },
   { label: "Real-time", value: "realtime" },
+  { label: "Bots", value: "bots" },
 ] as const;
 
 type FilterValue = (typeof FILTER_TAGS)[number]["value"];
@@ -20,6 +21,8 @@ const TAG_MAP: TagMap = {
   castcue: ["nextjs", "realtime"],
   ecom: ["nextjs"],
   budgetiq: ["nextjs", "ai"],
+  rakt3adi: ["bots"],
+  saletbot: ["bots", "ai"],
   crypto: ["nextjs", "realtime"],
 };
 
