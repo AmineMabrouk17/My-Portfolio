@@ -132,14 +132,22 @@ body::after {
   background-image: var(--grad);
 }
 
-/* Reveal animation */
+/* Reveal animation — opt-in enhancement.
+   Content is visible by default; the prepaint script adds .js to <html> and
+   only then does a reveal start hidden, so a blocked/slow script never leaves
+   the page blank. */
 .reveal {
-  opacity: 0;
-  transform: translateY(30px);
+  opacity: 1;
+  transform: none;
   transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
-.reveal.visible {
+html.js .reveal {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+html.js .reveal.visible {
   opacity: 1;
   transform: translateY(0);
 }
@@ -162,14 +170,16 @@ body::after {
   background: var(--color-muted-2);
 }
 
-/* RTL support */
-[dir="rtl"] .contact-email {
-  direction: ltr;
-  unicode-bidi: embed;
+/* Arabic typesetting: the mono face has no Arabic glyphs, so the annotation
+   register falls back to the Arabic body face and drops Latin tracking. */
+html[lang="ar"] .font-mono {
+  font-family: var(--font-arabic), "IBM Plex Sans Arabic", sans-serif;
+  letter-spacing: 0;
 }
 
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
+  html.js .reveal,
   .reveal {
     opacity: 1;
     transform: none;
