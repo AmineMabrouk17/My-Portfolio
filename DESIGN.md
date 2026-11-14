@@ -244,6 +244,7 @@ Radii are consistent with size: the bigger the surface, the larger the radius. N
 - **Shadow Strategy:** none — see Elevation & Depth.
 - **Border:** 1px Hairline, strengthening to Hairline Strong on hover.
 - **Internal Padding:** 26px standard, 24px on the timeline card at small sizes.
+- **Project plate:** screenshots sit behind a 25% ink scrim and 0.85 saturation at rest; hover/focus-within clears both. Foreign app palettes must not out-shout the room.
 
 ### Inputs / Fields
 - **Style:** warm white/4% fill, Field Border, 12px radius, 12px 16px, Chalk text, Graphite Deep placeholder.
@@ -251,7 +252,7 @@ Radii are consistent with size: the bigger the surface, the larger the radius. N
 - **Error:** the border stays ember and a 12px message sits under the field, wired with `aria-invalid` and `aria-describedby`.
 
 ### Navigation
-- **Style:** a floating pill, centered, 52px tall, max 620px wide, warm semi-transparent fill with a heavy backdrop blur and the floating-shell shadow. Wordmark "A M" at 14px/0.22em uppercase; links at 14px medium in Graphite, brightening to Chalk on hover; the contact CTA is the inverted Chalk pill with an arrow icon.
+- **Style:** a floating pill, centered, 52px tall, max 720px wide, warm semi-transparent fill with a heavy backdrop blur and the floating-shell shadow. Wordmark "A M" at 14px/0.22em uppercase; links at 14px medium in Graphite, brightening to Chalk on hover; the contact CTA is the inverted Chalk pill with an arrow icon.
 - **Mobile:** below the `lg` breakpoint the links and language switcher collapse into a centered dropdown panel under the pill — 98% opaque warm dark, 16px radius, 220px minimum width.
 
 ### Section Header (signature)
@@ -270,7 +271,8 @@ A 28px-radius panel closing the page, filled with a 6% wash of ember fading into
 - **Do** set numbers and dates in JetBrains Mono with tabular figures.
 - **Do** respect `prefers-reduced-motion`: reveals resolve instantly and Lenis smooth scroll is switched off.
 - **Do** give every interactive control a 44×44px hit area, even when the visible dot or chip is smaller.
-- **Do** test every new surface in Arabic RTL — `lang`/`dir` are synced from the stored locale, and layout uses logical properties.
+- **Do** test every new surface in Arabic RTL — `lang`/`dir` are restored before first paint and layout uses logical properties.
+- **Do** keep content visible without JavaScript: reveals are opt-in via `html.js`, never the default state.
 
 ### Don't:
 - **Don't** introduce a third warm hue. There is exactly one ramp; copper is status, not a second accent.
