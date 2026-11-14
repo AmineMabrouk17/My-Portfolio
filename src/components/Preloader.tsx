@@ -1,76 +1,47 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { gsap } from "@/lib/gsap";
 
+const noopSubscribe = () => () => {};
+
+/**
+ * Arrival wordmark. Shows once per session, never fabricates a loading
+ * percentage, and can always be dismissed (click or Escape).
+ */
 export default function Preloader() {
-  const [show] = useState(() => {
-    if (typeof window === "undefined") return false;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches)
-      return false;
-    return sessionStorage.getItem("preloaderSeen") !== "1";
-  });
+  // Client-only by design: the server snapshot is `false`, so hydration
+  // matches and the overlay only appears once we can read sessionStorage.
+  const show = useSyncExternalStore(
+    noopSubscribe,
+    () => {
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        return false;
+      }
+      return sessionStorage.getItem("preloaderSeen") !== "1";
+    },
+    () => false
+  );
   const [dismissed, setDismissed] = useState(false);
+  const completeRef = useRef<() => void>(() => {});
 
   useEffect(() => {
     if (!show) return;
 
     document.body.style.overflow = "hidden";
-
-    const timers: ReturnType<typeof setTimeout>[] = [];
-    const done = { current: false };
-
-    const tl = gsap.timeline();
-
-    const counter = { value: 0 };
-    const counterEl = document.querySelector<HTMLElement>(".preloader-counter");
-
-    tl.to(".preloader-line", {
-      scaleX: 1,
-      duration: 1.2,
-      ease: "none",
-    })
-      .to(
-        counter,
-        {
-          value: 100,
-          duration: 1.2,
-          ease: "none",
-          onUpdate() {
-            if (counterEl)
-              counterEl.textContent = `${Math.round(counter.value)}%`;
-          },
-        },
-        "<"
-      )
-      .to(
-        ".preloader-text",
-        {
-          keyframes: [
-            { y: 20, opacity: 0 },
-            { y: 0, opacity: 1 },
-            { scale: 1.05 },
-            { scale: 1 },
-          ],
-          duration: 1.2,
-          ease: "power3.inOut",
-        },
-        "<"
-      );
+    let done = false;
 
     const complete = () => {
-      if (done.current) return;
-      done.current = true;
-
-      timers.forEach(clearTimeout);
+      if (done) return;
+      done = true;
 
       sessionStorage.setItem("preloaderSeen", "1");
       window.dispatchEvent(new CustomEvent("preloader:done"));
 
-      tl.to("#preloader", {
+      gsap.to("#preloader", {
         yPercent: -100,
-        duration: 0.8,
-        ease: "power4.inOut",
+        duration: 0.5,
+        ease: "power3.inOut",
         onComplete: () => {
           document.body.style.overflow = "";
           setDismissed(true);
@@ -78,14 +49,35 @@ export default function Preloader() {
       });
     };
 
-    timers.push(setTimeout(complete, 1800));
+    completeRef.current = complete;
+
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") complete();
+    };
+
     window.addEventListener("load", complete);
+    window.addEventListener("keydown", onKey);
+
+    gsap.fromTo(
+      ".preloader-text",
+      { opacity: 0, y: 12 },
+      { opacity: 1, y: 0, duration: 0.35, ease: "power2.out" }
+    );
+    gsap.fromTo(
+      ".preloader-line",
+      { scaleX: 0 },
+      { scaleX: 1, duration: 0.5, ease: "power2.out" }
+    );
+
+    // Cap the wait: the wordmark is a greeting, not a progress bar.
+    const timer = setTimeout(complete, 600);
 
     return () => {
-      timers.forEach(clearTimeout);
+      clearTimeout(timer);
       window.removeEventListener("load", complete);
+      window.removeEventListener("keydown", onKey);
       document.body.style.overflow = "";
-      tl.kill();
+      gsap.killTweensOf("#preloader");
     };
   }, [show]);
 
@@ -94,17 +86,18 @@ export default function Preloader() {
   return (
     <div
       id="preloader"
-      className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-black text-white"
+      role="status"
+      aria-live="polite"
+      onClick={() => completeRef.current()}
+      className="fixed inset-0 z-[9999] flex cursor-pointer flex-col items-center justify-center bg-black text-white"
     >
+      <span className="sr-only">Loading</span>
       <p className="preloader-text text-4xl font-light tracking-widest opacity-0">
         AM
       </p>
       <div className="mt-8 h-px w-40 overflow-hidden">
         <div className="preloader-line h-full w-full origin-left scale-x-0 bg-white" />
       </div>
-      <p className="preloader-text preloader-counter mt-4 text-sm tabular-nums opacity-0">
-        0%
-      </p>
     </div>
   );
 }

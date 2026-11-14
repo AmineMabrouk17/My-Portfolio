@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans } from "next/font/google";
+import { Noto_Kufi_Arabic, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import Providers from "./providers";
 import SmoothScroll from "@/components/SmoothScroll";
@@ -9,6 +9,14 @@ import { ScrollProgress } from "@/components/motion/scroll-progress";
 const plusJakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
   variable: "--font-plus-jakarta",
+});
+
+// Arabic is a first-class locale: load a real Arabic face instead of letting
+// the latin-only stack fall back to whatever the OS provides.
+const arabic = Noto_Kufi_Arabic({
+  subsets: ["arabic"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-arabic",
 });
 
 const siteUrl = "https://my-portfolio-seven-chi-94.vercel.app";
@@ -70,7 +78,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={plusJakarta.variable} suppressHydrationWarning>
+    <html lang="en" className={`${plusJakarta.variable} ${arabic.variable}`} suppressHydrationWarning>
       <body suppressHydrationWarning>
         <ScrollProgress className="bg-[var(--color-accent)]" />
         <Preloader />

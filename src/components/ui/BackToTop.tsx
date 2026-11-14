@@ -29,7 +29,7 @@ export default function BackToTop() {
   return (
     <a
       href="#top"
-      className="fixed bottom-6 right-6 sm:bottom-8 sm:right-8 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[var(--color-surface)] border border-[var(--color-border)] grid place-items-center text-[var(--color-muted)] hover:text-[var(--color-accent)] hover:border-[var(--color-accent)] transition-all duration-200 hover:-translate-y-1 z-50"
+      className="fixed bottom-6 end-6 sm:bottom-8 sm:end-8 w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-[var(--color-surface)] border border-[var(--color-border)] grid place-items-center text-[var(--color-muted)] hover:text-[var(--color-accent)] hover:border-[var(--color-accent)] transition-all duration-200 hover:-translate-y-1 z-50"
       style={{ boxShadow: "var(--shadow)" }}
       aria-label="Back to top"
     >
@@ -40,6 +40,7 @@ export default function BackToTop() {
         fill="none"
         stroke="currentColor"
         strokeWidth="2"
+        aria-hidden="true"
       >
         <path d="M18 15l-6-6-6 6" />
       </svg>

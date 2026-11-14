@@ -8,9 +8,14 @@
   --color-surface-2: #1a2234;
   --color-border: rgba(255, 255, 255, 0.08);
   --color-border-2: rgba(255, 255, 255, 0.12);
+  /* Control boundary: 3.0:1 against --color-surface, so form fields are
+     perceivable without relying on a glow (WCAG 1.4.11). */
+  --color-field-border: #5c6679;
   --color-text: #e8ecf4;
   --color-muted: #8b93a7;
-  --color-muted-2: #6b7385;
+  /* Quiet text: 4.52:1 on the chip composite (#1d2331), 5.01:1 on surface.
+     Was #6b7385, which failed AA on every surface below it. */
+  --color-muted-2: #808a9e;
   --color-accent: #ff6b6b;
   --color-accent-2: #ffa94d;
   --color-accent-3: #FFE566;
@@ -77,6 +82,11 @@ body {
   line-height: 1.6;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+}
+
+html[lang="ar"] body {
+  font-family: var(--font-arabic), "Noto Kufi Arabic", "Segoe UI", Tahoma,
+    sans-serif;
 }
 
 /* Background ambiance */
@@ -149,20 +159,6 @@ body::after {
 }
 
 /* RTL support */
-[dir="rtl"] .lang-switcher {
-  margin-left: 0;
-  margin-right: 8px;
-}
-
-[dir="rtl"] .lang-switcher-menu {
-  right: auto;
-  left: 0;
-}
-
-[dir="rtl"] .lang-switcher-option {
-  text-align: right;
-}
-
 [dir="rtl"] .contact-email {
   direction: ltr;
   unicode-bidi: embed;
@@ -178,6 +174,10 @@ body::after {
 
   html {
     scroll-behavior: auto;
+  }
+
+  .pulse-dot::before {
+    animation: none;
   }
 }
 
@@ -212,4 +212,10 @@ body::after {
 ::selection {
   background: rgba(255, 229, 102, 0.25);
   color: var(--color-text);
+}
+
+/* Visible focus everywhere — never rely on the browser default alone */
+:where(a, button, input, textarea, select, [tabindex]):focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
 }

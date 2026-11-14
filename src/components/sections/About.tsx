@@ -5,72 +5,54 @@ import ScrollReveal from "@/components/ui/ScrollReveal";
 import { AnimatedText } from "@/components/motion/animated-text";
 import Marquee from "@/components/Marquee";
 
-const MARQUEE_ROWS = [
-  [
-    "Clean Architecture",
-    "Automated CI/CD",
-    "Pull Requests & Code Review",
-    "REST API Design",
-    "Relational Databases",
-    "Production Deployments",
-    "Component Architecture",
-    "Automated Testing",
-    "GitHub Issues & Tracking",
-  ],
-];
-
 export default function About() {
   const { t } = useI18n();
+  const words = t("about.marquee")
+    .split("•")
+    .map((word) => word.trim())
+    .filter(Boolean);
 
   return (
-    <section id="about" className="relative py-[100px] max-lg:py-[80px] overflow-hidden">
+    <section id="about" className="relative py-[90px] max-lg:py-[70px] overflow-hidden">
       <div className="about-glow" />
       <div className="about-texture" />
 
-      <div className="relative mx-auto px-8 text-center">
+      <div className="relative mx-auto max-w-[1200px] px-8">
+        {/* Same header grammar as every other section — About is not a
+            centered exception. */}
         <ScrollReveal>
-          <div className="inline-flex items-center gap-2.5 mb-8">
-            <span className="relative flex h-2 w-2">
-              <span
-                className="absolute inline-flex h-full w-full rounded-full opacity-75"
-                style={{
-                  backgroundColor: "var(--color-accent-dim)",
-                  animation: "pulse-dot 2s ease-in-out infinite",
-                }}
+          <div className="mb-12 flex items-end justify-between flex-wrap gap-5">
+            <div>
+              <div className="text-[var(--color-accent)] text-[13px] font-medium tracking-[0.15em] mb-2">
+                {t("about.num")}
+              </div>
+              <AnimatedText
+                as="h2"
+                text={t("about.h2")}
+                className="text-[clamp(30px,4vw,44px)] font-bold tracking-[-0.03em] leading-none"
               />
-              <span
-                className="relative inline-flex h-2 w-2 rounded-full"
-                style={{ backgroundColor: "var(--color-accent-dim)" }}
-              />
-            </span>
-            <span className="text-[13px] font-medium tracking-[0.15em] uppercase text-[var(--color-muted)]">
-              {t("about.num")}
-            </span>
+            </div>
+            <p className="max-w-[480px] text-[15px] text-[var(--color-muted)]">
+              {t("about.sub")}
+            </p>
           </div>
         </ScrollReveal>
 
-        <ScrollReveal>
-          <AnimatedText
-            as="h2"
-            text={t("about.h2")}
-            className="text-[clamp(2rem,4vw,3rem)] font-bold tracking-[-0.03em] leading-tight mb-8 text-[var(--color-text)]"
-          />
-        </ScrollReveal>
+        <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] lg:items-center">
+          <ScrollReveal>
+            <p className="max-w-[62ch] text-[15.5px] leading-[1.75] text-[var(--color-muted)]">
+              {t("about.bio")}
+            </p>
+          </ScrollReveal>
 
-        {/* SEO / screen-reader paragraph */}
-        <p className="sr-only">
-          {t("about.bio")} {t("about.sub")}
-        </p>
+          <ScrollReveal delay={80}>
+            <Marquee rows={[words]} />
+          </ScrollReveal>
+        </div>
 
-        {/* Marquee rows (two) */}
         <ScrollReveal>
-          <Marquee rows={MARQUEE_ROWS} className="mb-6" />
-        </ScrollReveal>
-
-        {/* Static diploma badge */}
-        <ScrollReveal>
-          <p className="inline-block rounded-full border border-[var(--color-muted)]/20 bg-[var(--color-surface)]/60 px-5 py-2 text-[14px] leading-[1.7] text-[var(--color-muted)]">
-            Full Stack Developer — National Engineering Diploma (Master&apos;s equivalent)
+          <p className="mt-10 inline-block rounded-full border border-[var(--color-border-2)] bg-[var(--color-surface)]/60 px-5 py-2 text-[13px] leading-[1.7] text-[var(--color-muted)]">
+            {t("about.diploma")}
           </p>
         </ScrollReveal>
       </div>
