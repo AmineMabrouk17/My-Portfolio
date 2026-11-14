@@ -1,29 +1,6 @@
-"use client";
-
-import dynamic from "next/dynamic";
-import { Loader } from "@/components/motion/loader";
-
-function SectionLoader() {
-  return (
-    <div className="flex justify-center py-20">
-      <Loader variant="dots" size={28} className="text-[var(--color-accent)]" />
-    </div>
-  );
-}
-
-export const Experience = dynamic(() => import("@/components/sections/Experience"), {
-  ssr: false,
-  loading: SectionLoader,
-});
-export const Projects = dynamic(() => import("@/components/sections/Projects"), {
-  ssr: false,
-  loading: SectionLoader,
-});
-export const Education = dynamic(() => import("@/components/sections/Education"), {
-  ssr: false,
-  loading: SectionLoader,
-});
-export const Contact = dynamic(() => import("@/components/sections/Contact"), {
-  ssr: false,
-  loading: SectionLoader,
-});
+// Server-render every section: the work, the history and the contact form are
+// the page's evidence, and they must exist before JavaScript runs.
+export { default as Experience } from "@/components/sections/Experience";
+export { default as Projects } from "@/components/sections/Projects";
+export { default as Education } from "@/components/sections/Education";
+export { default as Contact } from "@/components/sections/Contact";

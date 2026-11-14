@@ -38,7 +38,7 @@ export default function Education() {
           </div>
         </ScrollReveal>
 
-        <div className="flex flex-col gap-[18px] max-w-[520px]">
+        <div className="flex flex-col gap-[18px] max-w-[760px]">
           {education.map((edu, i) => (
             <ScrollReveal key={edu.titleKey} delay={i * 80}>
               <div className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-[18px] p-7 transition-all duration-300 hover:border-[var(--color-border-2)]">

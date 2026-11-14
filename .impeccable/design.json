@@ -1,0 +1,222 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-14T00:00:00.000Z",
+  "title": "Design System: Amine Mabrouk Portfolio",
+  "extensions": {
+    "colorMeta": {
+      "kiln-coral": {
+        "role": "primary",
+        "displayName": "Kiln Coral",
+        "canonical": "oklch(71.2% 0.181 22.8)",
+        "tonalRamp": ["oklch(15% 0.100 22.8)", "oklch(26% 0.154 22.8)", "oklch(37% 0.154 22.8)", "oklch(48% 0.181 22.8)", "oklch(60% 0.181 22.8)", "oklch(72% 0.127 22.8)", "oklch(84% 0.127 22.8)", "oklch(95% 0.081 22.8)"]
+      },
+      "task-amber": {
+        "role": "secondary",
+        "displayName": "Task-Lamp Amber",
+        "canonical": "oklch(80.3% 0.146 64.6)",
+        "tonalRamp": ["oklch(15% 0.080 64.6)", "oklch(26% 0.124 64.6)", "oklch(37% 0.124 64.6)", "oklch(48% 0.146 64.6)", "oklch(60% 0.146 64.6)", "oklch(72% 0.102 64.6)", "oklch(84% 0.102 64.6)", "oklch(95% 0.066 64.6)"]
+      },
+      "solder-yellow": {
+        "role": "tertiary",
+        "displayName": "Solder Yellow",
+        "canonical": "oklch(92.0% 0.148 97.8)",
+        "tonalRamp": ["oklch(15% 0.081 97.8)", "oklch(26% 0.126 97.8)", "oklch(37% 0.126 97.8)", "oklch(48% 0.148 97.8)", "oklch(60% 0.148 97.8)", "oklch(72% 0.104 97.8)", "oklch(84% 0.104 97.8)", "oklch(95% 0.067 97.8)"]
+      },
+      "ember-deep": {
+        "role": "tertiary",
+        "displayName": "Ember Deep",
+        "canonical": "oklch(64.5% 0.164 22.8)",
+        "tonalRamp": ["oklch(15% 0.090 22.8)", "oklch(26% 0.139 22.8)", "oklch(37% 0.139 22.8)", "oklch(48% 0.164 22.8)", "oklch(60% 0.164 22.8)", "oklch(72% 0.115 22.8)", "oklch(84% 0.115 22.8)", "oklch(95% 0.074 22.8)"]
+      },
+      "night-ink": {
+        "role": "neutral",
+        "displayName": "Night Ink",
+        "canonical": "oklch(15.9% 0.016 266.6)",
+        "tonalRamp": ["oklch(15% 0.009 266.6)", "oklch(26% 0.014 266.6)", "oklch(37% 0.014 266.6)", "oklch(48% 0.016 266.6)", "oklch(60% 0.016 266.6)", "oklch(72% 0.011 266.6)", "oklch(84% 0.011 266.6)", "oklch(95% 0.007 266.6)"]
+      },
+      "night-ink-2": {
+        "role": "neutral",
+        "displayName": "Night Ink 2",
+        "canonical": "oklch(19.0% 0.027 270.5)",
+        "tonalRamp": ["oklch(15% 0.015 270.5)", "oklch(26% 0.023 270.5)", "oklch(37% 0.023 270.5)", "oklch(48% 0.027 270.5)", "oklch(60% 0.027 270.5)", "oklch(72% 0.019 270.5)", "oklch(84% 0.019 270.5)", "oklch(95% 0.012 270.5)"]
+      },
+      "bench-slate": {
+        "role": "neutral",
+        "displayName": "Bench Slate",
+        "canonical": "oklch(21.9% 0.029 266.2)",
+        "tonalRamp": ["oklch(15% 0.016 266.2)", "oklch(26% 0.025 266.2)", "oklch(37% 0.025 266.2)", "oklch(48% 0.029 266.2)", "oklch(60% 0.029 266.2)", "oklch(72% 0.020 266.2)", "oklch(84% 0.020 266.2)", "oklch(95% 0.013 266.2)"]
+      },
+      "bench-slate-raised": {
+        "role": "neutral",
+        "displayName": "Bench Slate Raised",
+        "canonical": "oklch(25.3% 0.036 265.5)",
+        "tonalRamp": ["oklch(15% 0.020 265.5)", "oklch(26% 0.031 265.5)", "oklch(37% 0.031 265.5)", "oklch(48% 0.036 265.5)", "oklch(60% 0.036 265.5)", "oklch(72% 0.025 265.5)", "oklch(84% 0.025 265.5)", "oklch(95% 0.016 265.5)"]
+      },
+      "graphite": {
+        "role": "neutral",
+        "displayName": "Graphite",
+        "canonical": "oklch(66.3% 0.031 268.2)",
+        "tonalRamp": ["oklch(15% 0.017 268.2)", "oklch(26% 0.026 268.2)", "oklch(37% 0.026 268.2)", "oklch(48% 0.031 268.2)", "oklch(60% 0.031 268.2)", "oklch(72% 0.022 268.2)", "oklch(84% 0.022 268.2)", "oklch(95% 0.014 268.2)"]
+      },
+      "graphite-deep": {
+        "role": "neutral",
+        "displayName": "Graphite Deep",
+        "canonical": "oklch(55.5% 0.030 266.4)",
+        "tonalRamp": ["oklch(15% 0.017 266.4)", "oklch(26% 0.025 266.4)", "oklch(37% 0.025 266.4)", "oklch(48% 0.030 266.4)", "oklch(60% 0.030 266.4)", "oklch(72% 0.021 266.4)", "oklch(84% 0.021 266.4)", "oklch(95% 0.013 266.4)"]
+      },
+      "chalk": {
+        "role": "neutral",
+        "displayName": "Chalk",
+        "canonical": "oklch(94.2% 0.012 264.5)",
+        "tonalRamp": ["oklch(15% 0.007 264.5)", "oklch(26% 0.010 264.5)", "oklch(37% 0.010 264.5)", "oklch(48% 0.012 264.5)", "oklch(60% 0.012 264.5)", "oklch(72% 0.008 264.5)", "oklch(84% 0.008 264.5)", "oklch(95% 0.005 264.5)"]
+      },
+      "hero-violet": {
+        "role": "tertiary",
+        "displayName": "Hero Violet (exception)",
+        "canonical": "oklch(69.9% 0.144 289.5)",
+        "tonalRamp": ["oklch(15% 0.079 289.5)", "oklch(26% 0.122 289.5)", "oklch(37% 0.122 289.5)", "oklch(48% 0.144 289.5)", "oklch(60% 0.144 289.5)", "oklch(72% 0.101 289.5)", "oklch(84% 0.101 289.5)", "oklch(95% 0.065 289.5)"]
+      },
+      "hero-lime": {
+        "role": "tertiary",
+        "displayName": "Hero Lime (exception)",
+        "canonical": "oklch(88.5% 0.196 116.6)",
+        "tonalRamp": ["oklch(15% 0.108 116.6)", "oklch(26% 0.167 116.6)", "oklch(37% 0.167 116.6)", "oklch(48% 0.196 116.6)", "oklch(60% 0.196 116.6)", "oklch(72% 0.137 116.6)", "oklch(84% 0.137 116.6)", "oklch(95% 0.088 116.6)"]
+      }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Hero headline only; max 980px measure." },
+      "headline": { "displayName": "Headline", "purpose": "Every section h2, animated word by word under a mask." },
+      "title": { "displayName": "Title", "purpose": "Project titles, card headings, job titles." },
+      "body": { "displayName": "Body", "purpose": "Section sub-lines and prose at 15px." },
+      "label": { "displayName": "Label", "purpose": "Numbered warm section eyebrow, e.g. 01 / ABOUT." },
+      "micro": { "displayName": "Micro", "purpose": "Uppercase project tech tags; smallest text allowed." }
+    },
+    "shadows": [
+      { "name": "floating-shell", "value": "0 20px 40px rgba(0, 0, 0, 0.45)", "purpose": "Nav pill and hero primary CTA only." },
+      { "name": "demo-hover", "value": "0 8px 24px -8px color-mix(in srgb, #FFE566 40%, transparent)", "purpose": "The single colored shadow; hover on the project demo button." }
+    ],
+    "motion": [
+      { "name": "reveal", "value": "opacity 0 -> 1, translateY(30px) -> 0, 0.8s ease", "purpose": "Section arrival, driven by IntersectionObserver at threshold 0.12 / rootMargin 0 0 -40px." },
+      { "name": "ease-out", "value": "cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "Primary entrance and transition curve." },
+      { "name": "ease-in-out", "value": "cubic-bezier(0.77, 0, 0.175, 1)", "purpose": "Symmetrical transitions." },
+      { "name": "ease-drawer", "value": "cubic-bezier(0.32, 0.72, 0, 1)", "purpose": "Panel and drawer entrances." },
+      { "name": "spring-mouse", "value": "stiffness 200, damping 15, mass 0.3", "purpose": "Magnetic buttons and 12-degree tilt cards." },
+      { "name": "spring-press", "value": "stiffness 500, damping 30, mass 0.6", "purpose": "Press feedback on tappable surfaces." },
+      { "name": "spring-layout", "value": "stiffness 360, damping 32, mass 0.6", "purpose": "Shared-layout glides and indicator morphs." }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Inverted pill for the hero and nav CTA; reads as a lit surface, not a colored button.",
+      "html": "<button class=\"ds-btn-primary\">Discuss your project <svg width=\"13\" height=\"13\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><line x1=\"5\" y1=\"12\" x2=\"19\" y2=\"12\"/><polyline points=\"12 5 19 12 12 19\"/></svg></button>",
+      "css": ".ds-btn-primary { display:inline-flex; align-items:center; gap:8px; background:#e8ecf4; color:#0a0d14; border:none; border-radius:999px; padding:12px 24px; font-family:\"Plus Jakarta Sans\",ui-sans-serif,system-ui,sans-serif; font-size:15px; font-weight:600; line-height:1; letter-spacing:-0.01em; cursor:pointer; transition:transform .2s ease, opacity .2s ease; } .ds-btn-primary:hover { transform:translateY(-1px); opacity:.95; } .ds-btn-primary:active { transform:translateY(0); } .ds-btn-primary:focus-visible { outline:2px solid #ff6b6b; outline-offset:3px; }"
+    },
+    {
+      "name": "Signal Button",
+      "kind": "button",
+      "refersTo": "button-signal",
+      "description": "Kiln Coral fill at 12px radius, reserved for the contact form submit.",
+      "html": "<button class=\"ds-btn-signal\">Send message</button>",
+      "css": ".ds-btn-signal { display:inline-flex; align-items:center; gap:10px; background:#ff6b6b; color:#0a0d14; border:none; border-radius:12px; padding:14px 28px; font-family:\"Plus Jakarta Sans\",ui-sans-serif,system-ui,sans-serif; font-size:14px; font-weight:600; line-height:1; cursor:pointer; transition:transform .2s ease, opacity .2s ease; } .ds-btn-signal:hover { transform:translateY(-2px); opacity:.9; } .ds-btn-signal:active { transform:translateY(0); } .ds-btn-signal:focus-visible { outline:2px solid #e8ecf4; outline-offset:3px; }"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Hairline outline action for secondary project links and social entry points.",
+      "html": "<button class=\"ds-btn-ghost\">Source Code</button>",
+      "css": ".ds-btn-ghost { display:inline-flex; align-items:center; gap:8px; background:transparent; color:#e8ecf4; border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:10px 20px; font-family:\"Plus Jakarta Sans\",ui-sans-serif,system-ui,sans-serif; font-size:14px; font-weight:600; line-height:1; cursor:pointer; transition:transform .2s ease, border-color .2s ease; } .ds-btn-ghost:hover { transform:translateY(-1px); border-color:rgba(255,255,255,0.12); } .ds-btn-ghost:focus-visible { outline:2px solid #ff6b6b; outline-offset:3px; }"
+    },
+    {
+      "name": "Tech Chip",
+      "kind": "chip",
+      "refersTo": "chip-tech",
+      "description": "Skill tag with a 13px brand icon leading; the recurring texture of the Skills section.",
+      "html": "<span class=\"ds-chip\">Angular</span>",
+      "css": ".ds-chip { display:inline-flex; align-items:center; gap:6px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:8px; padding:5px 11px; color:#8b93a7; font-family:\"Plus Jakarta Sans\",ui-sans-serif,system-ui,sans-serif; font-size:12.5px; font-weight:500; line-height:1.2; }"
+    },
+    {
+      "name": "Skill Card",
+      "kind": "card",
+      "refersTo": "card-surface",
+      "description": "Bench Slate card with a 12-degree tilt on pointer, a 46px icon tile, and a warm hairline that lights up across the top edge on hover.",
+      "html": "<div class=\"ds-card\"><div class=\"ds-card-rule\"></div><div class=\"ds-card-icon\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><rect x=\"2\" y=\"3\" width=\"20\" height=\"14\" rx=\"2\"/><line x1=\"8\" y1=\"21\" x2=\"16\" y2=\"21\"/><line x1=\"12\" y1=\"17\" x2=\"12\" y2=\"21\"/></svg></div><h3 class=\"ds-card-title\">Frontend</h3><div class=\"ds-card-chips\"><span class=\"ds-chip\">Next.js</span><span class=\"ds-chip\">React.js</span><span class=\"ds-chip\">TypeScript</span></div></div>",
+      "css": ".ds-card { position:relative; overflow:hidden; background:#141a28; border:1px solid rgba(255,255,255,0.08); border-radius:18px; padding:26px; font-family:\"Plus Jakarta Sans\",ui-sans-serif,system-ui,sans-serif; transition:background-color .3s ease, border-color .3s ease; } .ds-card:hover { background:#1a2234; border-color:rgba(255,255,255,0.12); } .ds-card-rule { position:absolute; top:0; left:0; right:0; height:2px; background:linear-gradient(135deg,#ff6b6b 0%,#ffa94d 50%,#FFE566 100%); opacity:0; transition:opacity .3s ease; } .ds-card:hover .ds-card-rule { opacity:1; } .ds-card-icon { width:46px; height:46px; border-radius:12px; display:grid; place-items:center; color:#ff6b6b; background:rgba(255,107,107,0.08); margin-bottom:18px; } .ds-card-title { color:#e8ecf4; font-size:18px; font-weight:600; margin:0 0 14px; letter-spacing:-0.01em; } .ds-card-chips { display:flex; flex-wrap:wrap; gap:8px; } .ds-chip { display:inline-flex; align-items:center; gap:6px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:8px; padding:5px 11px; color:#8b93a7; font-size:12.5px; font-weight:500; line-height:1.2; }"
+    },
+    {
+      "name": "Text Field",
+      "kind": "input",
+      "refersTo": "input-field",
+      "description": "Contact form field; focus is carried by the border turning Kiln Coral, never by a glow.",
+      "html": "<label class=\"ds-field\"><span class=\"ds-field-label\">Name <span class=\"ds-field-req\">*</span></span><input class=\"ds-input\" type=\"text\" placeholder=\"Your name\" /></label>",
+      "css": ".ds-field { display:flex; flex-direction:column; gap:6px; font-family:\"Plus Jakarta Sans\",ui-sans-serif,system-ui,sans-serif; } .ds-field-label { color:#8b93a7; font-size:12px; font-weight:500; letter-spacing:0.025em; } .ds-field-req { color:#ff6b6b; margin-left:2px; } .ds-input { width:100%; box-sizing:border-box; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.12); border-radius:12px; padding:12px 16px; color:#e8ecf4; font-family:inherit; font-size:14px; line-height:1.4; outline:none; transition:border-color .2s ease, background-color .2s ease; } .ds-input::placeholder { color:#6b7385; } .ds-input:focus { border-color:#ff6b6b; background:rgba(255,255,255,0.06); }"
+    },
+    {
+      "name": "Nav Pill",
+      "kind": "nav",
+      "refersTo": "nav-shell",
+      "description": "Floating blurred shell, 52px tall, capped at 620px; the only persistent floating object on the page.",
+      "html": "<nav class=\"ds-nav\"><span class=\"ds-nav-mark\">A M</span><div class=\"ds-nav-links\"><a href=\"#projects\">Work</a><a href=\"#about\">About</a><a href=\"#skills\">Services</a></div><a class=\"ds-nav-cta\" href=\"#contact\">Contact</a></nav>",
+      "css": ".ds-nav { display:inline-flex; align-items:center; justify-content:space-between; gap:24px; width:100%; max-width:620px; height:52px; box-sizing:border-box; padding:5px 6px 5px 24px; border-radius:999px; border:1px solid rgba(255,255,255,0.09); background:rgba(24,26,30,0.72); backdrop-filter:blur(24px); box-shadow:0 20px 40px rgba(0,0,0,0.45); font-family:\"Plus Jakarta Sans\",ui-sans-serif,system-ui,sans-serif; } .ds-nav-mark { color:#e8ecf4; font-size:14px; font-weight:700; letter-spacing:0.22em; text-transform:uppercase; } .ds-nav-links { display:flex; align-items:center; gap:24px; } .ds-nav-links a { color:#8b93a7; font-size:13.8px; font-weight:500; text-decoration:none; transition:color .2s ease; } .ds-nav-links a:hover { color:#e8ecf4; } .ds-nav-cta { display:inline-flex; align-items:center; gap:6px; background:#e8ecf4; color:#0a0d14; border-radius:999px; padding:8px 18px; font-size:13.8px; font-weight:600; text-decoration:none; transition:transform .2s ease, opacity .2s ease; } .ds-nav-cta:hover { transform:translateY(-1px); opacity:.95; }"
+    },
+    {
+      "name": "Section Header",
+      "kind": "custom",
+      "refersTo": "section-header",
+      "description": "The shared opening of all seven sections: warm tracked label, machined headline, muted sub-line.",
+      "html": "<div class=\"ds-header\"><div class=\"ds-header-label\">02 / SKILLS</div><div class=\"ds-header-row\"><h2 class=\"ds-header-title\">Technical toolkit.</h2><p class=\"ds-header-sub\">From modern frontends to scalable backends and DevOps pipelines.</p></div></div>",
+      "css": ".ds-header { font-family:\"Plus Jakarta Sans\",ui-sans-serif,system-ui,sans-serif; } .ds-header-label { color:#ff6b6b; font-size:13px; font-weight:500; letter-spacing:0.15em; margin-bottom:8px; } .ds-header-row { display:flex; align-items:flex-end; justify-content:space-between; flex-wrap:wrap; gap:20px; } .ds-header-title { margin:0; color:#e8ecf4; font-size:clamp(30px,4vw,44px); font-weight:700; line-height:1; letter-spacing:-0.03em; } .ds-header-sub { margin:0; color:#8b93a7; font-size:15px; line-height:1.6; max-width:480px; }"
+    },
+    {
+      "name": "Contact Panel",
+      "kind": "custom",
+      "refersTo": "contact-panel",
+      "description": "The closing 28px panel with a coral-to-amber wash and one radial warm glow; the only large tinted surface in the system.",
+      "html": "<div class=\"ds-panel\"><div class=\"ds-panel-glow\"></div><div class=\"ds-panel-label\">07 / CONTACT</div><h2 class=\"ds-panel-title\">Let's build something.</h2><p class=\"ds-panel-text\">Open to Full Stack roles, freelance projects, and collaborations.</p></div>",
+      "css": ".ds-panel { position:relative; overflow:hidden; box-sizing:border-box; padding:60px; border-radius:28px; border:1px solid rgba(255,255,255,0.12); background:linear-gradient(135deg, rgba(255,107,107,0.06) 0%, rgba(255,169,77,0.06) 100%); font-family:\"Plus Jakarta Sans\",ui-sans-serif,system-ui,sans-serif; } .ds-panel-glow { position:absolute; top:-50%; left:50%; transform:translateX(-50%); width:600px; height:600px; pointer-events:none; background:radial-gradient(circle, rgba(255,107,107,0.10), transparent 60%); } .ds-panel-label { position:relative; color:#ff6b6b; font-size:13px; font-weight:500; letter-spacing:0.15em; margin-bottom:12px; } .ds-panel-title { position:relative; margin:0 0 14px; color:#e8ecf4; font-size:clamp(30px,4vw,44px); font-weight:700; line-height:1; letter-spacing:-0.03em; } .ds-panel-text { position:relative; margin:0; color:#8b93a7; font-size:16px; line-height:1.6; max-width:520px; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Night Workshop",
+    "overview": "The site is a workshop after dark: a near-black room, a bench of finished artifacts, and warm task lighting that falls only where someone is working. The darkness is not moody for its own sake — it is what makes the light legible. Coral, amber, and yellow behave like lamp filaments and solder points: small, hot, and never used as wallpaper.\n\nDensity is moderate and rhythmic. Each section opens the same way — a numbered label in warm type, a headline pinned to the left edge, a muted sub-line across the page — then fills the bench with a single kind of artifact: skill cards, a timeline, project entries, a contact panel. Nothing floats free of the ground.\n\nMotion is the workshop's tell. Elements arrive as if placed rather than animated: a 30px rise on reveal, spring physics on tilt and press, a magnetic pull on the primary actions. It reads as confident handling, not spectacle. The one inconsistency in the room is the hero, which was repainted in violet and lime and never carried through to the rest of the page; it is recorded as an exception, not as the system.",
+    "keyCharacteristics": [
+      "Near-black ground with a subtle 60px grid and three radial warm glows",
+      "Warm ramp used as signal, never as fill area",
+      "One type family, hierarchy carried by size, weight, and negative tracking",
+      "Flat surfaces at rest; shadow reserved for things that float",
+      "Pills for controls, 18px cards for artifacts, 28px panel for the contact close",
+      "Spring-and-magnet interaction vocabulary"
+    ],
+    "rules": [
+      { "name": "The Workbench Rule", "body": "Warm color marks an active thing — a label, a focus ring, a live control, a hover rule. If warm color is covering more than a small fraction of a viewport, it has become decoration and the design is wrong.", "section": "colors" },
+      { "name": "The One Ramp Rule", "body": "Coral, amber, and yellow are three intensities of one light, not three brand colors. Never introduce a fourth hue; the hero violet and lime are evidence of what happens when you do.", "section": "colors" },
+      { "name": "The Single Voice Rule", "body": "One family. If a new surface seems to need a second typeface, it needs a different weight or tracking instead.", "section": "typography" },
+      { "name": "The Tight Head Rule", "body": "Anything at 19px or larger gets negative tracking. Headlines at -0.03em, display at -0.035em. Untracked large type reads as unfinished.", "section": "typography" },
+      { "name": "The Flat-Bench Rule", "body": "A card that is not floating does not cast a shadow. If a surface needs to feel more important, raise its fill one step and strengthen its border — do not add a drop shadow.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do keep warm color on marks, labels, focus states, and small controls; measure it as a fraction of the viewport, not of the brand.",
+      "Do use the 90px / 70px section rhythm and the shared header pattern on any new section.",
+      "Do carry depth with a hairline and a one-step fill change.",
+      "Do put negative tracking on anything 19px or larger.",
+      "Do respect prefers-reduced-motion: reveals resolve instantly and Lenis smooth scroll is switched off.",
+      "Do test every new surface in Arabic RTL — the language switcher, contact email, and layout mirroring are already handled and must not regress."
+    ],
+    "donts": [
+      "Don't introduce a fourth accent hue. Violet and lime exist only as the hero's documented drift.",
+      "Don't fill a card, section, or button with the warm ramp; the gradient belongs to hairlines, text, and the contact panel wash.",
+      "Don't add a drop shadow to a resting card.",
+      "Don't add a second typeface for \"editorial\" or \"technical\" flavor.",
+      "Don't mix radii — pills for controls, 18px cards, 28px panel, nothing in between.",
+      "Don't animate anything the visitor did not ask for on operate-style surfaces (form fields, nav); motion belongs to arrival and to pointer response."
+    ]
+  }
+}

@@ -2,11 +2,13 @@
   "nav": {
     "work": "Work",
     "about": "About",
-    "services": "Services",
+    "experience": "Experience",
+    "stack": "Stack",
+    "language": "Language",
     "contact": "Contact"
   },
   "hero": {
-    "tag": "Available for new opportunities",
+    "tag": "Available for freelance projects · Tunis · UTC+1",
     "headline": "I build full-stack web apps with",
     "headlineAccent": "clean architecture & CI/CD",
     "headlineAccent2": "scale your vision",
@@ -24,7 +26,9 @@
     "num": "01 / ABOUT",
     "h2": "Engineer who ships.",
     "sub": "Full Stack Developer with a National Engineering Diploma — fully recognized as equivalent to a Master's degree.",
-    "bio": "I build secure, high-performance web applications and digital solutions that help businesses scale. Specializing in reliable software architecture, real-time features, and data-driven systems, I focus on turning complex challenges—such as cloud migrations, advanced system security, and automated monitoring—into seamless, user-friendly experiences that drive business value."
+    "bio": "I build secure, high-performance web applications and digital solutions that help businesses scale. Specializing in reliable software architecture, real-time features, and data-driven systems, I focus on turning complex challenges—such as cloud migrations, advanced system security, and automated monitoring—into seamless, user-friendly experiences that drive business value.",
+    "marquee": "Clean Architecture • Automated CI/CD • Pull Request Review • REST API Design • Relational Databases • Production Deployments • Component Architecture • Automated Testing • GitHub Workflows",
+    "diploma": "Full Stack Developer — National Engineering Diploma (Master's equivalent)"
   },
   "skills": {
     "num": "02 / SKILLS",
@@ -59,6 +63,7 @@
     "num": "04 / PROJECTS",
     "h2": "Things I'm building.",
     "sub": "Production-ready full-stack applications built with modern architectures, real-time data, and cloud infrastructure.",
+    "showing": "Projects shown:",
     "castcue": {
       "sub": "Next.js · Cloudflare Workers · D1 Database",
       "title": "Cast n Cue — Movie & TV Tracker",
@@ -96,6 +101,21 @@
     },
 "demo": "View Live Demo",
     "source": "Source Code",
+    "labels": {
+      "details": "Problem → Solution → Result",
+      "hide": "Hide details",
+      "problem": "Problem",
+      "solution": "Solution",
+      "result": "Result"
+    },
+    "filter": {
+      "label": "Filter projects by stack",
+      "all": "All",
+      "nextjs": "Next.js",
+      "ai": "AI",
+      "realtime": "Real-time",
+      "bots": "Bots"
+    },
     "crypto": {
       "sub": "Next.js · Real-Time WebSockets · Turborepo",
       "title": "Crypto & Stocks Dashboard",
@@ -116,10 +136,13 @@
     }
   },
   "contact": {
-    "num": "07 / CONTACT",
+    "num": "06 / CONTACT",
     "h2": "Let's build something.",
-    "text": "Open to Full Stack roles, freelance projects, and collaborations. Feel free to reach out — I usually reply within 24 hours.",
+    "text": "Taking on freelance builds and collaborations. Not currently looking for full-time roles — but always happy to talk shop.",
     "email": "Send email",
+    "direct": "Or email me directly",
+    "copy": "Copy address",
+    "copied": "Copied",
     "form": {
       "name": "Name",
       "namePlaceholder": "Your name",
@@ -131,8 +154,13 @@
       "messagePlaceholder": "Tell me about your project…",
       "submit": "Send message",
       "subject": "Portfolio inquiry",
-      "success": "Message sent!",
-      "successHint": "Your email client should open shortly."
+      "sentTitle": "Your mail app should have opened",
+      "sentHint": "This page can't confirm delivery on its own. If nothing opened, copy the address below or open it again.",
+      "openAgain": "Open mail app",
+      "sendAnother": "Write another",
+      "errorName": "Add your name.",
+      "errorEmail": "Add a valid email address.",
+      "errorMessage": "Add a short message."
     }
   },
   "footer": {

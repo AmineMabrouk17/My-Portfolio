@@ -1,14 +1,13 @@
 "use client";
 
-import { useEffect, useRef, useState, useCallback } from "react";
-import { gsap, Flip } from "@/lib/gsap";
+import { useI18n } from "@/i18n/I18nContext";
 
 const FILTER_TAGS = [
-  { label: "All", value: "all" },
-  { label: "Next.js", value: "nextjs" },
-  { label: "AI", value: "ai" },
-  { label: "Real-time", value: "realtime" },
-  { label: "Bots", value: "bots" },
+  { labelKey: "proj.filter.all", value: "all" },
+  { labelKey: "proj.filter.nextjs", value: "nextjs" },
+  { labelKey: "proj.filter.ai", value: "ai" },
+  { labelKey: "proj.filter.realtime", value: "realtime" },
+  { labelKey: "proj.filter.bots", value: "bots" },
 ] as const;
 
 type FilterValue = (typeof FILTER_TAGS)[number]["value"];
@@ -18,12 +17,12 @@ interface TagMap {
 }
 
 const TAG_MAP: TagMap = {
+  crypto: ["nextjs", "realtime"],
   castcue: ["nextjs", "realtime"],
   ecom: ["nextjs"],
   budgetiq: ["nextjs", "ai"],
   rakt3adi: ["bots"],
   saletbot: ["bots", "ai"],
-  crypto: ["nextjs", "realtime"],
 };
 
 function matchesFilter(slug: string, filter: FilterValue): boolean {
@@ -38,22 +37,35 @@ interface ProjectFilterProps {
 }
 
 export default function ProjectFilter({ activeFilter, onFilterChange, counts }: ProjectFilterProps) {
+  const { t } = useI18n();
+
   return (
-    <div className="flex flex-wrap gap-2 mb-8">
-      {FILTER_TAGS.map(({ label, value }) => (
-        <button
-          key={value}
-          onClick={() => onFilterChange(value)}
-          className={`px-4 py-2 rounded-full text-[13px] font-semibold transition-all duration-200 cursor-pointer border ${
-            activeFilter === value
-              ? "bg-white text-black border-white"
-              : "bg-transparent text-[var(--color-muted)] border-white/15 hover:border-white/30 hover:text-white"
-          }`}
-        >
-          {label}
-          <span className="ml-1.5 text-[11px] opacity-60">({counts[value]})</span>
-        </button>
-      ))}
+    <div
+      role="group"
+      aria-label={t("proj.filter.label")}
+      className="flex flex-wrap gap-2 mb-8"
+    >
+      {FILTER_TAGS.map(({ labelKey, value }) => {
+        const active = activeFilter === value;
+        return (
+          <button
+            key={value}
+            type="button"
+            onClick={() => onFilterChange(value)}
+            aria-pressed={active}
+            className={`inline-flex min-h-[44px] items-center px-4 rounded-full text-[13px] font-semibold transition-all duration-200 cursor-pointer border ${
+              active
+                ? "border-[var(--color-accent)] text-[var(--color-text)] bg-[color-mix(in_srgb,var(--color-accent)_10%,transparent)]"
+                : "bg-transparent text-[var(--color-muted)] border-[var(--color-field-border)] hover:border-white/30 hover:text-white"
+            }`}
+          >
+            {t(labelKey)}
+            <span className="ms-1.5 text-[11px] text-[var(--color-muted-2)]">
+              ({counts[value]})
+            </span>
+          </button>
+        );
+      })}
     </div>
   );
 }
