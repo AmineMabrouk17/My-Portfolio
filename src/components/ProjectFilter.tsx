@@ -12,22 +12,11 @@ const FILTER_TAGS = [
 
 type FilterValue = (typeof FILTER_TAGS)[number]["value"];
 
-interface TagMap {
-  [key: string]: string[];
-}
-
-const TAG_MAP: TagMap = {
-  crypto: ["nextjs", "realtime"],
-  castcue: ["nextjs", "realtime"],
-  ecom: ["nextjs"],
-  budgetiq: ["nextjs", "ai"],
-  rakt3adi: ["bots"],
-  saletbot: ["bots", "ai"],
-};
-
-function matchesFilter(slug: string, filter: FilterValue): boolean {
+// Membership lives on each project (single source of truth) — no slug map to
+// drift out of sync when a project is added.
+function matchesFilter(projectFilters: string[], filter: FilterValue): boolean {
   if (filter === "all") return true;
-  return TAG_MAP[slug]?.includes(filter) ?? false;
+  return projectFilters.includes(filter);
 }
 
 interface ProjectFilterProps {
@@ -70,5 +59,5 @@ export default function ProjectFilter({ activeFilter, onFilterChange, counts }: 
   );
 }
 
-export { matchesFilter, TAG_MAP, FILTER_TAGS };
+export { matchesFilter, FILTER_TAGS };
 export type { FilterValue };

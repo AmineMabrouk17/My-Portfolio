@@ -13,7 +13,8 @@ interface Project {
   slug: string;
   titleKey: string;
   subKey?: string;
-  descKey?: string;
+  filters: string[];
+  objectPosition?: string;
   caseStudy: CaseStudy;
   tags: string[];
   link?: string;
@@ -25,60 +26,69 @@ interface Project {
 const projects: Project[] = [
   {
     slug: "crypto",
+    filters: ["nextjs", "realtime"],
+    objectPosition: "center",
     subKey: "proj.crypto.sub",
     titleKey: "proj.crypto.title",
-    descKey: "proj.crypto.desc",
     caseStudy: { problem: "proj.crypto.problem", solution: "proj.crypto.solution", result: "proj.crypto.result" },
     tags: ["Next.js", "TypeScript", "Binance WebSocket", "Yahoo Finance", "SWR", "Gemini API", "Groq", "Turborepo"],
     link: "https://crypto-stocks-web-taupe.vercel.app",
     source: "https://github.com/AmineMabrouk17/crypto-stocks",
-    screenshot: "/projects/crypto-stocks/hero-dashboard.png",
+    screenshot: "/projects/crypto-stocks/hero-dashboard.webp",
   },
   {
     slug: "castcue",
+    filters: ["nextjs", "realtime"],
+    objectPosition: "top",
     subKey: "proj.castcue.sub",
     titleKey: "proj.castcue.title",
     caseStudy: { problem: "proj.castcue.problem", solution: "proj.castcue.solution", result: "proj.castcue.result" },
     tags: ["Next.js", "React 19", "TypeScript", "Cloudflare Workers", "Cloudflare D1", "Better Auth", "HeroUI"],
     link: "https://cast-cue.cast-cue.workers.dev",
     source: "https://github.com/AmineMabrouk17/Cast-Cue",
-    screenshot: "/projects/castncue.png",
+    screenshot: "/projects/castncue.webp",
   },
   {
     slug: "ecom",
+    filters: ["nextjs"],
     subKey: "proj.ecom.sub",
     titleKey: "proj.ecom.title",
     caseStudy: { problem: "proj.ecom.problem", solution: "proj.ecom.solution", result: "proj.ecom.result" },
     tags: ["Next.js", "TypeScript", "Tailwind CSS", "shadcn/ui", "Supabase", "PostgreSQL", "Stripe", "Zustand"],
     link: "https://ecommerce-website-puce-beta.vercel.app/",
     source: "https://github.com/AmineMabrouk17/ecommerce-website",
-    screenshot: "/projects/ecommerce.png",
+    screenshot: "/projects/ecommerce.webp",
   },
   {
     slug: "budgetiq",
+    filters: ["nextjs", "ai"],
     subKey: "proj.budgetiq.sub",
     titleKey: "proj.budgetiq.title",
     caseStudy: { problem: "proj.budgetiq.problem", solution: "proj.budgetiq.solution", result: "proj.budgetiq.result" },
     tags: ["Next.js", "TypeScript", "Supabase", "Gemini AI", "Tailwind CSS", "DaisyUI", "Recharts"],
     link: "https://budgetiq-two.vercel.app",
     source: "https://github.com/AmineMabrouk17/BudgetIQ",
-    screenshot: "/projects/budgetiq.png",
+    screenshot: "/projects/budgetiq.webp",
   },
   {
     slug: "rakt3adi",
+    filters: ["bots"],
+    objectPosition: "center 22%",
     subKey: "proj.rakt3adi.sub",
     titleKey: "proj.rakt3adi.title",
     caseStudy: { problem: "proj.rakt3adi.problem", solution: "proj.rakt3adi.solution", result: "proj.rakt3adi.result" },
     tags: ["Python", "python-telegram-bot", "SQLite", "Systemd", "pytest", "GitHub Actions"],
-    screenshot: "/projects/rakt3adi.png",
+    screenshot: "/projects/rakt3adi.webp",
   },
   {
     slug: "saletbot",
+    filters: ["bots", "ai"],
+    objectPosition: "center 22%",
     subKey: "proj.saletbot.sub",
     titleKey: "proj.saletbot.title",
     caseStudy: { problem: "proj.saletbot.problem", solution: "proj.saletbot.solution", result: "proj.saletbot.result" },
     tags: ["Python", "python-telegram-bot", "Gemini API", "SQLite", "Pillow", "APScheduler"],
-    screenshot: "/projects/saletbot.png",
+    screenshot: "/projects/saletbot.webp",
   },
 ];
 
@@ -154,7 +164,14 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
             height={800}
             loading="lazy"
             decoding="async"
-            className="absolute inset-0 h-full w-full object-cover"
+            style={{ objectPosition: project.objectPosition ?? "center" }}
+            className="absolute inset-0 h-full w-full object-cover saturate-[.85] transition duration-300 group-hover:saturate-100"
+          />
+          {/* Warm scrim keeps foreign app palettes inside the room at rest;
+              full colour is the hover/focus reward. */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 bg-[var(--color-bg)]/25 transition-opacity duration-300 group-hover:opacity-0 group-focus-within:opacity-0"
           />
         </div>
 
@@ -168,16 +185,10 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
             <span className="text-[var(--color-accent-2)]">/</span> {t(project.titleKey)}
           </h3>
 
-          {project.descKey && (
-            <p className="mt-2 mb-1 text-[16px] leading-relaxed text-[var(--color-muted)]">
-              {t(project.descKey)}
-            </p>
-          )}
-
           <CaseStudyDrawer
             caseStudy={project.caseStudy}
             slug={project.slug}
-            defaultOpen={index === 0}
+            defaultOpen={project.slug === "rakt3adi"}
           />
 
           <div className="mt-4 mb-5 flex flex-wrap gap-[7px]">
@@ -191,8 +202,17 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
             ))}
           </div>
 
-          {(project.link || project.source) && (
-            <div className="mt-auto flex flex-wrap gap-3">
+          <div className="mt-auto flex flex-wrap gap-3">
+            {!project.link && !project.source && (
+              <a
+                href={`mailto:amx72001@gmail.com?subject=${encodeURIComponent(
+                  `${t("proj.ask")} — ${t(project.titleKey)}`
+                )}`}
+                className="inline-flex min-h-[44px] items-center gap-2 rounded-xl border border-[var(--color-field-border)] px-5 text-sm font-semibold text-[var(--color-text)] no-underline transition-colors hover:border-[var(--color-accent)] hover:bg-white/[0.04]"
+              >
+                {t("proj.ask")}
+              </a>
+            )}
               {project.link && (
                 <MagneticButton
                   href={project.link}
@@ -224,8 +244,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
                   {t("proj.source")}
                 </MagneticButton>
               )}
-            </div>
-          )}
+          </div>
         </div>
       </article>
     </ScrollReveal>
@@ -238,13 +257,13 @@ export default function Projects() {
 
   const counts = FILTER_TAGS.reduce(
     (acc, { value }) => {
-      acc[value] = projects.filter((p) => matchesFilter(p.slug, value)).length;
+      acc[value] = projects.filter((p) => matchesFilter(p.filters, value)).length;
       return acc;
     },
     {} as Record<FilterValue, number>
   );
 
-  const visibleProjects = projects.filter((p) => matchesFilter(p.slug, activeFilter));
+  const visibleProjects = projects.filter((p) => matchesFilter(p.filters, activeFilter));
 
   return (
     <section id="projects" className="py-[90px] max-lg:py-[70px]">
