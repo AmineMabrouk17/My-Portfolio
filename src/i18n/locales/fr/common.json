@@ -8,31 +8,17 @@
     "label": "Navigation principale",
     "menu": "Menu",
     "home": "Amine Mabrouk — retour en haut",
-    "backToTop": "Retour en haut"
+    "backToTop": "Retour en haut",
+    "language": "Langue",
+    "skip": "Aller au contenu"
   },
   "hero": {
     "tag": "Disponible pour des projets freelance · Tunis · UTC+1",
-    "headline": "Je développe des applications full-stack avec",
-    "headlineAccent": "une architecture propre & CI/CD",
-    "headlineAccent2": "amplifier votre vision",
-    "headlineAccent3": "accélérer la croissance",
-    "headlineAccent4": "maximiser votre impact",
-    "role": "Développeur Full Stack — Angular · Next.js · Node.js · Laravel",
-    "summary": "Je développe des plateformes web de qualité production avec Angular, Laravel, Next.js et Python. Porté par un code propre, des pipelines automatisés et des workflows Git rigoureux — je construis de vraies solutions, de l'architecture au déploiement.",
+    "headline": "J'ai construit un bot d'examen en arabe, une boutique Stripe et un tableau de bord financier IA,",
+    "headlineAccent": "de bout en bout.",
+    "role": "Développeur Full Stack — Angular · Laravel · Next.js · Python",
     "cta1": "Discuter de votre projet",
-    "cta2": "Voir les 6 projets en ligne",
-    "svc1": {
-      "title": "Applications Web",
-      "desc": "Apps full stack avec Angular, Next.js & Laravel"
-    },
-    "svc2": {
-      "title": "Dashboards & Admin",
-      "desc": "Outils internes et tableaux de bord opérationnels"
-    },
-    "svc3": {
-      "title": "Intégration API",
-      "desc": "APIs REST, systèmes en temps réel & automatisation"
-    }
+    "cta2": "Voir les 6 projets en ligne"
   },
   "about": {
     "num": "01 / À PROPOS",
@@ -67,55 +53,61 @@
       "desc": "Plateforme Nouara — Tableau de bord des opérations et de la gestion",
       "b1": "Développement et maintenance de fonctionnalités full-stack avec Angular pour le frontend et Laravel (PHP) pour les APIs REST du backend",
       "b2": "Livraison de bout en bout des fonctionnalités de la plateforme — des changements de schéma de base de données à l'intégration de l'interface, jusqu'au déploiement en production",
-      "b3": "Garantir la qualité et la maintenabilité du code grâce à des workflows Git / GitHub structurés, des revues de code et une architecture par composants modulaires"
+      "b3": "Garantir la qualité et la maintenabilité du code grâce à des workflows Git / GitHub structurés, des revues de code et une architecture par composants modulaires",
+      "date": "juil. 2025 – aujourd’hui"
     },
     "job2": {
       "title": "Stagiaire en Génie Logiciel",
       "desc": "Tableau de bord Infrastructure & Métriques",
       "b1": "Acquis une expérience fondatrice en développement backend, en apprenant à concevoir et consommer des APIs REST",
       "b2": "Connecté un backend Python / Flask à une base de données MySQL pour interroger et servir les métriques système",
-      "b3": "Configuré des tableaux de bord Grafana pour visualiser les requêtes de base de données et superviser les métriques serveur internes"
+      "b3": "Configuré des tableaux de bord Grafana pour visualiser les requêtes de base de données et superviser les métriques serveur internes",
+      "date": "juil. 2023 – août 2023"
     }
   },
   "proj": {
     "num": "04 / PROJETS",
     "h2": "Ce que je construis.",
-    "sub": "Applications full-stack prêtes pour la production, construites avec des architectures modernes, des données en temps réel et une infrastructure cloud.",
-    "showing": "Projets affichés :",
+    "sub": "Six projets — plateformes web et bots Telegram. Chaque carte porte l'étude de cas, la stack, et un lien ou un moyen d'en parler.",
     "castcue": {
       "sub": "Next.js · Cloudflare Workers · Base D1",
       "title": "Cast n Cue — Suivi de films & séries",
       "problem": "Suivre une douzaine de séries à la fois signifie perdre la trace de où vous en êtes, de ce qui sort ensuite et de ce qui vaut la peine d'être regardé.",
       "solution": "Développement d'un tracker média au niveau épisode sur Cloudflare Workers + D1 avec recherche TMDB/Trakt/TVmaze, notations en demi-étoiles, notes privées à sauvegarde automatique, roulette de liste de visionnage et connexion Google via Better Auth.",
-      "result": "Une application gratuite et privée par conception qui enregistre films, séries et épisodes — votre liste et votre progression toujours à un clic."
+      "result": "Une application gratuite et privée par conception qui enregistre films, séries et épisodes — votre liste et votre progression toujours à un clic.",
+      "one": "Suivi épisode par épisode de toutes vos séries."
     },
     "ecom": {
       "sub": "Next.js · Stripe · PostgreSQL · Supabase",
       "title": "Lumina — Plateforme E-Commerce Full-Stack",
       "problem": "Faire tourner une vraie boutique impose de relier catalogue, panier, paiement et expédition — la plupart des modèles s'arrêtent à une simple grille de produits.",
       "solution": "Construction d'un moteur commercial complet : catalogue Supabase, authentification, stockage et cycle de vie des commandes, paiement Stripe Checkout, panier persistant en local, avis de clients vérifiés, classement tendance, traitement des commandes côté admin et règles d'expédition.",
-      "result": "Une boutique à système unique où stocks, avis, paiements et expédition restent cohérents de la page produit jusqu'à la livraison de la commande."
+      "result": "Une boutique à système unique où stocks, avis, paiements et expédition restent cohérents de la page produit jusqu'à la livraison de la commande.",
+      "one": "Catalogue, panier, paiement et logistique dans un seul système."
     },
     "budgetiq": {
       "sub": "Next.js · Gemini AI · Supabase · Analytics",
       "title": "BudgetIQ — Planificateur budgétaire IA",
       "problem": "Gérer ses finances personnelles (salaire, dépenses, actifs) est fragmenté, et la plupart des outils n'offrent aucun moyen intelligent de saisir ses dépenses.",
       "solution": "Développement d'un gestionnaire financier open-source avec authentification Supabase, tableaux de bord en temps réel, graphiques par catégorie, citations quotidiennes et un chatbot Gemini qui analyse le langage naturel pour proposer des transactions.",
-      "result": "Un planificateur où discuter en langage naturel capture instantanément dépenses et revenus dans un tableau de bord interactif."
+      "result": "Un planificateur où discuter en langage naturel capture instantanément dépenses et revenus dans un tableau de bord interactif.",
+      "one": "Enregistrez vos dépenses en discutant avec une IA."
     },
     "rakt3adi": {
       "sub": "Python · Telegram Bot API · SQLite",
       "title": "RakT3adiBot — Planificateur de révision",
       "problem": "Les plans de révision vivent dans des notes et des groupes, alors les dates d'examen et la progression des leçons se perdent.",
       "solution": "Développement d'un bot Telegram arabe qui suit les examens et les leçons, coche la révision avec un compteur 2/3, envoie des rappels J-2 et J-1 ainsi qu'une dua du matin, et inclut un panneau d'administration sur invitation pour les utilisateurs, les modèles et les statistiques. Un planificateur idempotent de 30 secondes survit aux redémarrages, et des sauvegardes SQLite quotidiennes conservent sept copies.",
-      "result": "L'étudiant ouvre une seule conversation pour voir quoi réviser aujourd'hui ; 85 tests couvrent les parcours de bout en bout."
+      "result": "L'étudiant ouvre une seule conversation pour voir quoi réviser aujourd'hui ; 85 tests couvrent les parcours de bout en bout.",
+      "one": "Planificateur de révision en arabe sur Telegram."
     },
     "saletbot": {
       "sub": "Python · Gemini · Pillow · SQLite",
       "title": "SaletBot — Horaires de prière & Athkar",
       "problem": "Les horaires de prière, les athkar et la Qibla vivent dans des applis séparées, et un chatbot généraliste peut inventer des réponses religieuses.",
       "solution": "Développement d'un bot arabe privé autour de sources fiables : horaires AlAdhan pour la Tunisie avec cache de secours, rappels à T-15 et à l'heure exacte, corpus d'athkar Hisn al-Muslim avec rotation quotidienne, et boussole Qibla de 900 px. Gemini répond uniquement dans le cadre de la prière et des athkar, refuse les fatwas et se rabat sur le texte stocké lorsqu'il ne peut pas joindre le modèle.",
-      "result": "Un assistant quotidien discret où chaque horaire et chaque dhikr est sourcé, et où l'IA ne devient jamais l'autorité."
+      "result": "Un assistant quotidien discret où chaque horaire et chaque dhikr est sourcé, et où l'IA ne devient jamais l'autorité.",
+      "one": "Horaires de prière et athkar, sourcés et planifiés."
     },
     "demo": "Voir la démo",
     "source": "Code Source",
@@ -135,15 +127,15 @@
       "bots": "Bots"
     },
     "crypto": {
-      "section": "Projet Vedette",
       "sub": "Next.js · WebSockets en temps réel · Turborepo",
       "title": "Crypto & Stocks Dashboard",
-      "desc": "Un tableau de bord hybride crypto + actions avec streaming WebSocket Binance en temps réel, intégration Yahoo Finance, graphiques style TradingView (bascule courbe/bougie), prédictions de prix participatives sur 5 minutes, alertes de prix natives, et un assistant IA multi-fournisseur (7 modèles gratuits + BYOK pour OpenAI/Anthropic/Groq).",
       "problem": "Accéder à l'intelligence financière en temps réel nécessite de jongler entre plusieurs plateformes disparates sans vue unifiée ni analyse IA.",
       "solution": "Construction d'un tableau de bord unifié combinant les flux WebSocket Binance (crypto) avec le polling Yahoo Finance (actions/ETF) sous un modèle de données unique, avec graphiques style TradingView, 7 modèles IA gratuits intégrés plus BYOK, des votes de prédiction participative résolus toutes les 5 minutes, et des alertes de prix natives.",
-      "result": "Une plateforme à guichet unique avec des mises à jour à latence quasi nulle via WebSocket, bascule de type de graphique, assistant IA multilingue ancré dans les données de marché, export CSV, et prédictions de sentiment participatives en temps réel."
+      "result": "Une plateforme à guichet unique avec des mises à jour à latence quasi nulle via WebSocket, bascule de type de graphique, assistant IA multilingue ancré dans les données de marché, export CSV, et prédictions de sentiment participatives en temps réel.",
+      "one": "Crypto et actions en direct dans un seul tableau de bord."
     },
-    "ask": "Parler de ce projet"
+    "ask": "Parler de ce projet",
+    "alt": "capture du produit"
   },
   "edu": {
     "num": "05 / FORMATION",
@@ -154,13 +146,13 @@
       "program": "Programme d'ingénierie intégré de 5 ans",
       "desc": "Premières 2 années intensives de pré-ingénierie (Mathématiques avancées & Informatique), suivies de 3 années de spécialisation en Génie Logiciel et Architecture des Systèmes."
     },
-    "school": "Faculté des Sciences de Bizerte"
+    "school": "Faculté des Sciences de Bizerte",
+    "date": "2020 – 2025"
   },
   "contact": {
     "num": "06 / CONTACT",
     "h2": "Construisons quelque chose.",
     "text": "Je prends des projets freelance et des collaborations. Pas en recherche d'un poste à temps plein actuellement — mais toujours partant pour parler du métier.",
-    "email": "Envoyer un email",
     "direct": "Ou écrivez-moi directement",
     "copy": "Copier l'adresse",
     "copied": "Copié",
@@ -171,8 +163,8 @@
       "emailPlaceholder": "vous@exemple.com",
       "budget": "Budget estimé",
       "budgetPlaceholder": "ex. 1 000 – 5 000 €",
-      "message": "Message",
-      "messagePlaceholder": "Décrivez votre projet…",
+      "message": "Que construisez-vous ?",
+      "messagePlaceholder": "ex. un parcours de réservation pour un cabinet dentaire à Lyon, en ligne en mars — Next.js + Postgres",
       "submit": "Envoyer le message",
       "subject": "Demande via portfolio",
       "sentTitle": "Votre client mail devrait s'être ouvert",
@@ -183,7 +175,8 @@
       "errorEmail": "Indiquez une adresse email valide.",
       "errorMessage": "Ajoutez un court message.",
       "gmail": "Ouvrir dans Gmail",
-      "errorSummary": "Vérifiez les champs signalés."
+      "errorSummary": "Vérifiez les champs signalés.",
+      "help": "Utile : ce que ça fait, pour qui, et pour quand."
     },
     "reassure": "Je réponds sous 24 heures, généralement avec des questions avant un devis. Une fourchette de budget aide, mais reste optionnelle.",
     "optional": "facultatif",
