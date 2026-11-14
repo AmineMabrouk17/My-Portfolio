@@ -1,8 +1,10 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
+import { useI18n } from "@/i18n/I18nContext";
 
 export default function BackToTop() {
+  const { t } = useI18n();
   const [isVisible, setIsVisible] = useState(false);
 
   const handleScroll = useCallback(() => {
@@ -31,7 +33,7 @@ export default function BackToTop() {
       href="#top"
       className="fixed bottom-6 end-6 sm:bottom-8 sm:end-8 w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-[var(--color-surface)] border border-[var(--color-border)] grid place-items-center text-[var(--color-muted)] hover:text-[var(--color-accent)] hover:border-[var(--color-accent)] transition-all duration-200 hover:-translate-y-1 z-50"
       style={{ boxShadow: "var(--shadow)" }}
-      aria-label="Back to top"
+      aria-label={t("nav.backToTop")}
     >
       <svg
         width="18"

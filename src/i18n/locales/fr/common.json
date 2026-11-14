@@ -4,8 +4,11 @@
     "about": "À propos",
     "experience": "Parcours",
     "stack": "Stack",
-    "language": "Langue",
-    "contact": "Contact"
+    "contact": "Contact",
+    "label": "Navigation principale",
+    "menu": "Menu",
+    "home": "Amine Mabrouk — retour en haut",
+    "backToTop": "Retour en haut"
   },
   "hero": {
     "tag": "Disponible pour des projets freelance · Tunis · UTC+1",
@@ -17,18 +20,26 @@
     "role": "Développeur Full Stack — Angular · Next.js · Node.js · Laravel",
     "summary": "Je développe des plateformes web de qualité production avec Angular, Laravel, Next.js et Python. Porté par un code propre, des pipelines automatisés et des workflows Git rigoureux — je construis de vraies solutions, de l'architecture au déploiement.",
     "cta1": "Discuter de votre projet",
-    "cta2": "Voir GitHub & Projets",
-    "svc1": { "title": "Applications Web", "desc": "Apps full stack avec Angular, Next.js & Laravel" },
-    "svc2": { "title": "Dashboards & Admin", "desc": "Outils internes et tableaux de bord opérationnels" },
-    "svc3": { "title": "Intégration API", "desc": "APIs REST, systèmes en temps réel & automatisation" }
+    "cta2": "Voir les 6 projets en ligne",
+    "svc1": {
+      "title": "Applications Web",
+      "desc": "Apps full stack avec Angular, Next.js & Laravel"
+    },
+    "svc2": {
+      "title": "Dashboards & Admin",
+      "desc": "Outils internes et tableaux de bord opérationnels"
+    },
+    "svc3": {
+      "title": "Intégration API",
+      "desc": "APIs REST, systèmes en temps réel & automatisation"
+    }
   },
   "about": {
     "num": "01 / À PROPOS",
     "h2": "Ingénieur qui livre.",
-    "sub": "Développeur Full Stack avec un Diplôme National d'Ingénieur — reconnu comme équivalent à un Master.",
-    "bio": "Je construis des applications web et des solutions numériques performantes et sécurisées qui aident les entreprises à évoluer. Spécialisé dans l'architecture logicielle fiable, les fonctionnalités en temps réel et les systèmes basés sur les données, je me concentre sur la transformation de défis complexes — tels que les migrations cloud, la sécurité avancée des systèmes et la surveillance automatisée — en expériences fluides et conviviales qui créent de la valeur commerciale.",
-    "marquee": "Architecture propre • CI/CD automatisé • Revue de code • Conception d'API REST • Bases relationnelles • Déploiements en production • Architecture de composants • Tests automatisés • Workflows GitHub",
-    "diploma": "Développeur Full Stack — Diplôme National d'Ingénieur (équivalent Master)"
+    "sub": "Six produits livrés : plateformes web full-stack et bots Telegram.",
+    "bio": "Je construis des produits de bout en bout — schéma, API, interface, déploiement. RakT3adiBot est un planificateur de révision arabe avec 85 tests, un ordonnanceur idempotent de 30 secondes et sept sauvegardes tournantes ; Cast n Cue tourne sur Cloudflare Workers et D1 ; Lumina est une boutique Stripe sur Supabase ; BudgetIQ place Gemini dans un tableau de bord financier. Des stacks différentes, un seul standard.",
+    "marquee": "RakT3adiBot · 85 tests • Cast n Cue · Cloudflare D1 • Lumina · Stripe • BudgetIQ · Gemini • SaletBot · arabe d'abord"
   },
   "skills": {
     "num": "02 / COMPÉTENCES",
@@ -38,7 +49,14 @@
     "backend": "Backend",
     "databases": "Bases de données",
     "devops": "DevOps",
-    "ai": "IA / Autres"
+    "ai": "IA / Autres",
+    "evidence": {
+      "frontend": "Cast n Cue, Lumina",
+      "backend": "Nouara (Laravel), RakT3adiBot",
+      "databases": "Postgres, D1, SQLite",
+      "devops": "GitHub Actions, systemd, pytest",
+      "ai": "BudgetIQ, SaletBot"
+    }
   },
   "exp": {
     "num": "03 / EXPÉRIENCE",
@@ -86,20 +104,20 @@
       "result": "Un planificateur où discuter en langage naturel capture instantanément dépenses et revenus dans un tableau de bord interactif."
     },
     "rakt3adi": {
-    "sub": "Python · Telegram Bot API · SQLite",
-    "title": "RakT3adiBot — Planificateur de révision",
-    "problem": "Les plans de révision vivent dans des notes et des groupes, alors les dates d'examen et la progression des leçons se perdent.",
-    "solution": "Développement d'un bot Telegram arabe qui suit les examens et les leçons, coche la révision avec un compteur 2/3, envoie des rappels J-2 et J-1 ainsi qu'une dua du matin, et inclut un panneau d'administration sur invitation pour les utilisateurs, les modèles et les statistiques. Un planificateur idempotent de 30 secondes survit aux redémarrages, et des sauvegardes SQLite quotidiennes conservent sept copies.",
-    "result": "L'étudiant ouvre une seule conversation pour voir quoi réviser aujourd'hui ; 85 tests couvrent les parcours de bout en bout."
-  },
-  "saletbot": {
-    "sub": "Python · Gemini · Pillow · SQLite",
-    "title": "SaletBot — Horaires de prière & Athkar",
-    "problem": "Les horaires de prière, les athkar et la Qibla vivent dans des applis séparées, et un chatbot généraliste peut inventer des réponses religieuses.",
-    "solution": "Développement d'un bot arabe privé autour de sources fiables : horaires AlAdhan pour la Tunisie avec cache de secours, rappels à T-15 et à l'heure exacte, corpus d'athkar Hisn al-Muslim avec rotation quotidienne, et boussole Qibla de 900 px. Gemini répond uniquement dans le cadre de la prière et des athkar, refuse les fatwas et se rabat sur le texte stocké lorsqu'il ne peut pas joindre le modèle.",
-    "result": "Un assistant quotidien discret où chaque horaire et chaque dhikr est sourcé, et où l'IA ne devient jamais l'autorité."
-  },
-  "demo": "Voir la démo",
+      "sub": "Python · Telegram Bot API · SQLite",
+      "title": "RakT3adiBot — Planificateur de révision",
+      "problem": "Les plans de révision vivent dans des notes et des groupes, alors les dates d'examen et la progression des leçons se perdent.",
+      "solution": "Développement d'un bot Telegram arabe qui suit les examens et les leçons, coche la révision avec un compteur 2/3, envoie des rappels J-2 et J-1 ainsi qu'une dua du matin, et inclut un panneau d'administration sur invitation pour les utilisateurs, les modèles et les statistiques. Un planificateur idempotent de 30 secondes survit aux redémarrages, et des sauvegardes SQLite quotidiennes conservent sept copies.",
+      "result": "L'étudiant ouvre une seule conversation pour voir quoi réviser aujourd'hui ; 85 tests couvrent les parcours de bout en bout."
+    },
+    "saletbot": {
+      "sub": "Python · Gemini · Pillow · SQLite",
+      "title": "SaletBot — Horaires de prière & Athkar",
+      "problem": "Les horaires de prière, les athkar et la Qibla vivent dans des applis séparées, et un chatbot généraliste peut inventer des réponses religieuses.",
+      "solution": "Développement d'un bot arabe privé autour de sources fiables : horaires AlAdhan pour la Tunisie avec cache de secours, rappels à T-15 et à l'heure exacte, corpus d'athkar Hisn al-Muslim avec rotation quotidienne, et boussole Qibla de 900 px. Gemini répond uniquement dans le cadre de la prière et des athkar, refuse les fatwas et se rabat sur le texte stocké lorsqu'il ne peut pas joindre le modèle.",
+      "result": "Un assistant quotidien discret où chaque horaire et chaque dhikr est sourcé, et où l'IA ne devient jamais l'autorité."
+    },
+    "demo": "Voir la démo",
     "source": "Code Source",
     "labels": {
       "details": "Problème → Solution → Résultat",
@@ -124,7 +142,8 @@
       "problem": "Accéder à l'intelligence financière en temps réel nécessite de jongler entre plusieurs plateformes disparates sans vue unifiée ni analyse IA.",
       "solution": "Construction d'un tableau de bord unifié combinant les flux WebSocket Binance (crypto) avec le polling Yahoo Finance (actions/ETF) sous un modèle de données unique, avec graphiques style TradingView, 7 modèles IA gratuits intégrés plus BYOK, des votes de prédiction participative résolus toutes les 5 minutes, et des alertes de prix natives.",
       "result": "Une plateforme à guichet unique avec des mises à jour à latence quasi nulle via WebSocket, bascule de type de graphique, assistant IA multilingue ancré dans les données de marché, export CSV, et prédictions de sentiment participatives en temps réel."
-    }
+    },
+    "ask": "Parler de ce projet"
   },
   "edu": {
     "num": "05 / FORMATION",
@@ -134,7 +153,8 @@
       "title": "Diplôme d'État d'Ingénieur en Informatique (équivalent M.Sc.)",
       "program": "Programme d'ingénierie intégré de 5 ans",
       "desc": "Premières 2 années intensives de pré-ingénierie (Mathématiques avancées & Informatique), suivies de 3 années de spécialisation en Génie Logiciel et Architecture des Systèmes."
-    }
+    },
+    "school": "Faculté des Sciences de Bizerte"
   },
   "contact": {
     "num": "06 / CONTACT",
@@ -156,19 +176,27 @@
       "submit": "Envoyer le message",
       "subject": "Demande via portfolio",
       "sentTitle": "Votre client mail devrait s'être ouvert",
-      "sentHint": "Cette page ne peut pas confirmer l'envoi. Si rien ne s'est ouvert, copiez l'adresse ci-dessous ou réessayez.",
+      "sentHint": "Cette page ne peut pas confirmer l'envoi. Si rien ne s'est ouvert, copiez l'adresse ci-dessus, ouvrez-la dans Gmail ou réessayez.",
       "openAgain": "Ouvrir le client mail",
       "sendAnother": "Écrire un autre message",
       "errorName": "Indiquez votre nom.",
       "errorEmail": "Indiquez une adresse email valide.",
-      "errorMessage": "Ajoutez un court message."
-    }
+      "errorMessage": "Ajoutez un court message.",
+      "gmail": "Ouvrir dans Gmail",
+      "errorSummary": "Vérifiez les champs signalés."
+    },
+    "reassure": "Je réponds sous 24 heures, généralement avec des questions avant un devis. Une fourchette de budget aide, mais reste optionnelle.",
+    "optional": "facultatif",
+    "copyHint": "Appuyez sur ⌘C / ctrl-C",
+    "copyMessage": "Copier le message"
   },
   "footer": {
     "built": "Fait avec",
-    "in": "à"
+    "in": "à",
+    "available": "Disponible pour des projets freelance",
+    "location": "Tunis, Tunisie"
   },
   "strip": {
-    "items": "Projets sélectionnés|2026|Livrer vite|Livrer sûr|Architecture propre"
+    "items": "Cast n Cue · Cloudflare D1|RakT3adiBot · 85 tests|Lumina · Stripe|BudgetIQ · Gemini|SaletBot · arabe d'abord|Nouara · Angular + Laravel"
   }
 }

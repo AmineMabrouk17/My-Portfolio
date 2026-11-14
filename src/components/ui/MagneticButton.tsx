@@ -27,6 +27,7 @@ export function MagneticButton({
     const el = ref.current;
     if (!el) return;
     if (typeof window !== "undefined" && "ontouchstart" in window) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
     let wiggleEase: number | ((progress: number) => number) | string =
       "back.out(1.4)";

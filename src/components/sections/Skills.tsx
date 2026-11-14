@@ -3,12 +3,13 @@
 import type { IconType } from "react-icons";
 import {
   SiAngular,
+  SiCloudflare,
   SiDocker,
   SiFlask,
   SiGit,
   SiGithub,
+  SiGithubactions,
   SiGooglegemini,
-  SiHuggingface,
   SiJavascript,
   SiLaravel,
   SiMysql,
@@ -17,45 +18,49 @@ import {
   SiPostgresql,
   SiPython,
   SiReact,
+  SiStripe,
   SiSupabase,
   SiTailwindcss,
-  SiTypescript,
   SiTelegram,
+  SiTypescript,
   SiSqlite,
-  SiGithubactions,
   SiPytest,
 } from "react-icons/si";
-import { TbApi, TbBrain, TbDatabase, TbSettings } from "react-icons/tb";
+import { TbApi, TbSettings } from "react-icons/tb";
 import { useI18n } from "@/i18n/I18nContext";
 import ScrollReveal from "@/components/ui/ScrollReveal";
-import { TiltCard } from "@/components/motion/tilt-card";
 import { AnimatedText } from "@/components/motion/animated-text";
 
 const skills = [
   {
     icon: "window",
     titleKey: "skills.frontend",
+    evidenceKey: "skills.evidence.frontend",
     tags: ["Angular", "Next.js", "React.js", "TypeScript", "JavaScript", "Tailwind CSS"],
   },
   {
     icon: "server",
     titleKey: "skills.backend",
+    evidenceKey: "skills.evidence.backend",
     tags: ["Node.js", "Laravel", "Flask", "Python", "REST APIs", "Telegram Bot API"],
   },
   {
     icon: "database",
     titleKey: "skills.databases",
-    tags: ["MySQL", "Supabase", "PostgreSQL", "SQLite", "NoSQL"],
+    evidenceKey: "skills.evidence.databases",
+    tags: ["MySQL", "Supabase", "PostgreSQL", "SQLite"],
   },
   {
     icon: "infinity",
     titleKey: "skills.devops",
-    tags: ["Docker", "Git", "GitHub", "GitHub Actions", "systemd", "pytest"],
+    evidenceKey: "skills.evidence.devops",
+    tags: ["Docker", "Git", "GitHub Actions", "systemd", "pytest", "Cloudflare Workers", "Cloudflare D1"],
   },
   {
     icon: "cpu",
     titleKey: "skills.ai",
-    tags: ["Hugging Face (NLP)", "Machine Learning", "Gemini AI"],
+    evidenceKey: "skills.evidence.ai",
+    tags: ["Gemini AI", "Stripe"],
     full: true,
   },
 ];
@@ -72,29 +77,28 @@ const techIcons: Record<string, IconType> = {
   Flask: SiFlask,
   Python: SiPython,
   "REST APIs": TbApi,
+  "Telegram Bot API": SiTelegram,
   MySQL: SiMysql,
   Supabase: SiSupabase,
   PostgreSQL: SiPostgresql,
   SQLite: SiSqlite,
-  NoSQL: TbDatabase,
   Docker: SiDocker,
   Git: SiGit,
-  GitHub: SiGithub,
   "GitHub Actions": SiGithubactions,
   systemd: TbSettings,
   pytest: SiPytest,
-  "Telegram Bot API": SiTelegram,
-  "Hugging Face (NLP)": SiHuggingface,
-  "Machine Learning": TbBrain,
+  "Cloudflare Workers": SiCloudflare,
+  "Cloudflare D1": SiCloudflare,
   "Gemini AI": SiGooglegemini,
+  Stripe: SiStripe,
 };
 
 const iconMap: Record<string, React.JSX.Element> = {
-  window: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="2" y="3" width="20" height="14" rx="2" /><line x1="8" y1="21" x2="16" y2="21" /><line x1="12" y1="17" x2="12" y2="21" /></svg>,
-  server: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="2" y="2" width="20" height="8" rx="2" /><rect x="2" y="14" width="20" height="8" rx="2" /><line x1="6" y1="6" x2="6.01" y2="6" /><line x1="6" y1="18" x2="6.01" y2="18" /></svg>,
-  database: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><ellipse cx="12" cy="5" rx="9" ry="3" /><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3" /><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" /></svg>,
-  infinity: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 12c-2-2.67-4-4-6-4a4 4 0 100 8c2 0 4-1.33 6-4zm0 0c2 2.67 4 4 6 4a4 4 0 000-8c-2 0-4 1.33-6 4z" /></svg>,
-  cpu: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="4" y="4" width="16" height="16" rx="2" /><rect x="9" y="9" width="6" height="6" /><line x1="9" y1="1" x2="9" y2="4" /><line x1="15" y1="1" x2="15" y2="4" /><line x1="9" y1="20" x2="9" y2="23" /><line x1="15" y1="20" x2="15" y2="23" /><line x1="20" y1="9" x2="23" y2="9" /><line x1="20" y1="14" x2="23" y2="14" /><line x1="1" y1="9" x2="4" y2="9" /><line x1="1" y1="14" x2="4" y2="14" /></svg>,
+  window: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2" /><line x1="8" y1="21" x2="16" y2="21" /><line x1="12" y1="17" x2="12" y2="21" /></svg>,
+  server: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><rect x="2" y="2" width="20" height="8" rx="2" /><rect x="2" y="14" width="20" height="8" rx="2" /><line x1="6" y1="6" x2="6.01" y2="6" /><line x1="6" y1="18" x2="6.01" y2="18" /></svg>,
+  database: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3" /><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3" /><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" /></svg>,
+  infinity: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><path d="M12 12c-2-2.67-4-4-6-4a4 4 0 100 8c2 0 4-1.33 6-4zm0 0c2 2.67 4 4 6 4a4 4 0 000-8c-2 0-4 1.33-6 4z" /></svg>,
+  cpu: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2" /><rect x="9" y="9" width="6" height="6" /><line x1="9" y1="1" x2="9" y2="4" /><line x1="15" y1="1" x2="15" y2="4" /><line x1="9" y1="20" x2="9" y2="23" /><line x1="15" y1="20" x2="15" y2="23" /><line x1="20" y1="9" x2="23" y2="9" /><line x1="20" y1="14" x2="23" y2="14" /><line x1="1" y1="9" x2="4" y2="9" /><line x1="1" y1="14" x2="4" y2="14" /></svg>,
 };
 
 export default function Skills() {
@@ -128,14 +132,17 @@ export default function Skills() {
               delay={i * 80}
               className={skill.full ? "sm:col-span-2 lg:col-span-4" : undefined}
             >
-              <TiltCard className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-[18px] p-[26px] h-full transition-colors duration-300 hover:border-[var(--color-border-2)] hover:bg-[var(--color-surface-2)] group">
+              <div className="group relative h-full overflow-hidden rounded-[18px] border border-[var(--color-border)] bg-[var(--color-surface)] p-[26px] transition-colors duration-300 hover:border-[var(--color-border-2)] hover:bg-[var(--color-surface-2)]">
                 <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                 <div className="w-[46px] h-[46px] rounded-[12px] bg-[color-mix(in_srgb,var(--color-accent)_8%,transparent)] text-[var(--color-accent)] grid place-items-center text-xl mb-4.5">
                   {iconMap[skill.icon]}
                 </div>
-                <h3 className="text-lg font-semibold mb-3.5">
+                <h3 className="mb-1 text-lg font-semibold">
                   {t(skill.titleKey)}
                 </h3>
+                <p className="mb-3.5 font-mono text-[11px] uppercase tracking-[0.08em] text-[var(--color-muted-2)]">
+                  {t(skill.evidenceKey)}
+                </p>
                 <div className="flex flex-wrap gap-2">
                   {skill.tags.map((tag) => {
                     const TechIcon = techIcons[tag];
@@ -144,13 +151,13 @@ export default function Skills() {
                         key={tag}
                         className="inline-flex items-center gap-1.5 text-[12px] py-[5px] px-[11px] rounded-lg bg-white/[0.04] border border-[var(--color-border)] text-[var(--color-muted)] font-medium"
                       >
-                        {TechIcon ? <TechIcon size={13} className="shrink-0" /> : null}
+                        {TechIcon ? <TechIcon size={13} className="shrink-0" aria-hidden="true" /> : null}
                         {tag}
                       </span>
                     );
                   })}
                 </div>
-              </TiltCard>
+              </div>
             </ScrollReveal>
           ))}
         </div>

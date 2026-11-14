@@ -43,7 +43,7 @@ Range with delivery depth: production full-stack web platforms (Angular/Laravel,
 
 - Name: **Amine Mabrouk**. Voice: plain, specific, evidence-led; no buzzword inflation.
 - Contact: `amx72001@gmail.com`; GitHub `AmineMabrouk17`.
-- Existing visual identity (dark ground, warm coral/amber/yellow ramp, GSAP-driven motion) is the incumbent world; changing it is a redesign decision, not a polish decision. See `DESIGN.md`.
+- Existing visual identity (warm charcoal ground, ember/flame ramp, copper status, Instrument Sans + JetBrains Mono) is the incumbent world; changing it is a redesign decision, not a polish decision. See `DESIGN.md`.
 
 ## Evidence on Hand
 

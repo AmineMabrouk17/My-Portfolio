@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import {
   IBM_Plex_Sans_Arabic,
   Instrument_Sans,
@@ -7,7 +8,6 @@ import {
 import "./globals.css";
 import Providers from "./providers";
 import SmoothScroll from "@/components/SmoothScroll";
-import Preloader from "@/components/Preloader";
 import { ScrollProgress } from "@/components/motion/scroll-progress";
 
 const instrument = Instrument_Sans({
@@ -92,9 +92,15 @@ export default function RootLayout({
       className={`${instrument.variable} ${jetbrains.variable} ${arabic.variable}`}
       suppressHydrationWarning
     >
+      <head>
+        {/* Runs before first paint: arms the reveal enhancement and restores
+            the stored locale so Arabic never flashes as English LTR. */}
+        <Script id="prepaint" strategy="beforeInteractive">
+          {`(function(){try{var d=document.documentElement;d.classList.add("js");var l=localStorage.getItem("preferred-lang");if(l==="ar"||l==="fr"){d.lang=l;d.dir=l==="ar"?"rtl":"ltr";}}catch(e){}})();`}
+        </Script>
+      </head>
       <body suppressHydrationWarning>
         <ScrollProgress className="bg-[var(--color-accent)]" />
-        <Preloader />
         <Providers>
           <SmoothScroll>{children}</SmoothScroll>
         </Providers>

@@ -56,13 +56,9 @@ export default function Home() {
         <Hero />
         <LoopingPanels />
         <About />
-        <LoopingPanels />
         <Skills />
-        <LoopingPanels />
         <Experience />
-        <LoopingPanels />
         <Projects />
-        <LoopingPanels />
         <Education />
         <LoopingPanels />
         <Contact />

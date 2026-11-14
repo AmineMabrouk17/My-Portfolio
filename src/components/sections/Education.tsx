@@ -6,7 +6,7 @@ import { AnimatedText } from "@/components/motion/animated-text";
 
 const education = [
   {
-    school: "FSB Bizerte",
+    schoolKey: "edu.school",
     titleKey: "edu.degree.title",
     date: "2020 – 2025",
     programKey: "edu.degree.program",
@@ -43,15 +43,15 @@ export default function Education() {
             <ScrollReveal key={edu.titleKey} delay={i * 80}>
               <div className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-[18px] p-7 transition-all duration-300 hover:border-[var(--color-border-2)]">
                 <div className="text-[var(--color-accent)] text-sm font-medium mb-1.5">
-                  {edu.school}
+                  {t(edu.schoolKey)}
                 </div>
                 <h3 className="text-lg font-semibold mb-2.5 tracking-tight">
                   {t(edu.titleKey)}
                 </h3>
                 <div className="mb-3 font-mono text-[12px] font-medium tracking-[0.02em] text-[var(--color-muted-2)]">
-                  {edu.date} · {t(edu.programKey)}
+                  <bdi>{edu.date}</bdi> · {t(edu.programKey)}
                 </div>
-                <p className="text-[var(--color-muted)] text-sm italic">
+                <p className="text-[16px] leading-[1.7] text-[var(--color-muted)]">
                   {t(edu.descKey)}
                 </p>
               </div>

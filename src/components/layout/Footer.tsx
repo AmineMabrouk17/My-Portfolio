@@ -7,20 +7,23 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="py-10 border-t border-[var(--color-border)] mt-20">
+    <footer className="border-t border-[var(--color-border)] pt-8 pb-10">
       <div className="max-w-[1200px] mx-auto px-8">
-        <div className="flex justify-between items-center flex-wrap gap-4">
-          <p className="text-[var(--color-muted-2)] text-[14px]">
-            © {year} Amine Mabrouk · {t("footer.built")}{" "}
-            <span className="text-[var(--color-accent)]">♥</span>{" "}
-            {t("footer.in")} Tunis, Tunisia
+        <div className="flex flex-wrap items-center justify-between gap-4">
+          <p className="inline-flex items-center gap-2 text-[14px] text-[var(--color-muted)]">
+            <span
+              aria-hidden="true"
+              className="h-1.5 w-1.5 rounded-full bg-[var(--color-status)]"
+            />
+            {t("footer.available")}
           </p>
-          <div className="flex items-center gap-1">
+
+          <div className="flex flex-wrap items-center gap-1">
             <a
               href="mailto:amx72001@gmail.com"
               className="inline-flex min-h-[44px] items-center px-2 text-[14px] text-[var(--color-muted)] transition-colors hover:text-[var(--color-text)]"
             >
-              amx72001@gmail.com
+              <bdi>amx72001@gmail.com</bdi>
             </a>
             <a
               href="https://github.com/AmineMabrouk17"
@@ -30,8 +33,22 @@ export default function Footer() {
             >
               GitHub
             </a>
+            <a
+              href="https://www.linkedin.com/in/amine-mabrouk"
+              target="_blank"
+              rel="noopener"
+              className="inline-flex min-h-[44px] items-center px-2 text-[14px] text-[var(--color-muted)] transition-colors hover:text-[var(--color-text)]"
+            >
+              LinkedIn
+            </a>
           </div>
         </div>
+
+        <p className="mt-6 text-[13px] text-[var(--color-muted-2)]">
+          © {year} Amine Mabrouk · {t("footer.built")}{" "}
+          <span className="text-[var(--color-accent)]">♥</span>{" "}
+          {t("footer.in")} <bdi>{t("footer.location")}</bdi>
+        </p>
       </div>
     </footer>
   );

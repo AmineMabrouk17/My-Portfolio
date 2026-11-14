@@ -2,9 +2,14 @@
 
 import { useEffect, useRef } from "react";
 import { useI18n } from "@/i18n/I18nContext";
-import ScrollReveal from "@/components/ui/ScrollReveal";
 import { gsap, SplitText } from "@/lib/gsap";
 import { MagneticButton } from "@/components/ui/MagneticButton";
+
+const liveWork = [
+  { key: "proj.castcue.title", href: "https://cast-cue.cast-cue.workers.dev" },
+  { key: "proj.budgetiq.title", href: "https://budgetiq-two.vercel.app" },
+  { key: "proj.crypto.title", href: "https://crypto-stocks-web-taupe.vercel.app" },
+];
 
 export default function Hero() {
   const { t } = useI18n();
@@ -57,7 +62,6 @@ export default function Hero() {
   return (
     <section className="pt-[140px] pb-[60px] max-lg:pt-[120px]">
       <div className="max-w-[1120px] mx-auto px-8">
-        <ScrollReveal>
           <div className="flex items-center flex-wrap gap-2 font-mono text-[11px] font-medium tracking-[0.14em] uppercase mb-[26px]">
             <span className="text-[var(--color-text)]">Amine Mabrouk</span>
             <span className="text-[var(--color-muted-2)]">·</span>
@@ -75,7 +79,7 @@ export default function Hero() {
             <span className="text-[var(--color-accent-2)] font-normal">{t("hero.headlineAccent")}</span>
           </h1>
 
-          <p className="mb-5 font-mono text-[11px] font-medium uppercase tracking-[0.14em] text-[var(--color-muted)]">
+          <p className="mb-5 text-[15px] font-medium text-[var(--color-text)]/85">
             {t("hero.role")}
           </p>
 
@@ -85,6 +89,22 @@ export default function Hero() {
           >
             {t("hero.summary")}
           </p>
+
+          <ul className="mb-10 flex flex-wrap gap-x-5 gap-y-2">
+            {liveWork.map(({ key, href }) => (
+              <li key={href}>
+                <a
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group inline-flex min-h-[44px] items-center gap-1.5 text-[14px] font-medium text-[var(--color-muted)] transition-colors hover:text-[var(--color-text)]"
+                >
+                  <span className="text-[var(--color-accent)]">↗</span>
+                  {t(key).split(" — ")[0]}
+                </a>
+              </li>
+            ))}
+          </ul>
 
           <div className="flex gap-3.5 flex-wrap">
             <MagneticButton
@@ -96,7 +116,7 @@ export default function Hero() {
             </MagneticButton>
             <a
               href="#projects"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full no-underline font-semibold text-[16px] border border-white/15 text-[var(--color-text)] transition-all duration-200 hover:bg-white/[0.06] hover:-translate-y-px"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full no-underline font-semibold text-[16px] border border-[var(--color-field-border)] text-[var(--color-text)] transition-all duration-200 hover:border-[var(--color-accent)] hover:bg-white/[0.06] hover:-translate-y-px"
             >
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <polyline points="16 18 22 12 16 6" />
@@ -140,7 +160,6 @@ export default function Hero() {
               </svg>
             </a>
           </div>
-        </ScrollReveal>
       </div>
     </section>
   );

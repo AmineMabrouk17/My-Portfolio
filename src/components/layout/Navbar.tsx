@@ -1,26 +1,48 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useI18n } from "@/i18n/I18nContext";
 import LanguageSwitcher from "./LanguageSwitcher";
 
 export default function Navbar() {
   const { t } = useI18n();
   const [isMobileOpen, setIsMobileOpen] = useState(false);
+  const navRef = useRef<HTMLElement>(null);
+  const toggleRef = useRef<HTMLButtonElement>(null);
+  const menuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (isMobileOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
+    if (!isMobileOpen) return;
+
+    document.body.style.overflow = "hidden";
+
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setIsMobileOpen(false);
+        toggleRef.current?.focus();
+      }
+    };
+    const onClick = (e: MouseEvent) => {
+      if (!navRef.current?.contains(e.target as Node)) {
+        setIsMobileOpen(false);
+      }
+    };
+
+    document.addEventListener("keydown", onKey);
+    document.addEventListener("click", onClick);
+    // Move focus into the menu so keyboard users are not left behind the toggle.
+    menuRef.current?.querySelector<HTMLAnchorElement>("a")?.focus();
+
     return () => {
       document.body.style.overflow = "";
+      document.removeEventListener("keydown", onKey);
+      document.removeEventListener("click", onClick);
     };
   }, [isMobileOpen]);
 
   const navLinks = [
     { href: "#projects", key: "nav.work" },
+    { href: "#about", key: "nav.about" },
     { href: "#experience", key: "nav.experience" },
     { href: "#skills", key: "nav.stack" },
   ];
@@ -28,7 +50,9 @@ export default function Navbar() {
   return (
     <header className="fixed top-6 left-0 w-full flex justify-center z-50 px-5">
       <nav
-        className="flex items-center justify-between w-full max-w-[620px] h-[52px] rounded-full border backdrop-blur-xl transition-all duration-300"
+        ref={navRef}
+        aria-label={t("nav.label")}
+        className="flex items-center justify-between w-full max-w-[720px] h-[52px] rounded-full border backdrop-blur-xl transition-all duration-300"
         style={{
           paddingBlock: "5px",
           paddingInlineStart: "24px",
@@ -40,16 +64,18 @@ export default function Navbar() {
       >
         <a
           href="#top"
-          className="inline-flex min-h-[44px] items-center text-[14px] font-bold tracking-[0.22em] uppercase text-[var(--color-text)] no-underline"
+          aria-label={t("nav.home")}
+          className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center text-[14px] font-bold tracking-[0.22em] uppercase text-[var(--color-text)] no-underline"
         >
           A M
         </a>
 
         <div
+          ref={menuRef}
           id="primary-navigation"
           className={`${
             isMobileOpen ? "flex" : "hidden"
-          } lg:flex items-center gap-4 max-lg:absolute max-lg:top-full max-lg:left-1/2 max-lg:-translate-x-1/2 max-lg:flex-col max-lg:bg-[rgba(23,18,19,0.98)] max-lg:p-6 max-lg:gap-1 max-lg:rounded-2xl max-lg:border max-lg:min-w-[220px] max-lg:mt-3`}
+          } lg:flex items-center gap-3 max-lg:absolute max-lg:top-full max-lg:left-1/2 max-lg:-translate-x-1/2 max-lg:flex-col max-lg:bg-[rgba(23,18,19,0.98)] max-lg:p-6 max-lg:gap-1 max-lg:rounded-2xl max-lg:border max-lg:min-w-[220px] max-lg:mt-3`}
           style={{ borderColor: "rgba(243, 236, 230, 0.09)" }}
         >
           {navLinks.map((link) => (
@@ -81,6 +107,8 @@ export default function Navbar() {
               strokeWidth="2.5"
               strokeLinecap="round"
               strokeLinejoin="round"
+              aria-hidden="true"
+              className="rtl:-scale-x-100"
             >
               <line x1="5" y1="12" x2="19" y2="12" />
               <polyline points="12 5 19 12 12 19" />
@@ -88,9 +116,10 @@ export default function Navbar() {
           </a>
 
           <button
+            ref={toggleRef}
             className="lg:hidden w-11 h-11 grid place-items-center bg-transparent border-none text-[var(--color-text)] cursor-pointer p-0"
             onClick={() => setIsMobileOpen(!isMobileOpen)}
-            aria-label="Toggle menu"
+            aria-label={t("nav.menu")}
             aria-expanded={isMobileOpen}
             aria-controls="primary-navigation"
           >
@@ -101,6 +130,7 @@ export default function Navbar() {
               fill="none"
               stroke="currentColor"
               strokeWidth="2"
+              aria-hidden="true"
             >
               {isMobileOpen ? (
                 <path d="M18 6L6 18M6 6l12 12" />
