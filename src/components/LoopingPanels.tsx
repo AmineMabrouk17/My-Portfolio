@@ -5,7 +5,7 @@ import { useI18n } from "@/i18n/I18nContext";
 import { gsap, ScrollTrigger } from "@/lib/gsap";
 
 const REPEATS = 4;
-const ACCENTS = ["bg-[#ff6b6b]", "bg-[#ffa94d]", "bg-[#FFE566]"];
+const ACCENTS = ["bg-[var(--color-accent)]", "bg-[var(--color-accent-2)]", "bg-[var(--color-status)]"];
 
 /**
  * Inter-section looping strip (GSAP-6).
@@ -62,7 +62,7 @@ export default function LoopingPanels({ className = "" }: { className?: string }
       ref={stripRef}
       data-looping-panels
       aria-hidden="true"
-      className={`relative flex h-14 items-center overflow-hidden border-y border-white/[0.08] bg-[var(--color-surface)]/40 select-none ${className}`}
+      className={`relative flex h-14 items-center overflow-hidden border-y border-[var(--color-border)] bg-[var(--color-surface)]/40 select-none ${className}`}
     >
       <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-20 bg-gradient-to-r from-[var(--color-bg)] to-transparent" />
       <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-20 bg-gradient-to-l from-[var(--color-bg)] to-transparent" />
@@ -74,7 +74,7 @@ export default function LoopingPanels({ className = "" }: { className?: string }
                 const accent = ACCENTS[(repeat * items.length + index) % ACCENTS.length];
                 return (
                   <span key={`${repeat}-${index}`} className="flex shrink-0 items-center">
-                    <span className="whitespace-nowrap px-7 text-[11px] font-semibold uppercase tracking-[0.32em] text-white/45 max-sm:text-[10px]">
+                    <span className="whitespace-nowrap px-7 font-mono text-[11px] font-medium uppercase tracking-[0.28em] text-[var(--color-muted-2)]">
                       {item}
                     </span>
                     <span className={`h-1.5 w-1.5 rotate-45 ${accent}`} />

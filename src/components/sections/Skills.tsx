@@ -106,16 +106,16 @@ export default function Skills() {
         <ScrollReveal>
           <div className="mb-12 flex items-end justify-between flex-wrap gap-5">
             <div>
-              <div className="text-[var(--color-accent)] text-[13px] font-medium tracking-[0.15em] mb-2">
+              <div className="text-[var(--color-accent)] font-mono text-[12px] font-medium tracking-[0.16em] mb-2">
                 {t("skills.num")}
               </div>
               <AnimatedText
                 as="h2"
                 text={t("skills.h2")}
-                className="text-[clamp(30px,4vw,44px)] font-bold tracking-[-0.03em] leading-none"
+                className="text-[clamp(32px,4.2vw,46px)] font-bold tracking-[-0.025em] leading-none"
               />
             </div>
-            <p className="text-[var(--color-muted)] max-w-[480px] text-[15px]">
+            <p className="max-w-[480px] text-pretty text-[16px] text-[var(--color-muted)]">
               {t("skills.sub")}
             </p>
           </div>
@@ -142,7 +142,7 @@ export default function Skills() {
                     return (
                       <span
                         key={tag}
-                        className="inline-flex items-center gap-1.5 text-[12.5px] py-[5px] px-[11px] rounded-lg bg-white/[0.04] border border-[var(--color-border)] text-[var(--color-muted)] font-medium"
+                        className="inline-flex items-center gap-1.5 text-[12px] py-[5px] px-[11px] rounded-lg bg-white/[0.04] border border-[var(--color-border)] text-[var(--color-muted)] font-medium"
                       >
                         {TechIcon ? <TechIcon size={13} className="shrink-0" /> : null}
                         {tag}

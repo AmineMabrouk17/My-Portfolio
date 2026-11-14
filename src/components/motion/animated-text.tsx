@@ -3,6 +3,7 @@
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
+  Fragment,
   useEffect,
   useLayoutEffect,
   useRef,
@@ -87,23 +88,22 @@ export function AnimatedText({
     // phrase instead of fragmented words.
     <Component ref={ref} aria-label={text} className={cn(className)}>
       {words.map((word, i) => (
-        <span
-          key={`${word}-${i}`}
-          aria-hidden="true"
-          className="inline-block overflow-hidden align-top"
-          style={
-            i < words.length - 1
-              ? { marginInlineEnd: "0.25em" }
-              : undefined
-          }
-        >
+        <Fragment key={`${word}-${i}`}>
           <span
-            data-animated-text-word
-            className="inline-block will-change-transform"
+            aria-hidden="true"
+            className="inline-block overflow-hidden align-top"
           >
-            {word}
+            <span
+              data-animated-text-word
+              className="inline-block will-change-transform"
+            >
+              {word}
+            </span>
           </span>
-        </span>
+          {/* A real space text node: keeps copy/paste, find-in-page and
+              reader mode readable instead of "Engineerwhoships." */}
+          {i < words.length - 1 ? " " : null}
+        </Fragment>
       ))}
     </Component>
   );

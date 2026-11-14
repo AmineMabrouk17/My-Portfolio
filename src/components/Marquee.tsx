@@ -1,7 +1,16 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useSyncExternalStore } from "react";
 import { gsap, Observer } from "@/lib/gsap";
+
+const REDUCED_QUERY = "(prefers-reduced-motion: reduce)";
+const subscribeReduced = (cb: () => void) => {
+  const mq = window.matchMedia(REDUCED_QUERY);
+  mq.addEventListener("change", cb);
+  return () => mq.removeEventListener("change", cb);
+};
+const getReduced = () => window.matchMedia(REDUCED_QUERY).matches;
+const getReducedServer = () => false;
 
 export interface MarqueeProps {
   rows: string[][];
@@ -63,9 +72,13 @@ export default function Marquee({ rows, className }: MarqueeProps) {
     };
   }, []);
 
-  const prefersReducedMotion =
-    typeof window !== "undefined" &&
-    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  // Client-only preference, resolved after hydration so server and client
+  // render the same markup.
+  const prefersReducedMotion = useSyncExternalStore(
+    subscribeReduced,
+    getReduced,
+    getReducedServer
+  );
 
   // Build one wide "half" per row by repeating the phrase set enough times so
   // it is always much wider than any viewport. Each track duplicates this

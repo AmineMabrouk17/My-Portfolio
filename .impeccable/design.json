@@ -1,0 +1,408 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-14T19:10:09.236Z",
+  "title": "Design System: Amine Mabrouk Portfolio",
+  "extensions": {
+    "colorMeta": {
+      "kiln-ember": {
+        "role": "primary",
+        "displayName": "Kiln Ember",
+        "canonical": "oklch(70.6% 0.188 34.9)",
+        "tonalRamp": [
+          "oklch(15% 0.104 34.9)",
+          "oklch(26% 0.160 34.9)",
+          "oklch(37% 0.160 34.9)",
+          "oklch(48% 0.188 34.9)",
+          "oklch(60% 0.188 34.9)",
+          "oklch(72% 0.132 34.9)",
+          "oklch(84% 0.132 34.9)",
+          "oklch(95% 0.085 34.9)"
+        ]
+      },
+      "lamp-flame": {
+        "role": "secondary",
+        "displayName": "Lamp Flame",
+        "canonical": "oklch(79.7% 0.144 60.8)",
+        "tonalRamp": [
+          "oklch(15% 0.079 60.8)",
+          "oklch(26% 0.123 60.8)",
+          "oklch(37% 0.123 60.8)",
+          "oklch(48% 0.144 60.8)",
+          "oklch(60% 0.144 60.8)",
+          "oklch(72% 0.101 60.8)",
+          "oklch(84% 0.101 60.8)",
+          "oklch(95% 0.065 60.8)"
+        ]
+      },
+      "oxidised-copper": {
+        "role": "tertiary",
+        "displayName": "Oxidised Copper",
+        "canonical": "oklch(68.8% 0.063 178.4)",
+        "tonalRamp": [
+          "oklch(15% 0.035 178.4)",
+          "oklch(26% 0.053 178.4)",
+          "oklch(37% 0.053 178.4)",
+          "oklch(48% 0.063 178.4)",
+          "oklch(60% 0.063 178.4)",
+          "oklch(72% 0.044 178.4)",
+          "oklch(84% 0.044 178.4)",
+          "oklch(95% 0.028 178.4)"
+        ]
+      },
+      "ember-deep": {
+        "role": "tertiary",
+        "displayName": "Ember Deep",
+        "canonical": "oklch(61.9% 0.171 33.3)",
+        "tonalRamp": [
+          "oklch(15% 0.094 33.3)",
+          "oklch(26% 0.146 33.3)",
+          "oklch(37% 0.146 33.3)",
+          "oklch(48% 0.171 33.3)",
+          "oklch(60% 0.171 33.3)",
+          "oklch(72% 0.120 33.3)",
+          "oklch(84% 0.120 33.3)",
+          "oklch(95% 0.077 33.3)"
+        ]
+      },
+      "night-ink": {
+        "role": "neutral",
+        "displayName": "Night Ink",
+        "canonical": "oklch(14.8% 0.004 345.9)",
+        "tonalRamp": [
+          "oklch(15% 0.002 345.9)",
+          "oklch(26% 0.003 345.9)",
+          "oklch(37% 0.003 345.9)",
+          "oklch(48% 0.004 345.9)",
+          "oklch(60% 0.004 345.9)",
+          "oklch(72% 0.003 345.9)",
+          "oklch(84% 0.003 345.9)",
+          "oklch(95% 0.002 345.9)"
+        ]
+      },
+      "night-ink2": {
+        "role": "neutral",
+        "displayName": "Night Ink 2",
+        "canonical": "oklch(17.3% 0.005 355.5)",
+        "tonalRamp": [
+          "oklch(15% 0.003 355.5)",
+          "oklch(26% 0.005 355.5)",
+          "oklch(37% 0.005 355.5)",
+          "oklch(48% 0.005 355.5)",
+          "oklch(60% 0.005 355.5)",
+          "oklch(72% 0.004 355.5)",
+          "oklch(84% 0.004 355.5)",
+          "oklch(95% 0.002 355.5)"
+        ]
+      },
+      "bench-slate": {
+        "role": "neutral",
+        "displayName": "Bench Slate",
+        "canonical": "oklch(18.9% 0.008 4.4)",
+        "tonalRamp": [
+          "oklch(15% 0.005 4.4)",
+          "oklch(26% 0.007 4.4)",
+          "oklch(37% 0.007 4.4)",
+          "oklch(48% 0.008 4.4)",
+          "oklch(60% 0.008 4.4)",
+          "oklch(72% 0.006 4.4)",
+          "oklch(84% 0.006 4.4)",
+          "oklch(95% 0.004 4.4)"
+        ]
+      },
+      "bench-slate-raised": {
+        "role": "neutral",
+        "displayName": "Bench Slate Raised",
+        "canonical": "oklch(22.7% 0.013 18.1)",
+        "tonalRamp": [
+          "oklch(15% 0.007 18.1)",
+          "oklch(26% 0.011 18.1)",
+          "oklch(37% 0.011 18.1)",
+          "oklch(48% 0.013 18.1)",
+          "oklch(60% 0.013 18.1)",
+          "oklch(72% 0.009 18.1)",
+          "oklch(84% 0.009 18.1)",
+          "oklch(95% 0.006 18.1)"
+        ]
+      },
+      "graphite": {
+        "role": "neutral",
+        "displayName": "Graphite",
+        "canonical": "oklch(70.6% 0.015 57.5)",
+        "tonalRamp": [
+          "oklch(15% 0.009 57.5)",
+          "oklch(26% 0.013 57.5)",
+          "oklch(37% 0.013 57.5)",
+          "oklch(48% 0.015 57.5)",
+          "oklch(60% 0.015 57.5)",
+          "oklch(72% 0.011 57.5)",
+          "oklch(84% 0.011 57.5)",
+          "oklch(95% 0.007 57.5)"
+        ]
+      },
+      "graphite-deep": {
+        "role": "neutral",
+        "displayName": "Graphite Deep",
+        "canonical": "oklch(63.3% 0.016 57.4)",
+        "tonalRamp": [
+          "oklch(15% 0.009 57.4)",
+          "oklch(26% 0.014 57.4)",
+          "oklch(37% 0.014 57.4)",
+          "oklch(48% 0.016 57.4)",
+          "oklch(60% 0.016 57.4)",
+          "oklch(72% 0.011 57.4)",
+          "oklch(84% 0.011 57.4)",
+          "oklch(95% 0.007 57.4)"
+        ]
+      },
+      "chalk": {
+        "role": "neutral",
+        "displayName": "Chalk",
+        "canonical": "oklch(94.7% 0.011 63.4)",
+        "tonalRamp": [
+          "oklch(15% 0.006 63.4)",
+          "oklch(26% 0.009 63.4)",
+          "oklch(37% 0.009 63.4)",
+          "oklch(48% 0.011 63.4)",
+          "oklch(60% 0.011 63.4)",
+          "oklch(72% 0.008 63.4)",
+          "oklch(84% 0.008 63.4)",
+          "oklch(95% 0.005 63.4)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Hero headline only; max 980px measure."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Every section h2, animated word by word under a mask."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Project titles, card headings, job titles."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Prose at 16px; never below the sixteen floor."
+      },
+      "small": {
+        "displayName": "Small",
+        "purpose": "Nav links, buttons, form labels."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Numbered mono section eyebrow, e.g. 01 / ABOUT."
+      },
+      "micro": {
+        "displayName": "Micro",
+        "purpose": "Project sub-lines, tech tags, dates, looping strip."
+      }
+    },
+    "shadows": [
+      {
+        "name": "floating-shell",
+        "value": "0 20px 40px rgba(0, 0, 0, 0.45)",
+        "purpose": "Nav pill and hero primary CTA only."
+      },
+      {
+        "name": "demo-hover",
+        "value": "0 8px 24px -8px color-mix(in srgb, #ff6b47 40%, transparent)",
+        "purpose": "The single colored shadow; hover on the project demo button."
+      }
+    ],
+    "motion": [
+      {
+        "name": "reveal",
+        "value": "opacity 0 -> 1, translateY(30px) -> 0, 0.8s ease",
+        "purpose": "Section arrival, IntersectionObserver at threshold 0.12."
+      },
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Primary entrance and transition curve."
+      },
+      {
+        "name": "ease-in-out",
+        "value": "cubic-bezier(0.77, 0, 0.175, 1)",
+        "purpose": "Symmetrical transitions."
+      },
+      {
+        "name": "ease-drawer",
+        "value": "cubic-bezier(0.32, 0.72, 0, 1)",
+        "purpose": "Panel and drawer entrances."
+      },
+      {
+        "name": "spring-mouse",
+        "value": "stiffness 200, damping 15, mass 0.3",
+        "purpose": "Magnetic buttons and tilt cards."
+      },
+      {
+        "name": "spring-press",
+        "value": "stiffness 500, damping 30, mass 0.6",
+        "purpose": "Press feedback on tappable surfaces."
+      },
+      {
+        "name": "spring-layout",
+        "value": "stiffness 360, damping 32, mass 0.6",
+        "purpose": "Shared-layout glides and indicator morphs."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "sm",
+        "value": "640px"
+      },
+      {
+        "name": "md",
+        "value": "768px"
+      },
+      {
+        "name": "lg",
+        "value": "1024px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Inverted pill for the hero and nav CTA; reads as a lit surface, not a colored button.",
+      "html": "<button class=\"ds-btn-primary\">Discuss your project <svg width=\"13\" height=\"13\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><line x1=\"5\" y1=\"12\" x2=\"19\" y2=\"12\"/><polyline points=\"12 5 19 12 12 19\"/></svg></button>",
+      "css": ".ds-btn-primary { display:inline-flex; align-items:center; gap:8px; background:#f3ece6; color:#0c0a0b; border:none; border-radius:999px; padding:12px 24px; font-family:\"Instrument Sans\", ui-sans-serif, system-ui, sans-serif; font-size:16px; font-weight:600; line-height:1; letter-spacing:-0.01em; cursor:pointer; transition:transform .2s ease, opacity .2s ease; } .ds-btn-primary:hover { transform:translateY(-1px); opacity:.95; } .ds-btn-primary:active { transform:translateY(0); } .ds-btn-primary:focus-visible { outline:2px solid #ff6b47; outline-offset:3px; }"
+    },
+    {
+      "name": "Signal Button",
+      "kind": "button",
+      "refersTo": "button-signal",
+      "description": "Kiln Ember fill at 12px radius; the two places a visitor is asked to act.",
+      "html": "<button class=\"ds-btn-signal\">Send message</button>",
+      "css": ".ds-btn-signal { display:inline-flex; align-items:center; gap:10px; background:#ff6b47; color:#0c0a0b; border:none; border-radius:12px; padding:14px 28px; font-family:\"Instrument Sans\", ui-sans-serif, system-ui, sans-serif; font-size:14px; font-weight:600; line-height:1; cursor:pointer; transition:transform .2s ease, opacity .2s ease; } .ds-btn-signal:hover { transform:translateY(-2px); opacity:.9; } .ds-btn-signal:active { transform:translateY(0); } .ds-btn-signal:focus-visible { outline:2px solid #f3ece6; outline-offset:3px; }"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Field-border outline action for secondary project links.",
+      "html": "<button class=\"ds-btn-ghost\">Source Code</button>",
+      "css": ".ds-btn-ghost { display:inline-flex; align-items:center; gap:8px; background:transparent; color:#f3ece6; border:1px solid #72665e; border-radius:12px; padding:10px 20px; font-family:\"Instrument Sans\", ui-sans-serif, system-ui, sans-serif; font-size:14px; font-weight:600; line-height:1; cursor:pointer; transition:transform .2s ease, border-color .2s ease; } .ds-btn-ghost:hover { transform:translateY(-1px); border-color:#ff6b47; } .ds-btn-ghost:focus-visible { outline:2px solid #ff6b47; outline-offset:3px; }"
+    },
+    {
+      "name": "Tech Chip",
+      "kind": "chip",
+      "refersTo": "chip-tech",
+      "description": "Skill tag with a brand icon leading; the recurring texture of the Skills section.",
+      "html": "<span class=\"ds-chip\">Angular</span>",
+      "css": ".ds-chip { display:inline-flex; align-items:center; gap:6px; background:rgba(243,236,230,0.04); border:1px solid rgba(243,236,230,0.08); border-radius:8px; padding:5px 11px; color:#a89e97; font-family:\"Instrument Sans\", ui-sans-serif, system-ui, sans-serif; font-size:12px; font-weight:500; line-height:1.2; }"
+    },
+    {
+      "name": "Skill Card",
+      "kind": "card",
+      "refersTo": "card-surface",
+      "description": "Bench Slate card with an ember icon tile and a warm hairline that lights up on hover.",
+      "html": "<div class=\"ds-card\"><div class=\"ds-card-rule\"></div><div class=\"ds-card-icon\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><rect x=\"2\" y=\"3\" width=\"20\" height=\"14\" rx=\"2\"/><line x1=\"8\" y1=\"21\" x2=\"16\" y2=\"21\"/><line x1=\"12\" y1=\"17\" x2=\"12\" y2=\"21\"/></svg></div><h3 class=\"ds-card-title\">Frontend</h3><div class=\"ds-card-chips\"><span class=\"ds-chip\">Next.js</span><span class=\"ds-chip\">React.js</span></div></div>",
+      "css": ".ds-card { position:relative; overflow:hidden; background:#171213; border:1px solid rgba(243,236,230,0.08); border-radius:18px; padding:26px; font-family:\"Instrument Sans\", ui-sans-serif, system-ui, sans-serif; transition:background-color .3s ease, border-color .3s ease; } .ds-card:hover { background:#221a1a; border-color:rgba(243,236,230,0.13); } .ds-card-rule { position:absolute; top:0; left:0; right:0; height:2px; background:linear-gradient(135deg,#ff6b47 0%,#ffa552 100%); opacity:0; transition:opacity .3s ease; } .ds-card:hover .ds-card-rule { opacity:1; } .ds-card-icon { width:46px; height:46px; border-radius:12px; display:grid; place-items:center; color:#ff6b47; background:rgba(255,107,71,0.09); margin-bottom:18px; } .ds-card-title { color:#f3ece6; font-size:18px; font-weight:600; margin:0 0 14px; letter-spacing:-0.01em; } .ds-card-chips { display:flex; flex-wrap:wrap; gap:8px; } .ds-chip { display:inline-flex; align-items:center; gap:6px; background:rgba(243,236,230,0.04); border:1px solid rgba(243,236,230,0.08); border-radius:8px; padding:5px 11px; color:#a89e97; font-size:12px; font-weight:500; }"
+    },
+    {
+      "name": "Text Field",
+      "kind": "input",
+      "refersTo": "input-field",
+      "description": "Contact field; the 3:1 field border is the boundary, focus turns it ember.",
+      "html": "<label class=\"ds-field\"><span class=\"ds-field-label\">Name <span class=\"ds-field-req\">*</span></span><input class=\"ds-input\" type=\"text\" placeholder=\"Your name\" /></label>",
+      "css": ".ds-field { display:flex; flex-direction:column; gap:6px; font-family:\"Instrument Sans\", ui-sans-serif, system-ui, sans-serif; } .ds-field-label { color:#a89e97; font-size:12px; font-weight:500; } .ds-field-req { color:#ff6b47; margin-left:2px; } .ds-input { width:100%; box-sizing:border-box; background:rgba(243,236,230,0.04); border:1px solid #72665e; border-radius:12px; padding:12px 16px; color:#f3ece6; font-family:inherit; font-size:14px; line-height:1.4; outline:none; transition:border-color .2s ease, background-color .2s ease; } .ds-input::placeholder { color:#928881; } .ds-input:focus { border-color:#ff6b47; background:rgba(243,236,230,0.06); }"
+    },
+    {
+      "name": "Nav Pill",
+      "kind": "nav",
+      "refersTo": "nav-shell",
+      "description": "Floating warm shell, 52px tall, capped at 620px.",
+      "html": "<nav class=\"ds-nav\"><span class=\"ds-nav-mark\">A M</span><div class=\"ds-nav-links\"><a href=\"#projects\">Work</a><a href=\"#experience\">Experience</a><a href=\"#skills\">Stack</a></div><a class=\"ds-nav-cta\" href=\"#contact\">Contact</a></nav>",
+      "css": ".ds-nav { display:inline-flex; align-items:center; justify-content:space-between; gap:16px; width:100%; max-width:620px; height:52px; box-sizing:border-box; padding:5px 6px 5px 24px; border-radius:999px; border:1px solid rgba(243,236,230,0.09); background:rgba(23,18,19,0.72); backdrop-filter:blur(24px); box-shadow:0 20px 40px rgba(0,0,0,0.45); font-family:\"Instrument Sans\", ui-sans-serif, system-ui, sans-serif; } .ds-nav-mark { color:#f3ece6; font-size:14px; font-weight:700; letter-spacing:0.22em; font-family:\"JetBrains Mono\", ui-monospace, SFMono-Regular, monospace; } .ds-nav-links { display:flex; align-items:center; gap:16px; } .ds-nav-links a { color:#a89e97; font-size:14px; font-weight:500; text-decoration:none; transition:color .2s ease; } .ds-nav-links a:hover { color:#f3ece6; } .ds-nav-cta { display:inline-flex; align-items:center; gap:6px; background:#f3ece6; color:#0c0a0b; border-radius:999px; padding:8px 16px; font-size:14px; font-weight:600; text-decoration:none; }"
+    },
+    {
+      "name": "Section Header",
+      "kind": "custom",
+      "refersTo": "section-header",
+      "description": "Mono label, machined headline, muted sub-line — the shared opening of all seven sections.",
+      "html": "<div class=\"ds-header\"><div class=\"ds-header-label\">02 / SKILLS</div><div class=\"ds-header-row\"><h2 class=\"ds-header-title\">Technical toolkit.</h2><p class=\"ds-header-sub\">From modern frontends to scalable backends and DevOps pipelines.</p></div></div>",
+      "css": ".ds-header { font-family:\"Instrument Sans\", ui-sans-serif, system-ui, sans-serif; } .ds-header-label { color:#ff6b47; font-family:\"JetBrains Mono\", ui-monospace, SFMono-Regular, monospace; font-size:12px; font-weight:500; letter-spacing:0.16em; margin-bottom:8px; } .ds-header-row { display:flex; align-items:flex-end; justify-content:space-between; flex-wrap:wrap; gap:20px; } .ds-header-title { margin:0; color:#f3ece6; font-size:clamp(32px,4.2vw,46px); font-weight:700; line-height:1.05; letter-spacing:-0.025em; } .ds-header-sub { margin:0; color:#a89e97; font-size:16px; line-height:1.65; max-width:480px; }"
+    },
+    {
+      "name": "Contact Panel",
+      "kind": "custom",
+      "refersTo": "contact-panel",
+      "description": "The closing 28px panel with an ember-to-flame wash; the only large tinted surface.",
+      "html": "<div class=\"ds-panel\"><div class=\"ds-panel-glow\"></div><div class=\"ds-panel-label\">06 / CONTACT</div><h2 class=\"ds-panel-title\">Let's build something.</h2><p class=\"ds-panel-text\">Taking on freelance builds and collaborations.</p></div>",
+      "css": ".ds-panel { position:relative; overflow:hidden; box-sizing:border-box; padding:60px; border-radius:28px; border:1px solid rgba(243,236,230,0.13); background:linear-gradient(135deg, rgba(255,107,71,0.06) 0%, rgba(255,165,82,0.06) 100%); font-family:\"Instrument Sans\", ui-sans-serif, system-ui, sans-serif; } .ds-panel-glow { position:absolute; top:-50%; left:50%; transform:translateX(-50%); width:600px; height:600px; pointer-events:none; background:radial-gradient(circle, rgba(255,107,71,0.10), transparent 60%); } .ds-panel-label { position:relative; color:#ff6b47; font-family:\"JetBrains Mono\", ui-monospace, SFMono-Regular, monospace; font-size:12px; font-weight:500; letter-spacing:0.16em; margin-bottom:12px; } .ds-panel-title { position:relative; margin:0 0 14px; color:#f3ece6; font-size:clamp(32px,4.2vw,46px); font-weight:700; line-height:1.05; letter-spacing:-0.025em; } .ds-panel-text { position:relative; margin:0; color:#a89e97; font-size:16px; line-height:1.65; max-width:520px; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Night Workshop",
+    "overview": "The site is a workshop after dark: a warm charcoal room, a bench of finished artifacts, and ember task lighting that falls only where someone is working. The darkness is not moody for its own sake — it is what makes the light legible. Ember and flame behave like lamp filaments and solder points: small, hot, and never used as wallpaper.\n\nDensity is moderate and rhythmic. Each section opens the same way — a mono label in warm type, a headline pinned to the left edge, a muted sub-line across the page — then fills the bench with a single kind of artifact. Nothing floats free of the ground.\n\nMotion is the workshop's tell: a 30px rise on reveal, spring physics on tilt and press, a magnetic pull on the primary actions. The first viewport establishes the warm ramp immediately — there is no second palette anywhere on the page.",
+    "keyCharacteristics": [
+      "Warm charcoal ground with a subtle 60px grid and two warm glows plus one cold",
+      "Ember used as signal, never as fill area; one cool hue reserved for status",
+      "Two families with distinct jobs: Instrument Sans speaks, JetBrains Mono annotates",
+      "Flat surfaces at rest; shadow reserved for things that float",
+      "Pills for controls, 18px cards for artifacts, 28px panel for the contact close",
+      "Spring-and-magnet interaction vocabulary"
+    ],
+    "rules": [
+      {
+        "name": "The Workbench Rule",
+        "body": "Warm color marks an active thing — a label, a focus ring, a live control, a hover rule. If warm color is covering more than a small fraction of a viewport, it has become decoration and the design is wrong.",
+        "section": "colors"
+      },
+      {
+        "name": "The One Ramp Rule",
+        "body": "Ember and flame are two intensities of one light, not two brand colors. There is no yellow and no second warm hue. The single cool hue (Oxidised Copper) is status, and status is never an action.",
+        "section": "colors"
+      },
+      {
+        "name": "The Warm Room Rule",
+        "body": "Neutrals sit at ~15° hue with 0.004–0.013 chroma. A cool grey next to the ember ramp reads as a different room, so surface tints stay warm even when they are almost black.",
+        "section": "colors"
+      },
+      {
+        "name": "The Two Voices Rule",
+        "body": "Instrument Sans speaks; JetBrains Mono annotates. Mono never sets a sentence and sans never sets a section number.",
+        "section": "typography"
+      },
+      {
+        "name": "The Tight Head Rule",
+        "body": "Anything at 19px or larger gets negative tracking. Headlines and display at -0.025em.",
+        "section": "typography"
+      },
+      {
+        "name": "The Sixteen Floor Rule",
+        "body": "Body copy never drops below 16px on the web. Dense metadata can use the micro step, but a paragraph may not.",
+        "section": "typography"
+      },
+      {
+        "name": "The Flat-Bench Rule",
+        "body": "A card that is not floating does not cast a shadow. Raise its fill one step and strengthen its border instead.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do keep warm color on marks, labels, focus states, and small controls.",
+      "Do use the 90px / 70px section rhythm and the shared header pattern.",
+      "Do carry depth with a hairline and a one-step fill change.",
+      "Do put negative tracking on anything 19px or larger.",
+      "Do set numbers and dates in JetBrains Mono with tabular figures.",
+      "Do respect prefers-reduced-motion.",
+      "Do give every interactive control a 44x44px hit area.",
+      "Do test every new surface in Arabic RTL."
+    ],
+    "donts": [
+      "Don't introduce a third warm hue. Copper is status, not a second accent.",
+      "Don't use the warm gradient as a fill.",
+      "Don't use Oxidised Copper for a button, link, or focus ring.",
+      "Don't add a drop shadow to a resting card.",
+      "Don't set body copy below 16px, or set a paragraph in mono.",
+      "Don't mix radii — pills for controls, 18px cards, 28px panel."
+    ]
+  }
+}

@@ -15,9 +15,9 @@ export default function Image() {
           flexDirection: "column",
           justifyContent: "center",
           alignItems: "center",
-          background: "#0a0d14",
+          background: "#0c0a0b",
           backgroundImage:
-            "radial-gradient(circle at 25% 20%, #1a2234 0%, #0a0d14 60%)",
+            "radial-gradient(circle at 25% 20%, #221a1a 0%, #0c0a0b 60%)",
           color: "#e8ecf4",
           fontFamily: "sans-serif",
         }}
@@ -36,7 +36,7 @@ export default function Image() {
           style={{
             marginTop: 20,
             fontSize: 32,
-            color: "#ff6b6b",
+            color: "#ff6b47",
             display: "flex",
           }}
         >
