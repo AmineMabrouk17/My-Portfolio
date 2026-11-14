@@ -6,9 +6,9 @@ import { gsap, SplitText } from "@/lib/gsap";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 
 const liveWork = [
-  { key: "proj.castcue.title", sub: "proj.castcue.sub", href: "https://cast-cue.cast-cue.workers.dev" },
-  { key: "proj.budgetiq.title", sub: "proj.budgetiq.sub", href: "https://budgetiq-two.vercel.app" },
-  { key: "proj.crypto.title", sub: "proj.crypto.sub", href: "https://crypto-stocks-web-taupe.vercel.app" },
+  { key: "proj.castcue.title", sub: "proj.castcue.one", href: "https://cast-cue.cast-cue.workers.dev" },
+  { key: "proj.budgetiq.title", sub: "proj.budgetiq.one", href: "https://budgetiq-two.vercel.app" },
+  { key: "proj.crypto.title", sub: "proj.crypto.one", href: "https://crypto-stocks-web-taupe.vercel.app" },
 ];
 
 export default function Hero() {
@@ -85,7 +85,7 @@ export default function Hero() {
                     <span className="text-[var(--color-accent)]" aria-hidden="true">↗</span>
                     {t(key).split(" — ")[0]}
                   </span>
-                  <span className="font-mono text-[11px] uppercase tracking-[0.08em] text-[var(--color-muted-2)]">
+                  <span className="max-w-[230px] text-[13px] leading-snug text-[var(--color-muted-2)]">
                     {t(sub)}
                   </span>
                 </a>
