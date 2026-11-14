@@ -138,5 +138,8 @@
   "footer": {
     "built": "Built with",
     "in": "in"
+  },
+  "strip": {
+    "items": "Selected work|2026|Build fast|Ship securely|Clean architecture"
   }
 }
