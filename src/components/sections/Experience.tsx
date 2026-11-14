@@ -9,7 +9,7 @@ const jobs = [
   {
     company: "Infraway",
     titleKey: "exp.job1.title",
-    date: "Jul 2025 – Present",
+    dateKey: "exp.job1.date",
     descKey: "exp.job1.desc",
     bullets: ["exp.job1.b1", "exp.job1.b2", "exp.job1.b3"],
     tech: ["Angular", "Laravel", "PHP", "TypeScript", "REST APIs", "Git"],
@@ -17,7 +17,7 @@ const jobs = [
   {
     company: "Infraway",
     titleKey: "exp.job2.title",
-    date: "Jul 2023 – Aug 2023",
+    dateKey: "exp.job2.date",
     descKey: "exp.job2.desc",
     bullets: ["exp.job2.b1", "exp.job2.b2", "exp.job2.b3"],
     tech: ["Python", "Flask", "MySQL", "Grafana", "REST APIs"],
@@ -48,13 +48,10 @@ function JobCard({ t, job, index }: { t: (key: string) => string; job: (typeof j
     >
       <div className="flex items-center justify-between flex-wrap gap-2.5 mb-4">
         <div className="flex items-center gap-3">
-          <span className="font-mono text-[11px] font-semibold text-[var(--color-accent)] tracking-[0.14em] uppercase">
-            {`0${index + 1}`}
-          </span>
           <span className="text-[var(--color-accent)] text-sm font-medium">{job.company}</span>
         </div>
         <span className="font-mono text-[11px] tracking-[0.06em] text-[var(--color-muted-2)] bg-white/[0.04] px-[11px] py-[5px] rounded-full border border-[var(--color-border)] whitespace-nowrap">
-          <bdi dir="ltr">{job.date}</bdi>
+          <bdi dir="ltr">{t(job.dateKey)}</bdi>
         </span>
       </div>
 
@@ -228,9 +225,13 @@ export default function Experience() {
                       <button
                         key={job.titleKey}
                         type="button"
-                        onClick={() => setActive(i)}
-                        aria-label={t(job.titleKey)}
-                        aria-current={isActive ? "true" : undefined}
+                        onClick={() => {
+                          setActive(i);
+                          document
+                            .querySelector(`[data-card-index="${i}"]`)
+                            ?.scrollIntoView({ behavior: "smooth", block: "center" });
+                        }}
+                        aria-label={`${t(job.titleKey)} — ${t(job.dateKey)}`}
                         className="relative z-10 mb-[56px] -ms-3.5 grid h-11 w-11 place-items-center rounded-full cursor-pointer last:mb-0"
                       >
                         <span
