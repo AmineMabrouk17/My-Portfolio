@@ -56,7 +56,7 @@ export default function Navbar() {
             <a
               key={link.href}
               href={link.href}
-              className="inline-flex min-h-[44px] items-center px-2 text-[var(--color-muted)] no-underline text-[13.8px] font-medium transition-colors duration-200 hover:text-[var(--color-text)]"
+              className="inline-flex min-h-[44px] items-center px-2 text-[var(--color-muted)] no-underline text-[14px] font-medium transition-colors duration-200 hover:text-[var(--color-text)]"
               onClick={() => setIsMobileOpen(false)}
             >
               {t(link.key)}
@@ -68,7 +68,7 @@ export default function Navbar() {
         <div className="flex items-center gap-1.5">
           <a
             href="#contact"
-            className="inline-flex min-h-[44px] items-center gap-1.5 bg-[var(--color-text)] text-[var(--color-accent-dark)] no-underline px-4 rounded-full text-[13.8px] font-semibold transition-all duration-200 hover:-translate-y-px hover:opacity-95"
+            className="inline-flex min-h-[44px] items-center gap-1.5 bg-[var(--color-text)] text-[var(--color-accent-dark)] no-underline px-4 rounded-full text-[14px] font-semibold transition-all duration-200 hover:-translate-y-px hover:opacity-95"
             onClick={() => setIsMobileOpen(false)}
           >
             {t("nav.contact")}

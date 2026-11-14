@@ -16,6 +16,8 @@ colors:
   hairline: "rgba(255, 255, 255, 0.08)"
   hairline-strong: "rgba(255, 255, 255, 0.12)"
   field-border: "#5c6679"
+  nav-shell: "rgba(24, 26, 30, 0.72)"
+  menu-shadow: "rgba(0, 0, 0, 0.6)"
 typography:
   display:
     fontFamily: "Plus Jakarta Sans, ui-sans-serif, system-ui, sans-serif"
@@ -47,6 +49,12 @@ typography:
     fontWeight: 500
     lineHeight: 1.4
     letterSpacing: "0.15em"
+  small:
+    fontFamily: "Plus Jakarta Sans, ui-sans-serif, system-ui, sans-serif"
+    fontSize: "14px"
+    fontWeight: 500
+    lineHeight: 1.4
+    letterSpacing: "0em"
   micro:
     fontFamily: "Plus Jakarta Sans, ui-sans-serif, system-ui, sans-serif"
     fontSize: "11.5px"
