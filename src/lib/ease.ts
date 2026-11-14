@@ -41,9 +41,3 @@ export const SPRING_LAYOUT = {
   mass: 0.6,
 } as const;
 
-/** Cursor-follow physics for decorative mouse tracking (magnetic, tilt, dock). */
-export const SPRING_MOUSE = {
-  stiffness: 200,
-  damping: 15,
-  mass: 0.3,
-} as const;
