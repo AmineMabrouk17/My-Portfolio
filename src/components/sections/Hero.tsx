@@ -6,15 +6,14 @@ import { gsap, SplitText } from "@/lib/gsap";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 
 const liveWork = [
-  { key: "proj.castcue.title", href: "https://cast-cue.cast-cue.workers.dev" },
-  { key: "proj.budgetiq.title", href: "https://budgetiq-two.vercel.app" },
-  { key: "proj.crypto.title", href: "https://crypto-stocks-web-taupe.vercel.app" },
+  { key: "proj.castcue.title", sub: "proj.castcue.sub", href: "https://cast-cue.cast-cue.workers.dev" },
+  { key: "proj.budgetiq.title", sub: "proj.budgetiq.sub", href: "https://budgetiq-two.vercel.app" },
+  { key: "proj.crypto.title", sub: "proj.crypto.sub", href: "https://crypto-stocks-web-taupe.vercel.app" },
 ];
 
 export default function Hero() {
   const { t } = useI18n();
   const headlineRef = useRef<HTMLHeadingElement>(null);
-  const summaryRef = useRef<HTMLParagraphElement>(null);
 
   useEffect(() => {
     if (
@@ -41,16 +40,6 @@ export default function Hero() {
         stagger: 0.06,
         ease: "power4.out",
       });
-
-      if (summaryRef.current) {
-        gsap.from(summaryRef.current, {
-          y: 20,
-          opacity: 0,
-          duration: 0.6,
-          delay: split.words.length * 0.06 + 0.8 + 0.2,
-          ease: "power3.out",
-        });
-      }
     }, el);
 
     return () => {
@@ -83,24 +72,22 @@ export default function Hero() {
             {t("hero.role")}
           </p>
 
-          <p
-            ref={summaryRef}
-            className="text-[clamp(1.05rem,1.8vw,1.25rem)] leading-[1.6] text-[var(--color-muted)] max-w-[580px] font-normal mb-10"
-          >
-            {t("hero.summary")}
-          </p>
-
           <ul className="mb-10 flex flex-wrap gap-x-5 gap-y-2">
-            {liveWork.map(({ key, href }) => (
+            {liveWork.map(({ key, sub, href }) => (
               <li key={href}>
                 <a
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group inline-flex min-h-[44px] items-center gap-1.5 text-[14px] font-medium text-[var(--color-muted)] transition-colors hover:text-[var(--color-text)]"
+                  className="group inline-flex min-h-[44px] flex-col justify-center gap-0.5 text-[var(--color-muted)] transition-colors hover:text-[var(--color-text)]"
                 >
-                  <span className="text-[var(--color-accent)]">↗</span>
-                  {t(key).split(" — ")[0]}
+                  <span className="inline-flex items-center gap-1.5 text-[15px] font-medium">
+                    <span className="text-[var(--color-accent)]" aria-hidden="true">↗</span>
+                    {t(key).split(" — ")[0]}
+                  </span>
+                  <span className="font-mono text-[11px] uppercase tracking-[0.08em] text-[var(--color-muted-2)]">
+                    {t(sub)}
+                  </span>
                 </a>
               </li>
             ))}
