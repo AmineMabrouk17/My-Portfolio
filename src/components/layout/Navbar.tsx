@@ -49,6 +49,12 @@ export default function Navbar() {
 
   return (
     <header className="fixed top-6 left-0 w-full flex justify-center z-50 px-5">
+      <a
+        href="#top"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-0 focus:start-0 focus:z-[60] focus:rounded-full focus:bg-[var(--color-text)] focus:px-4 focus:py-2 focus:text-[14px] focus:font-semibold focus:text-[var(--color-accent-dark)]"
+      >
+        {t("nav.skip")}
+      </a>
       <nav
         ref={navRef}
         aria-label={t("nav.label")}

@@ -8,31 +8,17 @@
     "label": "Primary",
     "menu": "Menu",
     "home": "Amine Mabrouk — back to top",
-    "backToTop": "Back to top"
+    "backToTop": "Back to top",
+    "language": "Language",
+    "skip": "Skip to content"
   },
   "hero": {
     "tag": "Available for freelance projects · Tunis · UTC+1",
-    "headline": "I build full-stack web apps with",
-    "headlineAccent": "clean architecture & CI/CD",
-    "headlineAccent2": "scale your vision",
-    "headlineAccent3": "accelerate growth",
-    "headlineAccent4": "boost your impact",
-    "role": "Full Stack Developer — Angular · Next.js · Node.js · Laravel",
-    "summary": "I develop production-grade web platforms using Angular, Laravel, Next.js, and Python. Driven by clean code, automated pipelines, and disciplined Git workflows — building real solutions from architecture to deployment.",
+    "headline": "I built an Arabic exam bot, a Stripe storefront, and an AI finance dashboard,",
+    "headlineAccent": "end to end.",
+    "role": "Full Stack Developer — Angular · Laravel · Next.js · Python",
     "cta1": "Discuss your project",
-    "cta2": "See all 6 live projects",
-    "svc1": {
-      "title": "Web Applications",
-      "desc": "Full stack apps with Angular, Next.js & Laravel"
-    },
-    "svc2": {
-      "title": "Dashboards & Admin",
-      "desc": "Internal tools and operational dashboards"
-    },
-    "svc3": {
-      "title": "API Integration",
-      "desc": "REST APIs, real-time systems & automation"
-    }
+    "cta2": "See all 6 live projects"
   },
   "about": {
     "num": "01 / ABOUT",
@@ -67,55 +53,61 @@
       "desc": "Nouara Platform — Operations & Management Dashboard",
       "b1": "Developed and maintained full-stack features using Angular for the frontend and Laravel (PHP) for the backend REST APIs",
       "b2": "Handled end-to-end delivery of platform features — from database schema changes to frontend UI integration and production deployments",
-      "b3": "Enforced code quality and maintainability using structured Git / GitHub workflows, code reviews, and modular component architecture"
+      "b3": "Enforced code quality and maintainability using structured Git / GitHub workflows, code reviews, and modular component architecture",
+      "date": "Jul 2025 – Present"
     },
     "job2": {
       "title": "Software Engineering Intern",
       "desc": "Infrastructure & Metrics Dashboard",
       "b1": "Built foundational experience in backend web development, learning how to design and consume REST APIs",
       "b2": "Connected a Python / Flask backend with a MySQL database to query and serve system metrics",
-      "b3": "Configured Grafana dashboards to visualize database queries and monitor internal server metrics"
+      "b3": "Configured Grafana dashboards to visualize database queries and monitor internal server metrics",
+      "date": "Jul 2023 – Aug 2023"
     }
   },
   "proj": {
     "num": "04 / PROJECTS",
     "h2": "Things I'm building.",
-    "sub": "Production-ready full-stack applications built with modern architectures, real-time data, and cloud infrastructure.",
-    "showing": "Projects shown:",
+    "sub": "Six projects — web platforms and Telegram bots. Every card carries the case study, the stack, and a live link or a way to ask about it.",
     "castcue": {
       "sub": "Next.js · Cloudflare Workers · D1 Database",
       "title": "Cast n Cue — Movie & TV Tracker",
       "problem": "Juggling a dozen shows at once means losing track of where you stopped, what airs next, and what's worth watching.",
       "solution": "Built an episode-level media tracker on Cloudflare Workers + D1 with TMDB/Trakt/TVmaze search, half-star ratings, private autosaved notes, watchlist roulette, and Google sign-in via Better Auth.",
-      "result": "A private-by-design, free app that bookmarks movies, series, and episodes — so your watchlist and progress are always one click away."
+      "result": "A private-by-design, free app that bookmarks movies, series, and episodes — so your watchlist and progress are always one click away.",
+      "one": "Episode-level tracking for every show you follow."
     },
     "ecom": {
       "sub": "Next.js · Stripe · PostgreSQL · Supabase",
       "title": "Lumina — Full-Stack E-Commerce Platform",
       "problem": "Running a real store means wiring catalog, cart, checkout, and fulfillment together — most templates stop at a static product grid.",
       "solution": "Built a complete commerce engine: Supabase-backed catalog, auth, storage and order lifecycle, Stripe Checkout, locally-persisted cart, verified-purchase reviews, trending rankings, admin order fulfillment, and shipping rules.",
-      "result": "A single-system storefront where stock, reviews, payments, and fulfillment stay consistent from product page to delivered order."
+      "result": "A single-system storefront where stock, reviews, payments, and fulfillment stay consistent from product page to delivered order.",
+      "one": "Catalog, cart, checkout and fulfillment in one system."
     },
     "budgetiq": {
       "sub": "Next.js · Gemini AI · Supabase · Analytics",
       "title": "BudgetIQ — AI Budget Planner",
       "problem": "Managing personal finances across salary, expenses, and assets is fragmented, and most tools offer no intelligent way to log spending.",
       "solution": "Built an open-source finance manager with Supabase auth, real-time dashboards, category charts, daily quotes, and a Gemini AI chatbot that parses natural language to suggest transactions.",
-      "result": "A planner where chatting in plain language instantly captures expenses and income into an interactive dashboard."
+      "result": "A planner where chatting in plain language instantly captures expenses and income into an interactive dashboard.",
+      "one": "Log spending by chatting with an AI."
     },
     "rakt3adi": {
       "sub": "Python · Telegram Bot API · SQLite",
       "title": "RakT3adiBot — Exam Revision Planner",
       "problem": "Revision plans live in notes and group chats, so exam dates and lesson progress quietly slip.",
       "solution": "Built an Arabic Telegram bot that tracks exams and lessons, ticks off revision with a 2/3 progress counter, sends J-2 and J-1 reminders plus a morning dua, and includes an invite-only admin panel for users, templates and stats. An idempotent 30-second scheduler survives restarts, and daily SQLite backups keep seven copies.",
-      "result": "Students open one chat to see exactly what to revise today; 85 tests cover the flows end to end."
+      "result": "Students open one chat to see exactly what to revise today; 85 tests cover the flows end to end.",
+      "one": "Arabic exam revision planner on Telegram."
     },
     "saletbot": {
       "sub": "Python · Gemini · Pillow · SQLite",
       "title": "SaletBot — Prayer Times & Athkar",
       "problem": "Prayer times, athkar and Qibla live in separate apps, and a general chatbot can invent religious answers.",
       "solution": "Built a private Arabic bot around authoritative sources: AlAdhan prayer times for Tunisia with cached fallback, T-15 and exact-time reminders, a Hisn al-Muslim athkar corpus with daily rotation, and a 900px Qibla compass. Gemini answers only within prayer and athkar bounds, refuses fatwas, and falls back to stored text when it cannot reach the model.",
-      "result": "One quiet daily assistant where every schedule and dhikr is sourced, and the AI never becomes the authority."
+      "result": "One quiet daily assistant where every schedule and dhikr is sourced, and the AI never becomes the authority.",
+      "one": "Prayer times and athkar, sourced and scheduled."
     },
     "demo": "View Live Demo",
     "source": "Source Code",
@@ -137,12 +129,13 @@
     "crypto": {
       "sub": "Next.js · Real-Time WebSockets · Turborepo",
       "title": "Crypto & Stocks Dashboard",
-      "desc": "A hybrid crypto + stock dashboard with real-time Binance WebSocket streaming, Yahoo Finance integration, TradingView-style charts (area/candlestick toggle), crowd-sourced 5-minute price predictions, browser-native price alerts, and a multi-provider AI chat assistant (7 free models + BYOK for OpenAI/Anthropic/Groq).",
       "problem": "Accessing real-time financial intelligence requires juggling multiple disjointed platforms with no unified view or AI-powered analysis. Most dashboards specialize in one asset class.",
       "solution": "Built a unified dashboard blending Binance WebSocket streams (crypto) with Yahoo Finance polling (stocks/ETFs) under a single data model, with TradingView-style charts, SWR-cached edge data fetching, 7 free built-in AI models plus BYOK (Gemini, Groq, OpenAI, Anthropic), crowd-sourced prediction voting resolved every 5 minutes, and browser-native price alerts.",
-      "result": "A single-pane-of-glass platform with reconnects and backfills the stream on drop, with SWR-cached REST for equities, chart type toggle (area/candlestick), multilingual AI assistant grounded in live market data, CSV export, and real-time crowd sentiment predictions."
+      "result": "A single-pane-of-glass platform with reconnects and backfills the stream on drop, with SWR-cached REST for equities, chart type toggle (area/candlestick), multilingual AI assistant grounded in live market data, CSV export, and real-time crowd sentiment predictions.",
+      "one": "Live crypto and equities in one dashboard."
     },
-    "ask": "Ask about this build"
+    "ask": "Ask about this build",
+    "alt": "product screenshot"
   },
   "edu": {
     "num": "05 / EDUCATION",
@@ -153,13 +146,13 @@
       "program": "5-Year Integrated Engineering Program",
       "desc": "Completed 2 years of intensive pre-engineering foundations (Advanced Math & CS) followed by 3 years of specialized Software Engineering and System Architecture."
     },
-    "school": "Faculty of Sciences of Bizerte"
+    "school": "Faculty of Sciences of Bizerte",
+    "date": "2020 – 2025"
   },
   "contact": {
     "num": "06 / CONTACT",
     "h2": "Let's build something.",
     "text": "Taking on freelance builds and collaborations. Not currently looking for full-time roles — but always happy to talk shop.",
-    "email": "Send email",
     "direct": "Or email me directly",
     "copy": "Copy address",
     "copied": "Copied",
@@ -170,8 +163,8 @@
       "emailPlaceholder": "you@example.com",
       "budget": "Estimated budget",
       "budgetPlaceholder": "e.g. $1,000 – $5,000",
-      "message": "Message",
-      "messagePlaceholder": "Tell me about your project…",
+      "message": "What are you building?",
+      "messagePlaceholder": "e.g. a booking flow for a dental clinic in Lyon, live by March — Next.js + Postgres",
       "submit": "Send message",
       "subject": "Portfolio inquiry",
       "sentTitle": "Your mail app should have opened",
@@ -182,7 +175,8 @@
       "errorEmail": "Add a valid email address.",
       "errorMessage": "Add a short message.",
       "gmail": "Open in Gmail",
-      "errorSummary": "Please check the highlighted fields."
+      "errorSummary": "Please check the highlighted fields.",
+      "help": "Useful: what it does, who it is for, and when you need it."
     },
     "reassure": "I reply within 24 hours, usually with questions before a quote. A budget range helps, but it is optional.",
     "optional": "optional",

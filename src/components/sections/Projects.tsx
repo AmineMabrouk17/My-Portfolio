@@ -4,7 +4,6 @@ import { useI18n } from "@/i18n/I18nContext";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import { AnimatedText } from "@/components/motion/animated-text";
 import { useState } from "react";
-import ProjectFilter, { matchesFilter, FILTER_TAGS, type FilterValue } from "@/components/ProjectFilter";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 
 type CaseStudy = { problem: string; solution: string; result: string };
@@ -13,8 +12,6 @@ interface Project {
   slug: string;
   titleKey: string;
   subKey?: string;
-  filters: string[];
-  objectPosition?: string;
   caseStudy: CaseStudy;
   tags: string[];
   link?: string;
@@ -26,8 +23,6 @@ interface Project {
 const projects: Project[] = [
   {
     slug: "crypto",
-    filters: ["nextjs", "realtime"],
-    objectPosition: "center",
     subKey: "proj.crypto.sub",
     titleKey: "proj.crypto.title",
     caseStudy: { problem: "proj.crypto.problem", solution: "proj.crypto.solution", result: "proj.crypto.result" },
@@ -38,8 +33,6 @@ const projects: Project[] = [
   },
   {
     slug: "castcue",
-    filters: ["nextjs", "realtime"],
-    objectPosition: "top",
     subKey: "proj.castcue.sub",
     titleKey: "proj.castcue.title",
     caseStudy: { problem: "proj.castcue.problem", solution: "proj.castcue.solution", result: "proj.castcue.result" },
@@ -50,7 +43,6 @@ const projects: Project[] = [
   },
   {
     slug: "ecom",
-    filters: ["nextjs"],
     subKey: "proj.ecom.sub",
     titleKey: "proj.ecom.title",
     caseStudy: { problem: "proj.ecom.problem", solution: "proj.ecom.solution", result: "proj.ecom.result" },
@@ -61,7 +53,6 @@ const projects: Project[] = [
   },
   {
     slug: "budgetiq",
-    filters: ["nextjs", "ai"],
     subKey: "proj.budgetiq.sub",
     titleKey: "proj.budgetiq.title",
     caseStudy: { problem: "proj.budgetiq.problem", solution: "proj.budgetiq.solution", result: "proj.budgetiq.result" },
@@ -72,8 +63,6 @@ const projects: Project[] = [
   },
   {
     slug: "rakt3adi",
-    filters: ["bots"],
-    objectPosition: "center 22%",
     subKey: "proj.rakt3adi.sub",
     titleKey: "proj.rakt3adi.title",
     caseStudy: { problem: "proj.rakt3adi.problem", solution: "proj.rakt3adi.solution", result: "proj.rakt3adi.result" },
@@ -82,8 +71,6 @@ const projects: Project[] = [
   },
   {
     slug: "saletbot",
-    filters: ["bots", "ai"],
-    objectPosition: "center 22%",
     subKey: "proj.saletbot.sub",
     titleKey: "proj.saletbot.title",
     caseStudy: { problem: "proj.saletbot.problem", solution: "proj.saletbot.solution", result: "proj.saletbot.result" },
@@ -95,14 +82,14 @@ const projects: Project[] = [
 function CaseStudyDrawer({
   caseStudy,
   slug,
-  defaultOpen = false,
+  title,
 }: {
   caseStudy: CaseStudy;
   slug: string;
-  defaultOpen?: boolean;
+  title: string;
 }) {
   const { t } = useI18n();
-  const [open, setOpen] = useState(defaultOpen);
+  const [open, setOpen] = useState(false);
   const panelId = `case-study-${slug}`;
 
   return (
@@ -112,6 +99,7 @@ function CaseStudyDrawer({
         onClick={() => setOpen(!open)}
         aria-expanded={open}
         aria-controls={panelId}
+        aria-label={`${open ? t("proj.labels.hide") : t("proj.labels.details")} — ${title}`}
         className="inline-flex min-h-[44px] items-center gap-2 text-[14px] font-medium text-[var(--color-accent)] transition-colors hover:text-[var(--color-accent-2)] cursor-pointer"
       >
         <svg
@@ -129,23 +117,22 @@ function CaseStudyDrawer({
         {open ? t("proj.labels.hide") : t("proj.labels.details")}
       </button>
 
-      {/* Rendered only when open: collapsed copy must not sit in the
-          accessibility tree. */}
-      {open && (
-        <div
-          id={panelId}
-          className="mt-3 flex flex-col gap-2.5 text-[16px] leading-[1.55]"
-        >
-          {(["problem", "solution", "result"] as const).map((key) => (
-            <div key={key} className="flex gap-2.5">
-              <span className="whitespace-nowrap font-semibold text-[var(--color-accent-2)]">
-                {t(`proj.labels.${key}`)}:
-              </span>
-              <span className="text-[var(--color-muted)]">{t(caseStudy[key])}</span>
-            </div>
-          ))}
-        </div>
-      )}
+      {/* The panel element always exists so aria-controls is never dangling;
+          `hidden` keeps collapsed copy out of the accessibility tree. */}
+      <div
+        id={panelId}
+        hidden={!open}
+        className="mt-3 flex flex-col gap-2.5 text-[15px] leading-[1.55]"
+      >
+        {(["problem", "solution", "result"] as const).map((key) => (
+          <div key={key} className="flex gap-2.5">
+            <span className="whitespace-nowrap font-semibold text-[var(--color-accent-2)]">
+              {t(`proj.labels.${key}`)}:
+            </span>
+            <span className="text-[var(--color-muted)]">{t(caseStudy[key])}</span>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
@@ -159,12 +146,11 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
         <div className="relative aspect-[3/2] w-full overflow-hidden border-b border-[var(--color-border)] bg-[var(--color-bg)]">
           <img
             src={project.screenshot}
-            alt=""
+            alt={`${t(project.titleKey)} — ${t("proj.alt")}`}
             width={1200}
             height={800}
             loading="lazy"
             decoding="async"
-            style={{ objectPosition: project.objectPosition ?? "center" }}
             className="absolute inset-0 h-full w-full object-cover saturate-[.85] transition duration-300 group-hover:saturate-100"
           />
           {/* Warm scrim keeps foreign app palettes inside the room at rest;
@@ -184,11 +170,14 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
           <h3 className="mb-1 text-[21px] font-bold tracking-[-0.02em]">
             <span className="text-[var(--color-accent-2)]">/</span> {t(project.titleKey)}
           </h3>
+          <p className="mb-1 text-[15px] leading-relaxed text-[var(--color-muted)]">
+            {t(`proj.${project.slug}.one`)}
+          </p>
 
           <CaseStudyDrawer
             caseStudy={project.caseStudy}
             slug={project.slug}
-            defaultOpen={project.slug === "rakt3adi"}
+            title={t(project.titleKey)}
           />
 
           <div className="mt-4 mb-5 flex flex-wrap gap-[7px]">
@@ -253,17 +242,6 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
 
 export default function Projects() {
   const { t } = useI18n();
-  const [activeFilter, setActiveFilter] = useState<FilterValue>("all");
-
-  const counts = FILTER_TAGS.reduce(
-    (acc, { value }) => {
-      acc[value] = projects.filter((p) => matchesFilter(p.filters, value)).length;
-      return acc;
-    },
-    {} as Record<FilterValue, number>
-  );
-
-  const visibleProjects = projects.filter((p) => matchesFilter(p.filters, activeFilter));
 
   return (
     <section id="projects" className="py-[90px] max-lg:py-[70px]">
@@ -286,18 +264,8 @@ export default function Projects() {
           </div>
         </ScrollReveal>
 
-        <ProjectFilter
-          activeFilter={activeFilter}
-          onFilterChange={setActiveFilter}
-          counts={counts}
-        />
-
-        <p aria-live="polite" className="sr-only">
-          {t("proj.showing")} {visibleProjects.length}
-        </p>
-
         <div className="grid grid-cols-1 gap-[22px] lg:grid-cols-2">
-          {visibleProjects.map((project, i) => (
+          {projects.map((project, i) => (
             <ProjectCard key={project.slug} project={project} index={i} />
           ))}
         </div>

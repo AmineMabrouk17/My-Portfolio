@@ -172,6 +172,13 @@ html.js .reveal.visible {
 
 /* Arabic typesetting: the mono face has no Arabic glyphs, so the annotation
    register falls back to the Arabic body face and drops Latin tracking. */
+/* Arabic has no case and its joins break under Latin tracking; display type
+   also needs more leading for diacritics. */
+html[lang="ar"] :is(h1, h2, h3, h4) {
+  letter-spacing: 0;
+  line-height: 1.3;
+}
+
 html[lang="ar"] .font-mono {
   font-family: var(--font-arabic), "IBM Plex Sans Arabic", sans-serif;
   letter-spacing: 0;
