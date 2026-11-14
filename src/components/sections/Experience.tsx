@@ -27,15 +27,15 @@ const jobs = [
 function SectionHeading({ t }: { t: (key: string) => string }) {
   return (
     <div className="mb-12">
-      <div className="text-[var(--color-accent)] text-[13px] font-medium tracking-[0.15em] mb-2">
+      <div className="text-[var(--color-accent)] font-mono text-[12px] font-medium tracking-[0.16em] mb-2">
         {t("exp.num")}
       </div>
       <AnimatedText
         as="h2"
         text={t("exp.h2")}
-        className="text-[clamp(30px,4vw,44px)] font-bold tracking-[-0.03em] leading-none"
+        className="text-[clamp(32px,4.2vw,46px)] font-bold tracking-[-0.025em] leading-none"
       />
-      <p className="text-[var(--color-muted)] text-[15px] mt-3 max-w-[46ch]">{t("exp.sub")}</p>
+      <p className="mt-3 max-w-[46ch] text-pretty text-[16px] text-[var(--color-muted)]">{t("exp.sub")}</p>
     </div>
   );
 }
@@ -48,12 +48,12 @@ function JobCard({ t, job, index }: { t: (key: string) => string; job: (typeof j
     >
       <div className="flex items-center justify-between flex-wrap gap-2.5 mb-4">
         <div className="flex items-center gap-3">
-          <span className="text-xs font-mono font-bold text-[var(--color-accent)] tracking-widest uppercase">
+          <span className="font-mono text-[11px] font-semibold text-[var(--color-accent)] tracking-[0.14em] uppercase">
             {`0${index + 1}`}
           </span>
           <span className="text-[var(--color-accent)] text-sm font-medium">{job.company}</span>
         </div>
-        <span className="text-[13px] text-[var(--color-muted-2)] bg-white/[0.04] px-[11px] py-[5px] rounded-full border border-[var(--color-border)] whitespace-nowrap">
+        <span className="font-mono text-[11px] tracking-[0.06em] text-[var(--color-muted-2)] bg-white/[0.04] px-[11px] py-[5px] rounded-full border border-[var(--color-border)] whitespace-nowrap">
           {job.date}
         </span>
       </div>
@@ -62,7 +62,7 @@ function JobCard({ t, job, index }: { t: (key: string) => string; job: (typeof j
         {t(job.titleKey)}
       </h3>
 
-      <p className="text-[var(--color-muted)] text-[15px] mb-4">{t(job.descKey)}</p>
+      <p className="text-[var(--color-muted)] text-[16px] mb-4">{t(job.descKey)}</p>
 
       <ul className="space-y-2 mb-5">
         {job.bullets.map((bullet) => (
@@ -146,12 +146,12 @@ export default function Experience() {
   }, []);
 
   useEffect(() => {
-    if (!ready) return;
+    if (!ready || reducedMotion) return;
+    const root = rootRef.current;
+    if (!root) return;
 
     const ctx = gsap.context(() => {
       const cards = gsap.utils.toArray<HTMLElement>(".timeline-card");
-
-      if (reducedMotion) return;
 
       if (isDesktop) {
         gsap.fromTo(
@@ -199,7 +199,7 @@ export default function Experience() {
           },
         });
       });
-    }, rootRef);
+    }, root);
 
     return () => ctx.revert();
   }, [ready, reducedMotion, isDesktop]);
