@@ -20,8 +20,12 @@ import {
   SiSupabase,
   SiTailwindcss,
   SiTypescript,
+  SiTelegram,
+  SiSqlite,
+  SiGithubactions,
+  SiPytest,
 } from "react-icons/si";
-import { TbApi, TbBrain, TbDatabase } from "react-icons/tb";
+import { TbApi, TbBrain, TbDatabase, TbSettings } from "react-icons/tb";
 import { useI18n } from "@/i18n/I18nContext";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import { TiltCard } from "@/components/motion/tilt-card";
@@ -36,17 +40,17 @@ const skills = [
   {
     icon: "server",
     titleKey: "skills.backend",
-    tags: ["Node.js", "Laravel", "Flask", "Python", "REST APIs"],
+    tags: ["Node.js", "Laravel", "Flask", "Python", "REST APIs", "Telegram Bot API"],
   },
   {
     icon: "database",
     titleKey: "skills.databases",
-    tags: ["MySQL", "Supabase", "PostgreSQL", "NoSQL"],
+    tags: ["MySQL", "Supabase", "PostgreSQL", "SQLite", "NoSQL"],
   },
   {
     icon: "infinity",
     titleKey: "skills.devops",
-    tags: ["Docker", "Git", "GitHub"],
+    tags: ["Docker", "Git", "GitHub", "GitHub Actions", "systemd", "pytest"],
   },
   {
     icon: "cpu",
@@ -71,10 +75,15 @@ const techIcons: Record<string, IconType> = {
   MySQL: SiMysql,
   Supabase: SiSupabase,
   PostgreSQL: SiPostgresql,
+  SQLite: SiSqlite,
   NoSQL: TbDatabase,
   Docker: SiDocker,
   Git: SiGit,
   GitHub: SiGithub,
+  "GitHub Actions": SiGithubactions,
+  systemd: TbSettings,
+  pytest: SiPytest,
+  "Telegram Bot API": SiTelegram,
   "Hugging Face (NLP)": SiHuggingface,
   "Machine Learning": TbBrain,
   "Gemini AI": SiGooglegemini,

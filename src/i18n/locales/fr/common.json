@@ -80,7 +80,21 @@
       "solution": "Développement d'un gestionnaire financier open-source avec authentification Supabase, tableaux de bord en temps réel, graphiques par catégorie, citations quotidiennes et un chatbot Gemini qui analyse le langage naturel pour proposer des transactions.",
       "result": "Un planificateur où discuter en langage naturel capture instantanément dépenses et revenus dans un tableau de bord interactif."
     },
-    "demo": "Voir la démo",
+    "rakt3adi": {
+    "sub": "Python · Telegram Bot API · SQLite",
+    "title": "RakT3adiBot — Planificateur de révision",
+    "problem": "Les plans de révision vivent dans des notes et des groupes, alors les dates d'examen et la progression des leçons se perdent.",
+    "solution": "Développement d'un bot Telegram arabe qui suit les examens et les leçons, coche la révision avec un compteur 2/3, envoie des rappels J-2 et J-1 ainsi qu'une dua du matin, et inclut un panneau d'administration sur invitation pour les utilisateurs, les modèles et les statistiques. Un planificateur idempotent de 30 secondes survit aux redémarrages, et des sauvegardes SQLite quotidiennes conservent sept copies.",
+    "result": "L'étudiant ouvre une seule conversation pour voir quoi réviser aujourd'hui ; 85 tests couvrent les parcours de bout en bout."
+  },
+  "saletbot": {
+    "sub": "Python · Gemini · Pillow · SQLite",
+    "title": "SaletBot — Horaires de prière & Athkar",
+    "problem": "Les horaires de prière, les athkar et la Qibla vivent dans des applis séparées, et un chatbot généraliste peut inventer des réponses religieuses.",
+    "solution": "Développement d'un bot arabe privé autour de sources fiables : horaires AlAdhan pour la Tunisie avec cache de secours, rappels à T-15 et à l'heure exacte, corpus d'athkar Hisn al-Muslim avec rotation quotidienne, et boussole Qibla de 900 px. Gemini répond uniquement dans le cadre de la prière et des athkar, refuse les fatwas et se rabat sur le texte stocké lorsqu'il ne peut pas joindre le modèle.",
+    "result": "Un assistant quotidien discret où chaque horaire et chaque dhikr est sourcé, et où l'IA ne devient jamais l'autorité."
+  },
+  "demo": "Voir la démo",
     "source": "Code Source",
     "crypto": {
       "section": "Projet Vedette",

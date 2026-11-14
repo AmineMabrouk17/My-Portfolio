@@ -80,6 +80,20 @@
       "solution": "Built an open-source finance manager with Supabase auth, real-time dashboards, category charts, daily quotes, and a Gemini AI chatbot that parses natural language to suggest transactions.",
       "result": "A planner where chatting in plain language instantly captures expenses and income into an interactive dashboard."
     },
+    "rakt3adi": {
+      "sub": "Python · Telegram Bot API · SQLite",
+      "title": "RakT3adiBot — Exam Revision Planner",
+      "problem": "Revision plans live in notes and group chats, so exam dates and lesson progress quietly slip.",
+      "solution": "Built an Arabic Telegram bot that tracks exams and lessons, ticks off revision with a 2/3 progress counter, sends J-2 and J-1 reminders plus a morning dua, and includes an invite-only admin panel for users, templates and stats. An idempotent 30-second scheduler survives restarts, and daily SQLite backups keep seven copies.",
+      "result": "Students open one chat to see exactly what to revise today; 85 tests cover the flows end to end."
+    },
+    "saletbot": {
+      "sub": "Python · Gemini · Pillow · SQLite",
+      "title": "SaletBot — Prayer Times & Athkar",
+      "problem": "Prayer times, athkar and Qibla live in separate apps, and a general chatbot can invent religious answers.",
+      "solution": "Built a private Arabic bot around authoritative sources: AlAdhan prayer times for Tunisia with cached fallback, T-15 and exact-time reminders, a Hisn al-Muslim athkar corpus with daily rotation, and a 900px Qibla compass. Gemini answers only within prayer and athkar bounds, refuses fatwas, and falls back to stored text when it cannot reach the model.",
+      "result": "One quiet daily assistant where every schedule and dhikr is sourced, and the AI never becomes the authority."
+    },
 "demo": "View Live Demo",
     "source": "Source Code",
     "crypto": {
