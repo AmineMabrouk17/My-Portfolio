@@ -102,7 +102,7 @@ function CaseStudyDrawer({
         onClick={() => setOpen(!open)}
         aria-expanded={open}
         aria-controls={panelId}
-        className="inline-flex min-h-[44px] items-center gap-2 text-[13px] font-medium text-[var(--color-accent)] transition-colors hover:text-[var(--color-accent-3)] cursor-pointer"
+        className="inline-flex min-h-[44px] items-center gap-2 text-[14px] font-medium text-[var(--color-accent)] transition-colors hover:text-[var(--color-accent-2)] cursor-pointer"
       >
         <svg
           width="14"
@@ -124,11 +124,11 @@ function CaseStudyDrawer({
       {open && (
         <div
           id={panelId}
-          className="mt-3 flex flex-col gap-2.5 text-[14.5px] leading-[1.55]"
+          className="mt-3 flex flex-col gap-2.5 text-[16px] leading-[1.55]"
         >
           {(["problem", "solution", "result"] as const).map((key) => (
             <div key={key} className="flex gap-2.5">
-              <span className="whitespace-nowrap font-semibold text-[var(--color-accent-3)]">
+              <span className="whitespace-nowrap font-semibold text-[var(--color-accent-2)]">
                 {t(`proj.labels.${key}`)}:
               </span>
               <span className="text-[var(--color-muted)]">{t(caseStudy[key])}</span>
@@ -146,7 +146,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
   return (
     <ScrollReveal delay={(index % 2) * 80} className="h-full">
       <article className="group flex h-full flex-col overflow-hidden rounded-[18px] border border-[var(--color-border)] bg-[var(--color-surface)] transition-colors duration-300 hover:border-[var(--color-accent)]/60">
-        <div className="relative aspect-[3/2] w-full overflow-hidden border-b border-[var(--color-border)] bg-[#0a0d14]">
+        <div className="relative aspect-[3/2] w-full overflow-hidden border-b border-[var(--color-border)] bg-[var(--color-bg)]">
           <img
             src={project.screenshot}
             alt=""
@@ -160,16 +160,16 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
 
         <div className="flex flex-1 flex-col p-[26px]">
           {project.subKey && (
-            <div className="mb-2 text-[12px] font-semibold uppercase tracking-[0.12em] text-[var(--color-muted-2)]">
+            <div className="mb-2 font-mono text-[11px] font-medium uppercase tracking-[0.14em] text-[var(--color-muted-2)]">
               {t(project.subKey)}
             </div>
           )}
           <h3 className="mb-1 text-[21px] font-bold tracking-[-0.02em]">
-            <span className="text-[var(--color-accent-3)]">/</span> {t(project.titleKey)}
+            <span className="text-[var(--color-accent-2)]">/</span> {t(project.titleKey)}
           </h3>
 
           {project.descKey && (
-            <p className="mt-2 mb-1 text-[14.5px] leading-relaxed text-[var(--color-muted)]">
+            <p className="mt-2 mb-1 text-[16px] leading-relaxed text-[var(--color-muted)]">
               {t(project.descKey)}
             </p>
           )}
@@ -184,7 +184,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
             {project.tags.map((tag) => (
               <span
                 key={tag}
-                className="rounded-md border border-[var(--color-border)] bg-white/[0.04] px-[10px] py-[4px] text-[11.5px] font-medium uppercase tracking-wide text-[var(--color-muted)]"
+                className="rounded-md border border-[var(--color-border)] bg-white/[0.04] px-[10px] py-[4px] font-mono text-[11px] font-medium uppercase tracking-[0.08em] text-[var(--color-muted)]"
               >
                 {tag}
               </span>
@@ -252,16 +252,16 @@ export default function Projects() {
         <ScrollReveal>
           <div className="mb-12 flex items-end justify-between flex-wrap gap-5">
             <div>
-              <div className="text-[var(--color-accent)] text-[13px] font-medium tracking-[0.15em] mb-2">
+              <div className="text-[var(--color-accent)] font-mono text-[12px] font-medium tracking-[0.16em] mb-2">
                 {t("proj.num")}
               </div>
               <AnimatedText
                 as="h2"
                 text={t("proj.h2")}
-                className="text-[clamp(30px,4vw,44px)] font-bold tracking-[-0.03em] leading-none"
+                className="text-[clamp(32px,4.2vw,46px)] font-bold tracking-[-0.025em] leading-none"
               />
             </div>
-            <p className="text-[var(--color-muted)] max-w-[480px] text-[15px]">
+            <p className="max-w-[480px] text-pretty text-[16px] text-[var(--color-muted)]">
               {t("proj.sub")}
             </p>
           </div>

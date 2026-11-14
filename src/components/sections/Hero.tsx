@@ -58,21 +58,24 @@ export default function Hero() {
     <section className="pt-[140px] pb-[60px] max-lg:pt-[120px]">
       <div className="max-w-[1120px] mx-auto px-8">
         <ScrollReveal>
-          <div className="flex items-center flex-wrap gap-2 text-[12.5px] font-bold tracking-[0.08em] uppercase mb-[26px]">
+          <div className="flex items-center flex-wrap gap-2 font-mono text-[11px] font-medium tracking-[0.14em] uppercase mb-[26px]">
             <span className="text-[var(--color-text)]">Amine Mabrouk</span>
-            <span className="text-white/35">·</span>
-            <span className="text-[var(--color-accent-3)]">{t("hero.tag")}</span>
+            <span className="text-[var(--color-muted-2)]">·</span>
+            <span className="inline-flex items-center gap-1.5 text-[var(--color-status)]">
+              <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-[var(--color-status)]" />
+              {t("hero.tag")}
+            </span>
           </div>
 
           <h1
             ref={headlineRef}
-            className="font-semibold leading-[1.14] tracking-[-0.035em] mb-8 max-w-[980px] text-[clamp(2.4rem,5.6vw,4.6rem)]"
+            className="font-semibold leading-[1.05] tracking-[-0.025em] mb-8 max-w-[980px] text-[clamp(2.5rem,5.4vw,4.4rem)]"
           >
             <span className="inline-block">{t("hero.headline")}</span>{" "}
-            <span className="text-[var(--color-accent-3)] font-normal">{t("hero.headlineAccent")}</span>
+            <span className="text-[var(--color-accent-2)] font-normal">{t("hero.headlineAccent")}</span>
           </h1>
 
-          <p className="mb-5 text-[13px] font-semibold uppercase tracking-[0.12em] text-[var(--color-muted)]">
+          <p className="mb-5 font-mono text-[11px] font-medium uppercase tracking-[0.14em] text-[var(--color-muted)]">
             {t("hero.role")}
           </p>
 
@@ -86,14 +89,14 @@ export default function Hero() {
           <div className="flex gap-3.5 flex-wrap">
             <MagneticButton
               href="#contact"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full no-underline font-semibold text-[15px] bg-[var(--color-text)] text-[var(--color-accent-dark)] transition-all duration-200 hover:-translate-y-px hover:opacity-95"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full no-underline font-semibold text-[16px] bg-[var(--color-text)] text-[var(--color-accent-dark)] transition-all duration-200 hover:-translate-y-px hover:opacity-95"
               style={{ boxShadow: "0 20px 40px rgba(0, 0, 0, 0.45)" }}
             >
               {t("hero.cta1")}
             </MagneticButton>
             <a
               href="#projects"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full no-underline font-semibold text-[15px] border border-white/15 text-[var(--color-text)] transition-all duration-200 hover:bg-white/[0.06] hover:-translate-y-px"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full no-underline font-semibold text-[16px] border border-white/15 text-[var(--color-text)] transition-all duration-200 hover:bg-white/[0.06] hover:-translate-y-px"
             >
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <polyline points="16 18 22 12 16 6" />

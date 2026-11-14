@@ -23,16 +23,16 @@ export default function About() {
         <ScrollReveal>
           <div className="mb-12 flex items-end justify-between flex-wrap gap-5">
             <div>
-              <div className="text-[var(--color-accent)] text-[13px] font-medium tracking-[0.15em] mb-2">
+              <div className="text-[var(--color-accent)] font-mono text-[12px] font-medium tracking-[0.16em] mb-2">
                 {t("about.num")}
               </div>
               <AnimatedText
                 as="h2"
                 text={t("about.h2")}
-                className="text-[clamp(30px,4vw,44px)] font-bold tracking-[-0.03em] leading-none"
+                className="text-[clamp(32px,4.2vw,46px)] font-bold tracking-[-0.025em] leading-none"
               />
             </div>
-            <p className="max-w-[480px] text-[15px] text-[var(--color-muted)]">
+            <p className="max-w-[480px] text-pretty text-[16px] text-[var(--color-muted)]">
               {t("about.sub")}
             </p>
           </div>
@@ -51,7 +51,7 @@ export default function About() {
         </div>
 
         <ScrollReveal>
-          <p className="mt-10 inline-block rounded-full border border-[var(--color-border-2)] bg-[var(--color-surface)]/60 px-5 py-2 text-[13px] leading-[1.7] text-[var(--color-muted)]">
+          <p className="mt-10 inline-block rounded-full border border-[var(--color-border-2)] bg-[var(--color-surface)]/60 px-5 py-2 text-[14px] leading-[1.7] text-[var(--color-muted)]">
             {t("about.diploma")}
           </p>
         </ScrollReveal>

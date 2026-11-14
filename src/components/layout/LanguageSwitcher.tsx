@@ -40,7 +40,7 @@ export default function LanguageSwitcher() {
         aria-expanded={isOpen}
         aria-controls="language-menu"
         aria-label={`${t("nav.language")}: ${current.label}`}
-        className="flex min-h-[40px] items-center gap-1.5 rounded-full border border-[var(--color-border)] bg-white/5 px-3 text-[13px] font-medium text-[var(--color-muted)] cursor-pointer transition-all duration-200 hover:border-[var(--color-border-2)] hover:bg-white/10 hover:text-[var(--color-text)] font-[inherit]"
+        className="flex min-h-[40px] items-center gap-1.5 rounded-full border border-[var(--color-border)] bg-white/5 px-3 text-[14px] font-medium text-[var(--color-muted)] cursor-pointer transition-all duration-200 hover:border-[var(--color-border-2)] hover:bg-white/10 hover:text-[var(--color-text)] font-[inherit]"
         onClick={(e) => {
           e.stopPropagation();
           setIsOpen(!isOpen);
@@ -73,7 +73,7 @@ export default function LanguageSwitcher() {
               role="option"
               aria-selected={locale === lang.code}
               lang={lang.code}
-              className={`flex min-h-[44px] w-full items-center gap-2 rounded-lg border-none bg-transparent px-3 text-start text-[13px] cursor-pointer transition-all duration-150 font-[inherit] ${
+              className={`flex min-h-[44px] w-full items-center gap-2 rounded-lg border-none bg-transparent px-3 text-start text-[14px] cursor-pointer transition-all duration-150 font-[inherit] ${
                 locale === lang.code
                   ? "text-[var(--color-accent)] bg-[rgba(255,107,107,0.06)]"
                   : "text-[var(--color-muted)] hover:bg-white/5 hover:text-[var(--color-text)]"
@@ -83,7 +83,7 @@ export default function LanguageSwitcher() {
                 setIsOpen(false);
               }}
             >
-              <span className="text-[15px] leading-none" aria-hidden="true">
+              <span className="text-[16px] leading-none" aria-hidden="true">
                 {lang.flag}
               </span>
               {lang.label}

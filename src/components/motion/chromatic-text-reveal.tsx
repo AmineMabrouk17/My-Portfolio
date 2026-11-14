@@ -16,8 +16,8 @@ const CHROMATIC_PALETTE = [
   "#60a5fa",
   "#818cf8",
   "#c084fc",
-  "#ff6b6b",
-  "#FFE566",
+  "#ff6b47",
+  "#ffa552",
 ];
 
 const TRAIL_HALF_WIDTH = 14;

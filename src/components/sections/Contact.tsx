@@ -98,34 +98,34 @@ export default function Contact() {
               }}
             />
 
-            <div className="text-[var(--color-accent)] text-[13px] font-medium tracking-[0.15em] mb-3 relative">
+            <div className="text-[var(--color-accent)] font-mono text-[12px] font-medium tracking-[0.16em] mb-3 relative">
               {t("contact.num")}
             </div>
             <AnimatedText
               as="h2"
               text={t("contact.h2")}
-              className="text-[clamp(30px,4vw,44px)] font-bold tracking-[-0.03em] leading-none mb-3.5 relative"
+              className="text-[clamp(32px,4.2vw,46px)] font-bold tracking-[-0.025em] leading-none mb-3.5 relative"
             />
-            <p className="text-[var(--color-muted)] text-base max-w-[520px] mb-8 relative">
+            <p className="relative mb-8 max-w-[520px] text-pretty text-base text-[var(--color-muted)]">
               {t("contact.text")}
             </p>
 
             {/* Always-visible fallback: a webmail-only visitor must never be
                 trapped behind a mailto: that silently did nothing. */}
             <div className="relative mb-8 flex flex-wrap items-center gap-3">
-              <span className="text-[13px] font-medium text-[var(--color-muted)]">
+              <span className="text-[14px] font-medium text-[var(--color-muted)]">
                 {t("contact.direct")}
               </span>
               <a
                 href={`mailto:${EMAIL}`}
-                className="contact-email text-[15px] font-semibold text-[var(--color-accent)] underline decoration-[var(--color-accent)]/40 underline-offset-4 hover:decoration-[var(--color-accent)]"
+                className="contact-email text-[16px] font-semibold text-[var(--color-accent)] underline decoration-[var(--color-accent)]/40 underline-offset-4 hover:decoration-[var(--color-accent)]"
               >
                 {EMAIL}
               </a>
               <button
                 type="button"
                 onClick={copyEmail}
-                className="inline-flex min-h-[44px] items-center gap-2 rounded-full border border-[var(--color-field-border)] px-4 text-[12.5px] font-semibold text-[var(--color-muted)] transition-colors hover:text-[var(--color-text)]"
+                className="inline-flex min-h-[44px] items-center gap-2 rounded-full border border-[var(--color-field-border)] px-4 text-[12px] font-semibold text-[var(--color-muted)] transition-colors hover:text-[var(--color-text)]"
               >
                 {copied ? t("contact.copied") : t("contact.copy")}
               </button>

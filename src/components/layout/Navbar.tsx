@@ -33,8 +33,8 @@ export default function Navbar() {
           paddingBlock: "5px",
           paddingInlineStart: "24px",
           paddingInlineEnd: "6px",
-          background: "rgba(24, 26, 30, 0.72)",
-          borderColor: "rgba(255, 255, 255, 0.09)",
+          background: "rgba(23, 18, 19, 0.72)",
+          borderColor: "rgba(243, 236, 230, 0.09)",
           boxShadow: "0 20px 40px rgba(0, 0, 0, 0.45)",
         }}
       >
@@ -49,8 +49,8 @@ export default function Navbar() {
           id="primary-navigation"
           className={`${
             isMobileOpen ? "flex" : "hidden"
-          } lg:flex items-center gap-4 max-lg:absolute max-lg:top-full max-lg:left-1/2 max-lg:-translate-x-1/2 max-lg:flex-col max-lg:bg-[rgba(24,26,30,0.98)] max-lg:p-6 max-lg:gap-1 max-lg:rounded-2xl max-lg:border max-lg:min-w-[220px] max-lg:mt-3`}
-          style={{ borderColor: "rgba(255, 255, 255, 0.09)" }}
+          } lg:flex items-center gap-4 max-lg:absolute max-lg:top-full max-lg:left-1/2 max-lg:-translate-x-1/2 max-lg:flex-col max-lg:bg-[rgba(23,18,19,0.98)] max-lg:p-6 max-lg:gap-1 max-lg:rounded-2xl max-lg:border max-lg:min-w-[220px] max-lg:mt-3`}
+          style={{ borderColor: "rgba(243, 236, 230, 0.09)" }}
         >
           {navLinks.map((link) => (
             <a

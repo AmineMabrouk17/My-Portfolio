@@ -53,7 +53,7 @@ export default function ProjectFilter({ activeFilter, onFilterChange, counts }: 
             type="button"
             onClick={() => onFilterChange(value)}
             aria-pressed={active}
-            className={`inline-flex min-h-[44px] items-center px-4 rounded-full text-[13px] font-semibold transition-all duration-200 cursor-pointer border ${
+            className={`inline-flex min-h-[44px] items-center px-4 rounded-full text-[14px] font-semibold transition-all duration-200 cursor-pointer border ${
               active
                 ? "border-[var(--color-accent)] text-[var(--color-text)] bg-[color-mix(in_srgb,var(--color-accent)_10%,transparent)]"
                 : "bg-transparent text-[var(--color-muted)] border-[var(--color-field-border)] hover:border-white/30 hover:text-white"
