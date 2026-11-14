@@ -84,13 +84,14 @@ Migration from vanilla HTML to Next.js App Router is complete:
 | Navbar, Footer, LanguageSwitcher | Done | `831f83a` |
 | ScrollReveal, BackToTop | Done | `2f0fd3b` |
 | All portfolio sections | Done | `30e955a` |
-| Landing pages 1-3 | Done | `26c66a6` |
+| Landing pages 1-3 | Removed | `5a12ab1` |
 | Gumroad concept | Done | `88d4e73` |
 | Redeemly concept | Done | `88d4e73` |
 
+Product truth lives in `PRODUCT.md`; the visual system lives in `DESIGN.md`. Keep both current when a section changes, and run `/impeccable critique` before large redesigns.
+
 ### Routes
 
-- `/` — Main portfolio
-- `/landing-1`, `/landing-2`, `/landing-3` — Arabic course landing pages
-- `/concepts/gumroad` — Gumroad marketplace concept
-- `/concepts/redeemly` — Redeemly topup platform concept
+- `/` — Main portfolio (single page: Hero, About, Skills, Experience, Projects, Education, Contact)
+- `/concepts/gumroad` — Gumroad marketplace concept (slated for removal; not portfolio evidence)
+- `/concepts/redeemly` — Redeemly topup platform concept (slated for removal; not portfolio evidence)
