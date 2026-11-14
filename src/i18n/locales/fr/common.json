@@ -2,11 +2,13 @@
   "nav": {
     "work": "Projets",
     "about": "À propos",
-    "services": "Services",
+    "experience": "Parcours",
+    "stack": "Stack",
+    "language": "Langue",
     "contact": "Contact"
   },
   "hero": {
-    "tag": "Disponible pour de nouvelles opportunités",
+    "tag": "Disponible pour des projets freelance · Tunis · UTC+1",
     "headline": "Je développe des applications full-stack avec",
     "headlineAccent": "une architecture propre & CI/CD",
     "headlineAccent2": "amplifier votre vision",
@@ -24,7 +26,9 @@
     "num": "01 / À PROPOS",
     "h2": "Ingénieur qui livre.",
     "sub": "Développeur Full Stack avec un Diplôme National d'Ingénieur — reconnu comme équivalent à un Master.",
-    "bio": "Je construis des applications web et des solutions numériques performantes et sécurisées qui aident les entreprises à évoluer. Spécialisé dans l'architecture logicielle fiable, les fonctionnalités en temps réel et les systèmes basés sur les données, je me concentre sur la transformation de défis complexes — tels que les migrations cloud, la sécurité avancée des systèmes et la surveillance automatisée — en expériences fluides et conviviales qui créent de la valeur commerciale."
+    "bio": "Je construis des applications web et des solutions numériques performantes et sécurisées qui aident les entreprises à évoluer. Spécialisé dans l'architecture logicielle fiable, les fonctionnalités en temps réel et les systèmes basés sur les données, je me concentre sur la transformation de défis complexes — tels que les migrations cloud, la sécurité avancée des systèmes et la surveillance automatisée — en expériences fluides et conviviales qui créent de la valeur commerciale.",
+    "marquee": "Architecture propre • CI/CD automatisé • Revue de code • Conception d'API REST • Bases relationnelles • Déploiements en production • Architecture de composants • Tests automatisés • Workflows GitHub",
+    "diploma": "Développeur Full Stack — Diplôme National d'Ingénieur (équivalent Master)"
   },
   "skills": {
     "num": "02 / COMPÉTENCES",
@@ -59,6 +63,7 @@
     "num": "04 / PROJETS",
     "h2": "Ce que je construis.",
     "sub": "Applications full-stack prêtes pour la production, construites avec des architectures modernes, des données en temps réel et une infrastructure cloud.",
+    "showing": "Projets affichés :",
     "castcue": {
       "sub": "Next.js · Cloudflare Workers · Base D1",
       "title": "Cast n Cue — Suivi de films & séries",
@@ -96,6 +101,21 @@
   },
   "demo": "Voir la démo",
     "source": "Code Source",
+    "labels": {
+      "details": "Problème → Solution → Résultat",
+      "hide": "Masquer les détails",
+      "problem": "Problème",
+      "solution": "Solution",
+      "result": "Résultat"
+    },
+    "filter": {
+      "label": "Filtrer les projets par stack",
+      "all": "Tout",
+      "nextjs": "Next.js",
+      "ai": "IA",
+      "realtime": "Temps réel",
+      "bots": "Bots"
+    },
     "crypto": {
       "section": "Projet Vedette",
       "sub": "Next.js · WebSockets en temps réel · Turborepo",
@@ -117,10 +137,13 @@
     }
   },
   "contact": {
-    "num": "07 / CONTACT",
+    "num": "06 / CONTACT",
     "h2": "Construisons quelque chose.",
-    "text": "Ouvert aux postes Full Stack, projets freelance et collaborations. N'hésitez pas à me contacter — je réponds généralement dans les 24 heures.",
+    "text": "Je prends des projets freelance et des collaborations. Pas en recherche d'un poste à temps plein actuellement — mais toujours partant pour parler du métier.",
     "email": "Envoyer un email",
+    "direct": "Ou écrivez-moi directement",
+    "copy": "Copier l'adresse",
+    "copied": "Copié",
     "form": {
       "name": "Nom",
       "namePlaceholder": "Votre nom",
@@ -132,8 +155,13 @@
       "messagePlaceholder": "Décrivez votre projet…",
       "submit": "Envoyer le message",
       "subject": "Demande via portfolio",
-      "success": "Message envoyé !",
-      "successHint": "Votre client mail devrait s'ouvrir sous peu."
+      "sentTitle": "Votre client mail devrait s'être ouvert",
+      "sentHint": "Cette page ne peut pas confirmer l'envoi. Si rien ne s'est ouvert, copiez l'adresse ci-dessous ou réessayez.",
+      "openAgain": "Ouvrir le client mail",
+      "sendAnother": "Écrire un autre message",
+      "errorName": "Indiquez votre nom.",
+      "errorEmail": "Indiquez une adresse email valide.",
+      "errorMessage": "Ajoutez un court message."
     }
   },
   "footer": {

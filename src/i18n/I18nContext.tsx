@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useState, useCallback, useSyncExternalStore, type ReactNode } from "react";
+import { createContext, useContext, useCallback, useEffect, useState, useSyncExternalStore, type ReactNode } from "react";
 import en from "./locales/en/common.json";
 import fr from "./locales/fr/common.json";
 import ar from "./locales/ar/common.json";
@@ -47,10 +47,17 @@ export function I18nProvider({ children }: { children: ReactNode }) {
 
   const setLocale = useCallback((newLocale: Locale) => {
     localStorage.setItem(STORAGE_KEY, newLocale);
-    document.documentElement.setAttribute("lang", newLocale);
-    document.documentElement.setAttribute("dir", newLocale === "ar" ? "rtl" : "ltr");
     forceRender((n) => n + 1);
   }, []);
+
+  // Keep <html lang/dir> in sync with the stored locale on first paint and on
+  // every change. Without this a returning Arabic visitor keeps LTR layout
+  // until they switch languages again.
+  useEffect(() => {
+    const root = document.documentElement;
+    root.setAttribute("lang", locale);
+    root.setAttribute("dir", locale === "ar" ? "rtl" : "ltr");
+  }, [locale]);
 
   const t = useCallback(
     (key: string): string => {
