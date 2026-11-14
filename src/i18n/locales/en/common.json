@@ -4,8 +4,11 @@
     "about": "About",
     "experience": "Experience",
     "stack": "Stack",
-    "language": "Language",
-    "contact": "Contact"
+    "contact": "Contact",
+    "label": "Primary",
+    "menu": "Menu",
+    "home": "Amine Mabrouk — back to top",
+    "backToTop": "Back to top"
   },
   "hero": {
     "tag": "Available for freelance projects · Tunis · UTC+1",
@@ -17,18 +20,26 @@
     "role": "Full Stack Developer — Angular · Next.js · Node.js · Laravel",
     "summary": "I develop production-grade web platforms using Angular, Laravel, Next.js, and Python. Driven by clean code, automated pipelines, and disciplined Git workflows — building real solutions from architecture to deployment.",
     "cta1": "Discuss your project",
-    "cta2": "View GitHub & Projects",
-    "svc1": { "title": "Web Applications", "desc": "Full stack apps with Angular, Next.js & Laravel" },
-    "svc2": { "title": "Dashboards & Admin", "desc": "Internal tools and operational dashboards" },
-    "svc3": { "title": "API Integration", "desc": "REST APIs, real-time systems & automation" }
+    "cta2": "See all 6 live projects",
+    "svc1": {
+      "title": "Web Applications",
+      "desc": "Full stack apps with Angular, Next.js & Laravel"
+    },
+    "svc2": {
+      "title": "Dashboards & Admin",
+      "desc": "Internal tools and operational dashboards"
+    },
+    "svc3": {
+      "title": "API Integration",
+      "desc": "REST APIs, real-time systems & automation"
+    }
   },
   "about": {
     "num": "01 / ABOUT",
     "h2": "Engineer who ships.",
-    "sub": "Full Stack Developer with a National Engineering Diploma — fully recognized as equivalent to a Master's degree.",
-    "bio": "I build secure, high-performance web applications and digital solutions that help businesses scale. Specializing in reliable software architecture, real-time features, and data-driven systems, I focus on turning complex challenges—such as cloud migrations, advanced system security, and automated monitoring—into seamless, user-friendly experiences that drive business value.",
-    "marquee": "Clean Architecture • Automated CI/CD • Pull Request Review • REST API Design • Relational Databases • Production Deployments • Component Architecture • Automated Testing • GitHub Workflows",
-    "diploma": "Full Stack Developer — National Engineering Diploma (Master's equivalent)"
+    "sub": "Six shipped products: full-stack web platforms and Telegram bots.",
+    "bio": "I build products end to end — schema, API, interface, deploy. RakT3adiBot is an Arabic exam planner with 85 tests, an idempotent 30-second scheduler and seven rotating backups; Cast n Cue runs on Cloudflare Workers and D1; Lumina is a Stripe storefront on Supabase; BudgetIQ puts Gemini inside a live finance dashboard. Different stacks, one standard.",
+    "marquee": "RakT3adiBot · 85 tests • Cast n Cue · Cloudflare D1 • Lumina · Stripe • BudgetIQ · Gemini • SaletBot · Arabic-first"
   },
   "skills": {
     "num": "02 / SKILLS",
@@ -38,7 +49,14 @@
     "backend": "Backend",
     "databases": "Databases",
     "devops": "DevOps",
-    "ai": "AI / Other"
+    "ai": "AI / Other",
+    "evidence": {
+      "frontend": "Cast n Cue, Lumina",
+      "backend": "Nouara (Laravel), RakT3adiBot",
+      "databases": "Postgres, D1, SQLite",
+      "devops": "GitHub Actions, systemd, pytest",
+      "ai": "BudgetIQ, SaletBot"
+    }
   },
   "exp": {
     "num": "03 / EXPERIENCE",
@@ -99,7 +117,7 @@
       "solution": "Built a private Arabic bot around authoritative sources: AlAdhan prayer times for Tunisia with cached fallback, T-15 and exact-time reminders, a Hisn al-Muslim athkar corpus with daily rotation, and a 900px Qibla compass. Gemini answers only within prayer and athkar bounds, refuses fatwas, and falls back to stored text when it cannot reach the model.",
       "result": "One quiet daily assistant where every schedule and dhikr is sourced, and the AI never becomes the authority."
     },
-"demo": "View Live Demo",
+    "demo": "View Live Demo",
     "source": "Source Code",
     "labels": {
       "details": "Problem → Solution → Result",
@@ -122,8 +140,9 @@
       "desc": "A hybrid crypto + stock dashboard with real-time Binance WebSocket streaming, Yahoo Finance integration, TradingView-style charts (area/candlestick toggle), crowd-sourced 5-minute price predictions, browser-native price alerts, and a multi-provider AI chat assistant (7 free models + BYOK for OpenAI/Anthropic/Groq).",
       "problem": "Accessing real-time financial intelligence requires juggling multiple disjointed platforms with no unified view or AI-powered analysis. Most dashboards specialize in one asset class.",
       "solution": "Built a unified dashboard blending Binance WebSocket streams (crypto) with Yahoo Finance polling (stocks/ETFs) under a single data model, with TradingView-style charts, SWR-cached edge data fetching, 7 free built-in AI models plus BYOK (Gemini, Groq, OpenAI, Anthropic), crowd-sourced prediction voting resolved every 5 minutes, and browser-native price alerts.",
-      "result": "A single-pane-of-glass platform with near-zero latency updates from WebSocket streaming, chart type toggle (area/candlestick), multilingual AI assistant grounded in live market data, CSV export, and real-time crowd sentiment predictions."
-    }
+      "result": "A single-pane-of-glass platform with reconnects and backfills the stream on drop, with SWR-cached REST for equities, chart type toggle (area/candlestick), multilingual AI assistant grounded in live market data, CSV export, and real-time crowd sentiment predictions."
+    },
+    "ask": "Ask about this build"
   },
   "edu": {
     "num": "05 / EDUCATION",
@@ -133,7 +152,8 @@
       "title": "State Engineering Degree in Computer Science (M.Sc. Equivalent)",
       "program": "5-Year Integrated Engineering Program",
       "desc": "Completed 2 years of intensive pre-engineering foundations (Advanced Math & CS) followed by 3 years of specialized Software Engineering and System Architecture."
-    }
+    },
+    "school": "Faculty of Sciences of Bizerte"
   },
   "contact": {
     "num": "06 / CONTACT",
@@ -155,17 +175,25 @@
       "submit": "Send message",
       "subject": "Portfolio inquiry",
       "sentTitle": "Your mail app should have opened",
-      "sentHint": "This page can't confirm delivery on its own. If nothing opened, copy the address below or open it again.",
+      "sentHint": "This page can't confirm delivery on its own. If nothing opened, copy the address above, open it in Gmail, or try again.",
       "openAgain": "Open mail app",
       "sendAnother": "Write another",
       "errorName": "Add your name.",
       "errorEmail": "Add a valid email address.",
-      "errorMessage": "Add a short message."
-    }
+      "errorMessage": "Add a short message.",
+      "gmail": "Open in Gmail",
+      "errorSummary": "Please check the highlighted fields."
+    },
+    "reassure": "I reply within 24 hours, usually with questions before a quote. A budget range helps, but it is optional.",
+    "optional": "optional",
+    "copyHint": "Press ⌘C / ctrl-C",
+    "copyMessage": "Copy message"
   },
   "footer": {
     "built": "Built with",
-    "in": "in"
+    "in": "in",
+    "available": "Available for freelance projects",
+    "location": "Tunis, Tunisia"
   },
   "strip": {
     "items": "Selected work|2026|Build fast|Ship securely|Clean architecture"
