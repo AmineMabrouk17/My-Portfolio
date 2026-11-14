@@ -54,7 +54,7 @@ function JobCard({ t, job, index }: { t: (key: string) => string; job: (typeof j
           <span className="text-[var(--color-accent)] text-sm font-medium">{job.company}</span>
         </div>
         <span className="font-mono text-[11px] tracking-[0.06em] text-[var(--color-muted-2)] bg-white/[0.04] px-[11px] py-[5px] rounded-full border border-[var(--color-border)] whitespace-nowrap">
-          {job.date}
+          <bdi dir="ltr">{job.date}</bdi>
         </span>
       </div>
 
@@ -66,8 +66,8 @@ function JobCard({ t, job, index }: { t: (key: string) => string; job: (typeof j
 
       <ul className="space-y-2 mb-5">
         {job.bullets.map((bullet) => (
-          <li key={bullet} className="text-sm text-[var(--color-muted)] pl-[22px] relative">
-            <span className="absolute left-0 top-0 text-[var(--color-accent)]">▹</span>
+          <li key={bullet} className="text-sm text-[var(--color-muted)] ps-[22px] relative">
+            <span className="absolute start-0 top-0 text-[var(--color-accent)]">▹</span>
             {t(bullet)}
           </li>
         ))}
@@ -104,9 +104,9 @@ function StaticExperience({ t }: { t: (key: string) => string }) {
         <SectionHeading t={t} />
         <div id="timeline" className="flex flex-col gap-10">
           {jobs.map((job, i) => (
-            <div key={job.titleKey} className="relative pl-8 border-l-2 border-[var(--color-accent)]/30">
+            <div key={job.titleKey} className="relative ps-8 border-s-2 border-[var(--color-accent)]/30">
               <div
-                className="absolute left-[-9px] top-1 w-[17px] h-[17px] rounded-full bg-[var(--color-bg)] border-2 border-[var(--color-accent)]"
+                className="absolute start-[-9px] top-1 w-[17px] h-[17px] rounded-full bg-[var(--color-bg)] border-2 border-[var(--color-accent)]"
                 style={{ boxShadow: "0 0 14px color-mix(in srgb, var(--color-accent) 50%, transparent)" }}
               />
               <JobCard t={t} job={job} index={i} />
@@ -219,7 +219,7 @@ export default function Experience() {
               <div className="md:sticky md:top-32">
                 <div className="relative">
                   <div
-                    className="absolute left-[7px] top-1 bottom-1 w-px"
+                    className="absolute start-[7px] top-1 bottom-1 w-px"
                     style={{ background: "var(--color-border-2)" }}
                   />
                   {jobs.map((job, i) => {
