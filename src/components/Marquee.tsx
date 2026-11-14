@@ -109,6 +109,9 @@ export default function Marquee({ rows, className }: MarqueeProps) {
 
   return (
     <div ref={containerRef} className={className}>
+      {/* The visual rows are aria-hidden because they repeat; the words are
+          still available once, as text, for assistive tech. */}
+      <p className="sr-only">{rows.flat().join(" · ")}</p>
       {rows.map((items, r) => {
         const half = buildHalf(items);
         return (

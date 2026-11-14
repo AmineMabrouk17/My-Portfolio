@@ -40,7 +40,7 @@ export default function About() {
 
         <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] lg:items-center">
           <ScrollReveal>
-            <p className="max-w-[62ch] text-[15.5px] leading-[1.75] text-[var(--color-muted)]">
+            <p className="max-w-[62ch] text-[16px] leading-[1.7] text-[var(--color-muted)]">
               {t("about.bio")}
             </p>
           </ScrollReveal>
@@ -49,12 +49,6 @@ export default function About() {
             <Marquee rows={[words]} />
           </ScrollReveal>
         </div>
-
-        <ScrollReveal>
-          <p className="mt-10 inline-block rounded-full border border-[var(--color-border-2)] bg-[var(--color-surface)]/60 px-5 py-2 text-[14px] leading-[1.7] text-[var(--color-muted)]">
-            {t("about.diploma")}
-          </p>
-        </ScrollReveal>
       </div>
     </section>
   );
