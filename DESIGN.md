@@ -55,6 +55,12 @@ typography:
     fontWeight: 500
     lineHeight: 1.3
     letterSpacing: "0.16em"
+  meta:
+    fontFamily: "Instrument Sans, ui-sans-serif, system-ui, sans-serif"
+    fontSize: "13px"
+    fontWeight: 500
+    lineHeight: 1.5
+    letterSpacing: "0em"
   micro:
     fontFamily: "JetBrains Mono, ui-monospace, monospace"
     fontSize: "11px"
@@ -184,6 +190,7 @@ A warm charcoal room interrupted by a single ember ramp, with one cold light res
 - **Body** (400, 16px, 1.65): section sub-lines capped near 46–60ch; hero summary steps up to clamp 1.05rem–1.25rem and caps at 580px.
 - **Small** (500, 14px, 1.5): nav links, buttons, form labels.
 - **Label** (500 mono, 12px, 0.16em): the numbered section eyebrows (`01 / ABOUT`). Always warm, always uppercase, always mono.
+- **Meta** (500, 13px, 1.5): form labels, error strings, footer meta.
 - **Micro** (500 mono, 11px, 0.12em): project sub-lines, tech tags, dates, the looping strip.
 
 ### Named Rules
@@ -244,7 +251,7 @@ Radii are consistent with size: the bigger the surface, the larger the radius. N
 - **Shadow Strategy:** none — see Elevation & Depth.
 - **Border:** 1px Hairline, strengthening to Hairline Strong on hover.
 - **Internal Padding:** 26px standard, 24px on the timeline card at small sizes.
-- **Project plate:** screenshots sit behind a 25% ink scrim and 0.85 saturation at rest; hover/focus-within clears both. Foreign app palettes must not out-shout the room.
+- **Project plate:** every screenshot is normalised to 1200×800 with the app letterboxed on Bench Slate — never cropped — and sits behind a 25% ink scrim and 0.85 saturation at rest; hover/focus-within clears both. Foreign app palettes must not out-shout the room.
 
 ### Inputs / Fields
 - **Style:** warm white/4% fill, Field Border, 12px radius, 12px 16px, Chalk text, Graphite Deep placeholder.
