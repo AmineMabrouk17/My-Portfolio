@@ -44,7 +44,7 @@ function JobCard({ t, job, index }: { t: (key: string) => string; job: (typeof j
   return (
     <article
       data-card-index={index}
-      className="timeline-card rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-6 sm:p-7 transition-colors hover:border-[var(--color-accent)]/40"
+      className="timeline-card rounded-[18px] border border-[var(--color-border)] bg-[var(--color-surface)] p-6 sm:p-7 transition-colors hover:border-[var(--color-accent)]/40"
     >
       <div className="flex items-center justify-between flex-wrap gap-2.5 mb-4">
         <div className="flex items-center gap-3">
@@ -58,7 +58,7 @@ function JobCard({ t, job, index }: { t: (key: string) => string; job: (typeof j
         </span>
       </div>
 
-      <h3 className="text-[19px] sm:text-[21px] font-semibold leading-snug tracking-[-0.02em] mb-2.5">
+      <h3 className="text-[21px] font-semibold leading-snug tracking-[-0.02em] mb-2.5">
         {t(job.titleKey)}
       </h3>
 
@@ -230,15 +230,21 @@ export default function Experience() {
                         type="button"
                         onClick={() => setActive(i)}
                         aria-label={t(job.titleKey)}
-                        className="relative z-10 mb-[64px] block h-4 w-4 rounded-full transition-colors duration-300 last:mb-0 cursor-pointer"
-                        style={{
-                          background: isActive ? "var(--color-accent)" : "var(--color-bg-2)",
-                          border: isActive ? "1px solid var(--color-accent)" : "1px solid var(--color-border-2)",
-                          boxShadow: isActive
-                            ? "0 0 18px color-mix(in srgb, var(--color-accent) 60%, transparent)"
-                            : "none",
-                        }}
-                      />
+                        aria-current={isActive ? "true" : undefined}
+                        className="relative z-10 mb-[56px] -ms-3.5 grid h-11 w-11 place-items-center rounded-full cursor-pointer last:mb-0"
+                      >
+                        <span
+                          aria-hidden="true"
+                          className="block h-4 w-4 rounded-full transition-colors duration-300"
+                          style={{
+                            background: isActive ? "var(--color-accent)" : "var(--color-bg-2)",
+                            border: isActive ? "1px solid var(--color-accent)" : "1px solid var(--color-border-2)",
+                            boxShadow: isActive
+                              ? "0 0 18px color-mix(in srgb, var(--color-accent) 60%, transparent)"
+                              : "none",
+                          }}
+                        />
+                      </button>
                     );
                   })}
                 </div>
