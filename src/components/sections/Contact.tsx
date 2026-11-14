@@ -17,7 +17,10 @@ export default function Contact() {
   const [message, setMessage] = useState("");
   const [errors, setErrors] = useState<FieldErrors>({});
   const [handoff, setHandoff] = useState(false);
-  const [copied, setCopied] = useState<"idle" | "ok" | "failed">("idle");
+  const [copyState, setCopyState] = useState<{
+    target: "address" | "message" | null;
+    ok: boolean;
+  }>({ target: null, ok: false });
   const sentRef = useRef<HTMLDivElement>(null);
   const copyTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -75,13 +78,15 @@ export default function Contact() {
     setHandoff(true);
   };
 
-  const copyText = async (text: string) => {
+  const copyText = async (text: string, target: "address" | "message") => {
     try {
       await navigator.clipboard.writeText(text);
-      setCopied("ok");
+      setCopyState({ target, ok: true });
     } catch {
-      setCopied("failed");
-      const el = document.getElementById("contact-address");
+      setCopyState({ target, ok: false });
+      const el = document.getElementById(
+        target === "address" ? "contact-address" : "contact-address"
+      );
       if (el) {
         const range = document.createRange();
         range.selectNodeContents(el);
@@ -91,13 +96,23 @@ export default function Contact() {
       }
     }
     if (copyTimer.current) clearTimeout(copyTimer.current);
-    copyTimer.current = setTimeout(() => setCopied("idle"), 3000);
+    copyTimer.current = setTimeout(
+      () => setCopyState({ target: null, ok: false }),
+      3000
+    );
   };
 
-  const copyAddress = () => copyText(EMAIL);
+  const copyLabel = (target: "address" | "message", idle: string) =>
+    copyState.target === target
+      ? copyState.ok
+        ? t("contact.copied")
+        : t("contact.copyHint")
+      : idle;
+
+  const copyAddress = () => void copyText(EMAIL, "address");
   const copyMessage = () => {
     const { subject, body } = compose();
-    void copyText(`${t("contact.form.subject")}: ${subject}\n\n${body}`);
+    void copyText(`${t("contact.form.subject")}: ${subject}\n\n${body}`, "message");
   };
 
   const inputClass =
@@ -156,11 +171,26 @@ export default function Contact() {
                 onClick={copyAddress}
                 className="inline-flex min-h-[44px] items-center gap-2 rounded-full border border-[var(--color-field-border)] px-4 text-[13px] font-semibold text-[var(--color-muted)] transition-colors hover:text-[var(--color-text)]"
               >
-                {copied === "ok"
-                  ? t("contact.copied")
-                  : copied === "failed"
-                    ? t("contact.copyHint")
-                    : t("contact.copy")}
+                {copyLabel("address", t("contact.copy"))}
+              </button>
+            </div>
+
+            <div className="relative mb-6 flex flex-wrap items-center gap-x-4 gap-y-1 text-[13px] text-[var(--color-muted-2)]">
+              <span>{t("contact.form.help")}</span>
+              <a
+                href={gmailHref()}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="min-h-[44px] inline-flex items-center underline decoration-[var(--color-field-border)] underline-offset-4 hover:text-[var(--color-text)]"
+              >
+                {t("contact.form.gmail")}
+              </a>
+              <button
+                type="button"
+                onClick={copyMessage}
+                className="min-h-[44px] inline-flex items-center underline decoration-[var(--color-field-border)] underline-offset-4 hover:text-[var(--color-text)]"
+              >
+                {copyLabel("message", t("contact.copyMessage"))}
               </button>
             </div>
 
@@ -198,7 +228,7 @@ export default function Contact() {
                     onClick={copyMessage}
                     className="inline-flex min-h-[44px] items-center gap-2 rounded-xl px-5 text-sm font-semibold text-[var(--color-muted)] transition-colors hover:text-[var(--color-text)]"
                   >
-                    {copied === "ok" ? t("contact.copied") : t("contact.copyMessage")}
+                    {copyLabel("message", t("contact.copyMessage"))}
                   </button>
                   <button
                     type="button"
@@ -212,6 +242,9 @@ export default function Contact() {
             ) : (
               <form
                 onSubmit={handleSubmit}
+                action={`mailto:${EMAIL}`}
+                method="post"
+                encType="text/plain"
                 className="relative grid grid-cols-2 gap-4 max-md:grid-cols-1"
                 noValidate
               >
@@ -234,6 +267,7 @@ export default function Contact() {
                   </label>
                   <input
                     id="contact-name"
+                    name="name"
                     type="text"
                     required
                     autoComplete="name"
@@ -261,6 +295,8 @@ export default function Contact() {
                   </label>
                   <input
                     id="contact-email"
+                    name="email"
+                    dir="ltr"
                     type="email"
                     required
                     autoComplete="email"
@@ -290,6 +326,7 @@ export default function Contact() {
                   </label>
                   <input
                     id="contact-budget"
+                    name="budget"
                     type="text"
                     value={budget}
                     onChange={(e) => setBudget(e.target.value)}
@@ -302,7 +339,7 @@ export default function Contact() {
                   </span>
                 </div>
 
-                <div className="flex flex-col gap-1.5">
+                <div className="col-span-2 flex flex-col gap-1.5 max-md:col-span-1">
                   <label
                     htmlFor="contact-message"
                     className="text-[var(--color-muted)] text-[13px] font-medium tracking-wide"
@@ -312,6 +349,7 @@ export default function Contact() {
                   </label>
                   <textarea
                     id="contact-message"
+                    name="message"
                     required
                     rows={3}
                     value={message}
