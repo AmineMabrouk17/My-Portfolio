@@ -1,26 +1,29 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
-  --color-bg: #0a0d14;
-  --color-bg-2: #0f1320;
-  --color-surface: #141a28;
-  --color-surface-2: #1a2234;
-  --color-border: rgba(255, 255, 255, 0.08);
-  --color-border-2: rgba(255, 255, 255, 0.12);
-  /* Control boundary: 3.0:1 against --color-surface, so form fields are
-     perceivable without relying on a glow (WCAG 1.4.11). */
-  --color-field-border: #5c6679;
-  --color-text: #e8ecf4;
-  --color-muted: #8b93a7;
-  /* Quiet text: 4.52:1 on the chip composite (#1d2331), 5.01:1 on surface.
-     Was #6b7385, which failed AA on every surface below it. */
-  --color-muted-2: #808a9e;
-  --color-accent: #ff6b6b;
-  --color-accent-2: #ffa94d;
-  --color-accent-3: #FFE566;
-  --color-accent-dim: #E05D5D;
-  --color-accent-dark: #0a0d14;
+  --font-sans: var(--font-instrument), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, SFMono-Regular, Menlo,
+    monospace;
+  /* Warm charcoal ground: the room is lit by the ramp, so the neutrals sit at
+     ~15° instead of the cool 266° they used to. */
+  --color-bg: #0c0a0b;
+  --color-bg-2: #120f10;
+  --color-surface: #171213;
+  --color-surface-2: #221a1a;
+  --color-border: rgba(243, 236, 230, 0.08);
+  --color-border-2: rgba(243, 236, 230, 0.13);
+  /* Control boundary: 3.3:1 on surface, 3.1:1 on raised (WCAG 1.4.11). */
+  --color-field-border: #72665e;
+  --color-text: #f3ece6;
+  --color-muted: #a89e97;
+  /* Quiet text: 5.08:1 on surface, 4.92:1 on the raised card fill. */
+  --color-muted-2: #928881;
+  --color-accent: #ff6b47;
+  --color-accent-2: #ffa552;
+  --color-accent-dim: #d9553a;
+  --color-accent-dark: #0c0a0b;
+  /* Status only: availability and live indicators. Never an action color. */
+  --color-status: #6fa89b;
   --animate-pulse: pulse 2s infinite;
 }
 
@@ -30,7 +33,7 @@
 }
 
 :root {
-  --grad: linear-gradient(135deg, #ff6b6b 0%, #ffa94d 50%, #FFE566 100%);
+  --grad: linear-gradient(135deg, #ff6b47 0%, #ffa552 100%);
   --shadow: 0 20px 50px -20px rgba(0, 0, 0, 0.6);
   /* Aliases the site's text color for motion components (beui.dev) that
      read `var(--foreground)` / use `bg-foreground`, `text-foreground`. */
@@ -76,28 +79,29 @@ html.lenis body {
 }
 
 body {
-  font-family: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  font-family: var(--font-instrument), ui-sans-serif, system-ui, sans-serif;
   background: var(--color-bg);
   color: var(--color-text);
-  line-height: 1.6;
+  line-height: 1.65;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
 
 html[lang="ar"] body {
-  font-family: var(--font-arabic), "Noto Kufi Arabic", "Segoe UI", Tahoma,
+  font-family: var(--font-arabic), "IBM Plex Sans Arabic", "Segoe UI", Tahoma,
     sans-serif;
 }
 
-/* Background ambiance */
+/* Background ambiance — two warm lamps and one cold, so the room reads lit
+   rather than gradient-washed. */
 body::before {
   content: "";
   position: fixed;
   inset: 0;
   background:
-    radial-gradient(900px 600px at 12% -5%, rgba(255, 107, 107, 0.08), transparent 60%),
-    radial-gradient(800px 600px at 90% 10%, rgba(255, 169, 77, 0.08), transparent 60%),
-    radial-gradient(700px 500px at 50% 110%, rgba(255, 229, 102, 0.06), transparent 60%);
+    radial-gradient(900px 600px at 12% -5%, rgba(255, 107, 71, 0.07), transparent 60%),
+    radial-gradient(800px 600px at 90% 10%, rgba(255, 165, 82, 0.06), transparent 60%),
+    radial-gradient(700px 500px at 50% 110%, rgba(111, 168, 155, 0.04), transparent 60%);
   pointer-events: none;
   z-index: -1;
 }
@@ -107,8 +111,8 @@ body::after {
   position: fixed;
   inset: 0;
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.018) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.018) 1px, transparent 1px);
+    linear-gradient(rgba(243, 236, 230, 0.018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(243, 236, 230, 0.018) 1px, transparent 1px);
   background-size: 60px 60px;
   pointer-events: none;
   z-index: -1;
@@ -186,9 +190,9 @@ body::after {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(600px 400px at 50% 20%, rgba(224, 93, 93, 0.06), transparent 60%),
-    radial-gradient(500px 350px at 30% 60%, rgba(255, 107, 107, 0.04), transparent 50%),
-    radial-gradient(400px 300px at 70% 40%, rgba(255, 169, 77, 0.03), transparent 50%);
+    radial-gradient(600px 400px at 50% 20%, rgba(217, 85, 58, 0.06), transparent 60%),
+    radial-gradient(500px 350px at 30% 60%, rgba(255, 107, 71, 0.04), transparent 50%),
+    radial-gradient(400px 300px at 70% 40%, rgba(255, 165, 82, 0.03), transparent 50%);
   pointer-events: none;
 }
 
@@ -196,7 +200,7 @@ body::after {
   position: absolute;
   inset: 0;
   background-image:
-    radial-gradient(circle, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    radial-gradient(circle, rgba(243, 236, 230, 0.045) 1px, transparent 1px);
   background-size: 24px 24px;
   mask-image: radial-gradient(ellipse at center, black 20%, transparent 70%);
   -webkit-mask-image: radial-gradient(ellipse at center, black 20%, transparent 70%);
@@ -204,13 +208,13 @@ body::after {
 }
 
 @keyframes pulse-dot {
-  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(224, 93, 93, 0.4); }
-  50% { opacity: 0.6; box-shadow: 0 0 0 4px rgba(224, 93, 93, 0); }
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(217, 85, 58, 0.4); }
+  50% { opacity: 0.6; box-shadow: 0 0 0 4px rgba(217, 85, 58, 0); }
 }
 
 /* Selection */
 ::selection {
-  background: rgba(255, 229, 102, 0.25);
+  background: rgba(255, 165, 82, 0.25);
   color: var(--color-text);
 }
 

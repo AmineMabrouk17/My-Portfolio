@@ -1,19 +1,28 @@
 import type { Metadata } from "next";
-import { Noto_Kufi_Arabic, Plus_Jakarta_Sans } from "next/font/google";
+import {
+  IBM_Plex_Sans_Arabic,
+  Instrument_Sans,
+  JetBrains_Mono,
+} from "next/font/google";
 import "./globals.css";
 import Providers from "./providers";
 import SmoothScroll from "@/components/SmoothScroll";
 import Preloader from "@/components/Preloader";
 import { ScrollProgress } from "@/components/motion/scroll-progress";
 
-const plusJakarta = Plus_Jakarta_Sans({
+const instrument = Instrument_Sans({
   subsets: ["latin"],
-  variable: "--font-plus-jakarta",
+  variable: "--font-instrument",
 });
 
-// Arabic is a first-class locale: load a real Arabic face instead of letting
-// the latin-only stack fall back to whatever the OS provides.
-const arabic = Noto_Kufi_Arabic({
+// The machine voice: section numbers, tags and metadata.
+const jetbrains = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-jetbrains",
+});
+
+// Arabic is a first-class locale: a body face, not a display face.
+const arabic = IBM_Plex_Sans_Arabic({
   subsets: ["arabic"],
   weight: ["400", "500", "600", "700"],
   variable: "--font-arabic",
@@ -78,7 +87,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${plusJakarta.variable} ${arabic.variable}`} suppressHydrationWarning>
+    <html
+      lang="en"
+      className={`${instrument.variable} ${jetbrains.variable} ${arabic.variable}`}
+      suppressHydrationWarning
+    >
       <body suppressHydrationWarning>
         <ScrollProgress className="bg-[var(--color-accent)]" />
         <Preloader />
