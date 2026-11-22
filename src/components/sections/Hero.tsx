@@ -62,17 +62,18 @@ export default function Hero() {
 
           <h1
             ref={headlineRef}
+            data-reveal="1"
             className="font-semibold leading-[1.05] tracking-[-0.025em] mb-8 max-w-[980px] text-[clamp(2.5rem,5.4vw,4.4rem)]"
           >
             <span className="inline-block">{t("hero.headline")}</span>{" "}
             <span className="text-[var(--color-accent-2)] font-normal">{t("hero.headlineAccent")}</span>
           </h1>
 
-          <p className="mb-5 text-[15px] font-medium text-[var(--color-text)]/85">
+          <p data-reveal="2" className="mb-5 text-[15px] font-medium text-[var(--color-text)]/85">
             {t("hero.role")}
           </p>
 
-          <ul className="mb-10 flex flex-wrap gap-x-5 gap-y-2">
+          <ul data-reveal="3" className="mb-10 flex flex-wrap gap-x-5 gap-y-2">
             {liveWork.map(({ key, sub, href }) => (
               <li key={href}>
                 <a
@@ -93,7 +94,7 @@ export default function Hero() {
             ))}
           </ul>
 
-          <div className="flex gap-3.5 flex-wrap">
+          <div data-reveal="4" className="flex gap-3.5 flex-wrap">
             <MagneticButton
               href="#contact"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-full no-underline font-semibold text-[16px] bg-[var(--color-text)] text-[var(--color-accent-dark)] transition-all duration-200 hover:-translate-y-px hover:opacity-95"
