@@ -146,6 +146,7 @@
   display: block;
   width: 100%;
   height: auto;
+  animation: portraitRise 1s var(--ease-out, cubic-bezier(0.2, 0.7, 0.2, 1)) 0.12s backwards;
 }
 
 .col {
@@ -157,7 +158,7 @@
   white-space: nowrap;
   font-family: var(--font-mono);
   font-weight: 500;
-  font-size: clamp(12px, 1.1vw, 15px);
+  font-size: clamp(14px, 3.4vw, 17px);
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--color-muted-2);
@@ -378,7 +379,7 @@
     position: absolute;
     top: 45%;
     padding: 0;
-    font-size: clamp(13px, 1.05vw, 15px);
+    font-size: clamp(15px, 1.35vw, 19px);
   }
 
   .colStart {
@@ -451,24 +452,16 @@
   }
 }
 
-@keyframes heroFootOut {
-  to {
-    transform: translateY(-18%);
-    opacity: 0;
-  }
-}
-
 @supports (animation-timeline: scroll()) {
   .glow,
   .wordmark,
   .portrait,
-  .col,
-  .foot {
+  .col {
     animation-duration: 1ms; /* required, overridden by the timeline */
     animation-timing-function: linear;
     animation-fill-mode: both;
     animation-timeline: scroll(root block);
-    animation-range: 0 100svh;
+    animation-range: 0 100vh;
   }
 
   .glow {
@@ -491,11 +484,6 @@
     animation-name: heroColEndOut;
   }
 
-  .foot {
-    animation-name: heroFootOut;
-    animation-range: 0 55svh;
-  }
-
   /* the portrait is the last thing to leave: it should end the scene, not
      cross the copy on its way out */
   .portrait {
@@ -513,8 +501,7 @@
   .glow,
   .wordmark,
   .portrait,
-  .col,
-  .foot {
+  .col {
     animation: none;
   }
 
