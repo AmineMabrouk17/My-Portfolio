@@ -202,6 +202,46 @@
 
 }
 
+.footLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+/* The three live builds, kept as the evidence line under the summary. */
+.work {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 36ch;
+  gap: 0.35rem 1.1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.work a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-height: 32px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-muted-2);
+  text-decoration: none;
+  transition: color 0.18s var(--ease-out, cubic-bezier(0.2, 0.7, 0.2, 1));
+}
+
+.work a span {
+  color: var(--color-accent);
+}
+
+.work a:hover {
+  color: var(--color-text);
+}
+
 .summary {
   margin: 0;
   max-width: 40ch;
@@ -418,7 +458,47 @@
     padding: 0;
   }
 
-  .summary {
+  .footLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+/* The three live builds, kept as the evidence line under the summary. */
+.work {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 36ch;
+  gap: 0.35rem 1.1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.work a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-height: 32px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-muted-2);
+  text-decoration: none;
+  transition: color 0.18s var(--ease-out, cubic-bezier(0.2, 0.7, 0.2, 1));
+}
+
+.work a span {
+  color: var(--color-accent);
+}
+
+.work a:hover {
+  color: var(--color-text);
+}
+
+.summary {
     max-width: min(34ch, 30vw);
   }
 }

@@ -15,6 +15,12 @@ import styles from "./wordmark-hero.module.css";
  * Lenis, native scrolling, or a snapped container. Reduced motion leaves
  * `--p` at 0, so the composition is static.
  */
+const liveWork = [
+  { key: "proj.castcue.title", href: "https://cast-cue.cast-cue.workers.dev" },
+  { key: "proj.budgetiq.title", href: "https://budgetiq-two.vercel.app" },
+  { key: "proj.crypto.title", href: "https://crypto-stocks-web-taupe.vercel.app" },
+];
+
 export default function WordmarkHero() {
   const { t, locale } = useI18n();
   const sectionRef = useRef<HTMLElement>(null);
@@ -90,7 +96,21 @@ export default function WordmarkHero() {
       </ul>
 
       <div className={styles.foot}>
+        <div className={styles.footLeft}>
         <p className={styles.summary}>{t("wordmark.summary")}</p>
+
+        <ul className={styles.work}>
+          {liveWork.map(({ key, href }) => (
+            <li key={href}>
+              <a href={href} target="_blank" rel="noopener noreferrer">
+                <span aria-hidden="true">↗</span>
+                {t(key).split(" — ")[0]}
+              </a>
+            </li>
+          ))}
+        </ul>
+        </div>
+
         <div className={styles.actions}>
           <a className={styles.btnPrimary} href="#contact">
             {t("hero.cta1")}
