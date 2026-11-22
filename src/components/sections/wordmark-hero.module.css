@@ -1,0 +1,554 @@
+.hero {
+  --dir: 1;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    "meta meta"
+    "wordmark wordmark"
+    "avatar avatar"
+    "left right"
+    "foot foot"
+    "ticker ticker";
+  min-height: 100svh;
+  padding-top: clamp(5rem, 9vh, 6.5rem);
+  background: var(--color-bg);
+}
+
+/* the room: 60px grid, one ember glow, one cold */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(243, 236, 230, 0.028) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(243, 236, 230, 0.028) 1px, transparent 1px);
+  background-size: 60px 60px;
+  -webkit-mask-image: radial-gradient(circle at 50% 38%, #000 0%, transparent 72%);
+  mask-image: radial-gradient(circle at 50% 38%, #000 0%, transparent 72%);
+}
+
+.glow {
+  position: absolute;
+  inset: -10% 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    radial-gradient(560px 520px at 50% 40%, rgba(255, 165, 82, 0.18) 0%, rgba(255, 107, 71, 0.06) 42%, transparent 72%),
+    radial-gradient(420px 380px at 86% 74%, rgba(111, 168, 155, 0.07) 0%, transparent 70%);
+  will-change: transform, opacity;
+}
+
+.meta {
+  grid-area: meta;
+  position: relative;
+  z-index: 6;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  padding-inline: var(--gutter, 2rem);
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-muted-2);
+  animation: rise 0.7s var(--ease-out, cubic-bezier(0.2, 0.7, 0.2, 1)) both;
+}
+
+.metaName {
+  color: var(--color-text);
+}
+
+.sep {
+  opacity: 0.5;
+}
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--color-status);
+}
+
+.status i {
+  display: block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-status);
+  animation: pulse 2s infinite;
+}
+
+.wordmark {
+  grid-area: wordmark;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding-inline: clamp(1rem, 3vw, 3rem);
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 22.5vw;
+  line-height: 0.82;
+  letter-spacing: -0.045em;
+  text-transform: uppercase;
+  color: var(--color-text);
+  will-change: transform, opacity;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  white-space: nowrap;
+  clip-path: inset(50%);
+}
+
+.letters {
+  display: flex;
+  background: linear-gradient(180deg, #928881 0%, #f3ece6 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.letters span {
+  display: inline-block;
+  animation: letterRise 0.85s var(--ease-out, cubic-bezier(0.2, 0.7, 0.2, 1)) backwards;
+  animation-delay: calc(var(--i) * 55ms);
+}
+
+.portrait {
+  grid-area: avatar;
+  position: relative;
+  z-index: 3;
+  justify-self: center;
+  width: min(96vw, 28rem);
+  margin: -4vw calc(50vw - min(96vw, 28rem) / 2) 0;
+  transform-origin: 50% 100%;
+  will-change: transform;
+  animation: avatarRise 1s var(--ease-out, cubic-bezier(0.2, 0.7, 0.2, 1)) 0.12s backwards;
+  -webkit-mask-image: linear-gradient(to bottom, #000 78%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 78%, transparent 100%);
+}
+
+.portrait img {
+  display: block;
+  width: 100%;
+  height: auto;
+  animation: portraitIn 1.15s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
+}
+
+.col {
+  position: relative;
+  z-index: 6;
+  margin: 0;
+  padding: 1.5rem var(--gutter, 2rem) 0;
+  list-style: none;
+  white-space: nowrap;
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: clamp(14px, 3.4vw, 17px);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-muted-2);
+}
+
+.colStart {
+  grid-area: left;
+  text-align: start;
+
+}
+
+.colEnd {
+  grid-area: right;
+  text-align: end;
+
+}
+
+.col li {
+  padding-block: 0.3rem;
+  animation: colIn 0.7s var(--ease-out, cubic-bezier(0.2, 0.7, 0.2, 1)) backwards;
+  animation-delay: calc(0.45s + var(--i) * 70ms);
+}
+
+.colStart li {
+  --from: -0.8rem;
+}
+
+.colEnd li {
+  --from: 0.8rem;
+}
+
+.foot {
+  grid-area: foot;
+  position: relative;
+  z-index: 6;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding: 1.5rem var(--gutter, 2rem) 2.25rem;
+  animation: rise 0.7s var(--ease-out, cubic-bezier(0.2, 0.7, 0.2, 1)) 0.55s both;
+
+}
+
+.summary {
+  margin: 0;
+  max-width: 40ch;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--color-muted);
+  text-wrap: pretty;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.btnPrimary,
+.btnGhost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.75rem;
+  padding: 0.8rem 1.5rem;
+  border-radius: 999px;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+  text-decoration: none;
+  transition:
+    transform 0.18s var(--ease-out, cubic-bezier(0.2, 0.7, 0.2, 1)),
+    background-color 0.18s var(--ease-out, cubic-bezier(0.2, 0.7, 0.2, 1)),
+    border-color 0.18s var(--ease-out, cubic-bezier(0.2, 0.7, 0.2, 1)),
+    opacity 0.18s var(--ease-out, cubic-bezier(0.2, 0.7, 0.2, 1));
+}
+
+.btnPrimary {
+  background: var(--color-text);
+  color: var(--color-accent-dark);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45);
+}
+
+.btnPrimary:hover {
+  transform: translateY(-1px);
+  opacity: 0.95;
+}
+
+.btnGhost {
+  border: 1px solid var(--color-field-border);
+  color: var(--color-text);
+}
+
+.btnGhost:hover {
+  border-color: var(--color-accent);
+  background: rgba(243, 236, 230, 0.05);
+  transform: translateY(-1px);
+}
+
+
+/* signal strip: the work and the stack, running at the foot of the section */
+.ticker {
+  grid-area: ticker;
+  position: relative;
+  z-index: 7;
+  overflow: hidden;
+  border-top: 1px solid var(--color-border);
+  background: var(--color-bg-2);
+}
+
+.tickerTrack {
+  display: flex;
+  width: max-content;
+  animation: marquee 42s linear infinite;
+}
+
+.tickerTrack ul {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tickerTrack li {
+  display: flex;
+  align-items: center;
+  padding: 0.7rem 0;
+  white-space: nowrap;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-muted-2);
+}
+
+.tickerTrack li::after {
+  content: "◆";
+  margin-inline: 1.4rem;
+  color: var(--color-accent);
+  font-size: 0.6em;
+  opacity: 0.85;
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes letterRise {
+  from {
+    opacity: 0;
+    transform: translateY(26%);
+  }
+}
+
+/* the portrait arrives out of the dark: rises, settles from slightly small,
+   and resolves out of a soft blur. Land on 1.15s expo-out so it feels placed,
+   not animated. */
+@keyframes portraitIn {
+  from {
+    opacity: 0;
+    transform: translateY(28px) scale(0.965);
+    filter: blur(6px);
+  }
+  55% {
+    opacity: 1;
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    filter: blur(0);
+  }
+}
+
+@keyframes colIn {
+  from {
+    opacity: 0;
+    transform: translateX(var(--from));
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+}
+
+@media (min-width: 50rem) {
+  .hero {
+    display: block;
+    height: 100svh;
+    min-height: 40rem;
+    max-height: 68rem;
+    padding-top: 0;
+  }
+
+  .meta {
+    position: absolute;
+    inset-block-start: clamp(1.4rem, 2.6vh, 2.2rem);
+    inset-inline: 0;
+  }
+
+  .wordmark {
+    position: absolute;
+    inset-block-start: clamp(4.75rem, 10vh, 6.5rem);
+    inset-inline: 0;
+    font-size: min(21.5vw, 40vh);
+  }
+
+  .portrait {
+    width: auto;
+    height: min(68%, 40vw);
+    margin: 0;
+    position: absolute;
+    bottom: 0;
+    inset-inline-start: 50%;
+    translate: -50%;
+  }
+
+  .portrait img {
+    width: auto;
+    height: 100%;
+  }
+
+  .col {
+    position: absolute;
+    top: 45%;
+    padding: 0;
+    font-size: clamp(15px, 1.35vw, 19px);
+  }
+
+  .colStart {
+    inset-inline-start: var(--gutter, 2rem);
+  }
+
+  .colEnd {
+    inset-inline-end: var(--gutter, 2rem);
+  }
+
+  .ticker {
+    position: absolute;
+    inset-inline: 0;
+    bottom: 0;
+  }
+
+  .foot {
+    position: absolute;
+    inset: auto var(--gutter, 2rem) clamp(3.4rem, 7vh, 4.25rem);
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 2rem;
+    padding: 0;
+  }
+
+  .summary {
+    max-width: min(34ch, 30vw);
+  }
+}
+
+
+/* ------------------------------------------------------------------
+   Scroll-driven motion. No JavaScript: the timeline is the document's
+   own scroll, and the range is the first viewport, so the section
+   dissolves as the next one arrives. Browsers without scroll-driven
+   animations simply keep the static composition above.
+   ------------------------------------------------------------------ */
+@keyframes heroWordOut {
+  to {
+    transform: translateY(-34%) scale(1.06);
+    opacity: 0.06;
+  }
+}
+
+@keyframes heroPortraitOut {
+  to {
+    transform: scale(1.09);
+  }
+}
+
+@keyframes heroGlowOut {
+  to {
+    transform: translateY(-22%);
+    opacity: 0.4;
+  }
+}
+
+@keyframes heroColStartOut {
+  to {
+    transform: translateX(calc(12vw * var(--dir)));
+    opacity: 0.05;
+  }
+}
+
+@keyframes heroColEndOut {
+  to {
+    transform: translateX(calc(-12vw * var(--dir)));
+    opacity: 0.05;
+  }
+}
+
+@supports (animation-timeline: scroll()) {
+  .glow,
+  .wordmark,
+  .portrait,
+  .col {
+    animation-duration: 1ms; /* required, overridden by the timeline */
+    animation-timing-function: linear;
+    animation-fill-mode: both;
+    animation-timeline: scroll(root block);
+    animation-range: 0 100vh;
+  }
+
+  .glow {
+    animation-name: heroGlowOut;
+  }
+
+  .wordmark {
+    animation-name: heroWordOut;
+  }
+
+  .portrait {
+    animation-name: heroPortraitOut;
+  }
+
+  .colStart {
+    animation-name: heroColStartOut;
+  }
+
+  .colEnd {
+    animation-name: heroColEndOut;
+  }
+
+  /* the portrait is the last thing to leave: it should end the scene, not
+     cross the copy on its way out */
+  .portrait {
+    animation-range: 0 110svh;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tickerTrack {
+    animation: none;
+    flex-wrap: wrap;
+    width: auto;
+  }
+
+  .glow,
+  .wordmark,
+  .portrait,
+  .col {
+    animation: none;
+  }
+
+  .meta,
+  .letters span,
+  .avatar,
+  .col li,
+  .foot,
+  .status i {
+    animation: none;
+  }
+}
+
+/* The name dissolves: each letter leaves at its own speed and direction, so
+   the wordmark comes apart instead of fading as one block. */
+@supports (animation-timeline: scroll()) {
+  .letters span {
+    animation-name: letterOut;
+    animation-duration: 1ms;
+    animation-timing-function: linear;
+    animation-fill-mode: both;
+    animation-timeline: scroll(root block);
+    animation-range: 0 100vh;
+  }
+
+  .letters span:nth-child(1) { animation-range: 0 88vh; }
+  .letters span:nth-child(2) { animation-range: 0 96vh; }
+  .letters span:nth-child(3) { animation-range: 0 104vh; }
+  .letters span:nth-child(4) { animation-range: 0 112vh; }
+  .letters span:nth-child(5) { animation-range: 0 120vh; }
+
+  @keyframes letterOut {
+    to {
+      opacity: 0;
+      translate: calc((var(--i) - 2) * 3vw) -22vh;
+    }
+  }
+}

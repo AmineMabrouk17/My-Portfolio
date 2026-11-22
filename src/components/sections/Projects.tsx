@@ -142,7 +142,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
 
   return (
     <ScrollReveal delay={(index % 2) * 80} className="h-full">
-      <article className="group flex h-full flex-col overflow-hidden rounded-[18px] border border-[var(--color-border)] bg-[var(--color-surface)] transition-colors duration-300 hover:border-[var(--color-accent)]/60">
+      <article className="project-card group flex h-full flex-col overflow-hidden rounded-[18px] border border-[var(--color-border)] bg-[var(--color-surface)] transition-colors duration-300 hover:border-[var(--color-accent)]/60">
         <div className="relative aspect-[3/2] w-full overflow-hidden border-b border-[var(--color-border)] bg-[var(--color-bg)]">
           <img
             src={project.screenshot}
