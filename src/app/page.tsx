@@ -2,6 +2,7 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import BackToTop from "@/components/ui/BackToTop";
 import LoopingPanels from "@/components/LoopingPanels";
+import WordmarkHero from "@/components/sections/WordmarkHero";
 import Hero from "@/components/sections/Hero";
 import About from "@/components/sections/About";
 import Skills from "@/components/sections/Skills";
@@ -53,6 +54,7 @@ export default function Home() {
       />
       <Navbar />
       <main id="top">
+        <WordmarkHero />
         <Hero />
         <LoopingPanels />
         <About />
