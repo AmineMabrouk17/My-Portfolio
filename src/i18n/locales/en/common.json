@@ -48,8 +48,8 @@
     "num": "01 / ABOUT",
     "h2": "Engineer who ships.",
     "sub": "Six shipped products: full-stack web platforms and Telegram bots.",
-    "bio": "I build products end to end — schema, API, interface, deploy. RakT3adiBot is an Arabic exam planner with 85 tests, an idempotent 30-second scheduler and seven rotating backups; Cast n Cue runs on Cloudflare Workers and D1; Lumina is a Stripe storefront on Supabase; BudgetIQ puts Gemini inside a live finance dashboard. Different stacks, one standard.",
-    "marquee": "RakT3adiBot · 85 tests • Cast n Cue · Cloudflare D1 • Lumina · Stripe • BudgetIQ · Gemini • SaletBot · Arabic-first"
+    "bio": "I build products end to end — schema, API, interface, deploy. RakT3adiBot is an Arabic exam planner with 85 tests, an idempotent 30-second scheduler and seven rotating backups; Cast n Cue runs on Cloudflare Workers and D1; BudgetIQ puts Gemini inside a live finance dashboard. Different stacks, one standard.",
+    "marquee": "RakT3adiBot · 85 tests • Cast n Cue · Cloudflare D1 • GameStore TN · RTL • BudgetIQ · Gemini • SaletBot · Arabic-first"
   },
   "skills": {
     "num": "02 / SKILLS",
@@ -61,7 +61,7 @@
     "devops": "DevOps",
     "ai": "AI / Other",
     "evidence": {
-      "frontend": "Cast n Cue, Lumina",
+      "frontend": "Cast n Cue, GameStore TN",
       "backend": "Nouara (Laravel), RakT3adiBot",
       "databases": "Postgres, D1, SQLite",
       "devops": "GitHub Actions, systemd, pytest",
@@ -101,13 +101,13 @@
       "result": "A private-by-design, free app that bookmarks movies, series, and episodes — so your watchlist and progress are always one click away.",
       "one": "Episode-level tracking for every show you follow."
     },
-    "ecom": {
-      "sub": "Next.js · Stripe · PostgreSQL · Supabase",
-      "title": "Lumina — Full-Stack E-Commerce Platform",
-      "problem": "Running a real store means wiring catalog, cart, checkout, and fulfillment together — most templates stop at a static product grid.",
-      "solution": "Built a complete commerce engine: Supabase-backed catalog, auth, storage and order lifecycle, Stripe Checkout, locally-persisted cart, verified-purchase reviews, trending rankings, admin order fulfillment, and shipping rules.",
-      "result": "A single-system storefront where stock, reviews, payments, and fulfillment stay consistent from product page to delivered order.",
-      "one": "Catalog, cart, checkout and fulfillment in one system."
+    "gamestore": {
+      "sub": "Next.js · Cloudflare D1 · Arabic RTL",
+      "title": "GameStore TN — Gaming Accounts Marketplace",
+      "problem": "Tunisian gamers buy and sell game accounts through scattered Facebook posts and WhatsApp chats, with no listing, price, or availability in one place.",
+      "solution": "Built a bilingual Arabic/French marketplace on Cloudflare Workers + D1: a filterable catalog, RTL and LTR layouts, availability badges, a WhatsApp hand-off that pre-fills the listing, and an admin console with full CRUD and one-click mark-as-sold.",
+      "result": "A local marketplace that matches how payments actually happen here — listings stay current, and every purchase starts from a message that is already written.",
+      "one": "An Arabic-first marketplace for Tunisian gaming accounts."
     },
     "budgetiq": {
       "sub": "Next.js · Gemini AI · Supabase · Analytics",
@@ -214,6 +214,6 @@
     "location": "Tunis, Tunisia"
   },
   "strip": {
-    "items": "Cast n Cue · Cloudflare D1|RakT3adiBot · 85 tests|Lumina · Stripe|BudgetIQ · Gemini|SaletBot · Arabic-first|Nouara · Angular + Laravel"
+    "items": "Cast n Cue · Cloudflare D1|RakT3adiBot · 85 tests|GameStore TN · RTL|BudgetIQ · Gemini|SaletBot · Arabic-first|Nouara · Angular + Laravel"
   }
 }

@@ -48,8 +48,8 @@
     "num": "01 / نبذة عني",
     "h2": "مهندس يُنجز.",
     "sub": "ستة منتجات مُسلّمة: منصات ويب متكاملة وبوتات تيليغرام.",
-    "bio": "أبني المنتجات من البداية إلى النهاية — قاعدة البيانات، الواجهة البرمجية، الواجهة الرسومية، والنشر. RakT3adiBot مخطط مراجعة عربي بـ 85 اختباراً ومجدول دوري كل 30 ثانية وسبع نسخ احتياطية متبادلة؛ Cast n Cue يعمل على Cloudflare Workers وD1؛ Lumina متجر Stripe على Supabase؛ وBudgetIQ يضع Gemini داخل لوحة مالية حيّة. تقنيات مختلفة، ومعيار واحد.",
-    "marquee": "RakT3adiBot · 85 اختباراً • Cast n Cue · Cloudflare D1 • Lumina · Stripe • BudgetIQ · Gemini • SaletBot · العربية أولاً"
+    "bio": "أبني المنتجات من البداية إلى النهاية — قاعدة البيانات، الواجهة البرمجية، الواجهة الرسومية، والنشر. RakT3adiBot مخطط مراجعة عربي بـ 85 اختباراً ومجدول دوري كل 30 ثانية وسبع نسخ احتياطية متبادلة؛ Cast n Cue يعمل على Cloudflare Workers وD1؛ وBudgetIQ يضع Gemini داخل لوحة مالية حيّة. تقنيات مختلفة، ومعيار واحد.",
+    "marquee": "RakT3adiBot · 85 اختباراً • Cast n Cue · Cloudflare D1 • GameStore TN · RTL • BudgetIQ · Gemini • SaletBot · العربية أولاً"
   },
   "skills": {
     "num": "02 / المهارات",
@@ -61,7 +61,7 @@
     "devops": "DevOps",
     "ai": "الذكاء الاصطناعي / أخرى",
     "evidence": {
-      "frontend": "Cast n Cue، Lumina",
+      "frontend": "Cast n Cue، GameStore TN",
       "backend": "Nouara (Laravel)، RakT3adiBot",
       "databases": "Postgres، D1، SQLite",
       "devops": "GitHub Actions، systemd، pytest",
@@ -101,13 +101,13 @@
       "result": "تطبيق مجاني خصوصي بالتصميم يحفظ الأفلام والمسلسلات والحلقات، بحيث تبقى قائمتك وتقدمك على بُعد نقرة واحدة.",
       "one": "تتبّع الحلقات لكل مسلسل تتابعه."
     },
-    "ecom": {
-      "sub": "Next.js · Stripe · PostgreSQL · Supabase",
-      "title": "Lumina — منصة التجارة الإلكترونية المتكاملة",
-      "problem": "تشغيل متجر حقيقي يتطلب ربط الكتالوج وسلة الشراء والدفع والتوصيل معاً، بينما تتوقف معظم القوالب عند شبكة منتجات ثابتة.",
-      "solution": "بناء محرك تجاري متكامل: كتالوج قائم على Supabase ومصادقة وتخزين ودورة حياة كاملة للطلبات ودفع عبر Stripe Checkout وسلة مشتريات محفوظة محلياً ومراجعات مشتريات موثقة وترتيب المنتجات الرائجة وإدارة طلبات المسؤول وقواعد الشحن.",
-      "result": "متجر بنظام واحد تبقى فيه المخزون والمراجعات والمدفوعات والتوصيل متناسقة من صفحة المنتج حتى توصيل الطلب.",
-      "one": "كتالوج وسلة ودفع وتنفيذ في نظام واحد."
+    "gamestore": {
+      "sub": "Next.js · Cloudflare D1 · عربي RTL",
+      "title": "GameStore TN — سوق حسابات الغيمنغ",
+      "problem": "في تونس تُباع حسابات الألعاب وتُشترى عبر منشورات فيسبوك متفرقة ومحادثات واتساب، دون إعلان أو سعر أو توفّر في مكان واحد.",
+      "solution": "بناء سوق ثنائي اللغة (عربي/فرنسي) على Cloudflare Workers + D1: كتالوج قابل للتصفية، وتخطيطان RTL وLTR، وشارات توفّر، وتحويل إلى واتساب برسالة مُعدّة مسبقاً، ولوحة إدارة بإنشاء وتعديل وحذف الإعلانات وتعليم الحساب كمُباع بنقرة واحدة.",
+      "result": "سوق محلي يطابق طريقة الدفع الفعلية هنا — إعلانات محدّثة، وكل عملية شراء تبدأ برسالة جاهزة.",
+      "one": "سوق عربي أولاً لحسابات الغيمنغ في تونس."
     },
     "budgetiq": {
       "sub": "Next.js · Gemini AI · Supabase · تحليلات",
@@ -214,6 +214,6 @@
     "location": "تونس، تونس"
   },
   "strip": {
-    "items": "Cast n Cue · Cloudflare D1|RakT3adiBot · 85 اختباراً|Lumina · Stripe|BudgetIQ · Gemini|SaletBot · العربية أولاً|Nouara · Angular + Laravel"
+    "items": "Cast n Cue · Cloudflare D1|RakT3adiBot · 85 اختباراً|GameStore TN · RTL|BudgetIQ · Gemini|SaletBot · العربية أولاً|Nouara · Angular + Laravel"
   }
 }
