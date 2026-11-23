@@ -79,9 +79,8 @@ export default function Navbar() {
         <div
           ref={menuRef}
           id="primary-navigation"
-          className={`${
-            isMobileOpen ? "flex" : "hidden"
-          } lg:flex items-center gap-3 max-lg:absolute max-lg:top-full max-lg:left-1/2 max-lg:-translate-x-1/2 max-lg:flex-col max-lg:bg-[rgba(23,18,19,0.98)] max-lg:p-6 max-lg:gap-1 max-lg:rounded-2xl max-lg:border max-lg:min-w-[220px] max-lg:mt-3`}
+          data-open={isMobileOpen}
+          className="nav-menu items-center gap-3 lg:flex max-lg:absolute max-lg:top-full max-lg:left-1/2 max-lg:-translate-x-1/2 max-lg:flex-col max-lg:bg-[rgba(23,18,19,0.98)] max-lg:p-6 max-lg:gap-1 max-lg:rounded-2xl max-lg:border max-lg:min-w-[220px] max-lg:mt-3"
           style={{ borderColor: "rgba(243, 236, 230, 0.09)" }}
         >
           {navLinks.map((link) => (
@@ -138,11 +137,20 @@ export default function Navbar() {
               strokeWidth="2"
               aria-hidden="true"
             >
-              {isMobileOpen ? (
-                <path d="M18 6L6 18M6 6l12 12" />
-              ) : (
-                <path d="M3 12h18M3 6h18M3 18h18" />
-              )}
+              {/* Both glyphs stay mounted so the toggle crossfades instead of
+                  swapping in a single frame. */}
+              <path
+                d="M3 12h18M3 6h18M3 18h18"
+                className={`transition-opacity duration-150 ${
+                  isMobileOpen ? "opacity-0" : "opacity-100"
+                }`}
+              />
+              <path
+                d="M18 6L6 18M6 6l12 12"
+                className={`transition-opacity duration-150 ${
+                  isMobileOpen ? "opacity-100" : "opacity-0"
+                }`}
+              />
             </svg>
           </button>
         </div>

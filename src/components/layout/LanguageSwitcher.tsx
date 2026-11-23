@@ -64,11 +64,13 @@ export default function LanguageSwitcher() {
         </svg>
       </button>
 
-      {/* A disclosure of buttons, not a listbox: no arrow-key contract to fake. */}
+      {/* A disclosure of buttons, not a listbox: no arrow-key contract to fake.
+          Always mounted so it can grow from its trigger; `visibility` keeps the
+          collapsed menu out of the accessibility tree and the tab order. */}
       <div
         id="language-menu"
-        hidden={!isOpen}
-        className="absolute top-[calc(100%+6px)] end-0 bg-[var(--color-surface)] border border-[var(--color-border-2)] rounded-xl p-1.5 min-w-[150px] shadow-xl"
+        data-open={isOpen}
+        className="lang-menu absolute top-[calc(100%+6px)] end-0 bg-[var(--color-surface)] border border-[var(--color-border-2)] rounded-xl p-1.5 min-w-[150px] shadow-xl"
         style={{ boxShadow: "0 12px 32px -8px rgba(0,0,0,0.6)" }}
       >
         {languages.map((lang) => (

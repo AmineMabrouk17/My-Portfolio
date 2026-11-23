@@ -200,7 +200,7 @@ export default function Contact() {
                 tabIndex={-1}
                 role="status"
                 aria-live="polite"
-                className="relative rounded-2xl border border-[var(--color-border-2)] bg-white/[0.03] p-6 outline-none"
+                className="handoff-panel relative rounded-2xl border border-[var(--color-border-2)] bg-white/[0.03] p-6 outline-none"
               >
                 <div className="text-[var(--color-text)] text-lg font-semibold mb-2">
                   {t("contact.form.sentTitle")}
