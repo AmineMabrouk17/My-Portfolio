@@ -3,7 +3,7 @@
 import { useI18n } from "@/i18n/I18nContext";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import { AnimatedText } from "@/components/motion/animated-text";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 
 type CaseStudy = { problem: string; solution: string; result: string };
@@ -138,19 +138,33 @@ function CaseStudyDrawer({
 
 function ProjectCard({ project, index }: { project: Project; index: number }) {
   const { t } = useI18n();
+  const shotRef = useRef<HTMLImageElement>(null);
+
+  // A cached image can finish decoding before React attaches onLoad, so the
+  // mount check covers it and the handler covers everything after.
+  useEffect(() => {
+    const img = shotRef.current;
+    if (img?.complete && img.naturalWidth > 0) {
+      img.dataset.loaded = "true";
+    }
+  }, []);
 
   return (
     <ScrollReveal delay={(index % 2) * 80} className="h-full">
       <article className="project-card group flex h-full flex-col overflow-hidden rounded-[18px] border border-[var(--color-border)] bg-[var(--color-surface)] transition-colors duration-300 hover:border-[var(--color-accent)]/60">
         <div className="relative aspect-[3/2] w-full overflow-hidden border-b border-[var(--color-border)] bg-[var(--color-bg)]">
           <img
+            ref={shotRef}
             src={project.screenshot}
             alt={`${t(project.titleKey)} — ${t("proj.alt")}`}
             width={1200}
             height={800}
             loading="lazy"
             decoding="async"
-            className="absolute inset-0 h-full w-full object-cover saturate-[.85] transition duration-300 group-hover:saturate-100"
+            onLoad={(e) => {
+              e.currentTarget.dataset.loaded = "true";
+            }}
+            className="project-shot absolute inset-0 h-full w-full object-cover saturate-[.85] transition duration-300 group-hover:saturate-100"
           />
           {/* Warm scrim keeps foreign app palettes inside the room at rest;
               full colour is the hover/focus reward. */}

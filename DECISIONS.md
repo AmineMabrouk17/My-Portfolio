@@ -23,3 +23,11 @@
 **Why:** Three entrance systems already run (GSAP ScrollReveal, AnimatedText word masks, CSS view-timelines), so adding more entrances would over-animate the page. The gaps were all single-frame teleports. Press feedback is declared on `:active` only so it cannot overwrite the hover transitions each element already has, and `scale`/`translate` are used where a utility class already owns `transform`, so the two never fight.
 
 **Alternative considered:** A global `transition: transform` on every `a`/`button` — it would have replaced `transition-colors` utilities and killed every hover colour ease on the site.
+
+## 2026-11-23 — Bridge the remaining teleports with `@starting-style`
+
+**Decision:** Text swaps and returning panels get their entrance from `@starting-style` plus a keyed remount (`SwapLabel`), and lazy screenshots fade in over their existing scrim once decoded, gated on the prepaint `html.js` class.
+
+**Why:** `@starting-style` needs no presence state or timers for a mount-only entrance, and a `key` on the label span is enough to make React throw the old text away and animate the new one. The screenshots are `loading="lazy"`, so the decode can land before React attaches `onLoad`; a mount check on `img.complete` covers the cached case and keeps six images from popping inside already-revealed cards.
+
+**Alternative considered:** Switching the cards to `next/image` with a blur placeholder — the right long-term fix and it clears the `no-img-element` warning, but it changes image sizing and LCP behaviour, so it stays a separate change.

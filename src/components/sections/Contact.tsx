@@ -9,6 +9,19 @@ const EMAIL = "amx72001@gmail.com";
 
 type FieldErrors = { name?: string; email?: string; message?: string };
 
+/**
+ * A label that remounts on change, so `@starting-style` gives every swap an
+ * entrance. The key sits on the returned span: React reconciles it in place
+ * and a different key forces the remount the animation needs.
+ */
+function SwapLabel({ text, className = "" }: { text: string; className?: string }) {
+  return (
+    <span key={text} className={`label-swap ${className}`}>
+      {text}
+    </span>
+  );
+}
+
 export default function Contact() {
   const { t } = useI18n();
   const [name, setName] = useState("");
@@ -17,15 +30,18 @@ export default function Contact() {
   const [message, setMessage] = useState("");
   const [errors, setErrors] = useState<FieldErrors>({});
   const [handoff, setHandoff] = useState(false);
+  const [leaving, setLeaving] = useState(false);
   const [copyState, setCopyState] = useState<{
     target: "address" | "message" | null;
     ok: boolean;
   }>({ target: null, ok: false });
   const sentRef = useRef<HTMLDivElement>(null);
   const copyTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const leaveTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => () => {
     if (copyTimer.current) clearTimeout(copyTimer.current);
+    if (leaveTimer.current) clearTimeout(leaveTimer.current);
   }, []);
 
   useEffect(() => {
@@ -115,6 +131,17 @@ export default function Contact() {
     void copyText(`${t("contact.form.subject")}: ${subject}\n\n${body}`, "message");
   };
 
+  // Hold the panel through its fade before the form comes back, so the swap
+  // is one dissolve rather than an unmount and a pop.
+  const backToForm = () => {
+    setLeaving(true);
+    if (leaveTimer.current) clearTimeout(leaveTimer.current);
+    leaveTimer.current = setTimeout(() => {
+      setHandoff(false);
+      setLeaving(false);
+    }, 180);
+  };
+
   const inputClass =
     "w-full bg-white/[0.04] border rounded-xl px-4 py-3 text-[var(--color-text)] text-base placeholder:text-[var(--color-muted-2)] outline-none transition-all duration-200 focus:bg-white/[0.06] focus:border-[var(--color-accent)]";
 
@@ -171,7 +198,10 @@ export default function Contact() {
                 onClick={copyAddress}
                 className="inline-flex min-h-[44px] items-center gap-2 rounded-full border border-[var(--color-field-border)] px-4 text-[13px] font-semibold text-[var(--color-muted)] transition-colors hover:text-[var(--color-text)]"
               >
-                {copyLabel("address", t("contact.copy"))}
+                <SwapLabel
+                  text={copyLabel("address", t("contact.copy"))}
+                  className="min-w-[54px] text-center"
+                />
               </button>
             </div>
 
@@ -188,9 +218,12 @@ export default function Contact() {
               <button
                 type="button"
                 onClick={copyMessage}
-                className="min-h-[44px] inline-flex items-center underline decoration-[var(--color-field-border)] underline-offset-4 hover:text-[var(--color-text)]"
+                className="min-h-[44px] inline-flex items-center hover:text-[var(--color-text)]"
               >
-                {copyLabel("message", t("contact.copyMessage"))}
+                <SwapLabel
+                  text={copyLabel("message", t("contact.copyMessage"))}
+                  className="min-w-[84px] underline decoration-[var(--color-field-border)] underline-offset-4"
+                />
               </button>
             </div>
 
@@ -200,6 +233,7 @@ export default function Contact() {
                 tabIndex={-1}
                 role="status"
                 aria-live="polite"
+                data-leaving={leaving}
                 className="handoff-panel relative rounded-2xl border border-[var(--color-border-2)] bg-white/[0.03] p-6 outline-none"
               >
                 <div className="text-[var(--color-text)] text-lg font-semibold mb-2">
@@ -228,12 +262,16 @@ export default function Contact() {
                     onClick={copyMessage}
                     className="inline-flex min-h-[44px] items-center gap-2 rounded-xl px-5 text-sm font-semibold text-[var(--color-muted)] transition-colors hover:text-[var(--color-text)]"
                   >
-                    {copyLabel("message", t("contact.copyMessage"))}
+                    <SwapLabel
+                      text={copyLabel("message", t("contact.copyMessage"))}
+                      className="min-w-[84px]"
+                    />
                   </button>
                   <button
                     type="button"
-                    onClick={() => setHandoff(false)}
-                    className="inline-flex min-h-[44px] items-center gap-2 rounded-xl px-5 text-sm font-semibold text-[var(--color-muted)] transition-colors hover:text-[var(--color-text)]"
+                    onClick={backToForm}
+                    disabled={leaving}
+                    className="inline-flex min-h-[44px] items-center gap-2 rounded-xl px-5 text-sm font-semibold text-[var(--color-muted)] transition-colors hover:text-[var(--color-text)] disabled:cursor-default"
                   >
                     {t("contact.form.sendAnother")}
                   </button>
@@ -245,7 +283,7 @@ export default function Contact() {
                 action={`mailto:${EMAIL}`}
                 method="post"
                 encType="text/plain"
-                className="relative grid grid-cols-2 gap-4 max-md:grid-cols-1"
+                className="contact-form relative grid grid-cols-2 gap-4 max-md:grid-cols-1"
                 noValidate
               >
                 {errorCount > 0 && (

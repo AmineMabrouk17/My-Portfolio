@@ -454,6 +454,60 @@ footer::before {
   }
 }
 
+/* "Send another" holds the panel through a fade before the form returns,
+   so the swap is one dissolve instead of two pops. */
+.handoff-panel[data-leaving="true"] {
+  opacity: 0;
+  transition: opacity 180ms var(--ease-out);
+}
+
+/* The form it hands back to fades in on mount. */
+.contact-form {
+  opacity: 1;
+  transition: opacity 200ms var(--ease-out);
+}
+
+@starting-style {
+  .contact-form {
+    opacity: 0;
+  }
+}
+
+/* Project screenshots: the scrim below them is the placeholder, so the
+   bitmap can fade over it instead of popping in on decode. Gated on the
+   prepaint `js` class so a broken script never hides the work. `filter` is
+   listed here because this unlayered rule owns the shorthand — the
+   saturate-on-hover still has to run. */
+html.js .project-shot {
+  opacity: 0;
+  transition:
+    opacity 240ms var(--ease-out),
+    filter 300ms ease;
+}
+
+html.js .project-shot[data-loaded="true"] {
+  opacity: 1;
+}
+
+/* Copy label: remounted on every state change, so `@starting-style` gives the
+   swap a bridge. The underline lives on the label, not the button, so a
+   reserved min-width cannot stretch it. */
+.label-swap {
+  display: inline-block;
+  opacity: 1;
+  translate: 0 0;
+  transition:
+    opacity 140ms var(--ease-out),
+    translate 140ms var(--ease-out);
+}
+
+@starting-style {
+  .label-swap {
+    opacity: 0;
+    translate: 0 2px;
+  }
+}
+
 /* Back to top. Stays mounted so it can leave by the edge it arrived on. */
 .back-to-top {
   opacity: 0;
@@ -540,6 +594,8 @@ html[dir="rtl"] .lang-menu {
   .case-study-panel,
   .case-study-panel[data-open="true"],
   .handoff-panel,
+  .handoff-panel[data-leaving="true"],
+  .contact-form,
   .back-to-top,
   .back-to-top[data-visible="true"],
   .lang-menu,
