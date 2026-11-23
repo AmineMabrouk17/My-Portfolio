@@ -19,7 +19,7 @@ A personal portfolio for Amine Mabrouk, Full Stack Developer. It exists to conve
 
 ## Positioning
 
-Range with delivery depth: production full-stack web platforms (Angular/Laravel, Next.js, Cloudflare, Supabase) and shipped Telegram bots, all built end to end — schema, API, UI, deployment, CI/CD — rather than one narrow stack demonstrated ten times. The claim a neighboring portfolio could not copy is that the same person ships an Arabic exam-planner bot, a Stripe storefront, and an AI finance dashboard.
+Range with delivery depth: production full-stack web platforms (Angular/Laravel, Next.js, Cloudflare, Supabase) and shipped Telegram bots, all built end to end — schema, API, UI, deployment, CI/CD — rather than one narrow stack demonstrated ten times. The claim a neighboring portfolio could not copy is that the same person ships an Arabic exam-planner bot, an Arabic-first gaming marketplace, and an AI finance dashboard.
 
 ## Operating Context
 
@@ -50,7 +50,7 @@ Range with delivery depth: production full-stack web platforms (Angular/Laravel,
 Real, publicly reachable projects with live URLs and source repos, as curated in `src/components/sections/Projects.tsx`:
 
 - Cast n Cue — Next.js on Cloudflare Workers + D1, TMDB/Trakt/TVmaze, Better Auth.
-- Lumina — Next.js + Supabase + Stripe commerce platform.
+- GameStore TN — Next.js on Cloudflare Workers + D1, Arabic/French RTL marketplace for game accounts.
 - BudgetIQ — Next.js + Supabase + Gemini AI budget planner.
 - RakT3adiBot — Python Telegram exam-revision bot, 85 tests.
 - SaletBot — Python Telegram prayer-times/athkar bot.

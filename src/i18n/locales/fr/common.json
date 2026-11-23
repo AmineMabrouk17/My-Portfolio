@@ -48,8 +48,8 @@
     "num": "01 / À PROPOS",
     "h2": "Ingénieur qui livre.",
     "sub": "Six produits livrés : plateformes web full-stack et bots Telegram.",
-    "bio": "Je construis des produits de bout en bout — schéma, API, interface, déploiement. RakT3adiBot est un planificateur de révision arabe avec 85 tests, un ordonnanceur idempotent de 30 secondes et sept sauvegardes tournantes ; Cast n Cue tourne sur Cloudflare Workers et D1 ; Lumina est une boutique Stripe sur Supabase ; BudgetIQ place Gemini dans un tableau de bord financier. Des stacks différentes, un seul standard.",
-    "marquee": "RakT3adiBot · 85 tests • Cast n Cue · Cloudflare D1 • Lumina · Stripe • BudgetIQ · Gemini • SaletBot · arabe d'abord"
+    "bio": "Je construis des produits de bout en bout — schéma, API, interface, déploiement. RakT3adiBot est un planificateur de révision arabe avec 85 tests, un ordonnanceur idempotent de 30 secondes et sept sauvegardes tournantes ; Cast n Cue tourne sur Cloudflare Workers et D1 ; BudgetIQ place Gemini dans un tableau de bord financier. Des stacks différentes, un seul standard.",
+    "marquee": "RakT3adiBot · 85 tests • Cast n Cue · Cloudflare D1 • GameStore TN · RTL • BudgetIQ · Gemini • SaletBot · arabe d'abord"
   },
   "skills": {
     "num": "02 / COMPÉTENCES",
@@ -61,7 +61,7 @@
     "devops": "DevOps",
     "ai": "IA / Autres",
     "evidence": {
-      "frontend": "Cast n Cue, Lumina",
+      "frontend": "Cast n Cue, GameStore TN",
       "backend": "Nouara (Laravel), RakT3adiBot",
       "databases": "Postgres, D1, SQLite",
       "devops": "GitHub Actions, systemd, pytest",
@@ -101,13 +101,13 @@
       "result": "Une application gratuite et privée par conception qui enregistre films, séries et épisodes — votre liste et votre progression toujours à un clic.",
       "one": "Suivi épisode par épisode de toutes vos séries."
     },
-    "ecom": {
-      "sub": "Next.js · Stripe · PostgreSQL · Supabase",
-      "title": "Lumina — Plateforme E-Commerce Full-Stack",
-      "problem": "Faire tourner une vraie boutique impose de relier catalogue, panier, paiement et expédition — la plupart des modèles s'arrêtent à une simple grille de produits.",
-      "solution": "Construction d'un moteur commercial complet : catalogue Supabase, authentification, stockage et cycle de vie des commandes, paiement Stripe Checkout, panier persistant en local, avis de clients vérifiés, classement tendance, traitement des commandes côté admin et règles d'expédition.",
-      "result": "Une boutique à système unique où stocks, avis, paiements et expédition restent cohérents de la page produit jusqu'à la livraison de la commande.",
-      "one": "Catalogue, panier, paiement et logistique dans un seul système."
+    "gamestore": {
+      "sub": "Next.js · Cloudflare D1 · Arabe RTL",
+      "title": "GameStore TN — Marketplace de comptes gaming",
+      "problem": "En Tunisie, les comptes de jeux s'achètent et se vendent via des posts Facebook dispersés et des conversations WhatsApp, sans annonce, prix ni disponibilité au même endroit.",
+      "solution": "Construction d'une marketplace bilingue arabe/français sur Cloudflare Workers + D1 : catalogue filtrable, mises en page RTL et LTR, badges de disponibilité, passage vers WhatsApp avec message pré-rempli, et console d'administration avec CRUD complet et passage en « vendu » en un clic.",
+      "result": "Une marketplace locale alignée sur la réalité des paiements ici — annonces à jour, et chaque achat démarre par un message déjà rédigé.",
+      "one": "Une marketplace arabe-first pour les comptes gaming en Tunisie."
     },
     "budgetiq": {
       "sub": "Next.js · Gemini AI · Supabase · Analytics",
@@ -214,6 +214,6 @@
     "location": "Tunis, Tunisie"
   },
   "strip": {
-    "items": "Cast n Cue · Cloudflare D1|RakT3adiBot · 85 tests|Lumina · Stripe|BudgetIQ · Gemini|SaletBot · arabe d'abord|Nouara · Angular + Laravel"
+    "items": "Cast n Cue · Cloudflare D1|RakT3adiBot · 85 tests|GameStore TN · RTL|BudgetIQ · Gemini|SaletBot · arabe d'abord|Nouara · Angular + Laravel"
   }
 }
