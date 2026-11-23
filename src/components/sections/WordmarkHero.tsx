@@ -72,10 +72,10 @@ export default function WordmarkHero() {
         <Image
           src="/hero-amine.png"
           alt={t("hero.portraitAlt")}
-          width={691}
-          height={569}
+          width={820}
+          height={1150}
           priority
-          sizes="(min-width: 800px) 42vw, 100vw"
+          sizes="(min-width: 800px) 22vw, 86vw"
         />
       </div>
 

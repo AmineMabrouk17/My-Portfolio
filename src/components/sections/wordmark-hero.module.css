@@ -133,8 +133,8 @@
   position: relative;
   z-index: 3;
   justify-self: center;
-  width: min(96vw, 28rem);
-  margin: -4vw calc(50vw - min(96vw, 28rem) / 2) 0;
+  width: min(86vw, 22rem);
+  margin: -20vw calc(50vw - min(86vw, 22rem) / 2) 0;
   transform-origin: 50% 100%;
   will-change: transform;
   animation: avatarRise 1s var(--ease-out, cubic-bezier(0.2, 0.7, 0.2, 1)) 0.12s backwards;
@@ -414,10 +414,12 @@
 
   .portrait {
     width: auto;
-    height: min(68%, 40vw);
+    height: min(52%, 30vw);
     margin: 0;
     position: absolute;
-    bottom: 0;
+    /* bottoms out inside the wordmark: hair starts halfway down the letters,
+       keyed off the same clamp/font-size the wordmark uses */
+    top: calc(clamp(4.75rem, 10vh, 6.5rem) + min(21.5vw, 40vh) * 0.5);
     inset-inline-start: 50%;
     translate: -50%;
   }
