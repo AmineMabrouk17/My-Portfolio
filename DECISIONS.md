@@ -31,3 +31,11 @@
 **Why:** `@starting-style` needs no presence state or timers for a mount-only entrance, and a `key` on the label span is enough to make React throw the old text away and animate the new one. The screenshots are `loading="lazy"`, so the decode can land before React attaches `onLoad`; a mount check on `img.complete` covers the cached case and keeps six images from popping inside already-revealed cards.
 
 **Alternative considered:** Switching the cards to `next/image` with a blur placeholder — the right long-term fix and it clears the `no-img-element` warning, but it changes image sizing and LCP behaviour, so it stays a separate change.
+
+## 2026-11-23 — RakT3adiBot card leads with the AI and vision work
+
+**Decision:** The RakT3adiBot card now describes the natural-language layer (allowlisted actions, confirmation gate, Gemini with NVIDIA fallback) and photo/PDF reading, and every mention of its test count moved from 85 to 130 (hero bio, marquee, project strip, card result, `PRODUCT.md`). The card's tags gain Gemini API and PyMuPDF, and the skills AI row lists RakT3adiBot.
+
+**Why:** The bot repo shipped `feat/ai-natural-language` and the vision work after the copy was written, so the card advertised the 2/3 counter and left its two strongest features invisible. `pytest` in that repo collects and passes 130 tests, which makes the number safe to quote.
+
+**Alternative considered:** Bumping only the test count — cheap, but keeps the card describing a bot that no longer matches the repo.

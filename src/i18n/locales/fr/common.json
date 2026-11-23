@@ -48,8 +48,8 @@
     "num": "01 / À PROPOS",
     "h2": "Ingénieur qui livre.",
     "sub": "Six produits livrés : plateformes web full-stack et bots Telegram.",
-    "bio": "Je construis des produits de bout en bout — schéma, API, interface, déploiement. RakT3adiBot est un planificateur de révision arabe avec 85 tests, un ordonnanceur idempotent de 30 secondes et sept sauvegardes tournantes ; Cast n Cue tourne sur Cloudflare Workers et D1 ; BudgetIQ place Gemini dans un tableau de bord financier. Des stacks différentes, un seul standard.",
-    "marquee": "RakT3adiBot · 85 tests • Cast n Cue · Cloudflare D1 • GameStore TN · RTL • BudgetIQ · Gemini • SaletBot · arabe d'abord"
+    "bio": "Je construis des produits de bout en bout — schéma, API, interface, déploiement. RakT3adiBot est un planificateur de révision arabe-first qui lit les devoirs photographiés et comprend le tunisien, avec 130 tests, un ordonnanceur idempotent de 30 secondes et sept sauvegardes tournantes ; Cast n Cue tourne sur Cloudflare Workers et D1 ; BudgetIQ place Gemini dans un tableau de bord financier. Des stacks différentes, un seul standard.",
+    "marquee": "RakT3adiBot · 130 tests • Cast n Cue · Cloudflare D1 • GameStore TN · RTL • BudgetIQ · Gemini • SaletBot · arabe d'abord"
   },
   "skills": {
     "num": "02 / COMPÉTENCES",
@@ -65,7 +65,7 @@
       "backend": "Nouara (Laravel), RakT3adiBot",
       "databases": "Postgres, D1, SQLite",
       "devops": "GitHub Actions, systemd, pytest",
-      "ai": "BudgetIQ, SaletBot"
+      "ai": "BudgetIQ, RakT3adiBot, SaletBot"
     }
   },
   "exp": {
@@ -118,12 +118,12 @@
       "one": "Enregistrez vos dépenses en discutant avec une IA."
     },
     "rakt3adi": {
-      "sub": "Python · Telegram Bot API · SQLite",
+      "sub": "Python · Telegram Bot API · Gemini · SQLite",
       "title": "RakT3adiBot — Planificateur de révision",
-      "problem": "Les plans de révision vivent dans des notes et des groupes, alors les dates d'examen et la progression des leçons se perdent.",
-      "solution": "Développement d'un bot Telegram arabe qui suit les examens et les leçons, coche la révision avec un compteur 2/3, envoie des rappels J-2 et J-1 ainsi qu'une dua du matin, et inclut un panneau d'administration sur invitation pour les utilisateurs, les modèles et les statistiques. Un planificateur idempotent de 30 secondes survit aux redémarrages, et des sauvegardes SQLite quotidiennes conservent sept copies.",
-      "result": "L'étudiant ouvre une seule conversation pour voir quoi réviser aujourd'hui ; 85 tests couvrent les parcours de bout en bout.",
-      "one": "Planificateur de révision en arabe sur Telegram."
+      "problem": "Les plans de révision vivent dans des notes et des groupes, alors les dates d'examen filent — et un devoir photographié doit être retapé avant d'être planifié.",
+      "solution": "Développement d'un bot Telegram arabe-first qui comprend le tunisien, le français et l'anglais, ramène la demande à une action autorisée et attend une confirmation — Gemini en primaire, NVIDIA en secours, chaque appel journalisé. Une photo ou un PDF devient transcription fidèle, résumé, questions de révision ou fiche d'examen en un geste. Rappels J-2 et J-1, dua du matin, ordonnanceur idempotent de 30 secondes, sept sauvegardes SQLite tournantes, et un panneau d'administration sur invitation pour les utilisateurs, les modèles et les statistiques.",
+      "result": "L'étudiant discute, photographie une page et révise depuis une seule conversation ; 130 tests couvrent les parcours de bout en bout.",
+      "one": "Un planificateur de révision arabe avec qui parler — ou à qui donner ses devoirs."
     },
     "saletbot": {
       "sub": "Python · Gemini · Pillow · SQLite",
@@ -214,6 +214,6 @@
     "location": "Tunis, Tunisie"
   },
   "strip": {
-    "items": "Cast n Cue · Cloudflare D1|RakT3adiBot · 85 tests|GameStore TN · RTL|BudgetIQ · Gemini|SaletBot · arabe d'abord|Nouara · Angular + Laravel"
+    "items": "Cast n Cue · Cloudflare D1|RakT3adiBot · 130 tests|GameStore TN · RTL|BudgetIQ · Gemini|SaletBot · arabe d'abord|Nouara · Angular + Laravel"
   }
 }
