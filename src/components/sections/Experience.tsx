@@ -236,7 +236,7 @@ export default function Experience() {
                       >
                         <span
                           aria-hidden="true"
-                          className="block h-4 w-4 rounded-full transition-colors duration-300"
+                          className="block h-4 w-4 rounded-full transition-[background-color,border-color,box-shadow] duration-200 ease-[var(--ease-out)]"
                           style={{
                             background: isActive ? "var(--color-accent)" : "var(--color-bg-2)",
                             border: isActive ? "1px solid var(--color-accent)" : "1px solid var(--color-border-2)",

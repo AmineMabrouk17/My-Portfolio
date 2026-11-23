@@ -35,6 +35,10 @@
 :root {
   --grad: linear-gradient(135deg, #ff6b47 0%, #ffa552 100%);
   --shadow: 0 20px 50px -20px rgba(0, 0, 0, 0.6);
+  /* Shared easing. Mirrors EASE_OUT_CSS / EASE_IN_OUT in src/lib/ease.ts so
+     CSS and the GSAP/motion code cannot drift apart. */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
   /* Aliases the site's text color for motion components (beui.dev) that
      read `var(--foreground)` / use `bg-foreground`, `text-foreground`. */
   --foreground: var(--color-text);
@@ -385,5 +389,176 @@ footer::before {
   footer::before {
     transition: none;
     animation: none;
+  }
+}
+
+/* ------------------------------------------------------------------
+   State changes. The site already animates things *entering* on scroll;
+   these rules cover what used to happen in a single frame: a press, a
+   disclosure opening, a panel appearing.
+   ------------------------------------------------------------------ */
+
+/* Contact, every tappable surface. 3% at 140ms reads as contact, not bounce.
+   Declared on `:active` only, so the release stays instant and crisp — and
+   so it cannot overwrite the hover transitions these elements already have. */
+@media (prefers-reduced-motion: no-preference) {
+  :where(a[href], button:not(:disabled), summary, [role="button"]):active {
+    scale: 0.97;
+    transition: scale 140ms var(--ease-out);
+  }
+}
+
+/* Case-study disclosure. Always mounted; the collapsed row keeps the copy
+   out of the accessibility tree without unmounting it, so height can travel. */
+.case-study-panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    grid-template-rows 240ms var(--ease-out),
+    opacity 140ms ease,
+    visibility 0s linear 240ms;
+}
+
+.case-study-panel > * {
+  overflow: hidden;
+}
+
+.case-study-panel[data-open="true"] {
+  grid-template-rows: 1fr;
+  opacity: 1;
+  visibility: visible;
+  transition:
+    grid-template-rows 240ms var(--ease-out),
+    opacity 160ms ease 60ms,
+    visibility 0s;
+}
+
+/* Send-success panel: mount-only entry, so `@starting-style` needs no JS. */
+.handoff-panel {
+  opacity: 1;
+  translate: 0 0;
+  scale: 1;
+  transition:
+    opacity 260ms var(--ease-out),
+    translate 260ms var(--ease-out),
+    scale 260ms var(--ease-out);
+}
+
+@starting-style {
+  .handoff-panel {
+    opacity: 0;
+    translate: 0 8px;
+    scale: 0.98;
+  }
+}
+
+/* Back to top. Stays mounted so it can leave by the edge it arrived on. */
+.back-to-top {
+  opacity: 0;
+  translate: 0 10px;
+  scale: 0.94;
+  pointer-events: none;
+  transition:
+    opacity 180ms var(--ease-out),
+    translate 180ms var(--ease-out),
+    scale 180ms var(--ease-out),
+    color 200ms ease,
+    border-color 200ms ease;
+}
+
+.back-to-top[data-visible="true"] {
+  opacity: 1;
+  translate: 0 0;
+  scale: 1;
+  pointer-events: auto;
+}
+
+/* The visible state outranks the generic `:active` press rule, so the pill
+   needs its own. */
+.back-to-top[data-visible="true"]:active {
+  scale: 0.97;
+}
+
+/* Mobile nav menu — grows out of the toggle at the top of the pill.
+   Desktop keeps the plain flex row; only the collapsed mobile state animates.
+   Uses `transform`, not `translate`/`scale`, because the centering utility on
+   this element already owns the `translate` property. */
+@media (max-width: 1023.98px) {
+  .nav-menu {
+    display: flex;
+    transform-origin: top center;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-6px) scale(0.97);
+    transition:
+      opacity 180ms var(--ease-out),
+      transform 180ms var(--ease-out),
+      visibility 0s linear 180ms;
+  }
+
+  .nav-menu[data-open="true"] {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+    transition:
+      opacity 180ms var(--ease-out),
+      transform 180ms var(--ease-out),
+      visibility 0s;
+  }
+}
+
+/* Language disclosure — same recipe, anchored to its trigger. */
+.lang-menu {
+  transform-origin: top right;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-4px) scale(0.96);
+  transition:
+    opacity 160ms var(--ease-out),
+    transform 160ms var(--ease-out),
+    visibility 0s linear 160ms;
+}
+
+html[dir="rtl"] .lang-menu {
+  transform-origin: top left;
+}
+
+.lang-menu[data-open="true"] {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+  transition:
+    opacity 160ms var(--ease-out),
+    transform 160ms var(--ease-out),
+    visibility 0s;
+}
+
+/* Reduced motion: keep the state change legible, drop the travel. */
+@media (prefers-reduced-motion: reduce) {
+  .case-study-panel,
+  .case-study-panel[data-open="true"],
+  .handoff-panel,
+  .back-to-top,
+  .back-to-top[data-visible="true"],
+  .lang-menu,
+  .lang-menu[data-open="true"] {
+    scale: none;
+    translate: none;
+    transform: none;
+    transition-property: opacity, visibility;
+    transition-duration: 120ms, 0s;
+    transition-timing-function: linear;
+  }
+
+  /* Transform only: the `translate` property here is the horizontal
+     centering, and must survive. */
+  .nav-menu,
+  .nav-menu[data-open="true"] {
+    transform: none;
+    transition-property: opacity, visibility;
+    transition-duration: 120ms, 0s;
+    transition-timing-function: linear;
   }
 }

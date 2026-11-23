@@ -26,12 +26,13 @@ export default function BackToTop() {
     return () => window.removeEventListener("scroll", onScroll);
   }, [handleScroll]);
 
-  if (!isVisible) return null;
-
   return (
     <a
       href="#top"
-      className="fixed bottom-6 end-6 sm:bottom-8 sm:end-8 w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-[var(--color-surface)] border border-[var(--color-border)] grid place-items-center text-[var(--color-muted)] hover:text-[var(--color-accent)] hover:border-[var(--color-accent)] transition-all duration-200 hover:-translate-y-1 z-50"
+      data-visible={isVisible}
+      tabIndex={isVisible ? undefined : -1}
+      aria-hidden={!isVisible}
+      className="back-to-top fixed bottom-6 end-6 sm:bottom-8 sm:end-8 w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-[var(--color-surface)] border border-[var(--color-border)] grid place-items-center text-[var(--color-muted)] hover:text-[var(--color-accent)] hover:border-[var(--color-accent)] z-50"
       style={{ boxShadow: "var(--shadow)" }}
       aria-label={t("nav.backToTop")}
     >

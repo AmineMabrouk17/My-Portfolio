@@ -118,20 +118,19 @@ function CaseStudyDrawer({
       </button>
 
       {/* The panel element always exists so aria-controls is never dangling;
-          `hidden` keeps collapsed copy out of the accessibility tree. */}
-      <div
-        id={panelId}
-        hidden={!open}
-        className="mt-3 flex flex-col gap-2.5 text-[15px] leading-[1.55]"
-      >
-        {(["problem", "solution", "result"] as const).map((key) => (
-          <div key={key} className="flex gap-2.5">
-            <span className="whitespace-nowrap font-semibold text-[var(--color-accent-2)]">
-              {t(`proj.labels.${key}`)}:
-            </span>
-            <span className="text-[var(--color-muted)]">{t(caseStudy[key])}</span>
-          </div>
-        ))}
+          collapsed, it is a 0fr grid row that keeps the copy out of the
+          accessibility tree, so the height can travel instead of jumping. */}
+      <div id={panelId} data-open={open} className="case-study-panel">
+        <div className="flex flex-col gap-2.5 pt-3 text-[15px] leading-[1.55]">
+          {(["problem", "solution", "result"] as const).map((key) => (
+            <div key={key} className="flex gap-2.5">
+              <span className="whitespace-nowrap font-semibold text-[var(--color-accent-2)]">
+                {t(`proj.labels.${key}`)}:
+              </span>
+              <span className="text-[var(--color-muted)]">{t(caseStudy[key])}</span>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

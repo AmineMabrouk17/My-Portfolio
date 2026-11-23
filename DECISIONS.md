@@ -15,3 +15,11 @@
 **Why:** The suit cutout read as a LinkedIn headshot and fought the oversized "AMINE" wordmark it sits on. Removing the shoulders and letting the CSS bottom fade eat the neck makes the head emerge from the dark background, and cutting to the head means the head itself gets bigger at the same box height.
 
 **Alternative considered:** Keeping the shoulders and just cropping tighter — the blazer still cuts across the letters, and the bottom fade masks a chest instead of a neck.
+
+## 2026-11-23 — Motion moves to state changes, not more entrances
+
+**Decision:** New motion on the site targets state changes (press, disclosures, appearing panels) and each recipe animates the `scale`/`translate` properties or `transform` deliberately chosen per element, with `--ease-out` centralized in `:root` and mirrored from `src/lib/ease.ts`.
+
+**Why:** Three entrance systems already run (GSAP ScrollReveal, AnimatedText word masks, CSS view-timelines), so adding more entrances would over-animate the page. The gaps were all single-frame teleports. Press feedback is declared on `:active` only so it cannot overwrite the hover transitions each element already has, and `scale`/`translate` are used where a utility class already owns `transform`, so the two never fight.
+
+**Alternative considered:** A global `transition: transform` on every `a`/`button` — it would have replaced `transition-colors` utilities and killed every hover colour ease on the site.
