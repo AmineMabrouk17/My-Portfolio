@@ -66,7 +66,7 @@ const projects: Project[] = [
     subKey: "proj.rakt3adi.sub",
     titleKey: "proj.rakt3adi.title",
     caseStudy: { problem: "proj.rakt3adi.problem", solution: "proj.rakt3adi.solution", result: "proj.rakt3adi.result" },
-    tags: ["Python", "python-telegram-bot", "SQLite", "Systemd", "pytest", "GitHub Actions"],
+    tags: ["Python", "python-telegram-bot", "Gemini API", "PyMuPDF", "SQLite", "Systemd", "pytest", "GitHub Actions"],
     screenshot: "/projects/rakt3adi.webp",
   },
   {

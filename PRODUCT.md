@@ -52,7 +52,7 @@ Real, publicly reachable projects with live URLs and source repos, as curated in
 - Cast n Cue — Next.js on Cloudflare Workers + D1, TMDB/Trakt/TVmaze, Better Auth.
 - GameStore TN — Next.js on Cloudflare Workers + D1, Arabic/French RTL marketplace for game accounts.
 - BudgetIQ — Next.js + Supabase + Gemini AI budget planner.
-- RakT3adiBot — Python Telegram exam-revision bot, 85 tests.
+- RakT3adiBot — Python Telegram revision bot: Arabic-first chat with an allowlisted tool layer plus photo/PDF reading through Gemini, 130 tests.
 - SaletBot — Python Telegram prayer-times/athkar bot.
 - Crypto & Stocks Dashboard — real-time Binance WebSocket + Yahoo Finance.
 

@@ -48,8 +48,8 @@
     "num": "01 / ABOUT",
     "h2": "Engineer who ships.",
     "sub": "Six shipped products: full-stack web platforms and Telegram bots.",
-    "bio": "I build products end to end — schema, API, interface, deploy. RakT3adiBot is an Arabic exam planner with 85 tests, an idempotent 30-second scheduler and seven rotating backups; Cast n Cue runs on Cloudflare Workers and D1; BudgetIQ puts Gemini inside a live finance dashboard. Different stacks, one standard.",
-    "marquee": "RakT3adiBot · 85 tests • Cast n Cue · Cloudflare D1 • GameStore TN · RTL • BudgetIQ · Gemini • SaletBot · Arabic-first"
+    "bio": "I build products end to end — schema, API, interface, deploy. RakT3adiBot is an Arabic-first exam planner that reads photographed homework and takes plain Tunisian Arabic, with 130 tests, an idempotent 30-second scheduler and seven rotating backups; Cast n Cue runs on Cloudflare Workers and D1; BudgetIQ puts Gemini inside a live finance dashboard. Different stacks, one standard.",
+    "marquee": "RakT3adiBot · 130 tests • Cast n Cue · Cloudflare D1 • GameStore TN · RTL • BudgetIQ · Gemini • SaletBot · Arabic-first"
   },
   "skills": {
     "num": "02 / SKILLS",
@@ -65,7 +65,7 @@
       "backend": "Nouara (Laravel), RakT3adiBot",
       "databases": "Postgres, D1, SQLite",
       "devops": "GitHub Actions, systemd, pytest",
-      "ai": "BudgetIQ, SaletBot"
+      "ai": "BudgetIQ, RakT3adiBot, SaletBot"
     }
   },
   "exp": {
@@ -118,12 +118,12 @@
       "one": "Log spending by chatting with an AI."
     },
     "rakt3adi": {
-      "sub": "Python · Telegram Bot API · SQLite",
+      "sub": "Python · Telegram Bot API · Gemini · SQLite",
       "title": "RakT3adiBot — Exam Revision Planner",
-      "problem": "Revision plans live in notes and group chats, so exam dates and lesson progress quietly slip.",
-      "solution": "Built an Arabic Telegram bot that tracks exams and lessons, ticks off revision with a 2/3 progress counter, sends J-2 and J-1 reminders plus a morning dua, and includes an invite-only admin panel for users, templates and stats. An idempotent 30-second scheduler survives restarts, and daily SQLite backups keep seven copies.",
-      "result": "Students open one chat to see exactly what to revise today; 85 tests cover the flows end to end.",
-      "one": "Arabic exam revision planner on Telegram."
+      "problem": "Revision plans live in notes and group chats, so exam dates quietly slip — and a photographed devoir has to be retyped before it can be planned at all.",
+      "solution": "Built an Arabic-first Telegram bot that takes plain Tunisian Arabic, French or English, resolves it to one allowlisted action and waits for a confirm tap — Gemini primary, NVIDIA fallback, every call logged. A photo or PDF becomes a verbatim transcript, a summary, review questions, or an exam card in one tap. J-2 and J-1 reminders, a morning dua, an idempotent 30-second scheduler, seven rotating SQLite backups, and an invite-only admin panel for users, templates and stats.",
+      "result": "Students chat, snap a page from a textbook, and revise from one thread; 130 tests cover the flows end to end.",
+      "one": "An Arabic revision planner you can talk to — or hand your homework."
     },
     "saletbot": {
       "sub": "Python · Gemini · Pillow · SQLite",
@@ -214,6 +214,6 @@
     "location": "Tunis, Tunisia"
   },
   "strip": {
-    "items": "Cast n Cue · Cloudflare D1|RakT3adiBot · 85 tests|GameStore TN · RTL|BudgetIQ · Gemini|SaletBot · Arabic-first|Nouara · Angular + Laravel"
+    "items": "Cast n Cue · Cloudflare D1|RakT3adiBot · 130 tests|GameStore TN · RTL|BudgetIQ · Gemini|SaletBot · Arabic-first|Nouara · Angular + Laravel"
   }
 }
