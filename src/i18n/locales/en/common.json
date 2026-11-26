@@ -54,18 +54,20 @@
   "skills": {
     "num": "02 / SKILLS",
     "h2": "Technical toolkit.",
-    "sub": "From modern frontends to scalable backends and DevOps pipelines.",
+    "sub": "TypeScript, Python, and Rust — from the interface down to the deploy pipeline.",
     "frontend": "Frontend",
-    "backend": "Backend",
+    "backend": "Backend & APIs",
     "databases": "Databases",
-    "devops": "DevOps",
-    "ai": "AI / Other",
+    "devops": "Platform & DevOps",
+    "ai": "AI engineering",
+    "testing": "Testing & quality",
     "evidence": {
-      "frontend": "Cast n Cue, GameStore TN",
-      "backend": "Nouara (Laravel), RakT3adiBot",
-      "databases": "Postgres, D1, SQLite",
-      "devops": "GitHub Actions, systemd, pytest",
-      "ai": "BudgetIQ, RakT3adiBot, SaletBot"
+      "frontend": "Cast n Cue · BudgetIQ",
+      "backend": "Rust axum API · Laravel REST at Infraway",
+      "databases": "D1 migrations · Supabase auth",
+      "devops": "Required CI on 6 repos · 5 systemd services",
+      "ai": "BudgetIQ provider fallback · RakT3adiBot vision",
+      "testing": "130 pytest cases · Playwright E2E"
     }
   },
   "exp": {

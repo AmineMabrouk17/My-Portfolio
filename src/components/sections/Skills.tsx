@@ -3,28 +3,36 @@
 import type { IconType } from "react-icons";
 import {
   SiAngular,
+  SiBetterauth,
   SiCloudflare,
+  SiCloudflareworkers,
   SiDocker,
-  SiFlask,
-  SiGit,
-  SiGithub,
+  SiEslint,
   SiGithubactions,
   SiGooglegemini,
-  SiJavascript,
+  SiHeroui,
   SiLaravel,
   SiMysql,
   SiNextdotjs,
   SiNodedotjs,
+  SiNvidia,
+  SiOpenrouter,
+  SiPnpm,
   SiPostgresql,
+  SiPytest,
   SiPython,
   SiReact,
-  SiStripe,
+  SiRust,
+  SiSqlite,
   SiSupabase,
   SiTailwindcss,
   SiTelegram,
+  SiTokio,
+  SiTurborepo,
   SiTypescript,
-  SiSqlite,
-  SiPytest,
+  SiUpstash,
+  SiVitest,
+  SiZod,
 } from "react-icons/si";
 import { TbApi, TbSettings } from "react-icons/tb";
 import { useI18n } from "@/i18n/I18nContext";
@@ -36,61 +44,74 @@ const skills = [
     icon: "window",
     titleKey: "skills.frontend",
     evidenceKey: "skills.evidence.frontend",
-    tags: ["Angular", "Next.js", "React.js", "TypeScript", "JavaScript", "Tailwind CSS"],
+    tags: ["Angular", "Next.js", "React", "TypeScript", "Tailwind CSS", "HeroUI"],
   },
   {
     icon: "server",
     titleKey: "skills.backend",
     evidenceKey: "skills.evidence.backend",
-    tags: ["Node.js", "Laravel", "Flask", "Python", "REST APIs", "Telegram Bot API"],
+    tags: ["Rust", "Tokio", "Python", "Laravel", "Node.js", "REST APIs", "Better Auth", "Telegram Bot API"],
   },
   {
     icon: "database",
     titleKey: "skills.databases",
     evidenceKey: "skills.evidence.databases",
-    tags: ["MySQL", "Supabase", "PostgreSQL", "SQLite"],
+    tags: ["PostgreSQL", "Supabase", "Cloudflare D1", "Upstash Redis", "MySQL", "SQLite"],
   },
   {
     icon: "infinity",
     titleKey: "skills.devops",
     evidenceKey: "skills.evidence.devops",
-    tags: ["Docker", "Git", "GitHub Actions", "systemd", "pytest", "Cloudflare Workers", "Cloudflare D1"],
+    tags: ["Cloudflare Workers", "Docker", "GitHub Actions", "systemd", "pnpm", "Turborepo"],
   },
   {
     icon: "cpu",
     titleKey: "skills.ai",
     evidenceKey: "skills.evidence.ai",
-    tags: ["Gemini AI", "Stripe"],
-    full: true,
+    tags: ["Gemini", "OpenRouter", "NVIDIA NIM", "Zod"],
+  },
+  {
+    icon: "shield",
+    titleKey: "skills.testing",
+    evidenceKey: "skills.evidence.testing",
+    tags: ["pytest", "Vitest", "Playwright", "ESLint", "Pyright"],
   },
 ];
 
 const techIcons: Record<string, IconType> = {
   Angular: SiAngular,
   "Next.js": SiNextdotjs,
-  "React.js": SiReact,
+  React: SiReact,
   TypeScript: SiTypescript,
-  JavaScript: SiJavascript,
   "Tailwind CSS": SiTailwindcss,
-  "Node.js": SiNodedotjs,
-  Laravel: SiLaravel,
-  Flask: SiFlask,
+  HeroUI: SiHeroui,
+  Rust: SiRust,
+  Tokio: SiTokio,
   Python: SiPython,
+  Laravel: SiLaravel,
+  "Node.js": SiNodedotjs,
   "REST APIs": TbApi,
+  "Better Auth": SiBetterauth,
   "Telegram Bot API": SiTelegram,
-  MySQL: SiMysql,
-  Supabase: SiSupabase,
   PostgreSQL: SiPostgresql,
+  Supabase: SiSupabase,
+  "Cloudflare D1": SiCloudflare,
+  "Upstash Redis": SiUpstash,
+  MySQL: SiMysql,
   SQLite: SiSqlite,
+  "Cloudflare Workers": SiCloudflareworkers,
   Docker: SiDocker,
-  Git: SiGit,
   "GitHub Actions": SiGithubactions,
   systemd: TbSettings,
+  pnpm: SiPnpm,
+  Turborepo: SiTurborepo,
+  Gemini: SiGooglegemini,
+  OpenRouter: SiOpenrouter,
+  "NVIDIA NIM": SiNvidia,
+  Zod: SiZod,
   pytest: SiPytest,
-  "Cloudflare Workers": SiCloudflare,
-  "Cloudflare D1": SiCloudflare,
-  "Gemini AI": SiGooglegemini,
-  Stripe: SiStripe,
+  Vitest: SiVitest,
+  ESLint: SiEslint,
 };
 
 const iconMap: Record<string, React.JSX.Element> = {
@@ -99,6 +120,7 @@ const iconMap: Record<string, React.JSX.Element> = {
   database: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3" /><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3" /><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" /></svg>,
   infinity: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><path d="M12 12c-2-2.67-4-4-6-4a4 4 0 100 8c2 0 4-1.33 6-4zm0 0c2 2.67 4 4 6 4a4 4 0 000-8c-2 0-4 1.33-6 4z" /></svg>,
   cpu: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2" /><rect x="9" y="9" width="6" height="6" /><line x1="9" y1="1" x2="9" y2="4" /><line x1="15" y1="1" x2="15" y2="4" /><line x1="9" y1="20" x2="9" y2="23" /><line x1="15" y1="20" x2="15" y2="23" /><line x1="20" y1="9" x2="23" y2="9" /><line x1="20" y1="14" x2="23" y2="14" /><line x1="1" y1="9" x2="4" y2="9" /><line x1="1" y1="14" x2="4" y2="14" /></svg>,
+  shield: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /><path d="m9 12 2 2 4-4" /></svg>,
 };
 
 export default function Skills() {
@@ -125,12 +147,11 @@ export default function Skills() {
           </div>
         </ScrollReveal>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-[18px]">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[18px]">
           {skills.map((skill, i) => (
             <ScrollReveal
               key={skill.titleKey}
               delay={i * 80}
-              className={skill.full ? "sm:col-span-2 lg:col-span-4" : undefined}
             >
               <div className="group relative h-full overflow-hidden rounded-[18px] border border-[var(--color-border)] bg-[var(--color-surface)] p-[26px] transition-colors duration-300 hover:border-[var(--color-border-2)] hover:bg-[var(--color-surface-2)]">
                 <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient opacity-0 transition-opacity duration-300 group-hover:opacity-100" />

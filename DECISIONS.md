@@ -39,3 +39,11 @@
 **Why:** The bot repo shipped `feat/ai-natural-language` and the vision work after the copy was written, so the card advertised the 2/3 counter and left its two strongest features invisible. `pytest` in that repo collects and passes 130 tests, which makes the number safe to quote.
 
 **Alternative considered:** Bumping only the test count — cheap, but keeps the card describing a bot that no longer matches the repo.
+
+## 2026-11-26 — Technical toolkit rebuilt around what the repos prove
+
+**Decision:** The skills section moves from five cards to six (grid `lg:grid-cols-3`), gains a Rust/axum backend row, renames "AI / Other" to "AI engineering", moves Cloudflare Workers/D1 out of DevOps (D1 now lives only under Data), adds Platform, AI, and Testing cards, and replaces every evidence line with an artifact instead of a tag echo. `Stripe` is removed because no repo in `~/` contains Stripe code, and `JavaScript`/`Flask`/`Git` are dropped as redundant or Internship-only.
+
+**Why:** The repos carry signals the section never showed — `crypto-stocks` is a nine-crate Rust workspace gated on `cargo clippy -D warnings`, `Cast-Cue` runs OpenNext + Better Auth on D1, `BudgetIQ` has a Gemini→OpenRouter fallback with Upstash rate limiting, and six repos carry required CI. Meanwhile the old evidence rows repeated their own tags, which contradicts the `PRODUCT.md` principle that depth is the proof. Six cards in a four-column grid leave a ragged 4+2 row, so the grid moves to three.
+
+**Alternative considered:** Keeping five cards and only rewriting tags — no layout churn, but it forces Rust, auth, rate limiting, and testing into cards they do not belong to, which is the category error the change exists to fix.
