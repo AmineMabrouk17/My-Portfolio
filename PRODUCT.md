@@ -19,7 +19,7 @@ A personal portfolio for Amine Mabrouk, Full Stack Developer. It exists to conve
 
 ## Positioning
 
-Range with delivery depth: production full-stack web platforms (Angular/Laravel, Next.js, Cloudflare, Supabase) and shipped Telegram bots, all built end to end — schema, API, UI, deployment, CI/CD — rather than one narrow stack demonstrated ten times. The claim a neighboring portfolio could not copy is that the same person ships an Arabic exam-planner bot, an Arabic-first gaming marketplace, and an AI finance dashboard.
+Range with delivery depth: production full-stack web platforms (Angular/Laravel, Next.js, Cloudflare, Supabase), a Rust (axum/tokio) backend, and shipped Telegram bots, all built end to end — schema, API, UI, deployment, CI/CD — rather than one narrow stack demonstrated ten times. The claim a neighboring portfolio could not copy is that the same person ships an Arabic exam-planner bot, an Arabic-first gaming marketplace, an AI finance dashboard, and a Rust market-data service.
 
 ## Operating Context
 
@@ -54,7 +54,8 @@ Real, publicly reachable projects with live URLs and source repos, as curated in
 - BudgetIQ — Next.js + Supabase + Gemini AI budget planner.
 - RakT3adiBot — Python Telegram revision bot: Arabic-first chat with an allowlisted tool layer plus photo/PDF reading through Gemini, 130 tests.
 - SaletBot — Python Telegram prayer-times/athkar bot.
-- Crypto & Stocks Dashboard — real-time Binance WebSocket + Yahoo Finance.
+- Crypto & Stocks Dashboard — real-time Binance WebSocket + Yahoo Finance, with a Rust (axum/tokio) backend workspace of nine crates.
+- Compound: 130 pytest cases on RakT3adiBot, required CI on six repos, five systemd services in production.
 
 Also factual: Full Stack Developer at Infraway on the Nouara platform; a State Engineering Degree in Computer Science (M.Sc. equivalent); screenshots under `public/projects/`.
 

@@ -54,18 +54,20 @@
   "skills": {
     "num": "02 / المهارات",
     "h2": "الأدوات التقنية.",
-    "sub": "من الواجهات الأمامية الحديثة إلى الخوادم القابلة للتوسع وخطوات DevOps.",
+    "sub": "TypeScript وPython وRust — من الواجهة حتى خط النشر.",
     "frontend": "الواجهة الأمامية",
-    "backend": "الخادم",
+    "backend": "الخادم وواجهات API",
     "databases": "قواعد البيانات",
-    "devops": "DevOps",
-    "ai": "الذكاء الاصطناعي / أخرى",
+    "devops": "المنصّة وDevOps",
+    "ai": "هندسة الذكاء الاصطناعي",
+    "testing": "الاختبارات والجودة",
     "evidence": {
-      "frontend": "Cast n Cue، GameStore TN",
-      "backend": "Nouara (Laravel)، RakT3adiBot",
-      "databases": "Postgres، D1، SQLite",
-      "devops": "GitHub Actions، systemd، pytest",
-      "ai": "BudgetIQ، RakT3adiBot، SaletBot"
+      "frontend": "Cast n Cue · BudgetIQ",
+      "backend": "API بـRust axum · Laravel REST في Infraway",
+      "databases": "ترحيلات D1 · مصادقة Supabase",
+      "devops": "CI إلزامي على 6 مستودعات · 5 خدمات systemd",
+      "ai": "سلسلة بدائل في BudgetIQ · رؤية RakT3adiBot",
+      "testing": "130 اختبار pytest · E2E عبر Playwright"
     }
   },
   "exp": {
