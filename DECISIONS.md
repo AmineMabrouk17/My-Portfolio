@@ -55,3 +55,11 @@
 **Why:** Five candidates have to be judged on the same footing, at frame-exact quality, without adding experimental code to the app or depending on a screen recorder's jitter. A pure function of `t` gives identical frames on every capture, so a re-render after a tweak is comparable. The machine has no GPU, so a CSS/DOM approach also keeps the prototypes portable to the site's existing stack (GSAP/motion, no WebGL).
 
 **Alternative considered:** Recording the dev server with Playwright video — fewer files, but the capture inherits real-time jank and the review frames differ between runs; and building all five as Next routes would put discarded experiments on the production surface.
+
+## 2026-11-27 — All five motion studies ship, each on its own surface
+
+**Decision:** The five prototypes are implemented in the site rather than one: ignition on the wordmark (clip-path wipe + ember filament + sparks), bench assembly on the project cards (frame draw, screenshot wipe, staggered blocks), a measured header rule on Projects, a pointer light per card, and a fixed bench index rail (`SectionRail`) that tracks scroll and the active section.
+
+**Why:** Each one answers a different question — arrival, component construction, section signature, pointer feedback, and continuity — so they do not compete for the same moment. Every animation starts from a visible composed state (`animation: both` with an explicit `from`), so a browser that cannot run the motion still shows the page, and `prefers-reduced-motion` resolves each to its composed frame.
+
+**Alternative considered:** Shipping only the hero ignition — the strongest single moment, but it leaves the case-study cards and the section rhythm with the generic fade-up they already had.
