@@ -2,6 +2,7 @@
 
 import { useRef, useState, useEffect } from "react";
 import { useI18n } from "@/i18n/I18nContext";
+import styles from "./experience.module.css";
 import { AnimatedText } from "@/components/motion/animated-text";
 import { gsap, ScrollTrigger } from "@/lib/gsap";
 
@@ -118,6 +119,7 @@ function StaticExperience({ t }: { t: (key: string) => string }) {
 export default function Experience() {
   const { t } = useI18n();
   const rootRef = useRef<HTMLDivElement>(null);
+  const railRef = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState(0);
   const [isDesktop, setIsDesktop] = useState(false);
   const [reducedMotion, setReducedMotion] = useState(false);
@@ -201,6 +203,37 @@ export default function Experience() {
     return () => ctx.revert();
   }, [ready, reducedMotion, isDesktop]);
 
+  // The rail fills with the section's own scroll progress: the timeline is
+  // drawn, not simply present.
+  useEffect(() => {
+    if (!ready || reducedMotion || !isDesktop) return;
+    const root = rootRef.current;
+    const rail = railRef.current;
+    if (!root || !rail) return;
+
+    let frame = 0;
+    const read = () => {
+      frame = 0;
+      const r = root.getBoundingClientRect();
+      const start = window.innerHeight * 0.75;
+      const total = Math.max(1, r.height - window.innerHeight * 0.2);
+      const p = Math.min(1, Math.max(0, (start - r.top) / total));
+      rail.style.setProperty("--p", p.toFixed(4));
+    };
+    const onScroll = () => {
+      if (!frame) frame = requestAnimationFrame(read);
+    };
+
+    read();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+      if (frame) cancelAnimationFrame(frame);
+    };
+  }, [ready, reducedMotion, isDesktop]);
+
   if (!ready || reducedMotion) {
     return <StaticExperience t={t} />;
   }
@@ -216,9 +249,12 @@ export default function Experience() {
               <div className="md:sticky md:top-32">
                 <div className="relative">
                   <div
-                    className="absolute start-[7px] top-1 bottom-1 w-px"
+                    ref={railRef}
+                    className={`${styles.rail} absolute start-[7px] top-1 bottom-1 w-px`}
                     style={{ background: "var(--color-border-2)" }}
-                  />
+                  >
+                    <span className={styles.fill} aria-hidden="true" />
+                  </div>
                   {jobs.map((job, i) => {
                     const isActive = i === active;
                     return (

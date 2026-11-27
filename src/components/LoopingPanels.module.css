@@ -1,0 +1,76 @@
+/* The loop band is read once, by a slit of ember light that sweeps across
+   and hands the strip over to the marquee. One-shot, on first view. */
+
+.band {
+  position: relative;
+}
+
+.reader {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+  background: var(--color-bg);
+}
+
+.slit {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 2px;
+  z-index: 6;
+  opacity: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    transparent,
+    #fff4e8 26%,
+    var(--color-accent-2) 62%,
+    transparent
+  );
+  box-shadow:
+    0 0 18px 3px rgba(255, 107, 71, 0.5),
+    0 0 46px 10px rgba(255, 107, 71, 0.18);
+}
+
+.band[data-seen="true"] .reader {
+  animation: read-band 1000ms var(--ease-out) 120ms forwards;
+}
+
+.band[data-seen="true"] .slit {
+  animation: slit-run 1000ms var(--ease-out) 120ms forwards;
+}
+
+@keyframes read-band {
+  from {
+    clip-path: inset(0 0 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 100%);
+  }
+}
+
+@keyframes slit-run {
+  0% {
+    transform: translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  86% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100vw);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reader,
+  .slit {
+    display: none;
+  }
+}

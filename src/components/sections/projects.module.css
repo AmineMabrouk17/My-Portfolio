@@ -41,3 +41,49 @@
     display: none;
   }
 }
+
+/* ── the header hands over ───────────────────────────────────────── */
+
+/* Two halves sit over the header band and part when it comes into view:
+   the section arrives from behind a bench drawer rather than fading up. */
+.curtainHost {
+  position: relative;
+  overflow: hidden;
+}
+
+.curtainTop,
+.curtainBottom {
+  position: absolute;
+  left: -2px;
+  right: -2px;
+  height: 51%;
+  z-index: 2;
+  background: var(--color-bg);
+  pointer-events: none;
+  transition: transform 1100ms var(--ease-out) 80ms;
+}
+
+.curtainTop {
+  top: -1px;
+  border-bottom: 1px solid rgba(255, 107, 71, 0.35);
+}
+
+.curtainBottom {
+  bottom: -1px;
+  border-top: 1px solid rgba(255, 107, 71, 0.35);
+}
+
+:global(.reveal.visible) .curtainTop {
+  transform: translateY(-101%);
+}
+
+:global(.reveal.visible) .curtainBottom {
+  transform: translateY(101%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .curtainTop,
+  .curtainBottom {
+    display: none;
+  }
+}

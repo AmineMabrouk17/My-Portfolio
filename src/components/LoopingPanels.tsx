@@ -1,8 +1,9 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useI18n } from "@/i18n/I18nContext";
 import { gsap, ScrollTrigger } from "@/lib/gsap";
+import s from "./LoopingPanels.module.css";
 
 const REPEATS = 4;
 const ACCENTS = ["bg-[var(--color-accent)]", "bg-[var(--color-accent-2)]", "bg-[var(--color-status)]"];
@@ -18,10 +19,46 @@ const ACCENTS = ["bg-[var(--color-accent)]", "bg-[var(--color-accent-2)]", "bg-[
 export default function LoopingPanels({ className = "" }: { className?: string }) {
   const { t } = useI18n();
   const stripRef = useRef<HTMLElement>(null);
+  const [seen, setSeen] = useState(false);
+  const [seen, setSeen] = useState(false);
   const items = t("strip.items")
     .split("|")
     .map((item) => item.trim())
     .filter(Boolean);
+
+  useEffect(() => {
+    const strip = stripRef.current;
+    if (!strip) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setSeen(true);
+            io.disconnect();
+          }
+        });
+      },
+      { threshold: 0.4 }
+    );
+    io.observe(strip);
+    return () => io.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const strip = stripRef.current;
+    if (!strip) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          setSeen(true);
+          io.disconnect();
+        }
+      },
+      { threshold: 0.4 }
+    );
+    io.observe(strip);
+    return () => io.disconnect();
+  }, []);
 
   useEffect(() => {
     const strip = stripRef.current;
@@ -61,9 +98,14 @@ export default function LoopingPanels({ className = "" }: { className?: string }
     <section
       ref={stripRef}
       data-looping-panels
+      data-seen={seen ? "true" : "false"}
       aria-hidden="true"
-      className={`relative flex h-14 items-center overflow-hidden border-y border-[var(--color-border)] bg-[var(--color-surface)]/40 select-none ${className}`}
+      className={`${s.band} relative flex h-14 items-center overflow-hidden border-y border-[var(--color-border)] bg-[var(--color-surface)]/40 select-none ${className}`}
     >
+      <span aria-hidden="true" className={s.reader} />
+      <span aria-hidden="true" className={s.slit} />
+      <span aria-hidden="true" className={styles.reader} />
+      <span aria-hidden="true" className={styles.slit} />
       <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-20 bg-gradient-to-r from-[var(--color-bg)] to-transparent" />
       <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-20 bg-gradient-to-l from-[var(--color-bg)] to-transparent" />
       <div data-loop-track className="flex w-max items-center will-change-transform">

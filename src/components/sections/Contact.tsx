@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useI18n } from "@/i18n/I18nContext";
 import ScrollReveal from "@/components/ui/ScrollReveal";
+import s from "./contact.module.css";
 import { AnimatedText } from "@/components/motion/animated-text";
 
 const EMAIL = "amx72001@gmail.com";
@@ -156,7 +157,9 @@ export default function Contact() {
     <section id="contact" className="py-[90px] max-lg:py-[70px]">
       <div className="max-w-[1200px] mx-auto px-8">
         <ScrollReveal>
-          <div className="bg-gradient-to-br from-[color-mix(in_srgb,var(--color-accent)_6%,transparent)] to-[color-mix(in_srgb,var(--color-accent-2)_6%,transparent)] border border-[var(--color-border-2)] rounded-[28px] py-[60px] px-[60px] max-md:py-10 max-md:px-6 relative overflow-hidden">
+          <div className={`${s.panel} bg-gradient-to-br from-[color-mix(in_srgb,var(--color-accent)_6%,transparent)] to-[color-mix(in_srgb,var(--color-accent-2)_6%,transparent)] border border-[var(--color-border-2)] rounded-[28px] py-[60px] px-[60px] max-md:py-10 max-md:px-6 relative overflow-hidden`}>
+            <span aria-hidden="true" className={s.wash} />
+            <span aria-hidden="true" className={s.frame} />
             <div
               aria-hidden="true"
               className="absolute -top-1/2 left-1/2 -translate-x-1/2 w-[600px] h-[600px] pointer-events-none"

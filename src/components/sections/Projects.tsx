@@ -280,7 +280,9 @@ export default function Projects() {
     <section id="projects" className="py-[90px] max-lg:py-[70px]">
       <div className="max-w-[1200px] mx-auto px-8">
         <ScrollReveal>
-          <div className="mb-12 flex items-end justify-between flex-wrap gap-5">
+          <div className={`${s.curtainHost} mb-12 flex items-end justify-between flex-wrap gap-5`}>
+            <span aria-hidden="true" className={s.curtainTop} />
+            <span aria-hidden="true" className={s.curtainBottom} />
             <div>
               <div className="text-[var(--color-accent)] font-mono text-[12px] font-medium tracking-[0.16em] mb-2">
                 {t("proj.num")}
