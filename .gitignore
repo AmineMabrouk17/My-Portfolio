@@ -19,6 +19,8 @@ build/
 
 # local agent tooling (installed per machine, not part of the app)
 .opencode/
+.agents/
+skills-lock.json
 .github/agents/
 .github/hooks/
 .github/skills/
@@ -37,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# local motion prototypes (review artefacts, not part of the app)
+.motion-lab/

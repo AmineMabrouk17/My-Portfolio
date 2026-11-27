@@ -47,3 +47,11 @@
 **Why:** The repos carry signals the section never showed — `crypto-stocks` is a nine-crate Rust workspace gated on `cargo clippy -D warnings`, `Cast-Cue` runs OpenNext + Better Auth on D1, `BudgetIQ` has a Gemini→OpenRouter fallback with Upstash rate limiting, and six repos carry required CI. Meanwhile the old evidence rows repeated their own tags, which contradicts the `PRODUCT.md` principle that depth is the proof. Six cards in a four-column grid leave a ragged 4+2 row, so the grid moves to three.
 
 **Alternative considered:** Keeping five cards and only rewriting tags — no layout churn, but it forces Rust, auth, rate limiting, and testing into cards they do not belong to, which is the category error the change exists to fix.
+
+## 2026-11-27 — Motion prototypes are deterministic HTML scenes, captured to MP4
+
+**Decision:** The five motion candidates live in `.motion-lab/` as standalone HTML scenes sharing `lab.css` and a `lib.js` clock, rendered by seeking `window.__seek(ms)` in headless Chromium and encoded with ffmpeg to 1280×720 MP4/GIF. The folder is gitignored; only the chosen prototype is ported into `src/components` as a real change.
+
+**Why:** Five candidates have to be judged on the same footing, at frame-exact quality, without adding experimental code to the app or depending on a screen recorder's jitter. A pure function of `t` gives identical frames on every capture, so a re-render after a tweak is comparable. The machine has no GPU, so a CSS/DOM approach also keeps the prototypes portable to the site's existing stack (GSAP/motion, no WebGL).
+
+**Alternative considered:** Recording the dev server with Playwright video — fewer files, but the capture inherits real-time jank and the review frames differ between runs; and building all five as Next routes would put discarded experiments on the production surface.

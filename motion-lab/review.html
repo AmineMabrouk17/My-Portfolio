@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Motion lab — five prototypes</title>
+<style>
+  @font-face { font-family: "Instrument Sans"; src: url("./src/fonts/f2.woff2") format("woff2"); font-weight: 400 700; }
+  @font-face { font-family: "JetBrains Mono"; src: url("./src/fonts/f6.woff2") format("woff2"); font-weight: 400 600; }
+  :root {
+    --bg: #0c0a0b; --line: rgba(243,236,230,.1);
+    --text: #f3ece6; --muted: #a89e97; --muted2: #928881; --ember: #ff6b47;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: "Instrument Sans", system-ui, sans-serif; padding: 72px 6vw 120px; }
+  .mono { font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: .16em; text-transform: uppercase; }
+  header { display: flex; justify-content: space-between; align-items: baseline; border-bottom: 1px solid var(--line); padding-bottom: 18px; margin-bottom: 48px; color: var(--muted2); }
+  h1 { font-size: 44px; font-weight: 600; letter-spacing: -.03em; margin-bottom: 12px; }
+  .lede { max-width: 60ch; color: var(--muted); line-height: 1.65; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(520px, 1fr)); gap: 44px; margin-top: 56px; }
+  figure { border-top: 1px solid var(--line); padding-top: 18px; }
+  .top { display: flex; justify-content: space-between; color: var(--muted2); margin-bottom: 14px; }
+  .top b { color: var(--ember); font-weight: 500; }
+  img { width: 100%; display: block; border-radius: 14px; border: 1px solid var(--line); background: #000; }
+  h2 { font-size: 24px; font-weight: 600; letter-spacing: -.02em; margin: 18px 0 6px; }
+  figcaption { color: var(--muted); font-size: 15px; line-height: 1.6; max-width: 46ch; }
+  .where { margin-top: 12px; color: var(--muted2); }
+  .where b { color: var(--text); font-weight: 500; }
+</style>
+</head>
+<body>
+<header>
+  <span class="mono">Amine Mabrouk — portfolio</span>
+  <span class="mono">Motion lab · five prototypes</span>
+</header>
+
+<h1>Five motion prototypes.</h1>
+<p class="lede">
+  Each one is a real portfolio surface, built in the Night Workshop palette and
+  captured frame by frame at 1280 × 720, 30 fps. Pick one and it becomes the
+  authored motion moment for that surface.
+</p>
+
+<div class="grid">
+  <figure>
+    <div class="top mono"><span><b>01</b> Hero</span><span>6.4s</span></div>
+    <img src="./review/p1.gif" alt="Ignition — hero arrival" />
+    <h2>Ignition</h2>
+    <figcaption>A filament crosses the wordmark and the letters take the light behind it — embers lift off, then the portrait and the proof settle in.</figcaption>
+    <div class="where mono">Lands in <b>WordmarkHero</b></div>
+  </figure>
+
+  <figure>
+    <div class="top mono"><span><b>02</b> Case study</span><span>6.4s</span></div>
+    <img src="./review/p2.gif" alt="Bench assembly — project card" />
+    <h2>Bench assembly</h2>
+    <figcaption>The card draws its own hairline frame, the screenshot wipes in, then title, problem, solution and result land in order — one pass of light at the end.</figcaption>
+    <div class="where mono">Lands in <b>Projects · case-study card</b></div>
+  </figure>
+
+  <figure>
+    <div class="top mono"><span><b>03</b> Section header</span><span>6.2s</span></div>
+    <img src="./review/p3.gif" alt="Measured header — section header" />
+    <h2>Measured header</h2>
+    <figcaption>The headline rises through its mask while a draughtsman's rule draws underneath and ticks itself out; the six project names are written in, left to right.</figcaption>
+    <div class="where mono">Lands in <b>Projects · section header</b></div>
+  </figure>
+
+  <figure>
+    <div class="top mono"><span><b>04</b> Project index</span><span>6.6s</span></div>
+    <img src="./review/p4.gif" alt="Pointer light — project index" />
+    <h2>Pointer light</h2>
+    <figcaption>A pointer walks the index. The row holds still while the surface under it lifts, its hairline warms, and the case-study preview slides out from behind the row.</figcaption>
+    <div class="where mono">Lands in <b>Projects · index list hover</b></div>
+  </figure>
+
+  <figure>
+    <div class="top mono"><span><b>05</b> Scroll handoff</span><span>6.6s</span></div>
+    <img src="./review/p5.gif" alt="Bench handoff — section scroll" />
+    <h2>Bench handoff</h2>
+    <figcaption>One measured scroll carries About into Skills into Projects: the index tracks the position, headings resolve as they cross the reading line, the loop band never stops.</figcaption>
+    <div class="where mono">Lands in <b>Section transitions</b></div>
+  </figure>
+</div>
+</body>
+</html>
