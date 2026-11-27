@@ -20,7 +20,6 @@ export default function LoopingPanels({ className = "" }: { className?: string }
   const { t } = useI18n();
   const stripRef = useRef<HTMLElement>(null);
   const [seen, setSeen] = useState(false);
-  const [seen, setSeen] = useState(false);
   const items = t("strip.items")
     .split("|")
     .map((item) => item.trim())
@@ -104,8 +103,6 @@ export default function LoopingPanels({ className = "" }: { className?: string }
     >
       <span aria-hidden="true" className={s.reader} />
       <span aria-hidden="true" className={s.slit} />
-      <span aria-hidden="true" className={styles.reader} />
-      <span aria-hidden="true" className={styles.slit} />
       <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-20 bg-gradient-to-r from-[var(--color-bg)] to-transparent" />
       <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-20 bg-gradient-to-l from-[var(--color-bg)] to-transparent" />
       <div data-loop-track className="flex w-max items-center will-change-transform">
