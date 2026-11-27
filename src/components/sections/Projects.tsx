@@ -5,6 +5,7 @@ import ScrollReveal from "@/components/ui/ScrollReveal";
 import { AnimatedText } from "@/components/motion/animated-text";
 import { useEffect, useRef, useState } from "react";
 import { MagneticButton } from "@/components/ui/MagneticButton";
+import s from "./projects.module.css";
 
 type CaseStudy = { problem: string; solution: string; result: string };
 
@@ -140,18 +141,35 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
   const { t } = useI18n();
   const shotRef = useRef<HTMLImageElement>(null);
 
-  // A cached image can finish decoding before React attaches onLoad, so the
-  // mount check covers it and the handler covers everything after.
+  // A cached image can finish decoding before React attaches onLoad, and a
+  // lazy image can finish before hydration settles. The mount check covers
+  // the first case; a native listener covers the second, since it does not
+  // depend on React's synthetic event timing.
   useEffect(() => {
     const img = shotRef.current;
-    if (img?.complete && img.naturalWidth > 0) {
+    if (!img) return;
+    const mark = () => {
       img.dataset.loaded = "true";
+    };
+    if (img.complete && img.naturalWidth > 0) {
+      mark();
+      return;
     }
+    img.addEventListener("load", mark, { once: true });
+    return () => img.removeEventListener("load", mark);
   }, []);
 
   return (
     <ScrollReveal delay={(index % 2) * 80} className="h-full">
-      <article className="project-card group flex h-full flex-col overflow-hidden rounded-[18px] border border-[var(--color-border)] bg-[var(--color-surface)] transition-colors duration-300 hover:border-[var(--color-accent)]/60">
+      <article
+        className={`project-card ${s.card} group flex h-full flex-col overflow-hidden rounded-[18px] border border-[var(--color-border)] bg-[var(--color-surface)] transition-colors duration-300 hover:border-[var(--color-accent)]/60`}
+        onPointerMove={(e) => {
+          // The card's own light: warm the bench under the pointer.
+          const r = e.currentTarget.getBoundingClientRect();
+          e.currentTarget.style.setProperty("--mx", `${e.clientX - r.left}px`);
+          e.currentTarget.style.setProperty("--my", `${e.clientY - r.top}px`);
+        }}
+      >
         <div className="relative aspect-[3/2] w-full overflow-hidden border-b border-[var(--color-border)] bg-[var(--color-bg)]">
           <img
             ref={shotRef}
@@ -174,16 +192,18 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
           />
         </div>
 
-        <div className="flex flex-1 flex-col p-[26px]">
+        <div aria-hidden="true" className={s.light} />
+
+        <div className={`${s.body} flex flex-1 flex-col p-[26px]`}>
           {project.subKey && (
-            <div className="mb-2 font-mono text-[11px] font-medium uppercase tracking-[0.14em] text-[var(--color-muted-2)]">
+            <div className={`${s.sub} mb-2 font-mono text-[11px] font-medium uppercase tracking-[0.14em] text-[var(--color-muted-2)]`}>
               {t(project.subKey)}
             </div>
           )}
-          <h3 className="mb-1 text-[21px] font-bold tracking-[-0.02em]">
+          <h3 className={`${s.title} mb-1 text-[21px] font-bold tracking-[-0.02em]`}>
             <span className="text-[var(--color-accent-2)]">/</span> {t(project.titleKey)}
           </h3>
-          <p className="mb-1 text-[15px] leading-relaxed text-[var(--color-muted)]">
+          <p className={`${s.one} mb-1 text-[15px] leading-relaxed text-[var(--color-muted)]`}>
             {t(`proj.${project.slug}.one`)}
           </p>
 
@@ -193,7 +213,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
             title={t(project.titleKey)}
           />
 
-          <div className="mt-4 mb-5 flex flex-wrap gap-[7px]">
+          <div className={`${s.tags} mt-4 mb-5 flex flex-wrap gap-[7px]`}>
             {project.tags.map((tag) => (
               <span
                 key={tag}
@@ -204,7 +224,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
             ))}
           </div>
 
-          <div className="mt-auto flex flex-wrap gap-3">
+          <div className={`${s.actions} mt-auto flex flex-wrap gap-3`}>
             {!project.link && !project.source && (
               <a
                 href={`mailto:amx72001@gmail.com?subject=${encodeURIComponent(
@@ -275,6 +295,7 @@ export default function Projects() {
               {t("proj.sub")}
             </p>
           </div>
+          <div aria-hidden="true" className={s.measure} />
         </ScrollReveal>
 
         <div className="grid grid-cols-1 gap-[22px] lg:grid-cols-2">

@@ -57,12 +57,21 @@ export default function WordmarkHero() {
 
       <h1 className={styles.wordmark}>
         <span className={styles.srOnly}>{t("wordmark.headline")}</span>
-        <span className={styles.letters} aria-hidden="true">
-          {word.split("").map((letter, i) => (
-            <span key={`${letter}-${i}`} style={{ "--i": i } as React.CSSProperties}>
-              {letter}
-            </span>
-          ))}
+        {/* Ignition: the filament, then the letters, then the embers it throws. */}
+        <span className={styles.wordmarkInner}>
+          <span className={styles.letters} aria-hidden="true">
+            {word.split("").map((letter, i) => (
+              <span key={`${letter}-${i}`} style={{ "--i": i } as React.CSSProperties}>
+                {letter}
+              </span>
+            ))}
+          </span>
+          <span className={styles.strike} aria-hidden="true" />
+          <span className={styles.sparks} aria-hidden="true">
+            {[0, 1, 2, 3, 4, 5].map((i) => (
+              <i key={i} style={{ "--i": i } as React.CSSProperties} />
+            ))}
+          </span>
         </span>
       </h1>
 
