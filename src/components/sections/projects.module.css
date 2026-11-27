@@ -1,163 +1,21 @@
 /* Projects — the bench.
-   Three of the five motion studies land here: a header that measures itself,
-   cards that assemble, and a pointer light that follows the cursor across
-   the bench. All of it is one-time arrival or pointer response, per DESIGN.md. */
+   One motion study lands here: the pointer light. The card holds still while
+   the surface under the cursor warms, so the artifact feels picked up rather
+   than highlighted. Arrival is left to the shared ScrollReveal, which already
+   owns the page's rhythm. */
 
-/* ── the header rule ─────────────────────────────────────────────── */
-
-.measure {
+/* Marker class for the card, which is also the light's positioning context. */
+.card {
   position: relative;
-  height: 1px;
-  margin-top: 22px;
-  background: var(--color-border-2);
-  transform-origin: 0 50%;
 }
-
-.measure::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 6px;
-  color: rgba(243, 236, 230, 0.2);
-  background-image: repeating-linear-gradient(
-    90deg,
-    currentColor 0 1px,
-    transparent 1px 60px
-  );
-}
-
-:global(.reveal.visible) .measure {
-  animation: measure-draw 900ms var(--ease-out) 140ms both;
-}
-
-:global(.reveal.visible) .measure::after {
-  animation: ticks-in 700ms ease 420ms both;
-}
-
-/* Both ends are declared so the resting state stays visible: if the reveal
-   never runs, the statement is still measured. */
-@keyframes measure-draw {
-  from {
-    transform: scaleX(0);
-  }
-  to {
-    transform: scaleX(1);
-  }
-}
-
-@keyframes ticks-in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-/* ── the card assembles ──────────────────────────────────────────── */
-
-/* A frame drawn around the card, like a plotter closing the outline. It is
-   painted on top of the card's own hairline and fades once it lands, so the
-   card ends composed rather than outlined in ember. */
-.card::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 3;
-  border: 1px solid var(--color-accent);
-  border-radius: 18px;
-  pointer-events: none;
-  clip-path: inset(0 100% 100% 0 round 18px);
-  opacity: 0;
-}
-
-:global(.reveal.visible) .card::after {
-  animation: frame-draw 900ms var(--ease-out) 60ms forwards;
-}
-
-@keyframes frame-draw {
-  0% {
-    clip-path: inset(0 100% 100% 0 round 18px);
-    opacity: 0.85;
-  }
-  70% {
-    opacity: 0.85;
-  }
-  100% {
-    clip-path: inset(0 0 0 0 round 18px);
-    opacity: 0;
-  }
-}
-
-:global(.reveal.visible) .shot img {
-  animation: shot-wipe 900ms var(--ease-out) 220ms both;
-}
-
-@keyframes shot-wipe {
-  from {
-    clip-path: inset(0 100% 0 0);
-    transform: scale(1.06);
-  }
-  to {
-    clip-path: inset(0 0 0 0);
-    transform: scale(1);
-  }
-}
-
-/* Each block of the card lands in reading order. The case-study drawer is
-   deliberately excluded: it owns its own open/close transition. */
-.sub,
-.title,
-.one,
-.tags,
-.actions {
-  opacity: 1;
-}
-
-:global(.reveal.visible) .sub,
-:global(.reveal.visible) .title,
-:global(.reveal.visible) .one,
-:global(.reveal.visible) .tags,
-:global(.reveal.visible) .actions {
-  animation: row-in 620ms var(--ease-out) both;
-}
-
-:global(.reveal.visible) .sub {
-  animation-delay: 320ms;
-}
-:global(.reveal.visible) .title {
-  animation-delay: 380ms;
-}
-:global(.reveal.visible) .one {
-  animation-delay: 440ms;
-}
-:global(.reveal.visible) .tags {
-  animation-delay: 500ms;
-}
-:global(.reveal.visible) .actions {
-  animation-delay: 560ms;
-}
-
-@keyframes row-in {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-
-/* ── pointer light ───────────────────────────────────────────────── */
 
 .body {
   position: relative;
   z-index: 2;
 }
 
+/* Warm light under the pointer. Bounded to the card, sits above the
+   screenshot and below the copy, so nothing is ever washed out to read. */
 .light {
   position: absolute;
   inset: 0;
@@ -179,22 +37,6 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .measure,
-  .measure::after,
-  .card::after,
-  .shot img,
-  .sub,
-  .title,
-  .one,
-  .tags,
-  .actions {
-    animation: none;
-  }
-
-  .card::after {
-    display: none;
-  }
-
   .light {
     display: none;
   }

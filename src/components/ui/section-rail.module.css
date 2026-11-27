@@ -23,7 +23,9 @@
   pointer-events: auto;
 }
 
-@media (min-width: 1200px) {
+/* Only where the 1200px content column leaves a real margin: below this the
+   index would sit on top of the copy. */
+@media (min-width: 1400px) {
   .rail {
     display: block;
   }

@@ -196,14 +196,14 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
 
         <div className={`${s.body} flex flex-1 flex-col p-[26px]`}>
           {project.subKey && (
-            <div className={`${s.sub} mb-2 font-mono text-[11px] font-medium uppercase tracking-[0.14em] text-[var(--color-muted-2)]`}>
+            <div className="mb-2 font-mono text-[11px] font-medium uppercase tracking-[0.14em] text-[var(--color-muted-2)]">
               {t(project.subKey)}
             </div>
           )}
-          <h3 className={`${s.title} mb-1 text-[21px] font-bold tracking-[-0.02em]`}>
+          <h3 className="mb-1 text-[21px] font-bold tracking-[-0.02em]">
             <span className="text-[var(--color-accent-2)]">/</span> {t(project.titleKey)}
           </h3>
-          <p className={`${s.one} mb-1 text-[15px] leading-relaxed text-[var(--color-muted)]`}>
+          <p className="mb-1 text-[15px] leading-relaxed text-[var(--color-muted)]">
             {t(`proj.${project.slug}.one`)}
           </p>
 
@@ -213,7 +213,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
             title={t(project.titleKey)}
           />
 
-          <div className={`${s.tags} mt-4 mb-5 flex flex-wrap gap-[7px]`}>
+          <div className="mt-4 mb-5 flex flex-wrap gap-[7px]">
             {project.tags.map((tag) => (
               <span
                 key={tag}
@@ -224,7 +224,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
             ))}
           </div>
 
-          <div className={`${s.actions} mt-auto flex flex-wrap gap-3`}>
+          <div className="mt-auto flex flex-wrap gap-3">
             {!project.link && !project.source && (
               <a
                 href={`mailto:amx72001@gmail.com?subject=${encodeURIComponent(
@@ -295,7 +295,6 @@ export default function Projects() {
               {t("proj.sub")}
             </p>
           </div>
-          <div aria-hidden="true" className={s.measure} />
         </ScrollReveal>
 
         <div className="grid grid-cols-1 gap-[22px] lg:grid-cols-2">
