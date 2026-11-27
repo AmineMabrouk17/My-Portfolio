@@ -71,3 +71,11 @@
 **Why:** Bench assembly competed with the pointer light on the same surface, and the measured rule read as a smudge at the site's hairline weights — neither carried its weight. The rail's active section is now computed from geometry on each scroll frame instead of an `IntersectionObserver` on a captured element: `Experience` swaps a static section for an animated one after mount, so the observed node was detached and `03` could never light up.
 
 **Alternative considered:** Keeping all five and letting the reviewer drop them later — the two rejected pieces would have shipped noise on the two surfaces that already have the strongest content.
+
+## 2026-11-27 — Second motion set: timeline, curtain, contact wave, slit marquee
+
+**Decision:** Ship studies 06, 08, 09 and 10 — the Experience rail draws with scroll progress, the Projects header parts behind two curtain halves, the Contact panel takes a rising wash and a drawn frame, and the loop band is read once by a slit. Study 07 (skill lattice) is dropped.
+
+**Why:** Each one lands on a surface that had no motion of its own, and each is gated by a trigger it already owns (`ScrollReveal`, an `IntersectionObserver`, or scroll geometry), so nothing depends on a new global system. The lattice repeated what the skills grid already says and its warm cell read as an unexplained hover state.
+
+**Alternative considered:** Porting 07 as well for symmetry — symmetry is not a reason, and a highlight that never resolves to a real state teaches the visitor nothing.
