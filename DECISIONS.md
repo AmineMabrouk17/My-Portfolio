@@ -63,3 +63,11 @@
 **Why:** Each one answers a different question — arrival, component construction, section signature, pointer feedback, and continuity — so they do not compete for the same moment. Every animation starts from a visible composed state (`animation: both` with an explicit `from`), so a browser that cannot run the motion still shows the page, and `prefers-reduced-motion` resolves each to its composed frame.
 
 **Alternative considered:** Shipping only the hero ignition — the strongest single moment, but it leaves the case-study cards and the section rhythm with the generic fade-up they already had.
+
+## 2026-11-27 — Three of the five motion studies ship (supersedes the entry above)
+
+**Decision:** Only ignition (hero), pointer light (project cards) and the bench index (`SectionRail`) ship. Bench assembly and the measured header were removed, along with `public/motion-lab/`, so the site does not serve the prototypes.
+
+**Why:** Bench assembly competed with the pointer light on the same surface, and the measured rule read as a smudge at the site's hairline weights — neither carried its weight. The rail's active section is now computed from geometry on each scroll frame instead of an `IntersectionObserver` on a captured element: `Experience` swaps a static section for an animated one after mount, so the observed node was detached and `03` could never light up.
+
+**Alternative considered:** Keeping all five and letting the reviewer drop them later — the two rejected pieces would have shipped noise on the two surfaces that already have the strongest content.
