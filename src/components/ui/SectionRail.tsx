@@ -11,6 +11,11 @@ import s from "./section-rail.module.css";
  *
  * It is navigation first — every item is a link — and the motion is the
  * scroll relationship itself, not decoration.
+ *
+ * Position is measured from geometry on every frame rather than held by an
+ * IntersectionObserver on a captured node. `Experience` swaps a static section
+ * for an animated one after mount, so any element reference taken at mount
+ * time is detached a frame later and would never light up again.
  */
 const SECTIONS = [
   { id: "about", num: "01", label: "About" },
@@ -25,40 +30,38 @@ export default function SectionRail() {
   const [active, setActive] = useState<string>("about");
 
   useEffect(() => {
-    const observers: IntersectionObserver[] = [];
-
-    SECTIONS.forEach(({ id }) => {
-      const el = document.getElementById(id);
-      if (!el) return;
-      const io = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) setActive(id);
-          });
-        },
-        // The line sits at the vertical middle of the viewport.
-        { rootMargin: "-45% 0px -45% 0px", threshold: 0 }
-      );
-      io.observe(el);
-      observers.push(io);
-    });
-
-    return () => observers.forEach((io) => io.disconnect());
-  }, []);
-
-  useEffect(() => {
     const rail = railRef.current;
     if (!rail) return;
 
     let frame = 0;
+
     const read = () => {
       frame = 0;
+
       const max = document.documentElement.scrollHeight - window.innerHeight;
       const p = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
       rail.style.setProperty("--p", p.toFixed(4));
+
       // The hero owns the first viewport; the index belongs to the page below it.
       rail.dataset.shown = window.scrollY > window.innerHeight * 0.55 ? "true" : "false";
+
+      // The reading line sits at the middle of the viewport. The active item is
+      // the last section whose top has passed it — which keeps the rail honest
+      // through tall sections, gaps between them, and sections that re-mount.
+      const line = window.scrollY + window.innerHeight * 0.5;
+      let next: string = SECTIONS[0].id;
+
+      for (const { id } of SECTIONS) {
+        const el = document.getElementById(id);
+        if (!el) continue;
+        const top = el.getBoundingClientRect().top + window.scrollY;
+        if (top > line) break;
+        next = id;
+      }
+
+      setActive(next);
     };
+
     const onScroll = () => {
       if (!frame) frame = requestAnimationFrame(read);
     };
