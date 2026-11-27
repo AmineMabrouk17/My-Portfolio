@@ -1,0 +1,30 @@
+/* Experience — the timeline draws itself.
+   The rail fills with the section's scroll progress and each node ignites as
+   the line reaches it, so the timeline reads as something being laid down
+   rather than a column that was always there. The node glow itself is owned
+   by the component's active state; this only carries the line. */
+
+.rail {
+  --p: 0;
+  position: relative;
+}
+
+.fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1px;
+  height: 100%;
+  transform: scaleY(var(--p));
+  transform-origin: 50% 0;
+  background: linear-gradient(180deg, var(--color-accent), var(--color-accent-2));
+  box-shadow: 0 0 10px rgba(255, 107, 71, 0.45);
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fill {
+    transform: none;
+    box-shadow: none;
+  }
+}
