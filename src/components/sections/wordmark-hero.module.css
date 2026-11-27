@@ -120,12 +120,117 @@
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+  /* Ignition: the window opens left to right behind the filament. Negative
+     insets keep ascenders and the gradient's bottom edge out of the cut. */
+  animation: ignite 950ms cubic-bezier(0.4, 0, 0.15, 1) 120ms both;
+}
+
+/* The window starts open on the first letter, so the hero is never blank
+   while the light travels — it ignites the rest of the name. The base state
+   above is the composed one, so a browser that cannot run this still shows
+   the name. */
+@keyframes ignite {
+  from {
+    clip-path: inset(-14% 74% -20% 0);
+  }
+  to {
+    clip-path: inset(-14% 0 -20% 0);
+  }
 }
 
 .letters span {
   display: inline-block;
   animation: letterRise 0.85s var(--ease-out, cubic-bezier(0.2, 0.7, 0.2, 1)) backwards;
-  animation-delay: calc(var(--i) * 55ms);
+  animation-delay: calc(140ms + var(--i) * 60ms);
+}
+
+/* The filament itself: a 2px light travelling the width of the name, with
+   the bloom a hot edge throws. Sits above the letters, under the portrait. */
+.wordmarkInner {
+  position: relative;
+  display: flex;
+}
+
+.strike {
+  position: absolute;
+  inset-block: 0;
+  left: 0;
+  width: 100%;
+  z-index: 3;
+  pointer-events: none;
+  animation: strike 950ms cubic-bezier(0.4, 0, 0.15, 1) 120ms both;
+  will-change: transform, opacity;
+}
+
+.strike::before {
+  content: "";
+  position: absolute;
+  inset-block: 4%;
+  right: -1px;
+  width: 2px;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    #fff4e8 24%,
+    var(--color-accent-2) 56%,
+    transparent 100%
+  );
+  box-shadow:
+    0 0 18px 3px rgba(255, 107, 71, 0.5),
+    0 0 52px 12px rgba(255, 107, 71, 0.18);
+}
+
+@keyframes strike {
+  0% {
+    transform: translateX(-74%);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  84% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(0%);
+    opacity: 0;
+  }
+}
+
+/* Embers the strike throws. Six is enough to read as sparks rather than
+   confetti; each one drifts away from the line and dies. */
+.sparks {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+}
+
+.sparks i {
+  position: absolute;
+  left: calc(10% + var(--i) * 16%);
+  top: 44%;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  background: var(--color-accent-2);
+  box-shadow: 0 0 8px 1px rgba(255, 165, 82, 0.7);
+  opacity: 0;
+  animation: spark-lift 1200ms ease-out calc(760ms + var(--i) * 80ms) forwards;
+}
+
+@keyframes spark-lift {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  14% {
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(calc((var(--i) - 2.5) * 12px), -120px, 0) scale(0.4);
+  }
 }
 
 .portrait {
@@ -597,6 +702,23 @@
   .portrait,
   .col {
     animation: none;
+  }
+
+  /* Ignition resolves to the composed frame: no filament, no wipe. */
+  .letters,
+  .letters span,
+  .strike,
+  .sparks i {
+    animation: none;
+  }
+
+  .letters {
+    clip-path: none;
+  }
+
+  .strike,
+  .sparks {
+    display: none;
   }
 
   .meta,

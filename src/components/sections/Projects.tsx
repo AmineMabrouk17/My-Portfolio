@@ -5,6 +5,7 @@ import ScrollReveal from "@/components/ui/ScrollReveal";
 import { AnimatedText } from "@/components/motion/animated-text";
 import { useEffect, useRef, useState } from "react";
 import { MagneticButton } from "@/components/ui/MagneticButton";
+import s from "./projects.module.css";
 
 type CaseStudy = { problem: string; solution: string; result: string };
 
@@ -140,18 +141,35 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
   const { t } = useI18n();
   const shotRef = useRef<HTMLImageElement>(null);
 
-  // A cached image can finish decoding before React attaches onLoad, so the
-  // mount check covers it and the handler covers everything after.
+  // A cached image can finish decoding before React attaches onLoad, and a
+  // lazy image can finish before hydration settles. The mount check covers
+  // the first case; a native listener covers the second, since it does not
+  // depend on React's synthetic event timing.
   useEffect(() => {
     const img = shotRef.current;
-    if (img?.complete && img.naturalWidth > 0) {
+    if (!img) return;
+    const mark = () => {
       img.dataset.loaded = "true";
+    };
+    if (img.complete && img.naturalWidth > 0) {
+      mark();
+      return;
     }
+    img.addEventListener("load", mark, { once: true });
+    return () => img.removeEventListener("load", mark);
   }, []);
 
   return (
     <ScrollReveal delay={(index % 2) * 80} className="h-full">
-      <article className="project-card group flex h-full flex-col overflow-hidden rounded-[18px] border border-[var(--color-border)] bg-[var(--color-surface)] transition-colors duration-300 hover:border-[var(--color-accent)]/60">
+      <article
+        className={`project-card ${s.card} group flex h-full flex-col overflow-hidden rounded-[18px] border border-[var(--color-border)] bg-[var(--color-surface)] transition-colors duration-300 hover:border-[var(--color-accent)]/60`}
+        onPointerMove={(e) => {
+          // The card's own light: warm the bench under the pointer.
+          const r = e.currentTarget.getBoundingClientRect();
+          e.currentTarget.style.setProperty("--mx", `${e.clientX - r.left}px`);
+          e.currentTarget.style.setProperty("--my", `${e.clientY - r.top}px`);
+        }}
+      >
         <div className="relative aspect-[3/2] w-full overflow-hidden border-b border-[var(--color-border)] bg-[var(--color-bg)]">
           <img
             ref={shotRef}
@@ -174,7 +192,9 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
           />
         </div>
 
-        <div className="flex flex-1 flex-col p-[26px]">
+        <div aria-hidden="true" className={s.light} />
+
+        <div className={`${s.body} flex flex-1 flex-col p-[26px]`}>
           {project.subKey && (
             <div className="mb-2 font-mono text-[11px] font-medium uppercase tracking-[0.14em] text-[var(--color-muted-2)]">
               {t(project.subKey)}

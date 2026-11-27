@@ -1,6 +1,7 @@
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import BackToTop from "@/components/ui/BackToTop";
+import SectionRail from "@/components/ui/SectionRail";
 import LoopingPanels from "@/components/LoopingPanels";
 import WordmarkHero from "@/components/sections/WordmarkHero";
 import About from "@/components/sections/About";
@@ -64,6 +65,7 @@ export default function Home() {
         <Contact />
       </main>
       <Footer />
+      <SectionRail />
       <BackToTop />
     </>
   );

@@ -1,0 +1,43 @@
+/* Projects — the bench.
+   One motion study lands here: the pointer light. The card holds still while
+   the surface under the cursor warms, so the artifact feels picked up rather
+   than highlighted. Arrival is left to the shared ScrollReveal, which already
+   owns the page's rhythm. */
+
+/* Marker class for the card, which is also the light's positioning context. */
+.card {
+  position: relative;
+}
+
+.body {
+  position: relative;
+  z-index: 2;
+}
+
+/* Warm light under the pointer. Bounded to the card, sits above the
+   screenshot and below the copy, so nothing is ever washed out to read. */
+.light {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(
+    320px 240px at var(--mx, 50%) var(--my, 0%),
+    rgba(255, 165, 82, 0.16),
+    rgba(255, 107, 71, 0.05) 45%,
+    transparent 72%
+  );
+  transition: opacity 260ms ease;
+}
+
+.card:hover .light,
+.card:focus-within .light {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .light {
+    display: none;
+  }
+}
