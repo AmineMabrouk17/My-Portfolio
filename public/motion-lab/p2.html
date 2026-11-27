@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>02 — Bench assembly</title>
+<link rel="stylesheet" href="./lab.css" />
+<style>
+  .p2-card { will-change: transform; }
+  .p2-title .line > span { display: block; }
+  .p2-row { will-change: transform, opacity; }
+</style>
+</head>
+<body>
+<div class="stage">
+  <div class="grid" style="--gx:50%;--gy:44%"></div>
+  <div class="glow" style="opacity:.55"></div>
+
+  <div class="p2-head">
+    <span><span class="idx">CASE STUDY</span> &nbsp;·&nbsp; <span class="quiet">01 / 06</span></span>
+    <span class="quiet">PROJECTS</span>
+  </div>
+
+  <div class="p2-card" id="card">
+    <span class="p2-edge t" id="eT"></span>
+    <span class="p2-edge r" id="eR"></span>
+    <span class="p2-edge b" id="eB"></span>
+    <span class="p2-edge l" id="eL"></span>
+
+    <div class="p2-shot" id="shot">
+      <img src="/projects/castncue.webp" alt="" id="shotImg" />
+    </div>
+
+    <div class="p2-body">
+      <div class="p2-title" id="title">
+        <span class="line"><span>Cast n Cue</span></span>
+        <span class="line"><span>Movie &amp; TV</span></span>
+        <span class="line"><span>tracker.</span></span>
+      </div>
+
+      <div class="p2-rule" id="rule"></div>
+
+      <div class="p2-rows" id="rows">
+        <div class="p2-row">
+          <div class="k">Problem</div>
+          <div class="v">A dozen shows at once means losing track of where you stopped.</div>
+        </div>
+        <div class="p2-row">
+          <div class="k">Solution</div>
+          <div class="v">Episode-level tracking on Cloudflare Workers + D1, with TMDB search and Better Auth.</div>
+        </div>
+        <div class="p2-row">
+          <div class="k">Result</div>
+          <div class="v">Private by design — watchlist and progress always one click away.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="p2-link" id="link">
+      <span>View live demo</span><span>↗</span>
+      <span class="u" id="linkRule"></span>
+    </div>
+
+    <div class="p2-sweep" id="sweep"></div>
+  </div>
+</div>
+
+<script src="./lib.js"></script>
+<script>
+  window.DURATION = 6400;
+  const { prog, easeOut, easeOutExpo, easeInOut, mix, set, q, qa } = L;
+
+  const card = q("#card");
+  const shot = q("#shot"), shotImg = q("#shotImg"), sweep = q("#sweep");
+  const title = qa("#title .line > span");
+  const rows = qa("#rows .p2-row");
+  const rule = q("#rule"), link = q("#link"), linkRule = q("#linkRule");
+  const edges = [["#eT", "scaleX"], ["#eR", "scaleY"], ["#eB", "scaleX"], ["#eL", "scaleY"]];
+
+  window.render = (t) => {
+    // the card itself settles onto the bench
+    const cp = easeOutExpo(prog(t, 0, 900));
+    set(card, {
+      opacity: String(cp),
+      transform: `translateY(${(1 - cp) * 18}px)`,
+      boxShadow: `0 ${22 + cp * 10}px ${40 + cp * 20}px -28px rgba(0,0,0,.75)`,
+    });
+
+    // four hairlines, drawn clockwise like a plotter
+    edges.forEach(([sel, axis], i) => {
+      const p = easeOut(prog(t, 240 + i * 130, 520));
+      const el = q(sel);
+      set(el, { transform: `${axis}(${p})` });
+    });
+
+    // screenshot wipes in from the left edge
+    const sp = easeOut(prog(t, 560, 900));
+    set(shot, {
+      clipPath: `inset(0 ${(1 - sp) * 100}% 0 0)`,
+      opacity: sp > 0 ? "1" : "0",
+    });
+    set(shotImg, { transform: `scale(${1.06 - 0.06 * sp})` });
+
+    // title lines rise
+    title.forEach((el, i) => {
+      const p = easeOutExpo(prog(t, 900 + i * 95, 700));
+      set(el, { transform: `translateY(${(1 - p) * 105}%)` });
+    });
+
+    // the ember rule under the title
+    const rp = easeOut(prog(t, 1180, 700));
+    set(rule, { transform: `scaleX(${rp})` });
+
+    // case-study rows cascade
+    rows.forEach((el, i) => {
+      const p = easeOut(prog(t, 1420 + i * 150, 640));
+      set(el, { opacity: String(p), transform: `translateY(${(1 - p) * 12}px)` });
+    });
+
+    const lp = easeOut(prog(t, 1900, 600));
+    set(link, { opacity: String(lp) });
+    set(linkRule, { transform: `scaleX(${easeOut(prog(t, 2000, 700))})` });
+
+    // one pass of light across the bench
+    const w = easeInOut(prog(t, 2700, 1500));
+    const on = Math.min(prog(t, 2700, 200), 1 - prog(t, 3950, 300));
+    set(sweep, {
+      opacity: String(on * 0.9),
+      background: `radial-gradient(340px 300px at ${-10 + 120 * w}% 46%, rgba(255,165,82,.14), transparent 70%)`,
+    });
+  };
+</script>
+</body>
+</html>

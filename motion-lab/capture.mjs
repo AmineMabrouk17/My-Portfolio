@@ -86,7 +86,7 @@ for (const name of PAGES) {
   await S("Page.enable");
   await S("Runtime.enable");
   await S("Emulation.setDeviceMetricsOverride", { width: 1280, height: 720, deviceScaleFactor: 1.5, mobile: false });
-  await S("Page.navigate", { url: "file://" + resolve(SRC, name + ".html") });
+  await S("Page.navigate", { url: "file://" + resolve(SRC, name + ".html") + "?capture" });
 
   let duration = 0;
   for (let i = 0; i < 200 && !duration; i++) {

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>04 — Pointer light</title>
+<link rel="stylesheet" href="./lab.css" />
+<style>
+  .wrap { position: absolute; left: 96px; top: 88px; width: 760px; z-index: 3; }
+  .head {
+    display: flex; align-items: baseline; justify-content: space-between;
+    color: var(--muted2); padding-bottom: 16px;
+  }
+  .head .r { color: #5b524d; }
+
+  .row {
+    position: relative;
+    display: flex; align-items: center; gap: 18px;
+    height: 82px;
+    border-top: 1px solid rgba(243, 236, 230, 0.08);
+    padding-left: 0;
+    will-change: padding-left;
+  }
+  .row:last-child { border-bottom: 1px solid rgba(243, 236, 230, 0.08); }
+  .row .idx { font-family: var(--mono); font-size: 10.5px; color: #5b524d; width: 22px; flex: none; }
+  .row .name { font-size: 26px; font-weight: 500; letter-spacing: -0.022em; color: #cfc7c0; flex: none; }
+  .row .stack {
+    margin-left: auto; font-family: var(--mono); font-size: 10.5px;
+    letter-spacing: 0.1em; text-transform: uppercase; color: #5b524d;
+  }
+  .row .arrow { font-size: 14px; color: var(--ember); opacity: 0; transform: translateX(-8px); flex: none; width: 16px; }
+  .row .fill {
+    position: absolute; inset: -1px -20px;
+    background: linear-gradient(90deg, rgba(255,107,71,0.09), rgba(255,107,71,0.025) 26%, rgba(255,107,71,0) 62%);
+    border-radius: 14px;
+    opacity: 0;
+    z-index: -1;
+  }
+
+  .preview {
+    position: absolute; left: 900px; top: 0;
+    width: 236px; height: 148px;
+    border-radius: 12px;
+    border: 1px solid var(--line2);
+    background: #141011;
+    overflow: hidden;
+    z-index: 4;
+    opacity: 0;
+    box-shadow: 0 26px 50px -26px rgba(0,0,0,.85);
+  }
+  .preview img { width: 100%; height: 100%; object-fit: cover; will-change: transform; filter: saturate(.9) brightness(.86) contrast(1.02); }
+  .preview .meta {
+    position: absolute; left: 0; right: 0; bottom: 0;
+    padding: 22px 10px 9px;
+    background: linear-gradient(180deg, transparent, rgba(8,6,7,.9));
+    font-family: var(--mono); font-size: 9px; letter-spacing: 0.14em;
+    text-transform: uppercase; color: #d8d0c9;
+  }
+
+  .note {
+    position: absolute; left: 900px; bottom: 92px; width: 236px;
+    color: #5b524d; line-height: 1.8;
+  }
+  .note b { color: var(--muted2); font-weight: 500; display: block; margin-bottom: 6px; }
+</style>
+</head>
+<body>
+<div class="stage">
+  <div class="grid" style="--gx:30%; --gy:40%"></div>
+  <div class="glow" style="opacity:.45"></div>
+  <div class="p4-light" id="light" style="left:0;top:0;position:absolute;z-index:1"></div>
+
+  <div class="wrap">
+    <div class="head mono" id="head">
+      <span>Selected work</span><span class="r">06 projects · all shipped</span>
+    </div>
+
+    <div id="list">
+      <div class="row"><span class="fill"></span><span class="idx">01</span><span class="name">Cast n Cue</span><span class="stack">Next.js · D1</span><span class="arrow">↗</span></div>
+      <div class="row"><span class="fill"></span><span class="idx">02</span><span class="name">GameStore TN</span><span class="stack">Cloudflare · RTL</span><span class="arrow">↗</span></div>
+      <div class="row"><span class="fill"></span><span class="idx">03</span><span class="name">BudgetIQ</span><span class="stack">Gemini · Supabase</span><span class="arrow">↗</span></div>
+      <div class="row"><span class="fill"></span><span class="idx">04</span><span class="name">RakT3adiBot</span><span class="stack">Python · Gemini</span><span class="arrow">↗</span></div>
+      <div class="row"><span class="fill"></span><span class="idx">05</span><span class="name">SaletBot</span><span class="stack">Python · SQLite</span><span class="arrow">↗</span></div>
+      <div class="row"><span class="fill"></span><span class="idx">06</span><span class="name">Crypto &amp; Stocks</span><span class="stack">Binance WS</span><span class="arrow">↗</span></div>
+    </div>
+  </div>
+
+  <div class="preview" id="preview">
+    <img id="pimg" src="/projects/budgetiq.webp" alt="" />
+    <div class="meta" id="pmeta">BudgetIQ — AI budget planner</div>
+  </div>
+
+
+
+  <div class="p4-cursor" id="cursor"></div>
+  <div class="vignette"></div>
+</div>
+
+<script src="./lib.js"></script>
+<script>
+window.DURATION = 6600;
+const { prog, easeOut, easeOutExpo, easeInOut, lerp, mix, set, q, qa } = L;
+
+const rows = qa('#list .row');
+const cursor = q('#cursor');
+const light = q('#light');
+const preview = q('#preview');
+const pimg = q('#pimg');
+const pmeta = q('#pmeta');
+const note = q('#note');
+
+const ROW_H = 82;
+const TOP = 88 + 34; // wrap top + head height
+const rowY = (i) => TOP + ROW_H * i + ROW_H / 2;
+const CURSOR_PATH = [
+  { t: 900, x: 820, y: 760, row: -1 },
+  { t: 1750, x: 690, y: rowY(2), row: 2 },
+  { t: 3300, x: 700, y: rowY(4), row: 4 },
+  { t: 4300, x: 780, y: 740, row: -1 },
+];
+
+const POS = [
+  { t: 0, x: 900, y: 150 },
+  { t: 1750, x: 545, y: rowY(2) },
+  { t: 3300, x: 560, y: rowY(4) },
+  { t: 4300, x: 780, y: 740 },
+];
+
+function cursorAt(t) {
+  for (let i = 0; i < POS.length - 1; i++) {
+    const a = POS[i], b = POS[i + 1];
+    if (t <= b.t) {
+      const p = easeInOut(L.clamp((t - a.t) / (b.t - a.t)));
+      return { x: lerp(a.x, b.x, p), y: lerp(a.y, b.y, p) };
+    }
+  }
+  const last = POS[POS.length - 1];
+  return { x: last.x, y: last.y };
+}
+
+const PROJECTS = {
+  2: ['/projects/budgetiq.webp', 'BudgetIQ — AI budget planner'],
+  4: ['/projects/rakt3adi.webp', 'RakT3adiBot — Arabic exam planner'],
+};
+
+let lastRow = -2;
+let swappedFor = -1;
+
+function render(t) {
+  const cp = cursorAt(t);
+  set(cursor, { left: `${cp.x}px`, top: `${cp.y}px` });
+  set(light, { left: `${cp.x}px`, top: `${cp.y}px` });
+
+  const active = t > 1500 && t < 3450 ? 2 : t >= 3450 && t < 4250 ? 4 : -1;
+
+  // rows arrive
+  rows.forEach((row, i) => {
+    const p = easeOutExpo(prog(t, 120 + i * 55, 620));
+    set(row, { opacity: String(p), transform: `translateY(${(1 - p) * 10}px)` });
+  });
+
+  // active row: surface lifts, name shifts, hairline warms
+  const glow = easeOut(prog(t, active === 2 ? 1520 : 3400, 460));
+  rows.forEach((row, i) => {
+    const on = i === active;
+    const a = on ? glow : 0;
+    set(row, {
+      borderTopColor: on ? `rgba(255,107,71,${0.34 * a})` : 'rgba(243,236,230,0.08)',
+      paddingLeft: `${(10 * a).toFixed(2)}px`,
+    });
+    set(row.querySelector('.fill'), { opacity: (a * 0.95).toFixed(3) });
+    set(row.querySelector('.name'), {
+      color: on ? '#f3ece6' : '#cfc7c0',
+      transform: `translateX(${(6 * a).toFixed(2)}px)`,
+    });
+    set(row.querySelector('.stack'), { color: on ? '#a89e97' : '#5b524d' });
+    set(row.querySelector('.arrow'), {
+      opacity: (a * 0.95).toFixed(3),
+      transform: `translateX(${(1 - a) * -8}px)`,
+    });
+    set(row.querySelector('.idx'), { color: on ? '#ff8a63' : '#5b524d' });
+  });
+
+  // preview: rides with the active row, cross-dissolves on change
+  const visible = active !== -1;
+  const swap = active === 4 ? prog(t, 3420, 420) : prog(t, 1530, 420);
+  const pv = L.clamp(swap);
+  set(preview, {
+    opacity: (visible ? (0.1 + 0.9 * pv).toFixed(3) : 0),
+    top: `${(cp.y - 74).toFixed(1)}px`,
+    transform: `translateY(${((1 - pv) * 16).toFixed(1)}px) scale(${(0.97 + 0.03 * pv).toFixed(3)})`,
+  });
+
+  if (active !== -1 && active !== swappedFor && PROJECTS[active]) {
+    swappedFor = active;
+    pimg.src = PROJECTS[active][0];
+    pmeta.textContent = PROJECTS[active][1];
+  }
+
+  // click pulse
+  const click = prog(t, 3950, 700);
+  if (click > 0 && click < 1) {
+    const r = 18 + easeOut(click) * 46;
+    set(cursor, {
+      width: `${r}px`, height: `${r}px`,
+      marginLeft: `${-r / 2}px`, marginTop: `${-r / 2}px`,
+      opacity: String(1 - click * 0.8),
+    });
+  } else {
+    set(cursor, { width: '18px', height: '18px', marginLeft: '-9px', marginTop: '-9px', opacity: '1' });
+  }
+
+
+  set(q('#head'), { opacity: String(easeOut(prog(t, 60, 500))) });
+}
+window.render = render;
+</script>
+</body>
+</html>

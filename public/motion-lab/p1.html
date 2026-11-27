@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>01 — Ignition</title>
+<link rel="stylesheet" href="./lab.css" />
+<style>
+  .p1-beam { will-change: transform, opacity; }
+</style>
+</head>
+<body>
+<div class="stage">
+  <div class="grid" id="grid"></div>
+  <div id="glow"></div>
+  <div class="p1-wordwrap">
+    <h1 class="p1-word" id="word">
+      <span class="l"><span>A</span></span>
+      <span class="l"><span>M</span></span>
+      <span class="l"><span>I</span></span>
+      <span class="l"><span>N</span></span>
+      <span class="l"><span>E</span></span>
+    </h1>
+  </div>
+
+  <div class="p1-strike">
+    <div class="p1-beam" id="beam"></div>
+    <div class="p1-head" id="head"></div>
+  </div>
+
+  <img class="p1-portrait" id="portrait" src="/hero-amine.png" alt="" />
+
+  <div class="p1-meta" id="meta">
+    <b>Amine Mabrouk</b><span class="sep">·</span>
+    <span>Full Stack Developer</span><span class="sep">·</span>
+    <span style="color:#928881">Tunis, Tunisia</span><span class="sep">·</span>
+    <span class="status"><i></i>Freelance</span>
+  </div>
+
+  <ul class="p1-col left" id="colL">
+    <li><b>Full-stack</b></li>
+    <li>Web platforms</li>
+    <li>Telegram bots</li>
+    <li>End to end</li>
+  </ul>
+  <ul class="p1-col right" id="colR">
+    <li>Next.js</li>
+    <li>Laravel</li>
+    <li>Cloudflare</li>
+    <li>Supabase</li>
+  </ul>
+
+  <div class="p1-foot">
+    <p class="p1-summary" id="summary">
+      You describe the product; <b>I ship it tested and deployed.</b> Schema, API,
+      UI, payments, CI — one person accountable from empty repo to live URL.
+    </p>
+    <div class="p1-actions" id="actions">
+      <span class="p1-btn primary">Discuss your project</span>
+      <span class="p1-btn ghost">See 6 live projects</span>
+    </div>
+  </div>
+
+  <div class="ticker mono" id="ticker">
+    <div class="run" id="run">
+      <div class="grp" id="grp">
+        <span>Cast n Cue</span><span class="sep">/</span>
+        <span>BudgetIQ</span><span class="sep">/</span>
+        <span>Crypto &amp; Stocks</span><span class="sep">/</span>
+        <span>RakT3adiBot</span><span class="sep">/</span>
+        <span>GameStore TN</span><span class="sep">/</span>
+        <span>SaletBot</span><span class="sep">/</span>
+      </div>
+      <div class="grp" id="grp2" aria-hidden="true"></div>
+    </div>
+  </div>
+
+  <div class="sparks" id="sparks"></div>
+  <div class="vignette"></div>
+</div>
+
+<script src="./lib.js"></script>
+<script>
+  window.DURATION = 6400;
+
+  const { clamp, prog, easeOut, easeOutExpo, easeInOut, mix, rnd, set, q, qa } = L;
+  const letters = qa("#word .l > span");
+  const beam = q("#beam"), head = q("#head"), glow = q("#glow");
+  const portrait = q("#portrait");
+  const meta = q("#meta");
+  const colL = qa("#colL li"), colR = qa("#colR li");
+  const summary = q("#summary"), actions = q("#actions"), run = q("#run");
+  const grp = q("#grp"), grp2 = q("#grp2");
+  grp2.innerHTML = grp.innerHTML;
+  let grpW = 0;
+
+  const sparkLayer = q("#sparks");
+  const SPARKS = 22;
+  for (let i = 0; i < SPARKS; i++) {
+    const s = document.createElement("div");
+    s.className = "spark";
+    const size = 1.4 + rnd(i * 3.1) * 2.6;
+    s.style.width = size + "px";
+    s.style.height = size + "px";
+    sparkLayer.appendChild(s);
+  }
+  const sparks = [...sparkLayer.children].map((el, i) => ({
+    el,
+    x: 200 + rnd(i * 1.7) * 880,
+    y: 300 + rnd(i * 2.3) * 130,
+    delay: 260 + rnd(i * 5.9) * 1500,
+    life: 1100 + rnd(i * 4.4) * 1500,
+    drift: (rnd(i * 7.7) - 0.5) * 90,
+    rise: 90 + rnd(i * 6.3) * 200,
+    phase: rnd(i * 9.1) * 6.28,
+  }));
+
+  const c0 = [138, 127, 121];
+  const c1 = [243, 236, 230];
+  const heat = (p) =>
+    `rgb(${Math.round(c0[0] + (c1[0] - c0[0]) * p)},${Math.round(c0[1] + (c1[1] - c0[1]) * p)},${Math.round(c0[2] + (c1[2] - c0[2]) * p)})`;
+
+  window.render = (t) => {
+    // the light in the room arrives first
+    const lamp = mix(t, 0, 900, 0.25, 1, easeOut);
+    set(glow, { opacity: String(lamp * (0.9 + 0.1 * Math.sin(t / 1400))) });
+    set(q("#grid"), { opacity: String(mix(t, 0, 900, 0, 1, easeOut)) });
+
+    // the strike: a filament crosses the word
+    const bp = easeInOut(prog(t, 180, 980));
+    const beamOn = Math.min(prog(t, 180, 180), 1 - prog(t, 1080, 240));
+    set(beam, {
+      transform: `scaleX(${bp})`,
+      opacity: String(beamOn),
+    });
+    set(head, {
+      left: `${8 + 84 * bp}%`,
+      opacity: String(beamOn * (bp > 0.001 && bp < 0.999 ? 1 : 0)),
+    });
+
+    // letters rise out of the dark and take on heat
+    letters.forEach((el, i) => {
+      const start = 300 + i * 68;
+      const p = easeOutExpo(prog(t, start, 760));
+      const h = prog(t, start + 60, 900);
+      set(el, {
+        transform: `translateY(${(1 - p) * 106}%)`,
+        color: heat(easeOut(h)),
+        textShadow: `0 0 ${(1 - h) * 26}px rgba(255,120,70,${(1 - h) * 0.55})`,
+      });
+    });
+
+    portrait:
+    {
+      const p = easeOutExpo(prog(t, 760, 980));
+      set(portrait, {
+        opacity: String(p),
+        transform: `translateY(${(1 - p) * 64}px) scale(${0.97 + 0.03 * p})`,
+      });
+    }
+
+    const mp = easeOut(prog(t, 120, 520));
+    set(meta, { opacity: String(mp), transform: `translateY(${(1 - mp) * 10}px)` });
+
+    [...colL, ...colR].forEach((el, i) => {
+      const fromLeft = i < 4;
+      const k = i % 4;
+      const p = easeOut(prog(t, 760 + k * 70, 620));
+      set(el, {
+        opacity: String(p),
+        transform: `translateX(${(1 - p) * (fromLeft ? -16 : 16)}px)`,
+      });
+    });
+
+    const sp = easeOut(prog(t, 1020, 620));
+    set(summary, { opacity: String(sp), transform: `translateY(${(1 - sp) * 14}px)` });
+
+    const ap = easeOutExpo(prog(t, 1220, 620));
+    set(actions, { opacity: String(ap), transform: `translateY(${(1 - ap) * 18}px)` });
+
+    if (!grpW) grpW = grp.getBoundingClientRect().width || 1400;
+    const tk = easeOutExpo(prog(t, 1500, 800));
+    set(q("#ticker"), { opacity: String(tk) });
+    set(run, {
+      transform: `translateX(${(1 - tk) * 30 - ((t * 0.045) % grpW)}px)`,
+    });
+
+    // embers off the strike
+    sparks.forEach((s) => {
+      const p = prog(t, s.delay, s.life);
+      const alive = p > 0 && p < 1;
+      const e = easeOut(p);
+      const fade = Math.sin(Math.PI * Math.pow(p, 0.65));
+      set(s.el, {
+        transform: `translate(${s.x + s.drift * e + Math.sin(p * 5 + s.phase) * 8}px, ${s.y - s.rise * e}px)`,
+        opacity: String(alive ? fade * 0.85 : 0),
+      });
+    });
+  };
+</script>
+</body>
+</html>

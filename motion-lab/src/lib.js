@@ -43,9 +43,20 @@ window.__seek = (t) => {
 };
 
 (async () => {
-  const d = await document.fonts.ready;
+  await document.fonts.ready;
   await L.ready();
   window.__duration = window.DURATION || 6000;
   window.__seek(0);
   window.__ready = true;
+
+  // Live playback for the browser. Capture runs pass ?capture so the clock
+  // stays under the harness's control instead.
+  if (location.search.indexOf("capture") === -1) {
+    const start = performance.now();
+    const loop = () => {
+      window.__seek((performance.now() - start) % window.__duration);
+      requestAnimationFrame(loop);
+    };
+    requestAnimationFrame(loop);
+  }
 })();
